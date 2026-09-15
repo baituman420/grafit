@@ -92,7 +92,7 @@ export const GRAFIT_DATA = {
       },
       {
         id: 'hero-live',
-        src: './assets/grafit/events/grafit-concierto-mikel-bizar-01.jpg',
+        src: './assets/grafit/events/grafit-concierto-mikel-bizar-10.jpg',
         caption: 'Mikel Bizar en Acústico',
         rotation: '-2deg',
         bottom: '8%',
@@ -197,7 +197,7 @@ export const GRAFIT_DATA = {
         time: '20:30h',
         entry: 'Entrada Libre',
         description: 'El vocalista histórico de Idi Bihotz repasa temas clásicos del rock en un formato acústico único e íntimo.',
-        image: './assets/grafit/events/grafit-concierto-mikel-bizar-01.jpg',
+        image: './assets/grafit/events/grafit-concierto-mikel-bizar-10.jpg',
         highlight: true,
         stampText: 'IMPRESCINDIBLE'
       },
@@ -223,7 +223,7 @@ export const GRAFIT_DATA = {
         time: '19:30h',
         entry: 'Entrada Libre',
         description: 'Trae tus propios vinilos o súbete al micro abierto para la sesión de jam session comunitaria.',
-        image: './assets/grafit/events/grafit-concierto-directo-04.jpg',
+        image: './assets/grafit/events/grafit-concierto-mikel-bizar-17.jpg',
         highlight: false,
         stampText: 'JAM SESSION'
       }
@@ -235,7 +235,7 @@ export const GRAFIT_DATA = {
     quote: '"Grafit no se diseñó en un despacho de marketing. Se construyó con madera, guitarras en las paredes, fotos de amigos y mucha actitud."',
     openingYear: '2017',
     inaugurationPhoto: './assets/grafit/archive/grafit-inauguracion-2017-05.jpg',
-    reopeningPhoto: './assets/grafit/archive/grafit-reapertura-celebracion-05.jpg',
+    reopeningPhoto: './assets/grafit/archive/grafit-inauguracion-2017-07.jpg',
     muralPhoto: './assets/grafit/interior/grafit-interior-mural-02.jpg',
     manifesto: [
       'Un local nacido para quienes buscan buena música, cañas heladas y platos sustanciosos.',
@@ -247,7 +247,7 @@ export const GRAFIT_DATA = {
   grupos: {
     headline: 'CELEBRACIONES, CUMPLEAÑOS Y REUNIONES DE CUADRILLA',
     description: '¿Tienes un cumpleaños, una cena de cuadrilla o un evento especial? Reserva nuestro espacio de mesas o la zona de la barra para tu grupo.',
-    photo: './assets/grafit/archive/grafit-reapertura-celebracion-05.jpg',
+    photo: './assets/grafit/archive/grafit-inauguracion-2017-07.jpg',
     features: [
       'Menús cerrados para grupos a medida',
       'Zona reservada en salón con mural rock',

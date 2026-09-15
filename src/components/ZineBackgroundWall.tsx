@@ -1,6 +1,8 @@
 import React from 'react';
 
 export const ZineBackgroundWall: React.FC = () => {
+  const fanzineBg = './assets/grafit/fanzine-wall-bg.jpg';
+
   return (
     <div className="fixed inset-0 pointer-events-none select-none z-0 overflow-hidden">
       {/* SEAMLESS BASQUE PUNK FANZINE WALLPAPER TEXTURE FROM STITCH A1 SPREAD */}
@@ -9,7 +11,7 @@ export const ZineBackgroundWall: React.FC = () => {
         style={{
           backgroundImage: `
             linear-gradient(rgba(20, 19, 18, 0.45), rgba(20, 19, 18, 0.45)),
-            url('/assets/grafit/fanzine-wall-bg.jpg')
+            url("${fanzineBg}")
           `,
           backgroundRepeat: 'repeat',
           backgroundSize: '800px auto',
