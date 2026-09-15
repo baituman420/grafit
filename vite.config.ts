@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     tailwindcss()
   ],
-  base: '/grafit/',
+  base: './',
   server: {
     port: 3000,
     host: true
