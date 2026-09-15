@@ -29,7 +29,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
               <div className="masking-tape tape-corner-tr"></div>
               <div className="overflow-hidden border-2 border-black bg-black aspect-[4/3]">
                 <img
-                  src="/assets/grafit/interior/grafit-barra-01.jpg"
+                  src="./assets/grafit/interior/grafit-barra-01.jpg"
                   alt="La Barra del Grafit Café"
                   className="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-300"
                   loading="eager"
@@ -82,7 +82,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
               <div className="flex gap-4">
                 <div className="w-1/2 border-2 border-black bg-black overflow-hidden aspect-square">
                   <img
-                    src="/assets/grafit/food/grafit-hamburguesa-01.jpg"
+                    src="./assets/grafit/food/grafit-hamburguesa-01.jpg"
                     alt="Burger Grafit"
                     className="w-full h-full object-cover hover:scale-105 transition-transform"
                     loading="eager"
@@ -132,7 +132,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                 <div className="masking-tape tape-corner-tl"></div>
                 <div className="overflow-hidden border-2 border-black bg-black aspect-[4/3]">
                   <img
-                    src="/assets/grafit/events/grafit-concierto-mikel-bizar-01.jpg"
+                    src="./assets/grafit/events/grafit-concierto-mikel-bizar-01.jpg"
                     alt="Mikel Bizar en Acústico"
                     className="w-full h-full object-cover grayscale brightness-110 contrast-125 hover:grayscale-0 transition-all"
                     loading="lazy"
@@ -159,7 +159,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                 <div className="masking-tape tape-corner-tr"></div>
                 <div className="overflow-hidden border-2 border-black bg-black aspect-[4/3]">
                   <img
-                    src="/assets/grafit/events/grafit-concierto-cuarto-traste-06.jpg"
+                    src="./assets/grafit/events/grafit-concierto-cuarto-traste-06.jpg"
                     alt="Cuarto Traste en Directo"
                     className="w-full h-full object-cover grayscale brightness-110 contrast-125 hover:grayscale-0 transition-all"
                     loading="lazy"
@@ -189,7 +189,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
               <div className="masking-tape tape-bottom-center"></div>
               <div className="relative overflow-hidden border-2 border-black bg-black aspect-[16/9]">
                 <img
-                  src="/assets/grafit/archive/grafit-reapertura-celebracion-05.jpg"
+                  src="./assets/grafit/archive/grafit-reapertura-celebracion-05.jpg"
                   alt="La Parroquia del Grafit Café"
                   className="w-full h-full object-cover"
                   loading="lazy"

@@ -76,7 +76,7 @@ export const GRAFIT_DATA = {
     polaroids: [
       {
         id: 'hero-bar',
-        src: '/assets/grafit/interior/grafit-barra-01.jpg',
+        src: './assets/grafit/interior/grafit-barra-01.jpg',
         caption: 'La Barra • 08:00 a 02:00',
         rotation: '-3deg',
         top: '5%',
@@ -84,7 +84,7 @@ export const GRAFIT_DATA = {
       },
       {
         id: 'hero-food',
-        src: '/assets/grafit/food/grafit-hamburguesa-01.jpg',
+        src: './assets/grafit/food/grafit-hamburguesa-01.jpg',
         caption: 'Burger Grafit Gourmet',
         rotation: '4deg',
         top: '12%',
@@ -92,7 +92,7 @@ export const GRAFIT_DATA = {
       },
       {
         id: 'hero-live',
-        src: '/assets/grafit/events/grafit-concierto-mikel-bizar-01.jpg',
+        src: './assets/grafit/events/grafit-concierto-mikel-bizar-01.jpg',
         caption: 'Mikel Bizar en Acústico',
         rotation: '-2deg',
         bottom: '8%',
@@ -141,8 +141,8 @@ export const GRAFIT_DATA = {
   gastronomia: {
     headline: 'COMIDA NON-STOP & CERVEZA BIEN TIRADA',
     description: 'En Grafit la cocina no cierra a deshoras. Hamburguesas contundentes, pintxos recién salidos de la cocina y tanques de cerveza helada a cualquier hora.',
-    posterSrc: '/assets/grafit/branding/grafit-cartel-cocina-nonstop.jpg',
-    beersPhoto: '/assets/grafit/drinks/grafit-cerveza-canero-01.jpg',
+    posterSrc: './assets/grafit/branding/grafit-cartel-cocina-nonstop.jpg',
+    beersPhoto: './assets/grafit/drinks/grafit-cerveza-canero-01.jpg',
     featuredDishes: [
       {
         id: 'b1',
@@ -150,7 +150,7 @@ export const GRAFIT_DATA = {
         description: '100% carne de buey (200g), queso cheddar ahumado, bacon crujiente, cebolla caramelizada y salsa secreta Rock.',
         price: '11,90€',
         badge: 'TOP VENTAS',
-        image: '/assets/grafit/food/grafit-hamburguesa-01.jpg',
+        image: './assets/grafit/food/grafit-hamburguesa-01.jpg',
         category: 'burger'
       },
       {
@@ -159,7 +159,7 @@ export const GRAFIT_DATA = {
         description: 'La reina de la barra. Jugosa, recién hecha, con o sin cebolla y un toque picante suave.',
         price: '2,60€',
         badge: 'RECIÉN HECHA',
-        image: '/assets/grafit/food/grafit-pintxos-02.jpg',
+        image: './assets/grafit/food/grafit-pintxos-02.jpg',
         category: 'pintxo'
       },
       {
@@ -168,7 +168,7 @@ export const GRAFIT_DATA = {
         description: 'Servida a la temperatura exacta desde nuestros tanques principales. Espuma densa y frescura máxima.',
         price: '2,80€ / Caña',
         badge: 'TANQUE DIRECTO',
-        image: '/assets/grafit/drinks/grafit-tanques-cerveza-01.jpg',
+        image: './assets/grafit/drinks/grafit-cerveza-canero-01.jpg',
         category: 'cerveza'
       },
       {
@@ -177,7 +177,7 @@ export const GRAFIT_DATA = {
         description: 'Café illy, zumo de naranja natural exprimido al momento y tostada de pan de masa madre con tomate y aceite VE.',
         price: '4,50€',
         badge: 'DESDE 08:00H',
-        image: '/assets/grafit/food/grafit-desayuno-04.jpg',
+        image: './assets/grafit/food/grafit-desayuno-04.jpg',
         category: 'desayuno'
       }
     ] as MenuItem[]
@@ -186,7 +186,7 @@ export const GRAFIT_DATA = {
   agenda: {
     headline: 'CONCIERTOS & ACTUACIONES EN DIRECTO',
     subtext: 'Música en vivo sin artificios. Acústicos íntimos, bandas locales y ambiente eléctrico.',
-    posterCutout: '/assets/grafit/events/grafit-concierto-cuarto-traste-06.jpg',
+    posterCutout: './assets/grafit/events/grafit-concierto-cuarto-traste-06.jpg',
     eventsList: [
       {
         id: 'ev-1',
@@ -197,7 +197,7 @@ export const GRAFIT_DATA = {
         time: '20:30h',
         entry: 'Entrada Libre',
         description: 'El vocalista histórico de Idi Bihotz repasa temas clásicos del rock en un formato acústico único e íntimo.',
-        image: '/assets/grafit/events/grafit-concierto-mikel-bizar-01.jpg',
+        image: './assets/grafit/events/grafit-concierto-mikel-bizar-01.jpg',
         highlight: true,
         stampText: 'IMPRESCINDIBLE'
       },
@@ -210,7 +210,7 @@ export const GRAFIT_DATA = {
         time: '21:30h',
         entry: 'Entrada Libre',
         description: 'Banda bilbaína de rock en estado puro. Guitarrazos, distorsión y sala llena garantizada.',
-        image: '/assets/grafit/events/grafit-concierto-cuarto-traste-06.jpg',
+        image: './assets/grafit/events/grafit-concierto-cuarto-traste-06.jpg',
         highlight: true,
         stampText: 'DIRECTO ROCK'
       },
@@ -223,7 +223,7 @@ export const GRAFIT_DATA = {
         time: '19:30h',
         entry: 'Entrada Libre',
         description: 'Trae tus propios vinilos o súbete al micro abierto para la sesión de jam session comunitaria.',
-        image: '/assets/grafit/events/grafit-concierto-directo-04.jpg',
+        image: './assets/grafit/events/grafit-concierto-directo-04.jpg',
         highlight: false,
         stampText: 'JAM SESSION'
       }
@@ -234,9 +234,9 @@ export const GRAFIT_DATA = {
     headline: 'DESDE 2017 CONSTRUYENDO UN REFUGIO ROCK EN INDAUTXU',
     quote: '"Grafit no se diseñó en un despacho de marketing. Se construyó con madera, guitarras en las paredes, fotos de amigos y mucha actitud."',
     openingYear: '2017',
-    inaugurationPhoto: '/assets/grafit/archive/grafit-inauguracion-2017-05.jpg',
-    reopeningPhoto: '/assets/grafit/archive/grafit-reapertura-celebracion-05.jpg',
-    muralPhoto: '/assets/grafit/interior/grafit-interior-mural-02.jpg',
+    inaugurationPhoto: './assets/grafit/archive/grafit-inauguracion-2017-05.jpg',
+    reopeningPhoto: './assets/grafit/archive/grafit-reapertura-celebracion-05.jpg',
+    muralPhoto: './assets/grafit/interior/grafit-interior-mural-02.jpg',
     manifesto: [
       'Un local nacido para quienes buscan buena música, cañas heladas y platos sustanciosos.',
       'Ubicados en la céntrica calle Urrutia 1, entre la plaza Indautxu y los lugares de poteo emblemáticos de Bilbao.',
@@ -247,7 +247,7 @@ export const GRAFIT_DATA = {
   grupos: {
     headline: 'CELEBRACIONES, CUMPLEAÑOS Y REUNIONES DE CUADRILLA',
     description: '¿Tienes un cumpleaños, una cena de cuadrilla o un evento especial? Reserva nuestro espacio de mesas o la zona de la barra para tu grupo.',
-    photo: '/assets/grafit/archive/grafit-reapertura-celebracion-05.jpg',
+    photo: './assets/grafit/archive/grafit-reapertura-celebracion-05.jpg',
     features: [
       'Menús cerrados para grupos a medida',
       'Zona reservada en salón con mural rock',

@@ -38,7 +38,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div className="w-full lg:w-80 polaroid-frame rot-pos-2 text-black p-3 bg-[#fdfbf7] shrink-0">
             <div className="aspect-[16/10] bg-black overflow-hidden border-2 border-black">
               <img
-                src="/assets/grafit/exterior/grafit-fachada-01.jpg"
+                src="./assets/grafit/exterior/grafit-fachada-01.jpg"
                 alt="Fachada del Grafit Café"
                 className="w-full h-full object-cover contrast-110"
                 loading="lazy"
