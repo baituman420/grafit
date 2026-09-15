@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+:root {
+  --bg-paper: #ebe5d8;
+  --bg-paper-card: #fdfbf7;
+  --bg-paper-dark: #0a0a0a;
+  --color-ink: #0c0b0a;
+  --color-oxblood: #b91c1c;
+  --color-mustard: #e2c044;
+  --color-tape: rgba(226, 218, 196, 0.88);
+  --color-tape-shadow: rgba(0, 0, 0, 0.22);
+}
+
+/* BASE STYLES & BACKGROUND SUBSTRATE */
+html, body {
+  background-color: #181615;
+  color: var(--color-ink);
+  font-family: 'Space Grotesk', sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NEWSPRINT & HALFTONE TEXTURE */
+.bg-newsprint {
+  background-color: #ebe5d8;
+  background-image: 
+    radial-gradient(#000000 0.75px, transparent 0.75px),
+    radial-gradient(#15120e 0.5px, #ebe5d8 0.5px);
+  background-size: 24px 24px, 12px 12px;
+  background-position: 0 0, 6px 6px;
+}
+
+/* TYPOGRAPHY UTILITIES */
+.font-ransom {
+  font-family: 'Anton', sans-serif;
+}
+
+.font-woodblock {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+}
+
+.font-condensed-giant {
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.font-typewriter {
+  font-family: 'Courier Prime', monospace;
+}
+
+.font-mono-code {
+  font-family: 'Space Mono', monospace;
+}
+
+/* MASKING TAPE */
+.masking-tape {
+  background: var(--color-tape);
+  box-shadow: 0 1px 3px var(--color-tape-shadow), inset 0 0 4px rgba(255,255,255,0.4);
+  position: absolute;
+  z-index: 40;
+  border-left: 2px dashed rgba(160, 150, 120, 0.4);
+  border-right: 2px dashed rgba(160, 150, 120, 0.4);
+}
+
+.tape-corner-tl {
+  top: -12px;
+  left: -18px;
+  width: 85px;
+  height: 26px;
+  transform: rotate(-14deg);
+}
+
+.tape-corner-tr {
+  top: -12px;
+  right: -18px;
+  width: 90px;
+  height: 26px;
+  transform: rotate(11deg);
+}
+
+.tape-top-center {
+  top: -14px;
+  left: 35%;
+  width: 110px;
+  height: 28px;
+  transform: rotate(-2deg);
+}
+
+.tape-bottom-center {
+  bottom: -12px;
+  left: 30%;
+  width: 100px;
+  height: 26px;
+  transform: rotate(3deg);
+}
+
+/* STAMPS & BADGES */
+.stamped-badge {
+  border: 3px dashed #b91c1c;
+  color: #b91c1c;
+  background: rgba(185, 28, 28, 0.05);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.rubber-stamp {
+  display: inline-block;
+  padding: 4px 12px;
+  text-transform: uppercase;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 0.08em;
+  border: 3px double var(--color-oxblood);
+  color: var(--color-oxblood);
+  transform: rotate(-4deg);
+  opacity: 0.95;
+  mix-blend-mode: multiply;
+  user-select: none;
+}
+
+/* PASTE-UP SHADOWS */
+.pasteup-shadow {
+  box-shadow: 4px 6px 0px rgba(10, 10, 10, 0.9), 8px 12px 18px rgba(0, 0, 0, 0.25);
+}
+
+.pasteup-shadow-heavy {
+  box-shadow: 7px 9px 0px #0a0a0a, 14px 18px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* CROSSHAIRS & PRINTER MARKS */
+.crosshair {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+.crosshair::before {
+  content: '';
+  position: absolute;
+  top: 11px;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: #0a0a0a;
+}
+.crosshair::after {
+  content: '';
+  position: absolute;
+  left: 11px;
+  top: 0;
+  width: 2px;
+  height: 24px;
+  background: #0a0a0a;
+}
+.crosshair-circle {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #0a0a0a;
+  border-radius: 50%;
+}
+
+/* TORN PAPER STRIPS */
+.torn-strip-black {
+  background: #0a0a0a;
+  clip-path: polygon(0% 2%, 3% 0%, 15% 3%, 35% 0%, 55% 2.5%, 75% 0.5%, 90% 3%, 100% 1%, 99% 98%, 88% 99.5%, 70% 97%, 45% 100%, 25% 97.5%, 10% 99%, 0% 97%);
+}
+
+.torn-strip-yellow {
+  background: #e2c044;
+  clip-path: polygon(1% 3%, 25% 0.5%, 50% 2%, 80% 0%, 99% 2.5%, 98% 97%, 75% 99.5%, 45% 98%, 20% 100%, 0% 96%);
+}
+
+/* MARQUEE ANIMATION */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 25s linear infinite;
+}
