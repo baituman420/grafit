@@ -2,6 +2,7 @@ import React from 'react';
 import { HeroSection } from '../components/HeroSection';
 import { HoySection } from '../components/HoySection';
 import { ComerBeberSection } from '../components/ComerBeberSection';
+import { InstagramFeedSection } from '../components/InstagramFeedSection';
 import { AgendaSection } from '../components/AgendaSection';
 import { HistoriaSection } from '../components/HistoriaSection';
 import { GruposSection } from '../components/GruposSection';
@@ -16,6 +17,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
       <HeroSection onNavigate={onNavigate} />
       <HoySection />
       <ComerBeberSection onNavigate={onNavigate} />
+      <InstagramFeedSection />
       <AgendaSection onNavigate={onNavigate} />
       <HistoriaSection onNavigate={onNavigate} />
       <GruposSection onNavigate={onNavigate} />

@@ -33,6 +33,16 @@ export interface HoyItem {
   badgeColor?: string;
 }
 
+export interface InstagramPost {
+  id: string;
+  src: string;
+  caption: string;
+  tag: string;
+  date: string;
+  likes?: number;
+  rotation?: string;
+}
+
 export const GRAFIT_DATA = {
   info: {
     name: 'Grafit Rock Café',
@@ -84,7 +94,7 @@ export const GRAFIT_DATA = {
       },
       {
         id: 'hero-food',
-        src: './assets/grafit/food/grafit-hamburguesa-01.jpg',
+        src: './assets/grafit/instagram/burguer.webp',
         caption: 'Burger Grafit Gourmet',
         rotation: '4deg',
         top: '12%',
@@ -150,17 +160,26 @@ export const GRAFIT_DATA = {
         description: '100% carne de buey (200g), queso cheddar ahumado, bacon crujiente, cebolla caramelizada y salsa secreta Rock.',
         price: '11,90€',
         badge: 'TOP VENTAS',
-        image: './assets/grafit/food/grafit-hamburguesa-01.jpg',
+        image: './assets/grafit/instagram/burguer.webp',
         category: 'burger'
       },
       {
         id: 'p1',
-        name: 'Pintxo de Tortilla de Patata con Alegrías',
-        description: 'La reina de la barra. Jugosa, recién hecha, con o sin cebolla y un toque picante suave.',
+        name: 'Pintxo de Tortilla & Barra Fresca',
+        description: 'La reina de la barra. Jugosa, recién hecha, con o sin cebolla y selección de pintxos del día.',
         price: '2,60€',
         badge: 'RECIÉN HECHA',
-        image: './assets/grafit/food/grafit-pintxos-02.jpg',
+        image: './assets/grafit/instagram/pintxos.jpg',
         category: 'pintxo'
+      },
+      {
+        id: 's1',
+        name: 'Sandwich Especial de la Barra',
+        description: 'Pan crujiente a la plancha con queso fundente, pechuga a la parrilla, vegetales frescos y salsa de la casa.',
+        price: '7,50€',
+        badge: 'NON-STOP',
+        image: './assets/grafit/instagram/sandwich-barra.jpg',
+        category: 'plato'
       },
       {
         id: 'b2',
@@ -170,15 +189,6 @@ export const GRAFIT_DATA = {
         badge: 'TANQUE DIRECTO',
         image: './assets/grafit/drinks/grafit-cerveza-canero-01.jpg',
         category: 'cerveza'
-      },
-      {
-        id: 'd1',
-        name: 'Desayuno Indautxu Completo',
-        description: 'Café illy, zumo de naranja natural exprimido al momento y tostada de pan de masa madre con tomate y aceite VE.',
-        price: '4,50€',
-        badge: 'DESDE 08:00H',
-        image: './assets/grafit/food/grafit-desayuno-04.jpg',
-        category: 'desayuno'
       }
     ] as MenuItem[]
   },
@@ -236,7 +246,8 @@ export const GRAFIT_DATA = {
     openingYear: '2017',
     inaugurationPhoto: './assets/grafit/archive/grafit-inauguracion-2017-05.jpg',
     reopeningPhoto: './assets/grafit/archive/grafit-inauguracion-2017-07.jpg',
-    muralPhoto: './assets/grafit/interior/grafit-interior-mural-02.jpg',
+    muralPhoto: './assets/grafit/instagram/rolling-pared.jpg',
+    vwPhoto: './assets/grafit/instagram/volkswagen.jpg',
     manifesto: [
       'Un local nacido para quienes buscan buena música, cañas heladas y platos sustanciosos.',
       'Ubicados en la céntrica calle Urrutia 1, entre la plaza Indautxu y los lugares de poteo emblemáticos de Bilbao.',
@@ -244,10 +255,77 @@ export const GRAFIT_DATA = {
     ]
   },
 
+  instagramFeed: [
+    {
+      id: 'ig-1',
+      src: './assets/grafit/instagram/fachada-noche.jpg',
+      caption: 'Noches iluminadas en Indautxu. Urrutia Kalea 1.',
+      tag: '@grafitcafe',
+      date: 'Publicado recientement',
+      likes: 248,
+      rotation: '-rotate-3'
+    },
+    {
+      id: 'ig-2',
+      src: './assets/grafit/instagram/burguer.webp',
+      caption: 'La Burger Grafit Special 100% buey al detalle.',
+      tag: '#FoodPornBilbao',
+      date: 'Publicado recientemente',
+      likes: 312,
+      rotation: 'rotate-2'
+    },
+    {
+      id: 'ig-3',
+      src: './assets/grafit/instagram/volkswagen.jpg',
+      caption: 'Furgoneta Volkswagen mítica en el salón principal del bar.',
+      tag: '#RockCafe',
+      date: 'Publicado recientemente',
+      likes: 419,
+      rotation: '-rotate-2'
+    },
+    {
+      id: 'ig-4',
+      src: './assets/grafit/instagram/chupa-cuero.jpg',
+      caption: 'Chupa de cuero, cerveza de tanque y actitud rockera.',
+      tag: '#ParroquiaGrafit',
+      date: 'Publicado recientemente',
+      likes: 189,
+      rotation: 'rotate-3'
+    },
+    {
+      id: 'ig-5',
+      src: './assets/grafit/instagram/rolling-pared.jpg',
+      caption: 'Mural tributo a The Rolling Stones en las paredes de ladrillo.',
+      tag: '#RockOrDie',
+      date: 'Publicado recientemente',
+      likes: 375,
+      rotation: '-rotate-1'
+    },
+    {
+      id: 'ig-6',
+      src: './assets/grafit/instagram/sandwich-barra.jpg',
+      caption: 'Bocata y sandwich caliente en la barra de madera.',
+      tag: '#KitchenNonStop',
+      date: 'Publicado recientemente',
+      likes: 204,
+      rotation: 'rotate-2'
+    },
+    {
+      id: 'ig-7',
+      src: './assets/grafit/instagram/pintxos.jpg',
+      caption: 'Pintxos recién hechos saliendo continuamente de la cocina.',
+      tag: '#BarraIndautxu',
+      date: 'Publicado recientemente',
+      likes: 298,
+      rotation: '-rotate-3'
+    }
+  ] as InstagramPost[],
+
   grupos: {
     headline: 'CELEBRACIONES, CUMPLEAÑOS Y REUNIONES DE CUADRILLA',
     description: '¿Tienes un cumpleaños, una cena de cuadrilla o un evento especial? Reserva nuestro espacio de mesas o la zona de la barra para tu grupo.',
     photo: './assets/grafit/archive/grafit-inauguracion-2017-07.jpg',
+    nightPhoto: './assets/grafit/instagram/fachada-noche.jpg',
     features: [
       'Menús cerrados para grupos a medida',
       'Zona reservada en salón con mural rock',
