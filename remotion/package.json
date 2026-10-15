@@ -1,0 +1,21 @@
+{
+  "name": "grafit-remotion",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "render": "remotion render src/index.ts GrafitHeroDesktop ../public/assets/grafit/motion/van/demo_hero_grafit_v3.mp4 --public-dir=../public",
+    "still": "remotion still src/index.ts GrafitHeroDesktop --public-dir=../public",
+    "studio": "remotion studio src/index.ts --public-dir=../public"
+  },
+  "devDependencies": {
+    "@remotion/bundler": "^4.0.535",
+    "@remotion/cli": "^4.0.535",
+    "@remotion/renderer": "^4.0.535",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.535",
+    "typescript": "^5.7.2"
+  }
+}

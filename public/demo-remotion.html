@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRAFIT V3 • Demo Audiovisual Remotion — Volkswagen Salón</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap">
+  <style>
+    :root {
+      --bg: #141312;
+      --card-bg: #1e1c1a;
+      --border: #33302c;
+      --red: #b91c1c;
+      --cream: #f5efe1;
+      --gold: #e2c044;
+      --text: #e5e0d3;
+      --text-muted: #9c9488;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Space Mono', monospace;
+      line-height: 1.5;
+      padding: 32px 20px 80px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 3px solid var(--red);
+      padding-bottom: 24px;
+      margin-bottom: 36px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--red);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      padding: 4px 10px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      box-shadow: 3px 3px 0 #000;
+    }
+
+    h1 {
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(32px, 5vw, 56px);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cream);
+      line-height: 1.05;
+      margin-bottom: 12px;
+    }
+
+    p.subtitle {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 800px;
+    }
+
+    /* Video Player Section */
+    .player-card {
+      background: var(--card-bg);
+      border: 3px solid #000;
+      box-shadow: 8px 8px 0 var(--red);
+      padding: 20px;
+      margin-bottom: 48px;
+    }
+
+    .player-title {
+      font-family: 'Anton', sans-serif;
+      font-size: 24px;
+      text-transform: uppercase;
+      color: var(--cream);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      background: #000;
+      border: 2px solid var(--border);
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .video-meta {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 1px dashed var(--border);
+      padding-top: 12px;
+    }
+
+    .video-meta strong {
+      color: var(--cream);
+    }
+
+    /* Scene Breakdown Grid */
+    .section-title {
+      font-family: 'Anton', sans-serif;
+      font-size: 32px;
+      text-transform: uppercase;
+      color: var(--cream);
+      margin: 48px 0 24px;
+      border-left: 6px solid var(--red);
+      padding-left: 14px;
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+
+    .section-title span {
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      color: var(--text-muted);
+      text-transform: none;
+    }
+
+    .scenes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .scene-card {
+      background: var(--card-bg);
+      border: 2px solid var(--border);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .scene-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+    }
+
+    .scene-img-wrap {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      overflow: hidden;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .scene-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .scene-card:hover .scene-img-wrap img {
+      transform: scale(1.03);
+    }
+
+    .scene-content {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .scene-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .scene-number {
+      font-family: 'Anton', sans-serif;
+      font-size: 18px;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+
+    .scene-timing {
+      font-size: 11px;
+      background: #000;
+      color: var(--text-muted);
+      padding: 2px 8px;
+      border: 1px solid var(--border);
+    }
+
+    .scene-name {
+      font-family: 'Anton', sans-serif;
+      font-size: 20px;
+      color: var(--cream);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+
+    .scene-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      flex-grow: 1;
+    }
+
+    .scene-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 10px;
+      background: rgba(0,0,0,0.6);
+      color: var(--cream);
+      padding: 3px 8px;
+      border: 1px solid var(--border);
+    }
+
+    .tag.red {
+      border-color: var(--red);
+      color: #fca5a5;
+    }
+
+    .tag.gold {
+      border-color: var(--gold);
+      color: #fef08a;
+    }
+
+    /* Technical audit table */
+    .audit-card {
+      background: var(--card-bg);
+      border: 2px solid var(--border);
+      padding: 24px;
+      margin-top: 48px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      font-size: 13px;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      font-family: 'Anton', sans-serif;
+      font-size: 16px;
+      letter-spacing: 1px;
+      color: var(--gold);
+      background: rgba(0,0,0,0.4);
+    }
+
+    td strong {
+      color: var(--cream);
+    }
+
+    .status-ok {
+      color: #86efac;
+      font-weight: 700;
+    }
+
+    .status-warn {
+      color: #fde047;
+      font-weight: 700;
+    }
+
+    .action-bar {
+      margin-top: 40px;
+      text-align: center;
+      padding: 24px;
+      border: 2px dashed var(--border);
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: 'Anton', sans-serif;
+      font-size: 18px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: var(--red);
+      color: #fff;
+      padding: 12px 28px;
+      text-decoration: none;
+      box-shadow: 4px 4px 0 #000;
+      border: 2px solid #000;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #dc2626;
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 #000;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--cream);
+      border-color: var(--border);
+      margin-left: 12px;
+    }
+
+    .btn-secondary:hover {
+      background: var(--card-bg);
+      border-color: var(--cream);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">GRAFIT V3 • FASE 02 EXPERIMENTAL</div>
+      <h1>Demo Hero Remotion: La Volkswagen cobra vida</h1>
+      <p class="subtitle">
+        Primera demostración técnica audiovisual de la media furgoneta Volkswagen decorativa del salón multiusos de Grafit Café, integrada con el fondo gráfico original (punk wall) y coreografiada en 5 escenas hacia el objetivo comercial.
+      </p>
+    </header>
+
+    <!-- PLAYER CARD -->
+    <section class="player-card">
+      <div class="player-title">
+        <span>🎬 Reproductor de Vídeo (Remotion 30fps)</span>
+        <span style="font-size: 13px; font-family: 'Space Mono'; color: var(--gold);">demo_hero_grafit_v3.mp4</span>
+      </div>
+      <div class="video-wrapper">
+        <video controls autoplay loop playsinline poster="/assets/grafit/motion/van/stills/scene1_frame035_entrance.png">
+          <source src="/assets/grafit/motion/van/demo_hero_grafit_v3.mp4" type="video/mp4">
+          Tu navegador no soporta reproducción de vídeo HTML5.
+        </video>
+      </div>
+      <div class="video-meta">
+        <div><strong>Duración:</strong> 10.00 s (300 frames @ 30 fps)</div>
+        <div><strong>Resolución:</strong> 1280 x 720 (16:9)</div>
+        <div><strong>Códec:</strong> H.264 / AAC progressive</div>
+        <div><strong>Fondo gráfico:</strong> punk-wall-bg.jpg + Multiply Zine Grain</div>
+        <div><strong>Capa sin duplicados:</strong> layer_02_half_van_debadged.png</div>
+      </div>
+    </section>
+
+    <!-- SCENE BREAKDOWN -->
+    <h2 class="section-title">
+      Desglose de Escenas <span>(5 fotogramas clave exportados a 1280x720)</span>
+    </h2>
+
+    <div class="scenes-grid">
+      <!-- ESCENA 1 -->
+      <article class="scene-card">
+        <div class="scene-img-wrap">
+          <img src="/assets/grafit/motion/van/stills/scene1_frame035_entrance.png" alt="Escena 1 - Entrada de la Volkswagen">
+        </div>
+        <div class="scene-content">
+          <div class="scene-header">
+            <span class="scene-number">ESCENA 01</span>
+            <span class="scene-timing">0.0s – 2.1s (0–65f)</span>
+          </div>
+          <h3 class="scene-name">Entrada y Presencia</h3>
+          <p class="scene-desc">
+            La media Volkswagen emerge con física elástica (spring damping 14), inclinación de perspectiva 2.5D y queda sólidamente apoyada sobre su tarima sobre el fondo punk original.
+          </p>
+          <div class="scene-tags">
+            <span class="tag">Spring Physics</span>
+            <span class="tag">Punk Wall BG</span>
+            <span class="tag">Geometría Real</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ESCENA 2 -->
+      <article class="scene-card">
+        <div class="scene-img-wrap">
+          <img src="/assets/grafit/motion/van/stills/scene2_frame105_gastronomy.png" alt="Escena 2 - Faros Gastronómicos">
+        </div>
+        <div class="scene-content">
+          <div class="scene-header">
+            <span class="scene-number">ESCENA 02</span>
+            <span class="scene-timing">2.1s – 4.5s (65–135f)</span>
+          </div>
+          <h3 class="scene-name">Faros Gastronómicos</h3>
+          <p class="scene-desc">
+            Pulso luminoso en los faros redondos; la lente izquierda revela la Burger Grafit con sello "BURGER 100% BUEY" y la derecha el sándwich/bocadillo con sello "COCINA NON-STOP".
+          </p>
+          <div class="scene-tags">
+            <span class="tag gold">Revelación Producto</span>
+            <span class="tag">Glow Foco</span>
+            <span class="tag">Burguer + Sándwich</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ESCENA 3 -->
+      <article class="scene-card">
+        <div class="scene-img-wrap">
+          <img src="/assets/grafit/motion/van/stills/scene3_frame175_exploded.png" alt="Escena 3 - Despiece sin duplicados">
+        </div>
+        <div class="scene-content">
+          <div class="scene-header">
+            <span class="scene-number">ESCENA 03</span>
+            <span class="scene-timing">4.5s – 6.8s (135–205f)</span>
+          </div>
+          <h3 class="scene-name">Despiece sin Artefactos</h3>
+          <p class="scene-desc">
+            Transición a carrocería debadged. El emblema VW se desprende flotando 2.5x hacia cámara con sombra 3D proyectada. La matrícula cae con gravedad. Cero siluetas duplicadas.
+          </p>
+          <div class="scene-tags">
+            <span class="tag red">Debadged Layer</span>
+            <span class="tag">3D Shadow</span>
+            <span class="tag">Física Gravedad</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ESCENA 4 -->
+      <article class="scene-card">
+        <div class="scene-img-wrap">
+          <img src="/assets/grafit/motion/van/stills/scene4_frame235_salon_grupos.png" alt="Escena 4 - Conceptos del Salón">
+        </div>
+        <div class="scene-content">
+          <div class="scene-header">
+            <span class="scene-number">ESCENA 04</span>
+            <span class="scene-timing">6.8s – 8.6s (205–260f)</span>
+          </div>
+          <h3 class="scene-name">El Salón al Descubierto</h3>
+          <p class="scene-desc">
+            La carrocería se desliza hacia abajo y desvela lo que hay detrás: pegatinas de estilo fanzine con "GRUPOS", "EVENTOS" y "EL GRAN SALÓN MULTIUSOS" con subtítulo local de Indautxu.
+          </p>
+          <div class="scene-tags">
+            <span class="tag gold">Grupos & Eventos</span>
+            <span class="tag">Salón Multiusos</span>
+            <span class="tag">Tipografía Zine</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ESCENA 5 -->
+      <article class="scene-card">
+        <div class="scene-img-wrap">
+          <img src="/assets/grafit/motion/van/stills/scene5_frame285_closing_cta.png" alt="Escena 5 - Cierre Comercial y CTA">
+        </div>
+        <div class="scene-content">
+          <div class="scene-header">
+            <span class="scene-number">ESCENA 05</span>
+            <span class="scene-timing">8.6s – 10.0s (260–300f)</span>
+          </div>
+          <h3 class="scene-name">Cierre Comercial & CTA</h3>
+          <p class="scene-desc">
+            Resolución en llamada a la acción: "TU PRÓXIMA EXPERIENCIA EMPIEZA EN GRAFIT" con botón central "★ ORGANIZA TU EVENTO ★" y dirección física en Urrutia Kalea 1, Indautxu.
+          </p>
+          <div class="scene-tags">
+            <span class="tag red">Conversión</span>
+            <span class="tag">CTA Eventos</span>
+            <span class="tag">Ubicación Bilbao</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- TECHNICAL EVALUATION AUDIT -->
+    <h2 class="section-title">
+      Auditoría Técnica y Evaluación Visual <span>(Fase 02 → Fase 03)</span>
+    </h2>
+
+    <div class="audit-card">
+      <p style="font-size: 14px; color: var(--cream); margin-bottom: 16px;">
+        Evaluación de la animación sobre el fondo real y diagnóstico de viabilidad para traslación interactiva por scroll en la web comercial (Fase 03):
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Aspecto Evaluado</th>
+            <th>Diagnóstico Observado</th>
+            <th>Solución Aplicada / Recomendación Fase 03</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Fondo Gráfico Real</strong></td>
+            <td>La integración sobre `punk-wall-bg.jpg` con blend multiply conserva el 100% de la identidad de marca de Grafit sin desconexión visual.</td>
+            <td>Se mantiene idéntico gradiente y grano zine que `ZineBackgroundWall.tsx`.</td>
+            <td><span class="status-ok">SUPERADO</span></td>
+          </tr>
+          <tr>
+            <td><strong>Duplicidad de Emblema</strong></td>
+            <td>Al desprender el logo VW original, la capa inferior original dejaba la silueta del logo duplicada.</td>
+            <td>Se creó `layer_02_half_van_debadged.png` rellenando la chapa con el color marfil crema exacto de la carrocería. Cero artefactos.</td>
+            <td><span class="status-ok">SUPERADO</span></td>
+          </tr>
+          <tr>
+            <td><strong>Perspectiva Fotográfica</strong></td>
+            <td>La fotografía original se tomó ligeramente picada y desde el suelo del salón, no completamente ortogonal.</td>
+            <td>La inclinación 2.5D `perspective(800px) rotateX(...)` mitiga la tensión de ángulo al entrar. Para Fase 03 interactiva se recomienda mantener la proporción 1:1 en móvil.</td>
+            <td><span class="status-warn">CONTROLADO</span></td>
+          </tr>
+          <tr>
+            <td><strong>Resolución del Faro</strong></td>
+            <td>Las lentes de los faros miden ~84px de apertura en el render 720p.</td>
+            <td>Al insertar la burger y sándwich con zoom 140% y borde dorado brillante, el producto se reconoce de forma nítida e impactante.</td>
+            <td><span class="status-ok">SUPERADO</span></td>
+          </tr>
+          <tr>
+            <td><strong>Tracción Comercial</strong></td>
+            <td>El despiece no es un mero adorno: cada escena conduce a un mensaje clave (Gastronomía &gt; Salón &gt; Grupos &gt; CTA Evento).</td>
+            <td>El storyboard cumple los 4 pilares estratégicos de la reestructuración comercial V2.</td>
+            <td><span class="status-ok">SUPERADO</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="action-bar">
+      <a href="/assets/grafit/motion/van/demo_hero_grafit_v3.mp4" download="demo_hero_grafit_v3.mp4" class="btn">
+        Descargar Vídeo MP4 (15.5 MB)
+      </a>
+      <a href="/" class="btn btn-secondary">
+        Ver Web Comercial V2
+      </a>
+    </div>
+  </div>
+</body>
+</html>
