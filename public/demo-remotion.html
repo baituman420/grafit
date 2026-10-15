@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GRAFIT V3 • Demo Remotion: Móvil 9:16 + Impacto Letras</title>
+  <title>GRAFIT V3 • Demo Remotion: Fase 02.2 — Caída, Rebote y Revelación</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@600;700&display=swap">
   <style>
     :root {
@@ -61,6 +61,12 @@
       margin-left: 8px;
     }
 
+    .badge-new {
+      background: #16a34a;
+      color: #fff;
+      margin-left: 8px;
+    }
+
     h1 {
       font-family: 'Anton', sans-serif;
       font-size: clamp(32px, 5vw, 54px);
@@ -74,7 +80,7 @@
     p.subtitle {
       font-size: 15px;
       color: var(--text-muted);
-      max-width: 860px;
+      max-width: 900px;
     }
 
     /* Comparison Dual Layout */
@@ -85,7 +91,7 @@
       margin-bottom: 48px;
     }
 
-    @media (min-width: 900px) {
+    @media (min-width: 920px) {
       .comparison-section {
         grid-template-columns: 460px 1fr;
         align-items: start;
@@ -159,6 +165,20 @@
 
     .meta-box strong {
       color: var(--cream);
+    }
+
+    /* Previous versions row */
+    .previous-versions-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    @media (min-width: 600px) {
+      .previous-versions-grid {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     /* Section Title */
@@ -294,6 +314,11 @@
       color: #fef08a;
     }
 
+    .tag.green {
+      border-color: #16a34a;
+      color: #86efac;
+    }
+
     /* Comparison Table */
     table {
       width: 100%;
@@ -359,6 +384,15 @@
       box-shadow: 6px 6px 0 #000;
     }
 
+    .btn-gold {
+      background: var(--gold);
+      color: #000;
+    }
+
+    .btn-gold:hover {
+      background: #facc15;
+    }
+
     .btn-secondary {
       background: transparent;
       color: var(--cream);
@@ -375,193 +409,213 @@
   <div class="container">
     <header>
       <div>
-        <span class="badge">GRAFIT V3 • FASE 02.1</span>
-        <span class="badge badge-gold">MOBILE FIRST 9:16</span>
+        <span class="badge">GRAFIT V3 • FASE 02.2</span>
+        <span class="badge badge-gold">COREOGRAFÍA FÍSICA</span>
+        <span class="badge badge-new">NUEVA DEMO</span>
       </div>
-      <h1>Evolución Demo Remotion: Impacto GRAFIT + Volkswagen</h1>
+      <h1>Coreografía de la Volkswagen: Caída, Rebote y Revelación</h1>
       <p class="subtitle">
-        Segunda iteración audiovisual con prioridad absoluta en móvil: apertura con las letras originales tipo rescate woodblock de Grafit, entrada de alta velocidad de la Volkswagen, choque y dispersión de las letras con regreso al Header real, furgoneta al 90% de ancho de pantalla y revelación continua de gastronomía y eventos.
+        Tercera evolución audiovisual con la nueva coreografía física de la Volkswagen en formato vertical 9:16 (1080×1920): apertura intacta con impacto sobre las letras ransom woodblock oficiales, desprendimiento y caída por gravedad del emblema VW, eclosión directa de la hamburguesa desde la cavidad, hundimiento tridimensional de los faros en sus cuencas cóncavas oscuras, rebote enérgico hacia el espectador revelando la cocina y el salón multiusos, y cierre comercial.
       </p>
     </header>
 
-    <!-- MAIN COMPARISON VIEW -->
+    <!-- MAIN HERO COMPARISON VIEW -->
     <div class="comparison-section">
-      <!-- 1. MOBILE PLAYER IN PHONE MOCKUP -->
+      <!-- 1. NEW MOBILE PLAYER IN PHONE MOCKUP -->
       <div class="card">
         <div class="card-title">
-          <span>📱 Demo Móvil (Fase 02.1)</span>
-          <span style="font-size: 11px; color: var(--gold);">1080×1920 (9:16)</span>
+          <span>📱 Nueva Demo Móvil (Fase 02.2)</span>
+          <span style="font-size: 11px; color: var(--gold);">1080×1920 (9:16) • 10.0s</span>
         </div>
         <div class="phone-container">
           <div class="phone-notch"></div>
-          <video controls autoplay loop playsinline poster="/assets/grafit/motion/van/stills/mobile_scene1_frame015_grafit_intro.png">
-            <source src="/assets/grafit/motion/van/demo_hero_grafit_v3_mobile.mp4" type="video/mp4">
+          <video controls autoplay loop playsinline poster="/assets/grafit/motion/van/stills/v2_still5_frame172_contents_emerging.png">
+            <source src="/assets/grafit/motion/van/demo_hero_grafit_v3_mobile_v2.mp4" type="video/mp4">
             Tu navegador no soporta vídeo HTML5.
           </video>
         </div>
         <div class="meta-box">
-          <div><strong>Archivo:</strong> demo_hero_grafit_v3_mobile.mp4 (4.9 MB)</div>
-          <div><strong>Escala furgoneta:</strong> ~90% de ancho de pantalla</div>
-          <div><strong>Coreografía:</strong> Impacto letras + recuperación Header</div>
-          <div><strong>Gastronomía:</strong> Burger y sándwich saliendo de faros</div>
-          <div><strong>Datos:</strong> Retirado teléfono provisional 944...</div>
+          <div><strong>Archivo:</strong> demo_hero_grafit_v3_mobile_v2.mp4 (4.6 MB)</div>
+          <div><strong>Resolución:</strong> 1080×1920 @ 30 fps (300 frames)</div>
+          <div><strong>1. Emblema VW:</strong> Cae con aceleración gravitacional (0.5·g·t²) y rotación.</div>
+          <div><strong>2. Hamburguesa:</strong> Eclosiona directamente de la cavidad dejada por el emblema.</div>
+          <div><strong>3. Faros:</strong> Se hunden en cuencas oscuras y rebotan hacia el espectador.</div>
+          <div><strong>4. Contenido Faros:</strong> Faro Izq. = Sándwich Barra | Faro Der. = Salón Multiusos.</div>
+          <div><strong>5. Rigor:</strong> Cero teléfonos provisionales; dirección física verificada Indautxu.</div>
         </div>
       </div>
 
-      <!-- 2. DESKTOP PREVIOUS DEMO & COMPARISON SUMMARY -->
+      <!-- 2. ARCHITECTURAL & CREATIVE COMPARISON -->
       <div class="card">
         <div class="card-title">
-          <span>🖥️ Comparativa: Demo Anterior (Fase 02)</span>
-          <span style="font-size: 11px; color: var(--text-muted);">1280×720 (16:9)</span>
-        </div>
-        <div style="aspect-ratio: 16/9; background: #000; overflow: hidden; border: 2px solid var(--border); margin-bottom: 16px;">
-          <video controls loop playsinline style="width: 100%; height: 100%; object-fit: contain;" poster="/assets/grafit/motion/van/stills/scene1_frame035_entrance.png">
-            <source src="/assets/grafit/motion/van/demo_hero_grafit_v3.mp4" type="video/mp4">
-          </video>
+          <span>🎬 Mejoras Específicas de la Fase 02.2</span>
+          <span style="font-size: 11px; color: var(--text-muted);">Evolución vs Fase 02.1</span>
         </div>
 
         <h3 style="font-family: 'Anton'; color: var(--gold); font-size: 18px; margin-bottom: 8px;">
-          CAMBIOS CLAVE IMPLEMENTADOS EN ESTA ITERACIÓN
+          NUEVA DINÁMICA DE REVELACIÓN FÍSICA
         </h3>
-        <ul style="font-size: 13px; color: var(--text); padding-left: 20px; display: flex; flex-direction: column; gap: 8px;">
-          <li><strong>Letras GRAFIT originales:</strong> Se reutilizó la composición exacta de cajas tipo rescate de <code style="color: var(--gold);">Header.tsx</code> (G negra, R roja, A crema, F negra, I mostaza, T negra).</li>
-          <li><strong>Choque y Física Punk:</strong> La furgoneta embiste las letras a 1.05x, provocando screen shake y una dispersión angular calculada de cada letra.</li>
-          <li><strong>Regreso al Header:</strong> Tras la colisión, las letras no desaparecen; viajan elásticamente a la barra superior del móvil donde quedan fijadas con su tira de cinta de carrocero.</li>
-          <li><strong>Furgoneta protagonista (90% ancho):</strong> Ocupa casi todo el ancho disponible, otorgando la presencia masiva que pedía el cliente.</li>
-          <li><strong>Historia Continua:</strong> La Volkswagen permanece siempre en pantalla; el despiece (faros, logo, matrícula) desvela los eventos directamente desde su chapa.</li>
-          <li><strong>Parches Perfeccionados:</strong> Reconstrucción total con gradientes suaves y agujeros de tornillo en paragolpes. Cero bordes duros o duplicados.</li>
+        <ul style="font-size: 13px; color: var(--text); padding-left: 20px; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px;">
+          <li><strong>Apertura validada conservada al 100%:</strong> Se mantiene exactamente la aparición de las 6 letras ransom woodblock oficiales de <code>Header.tsx</code>, la embestida veloz de la Volkswagen a f40 con vibración de pantalla, y el vuelo de retorno de las letras hacia la cabecera sticky con su cinta de carrocero.</li>
+          <li><strong>Emblema VW con física de gravedad:</strong> El emblema se desprende con un ligero pop hacia adelante (f85) y cae hacia abajo acelerado por gravedad (\(0.5 \cdot g \cdot t^2\)) con balanceo angular realista hasta desaparecer por la parte inferior.</li>
+          <li><strong>Hamburguesa saliendo de la cavidad:</strong> La hamburguesa 100% buey ya no sale de un faro; surge directamente del interior del hueco cilíndrico que deja el emblema al caer, creciendo elásticamente hasta tamaño hero central con resplandor dorado y etiqueta punk.</li>
+          <li><strong>Hundimiento y rebote de faros (3 fases):</strong> Ambos faros se contraen hacia adentro (escala 0.70x, oscurecimiento a brillo 0.45), revelando cuencas cóncavas oscuras (<code>layer_02_half_van_sockets.png</code>); luego rebotan con sobreimpulso (1.35x) hacia la cámara.</li>
+          <li><strong>Contenido auténtico del Salón Multiusos:</strong> El faro derecho revela una fotografía real del salón (<code>grafit-salon-mesas-11.jpg</code>) con las mesas de reunión preparadas frente al mural de concierto y la batería con el nombre GRAFIT.</li>
+          <li><strong>Transición limpia a Eventos y Cierre Comercial:</strong> Tras la explosión gastronómica, surgen los carteles destacados de <em>GRUPOS</em>, <em>EVENTOS</em> y <em>EL GRAN SALÓN MULTIUSOS</em> con el botón central de conversión hacia reservas.</li>
         </ul>
+
+        <h3 style="font-family: 'Anton'; color: var(--cream); font-size: 16px; margin-bottom: 8px;">
+          HISTORIAL DE VERSIONES ANTERIORES
+        </h3>
+        <div class="previous-versions-grid">
+          <div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">Fase 02.1 (Móvil Inicial):</div>
+            <div style="aspect-ratio: 9/16; max-height: 200px; background: #000; overflow: hidden; border: 1px solid var(--border);">
+              <video controls loop playsinline style="width: 100%; height: 100%; object-fit: cover;" poster="/assets/grafit/motion/van/stills/mobile_scene1_frame015_grafit_intro.png">
+                <source src="/assets/grafit/motion/van/demo_hero_grafit_v3_mobile.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          <div>
+            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">Fase 02 (Escritorio 16:9):</div>
+            <div style="aspect-ratio: 16/9; max-height: 200px; background: #000; overflow: hidden; border: 1px solid var(--border);">
+              <video controls loop playsinline style="width: 100%; height: 100%; object-fit: contain;" poster="/assets/grafit/motion/van/stills/scene1_frame035_entrance.png">
+                <source src="/assets/grafit/motion/van/demo_hero_grafit_v3.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- MOBILE STILLS GALLERY (7 KEY MOMENTS) -->
+    <!-- MOBILE STILLS GALLERY (7 KEY MOMENTS OF PHASE 02.2) -->
     <h2 class="section-title">
-      Secuencia Fotograma a Fotograma <span>(7 momentos clave del impacto móvil)</span>
+      Secuencia Fotograma a Fotograma <span>(Fase 02.2: 7 momentos clave de la nueva coreografía)</span>
     </h2>
 
     <div class="stills-grid">
-      <!-- 1. INTRO -->
+      <!-- 1. POP EMBLEM -->
       <article class="still-card">
         <div class="still-img-wrap">
-          <img src="/assets/grafit/motion/van/stills/mobile_scene1_frame015_grafit_intro.png" alt="1. GRAFIT aparece primero">
+          <img src="/assets/grafit/motion/van/stills/v2_still1_frame088_emblem_pop.png" alt="1. Desprendimiento del emblema VW">
         </div>
         <div class="still-content">
           <div class="still-header">
-            <span class="still-step">01. INTRO</span>
-            <span class="still-timing">0.5s (f15)</span>
+            <span class="still-step">01. DESPRENDIMIENTO</span>
+            <span class="still-timing">2.9s (f88)</span>
           </div>
-          <h4 class="still-title">Aparición Letras GRAFIT</h4>
+          <h4 class="still-title">Pop Frontal del Emblema</h4>
           <p class="still-desc">
-            Las 6 letras ransom woodblock de la identidad oficial aparecen en el centro a gran escala con sombras pasteup de fanzine.
+            Tras el choque y retorno de las letras a la cabecera, la insignia cromada VW se separa de la carrocería proyectando sombra de relieve 3D.
           </p>
           <div class="tag-row">
-            <span class="tag gold">Letras Header</span>
-            <span class="tag">Punk Zine</span>
+            <span class="tag gold">Pop 3D</span>
+            <span class="tag">Sombra Relieve</span>
           </div>
         </div>
       </article>
 
-      <!-- 2. IMPACT -->
+      <!-- 2. FALL & BURGER -->
       <article class="still-card">
         <div class="still-img-wrap">
-          <img src="/assets/grafit/motion/van/stills/mobile_scene2_frame040_van_impact.png" alt="2. Choque de la Volkswagen">
+          <img src="/assets/grafit/motion/van/stills/v2_still2_frame112_emblem_fall_burger.png" alt="2. Caída con gravedad y hamburguesa emergente">
         </div>
         <div class="still-content">
           <div class="still-header">
-            <span class="still-step">02. IMPACTO</span>
-            <span class="still-timing">1.3s (f40)</span>
+            <span class="still-step">02. CAÍDA & ECLOSIÓN</span>
+            <span class="still-timing">3.7s (f112)</span>
           </div>
-          <h4 class="still-title">Entrada y Choque</h4>
+          <h4 class="still-title">Gravedad y Cavidad Central</h4>
           <p class="still-desc">
-            La Volkswagen asciende a toda velocidad y embiste la base de las letras con compresión elástica y vibración de pantalla.
+            El emblema cae con aceleración gravitacional (0.5·g·t²) y giro angular (-22°). Desde la cavidad que deja libre, eclosiona la Burger 100% buey.
           </p>
           <div class="tag-row">
-            <span class="tag red">Física Impulso</span>
-            <span class="tag">Screen Shake</span>
+            <span class="tag red">Física Gravedad</span>
+            <span class="tag gold">Burger Buey</span>
           </div>
         </div>
       </article>
 
-      <!-- 3. SCATTER -->
+      <!-- 3. HEADLIGHTS SUNK -->
       <article class="still-card">
         <div class="still-img-wrap">
-          <img src="/assets/grafit/motion/van/stills/mobile_scene3_frame048_letters_scatter.png" alt="3. Dispersión de las letras">
+          <img src="/assets/grafit/motion/van/stills/v2_still3_frame145_headlights_sunk.png" alt="3. Hundimiento de faros en cuencas oscuras">
         </div>
         <div class="still-content">
           <div class="still-header">
-            <span class="still-step">03. DISPERSIÓN</span>
-            <span class="still-timing">1.6s (f48)</span>
+            <span class="still-step">03. HUNDIMIENTO</span>
+            <span class="still-timing">4.8s (f145)</span>
           </div>
-          <h4 class="still-title">Reacción Punk</h4>
+          <h4 class="still-title">Faros Hacia el Interior</h4>
           <p class="still-desc">
-            Cada letra vuela y rota con vector independiente (G a la izquierda -32°, R a 28°, A hacia arriba, T a la derecha 36°).
+            Ambos faros se retraen hacia adentro (escala 0.70x, oscurecidos a 0.45 de brillo), mostrando las cuencas cóncavas oscuras de la carrocería sin duplicados.
           </p>
           <div class="tag-row">
-            <span class="tag">Rebote Angular</span>
-            <span class="tag red">Vector Único</span>
+            <span class="tag red">Cuencas Cóncavas</span>
+            <span class="tag">Contracción 0.7x</span>
           </div>
         </div>
       </article>
 
-      <!-- 4. HEADER SETTLED -->
+      <!-- 4. HEADLIGHTS REBOUND -->
       <article class="still-card">
         <div class="still-img-wrap">
-          <img src="/assets/grafit/motion/van/stills/mobile_scene4_frame080_header_settled.png" alt="4. Regreso al Header">
+          <img src="/assets/grafit/motion/van/stills/v2_still4_frame160_headlights_rebound.png" alt="4. Rebote enérgico hacia la cámara">
         </div>
         <div class="still-content">
           <div class="still-header">
-            <span class="still-step">04. ASENTAMIENTO</span>
-            <span class="still-timing">2.7s (f80)</span>
+            <span class="still-step">04. REBOTE</span>
+            <span class="still-timing">5.3s (f160)</span>
           </div>
-          <h4 class="still-title">Regreso al Header Real</h4>
+          <h4 class="still-title">Expulsión Hacia el Espectador</h4>
           <p class="still-desc">
-            Las letras ascienden elásticamente y se acoplan en la cabecera superior móvil, fijadas con su tira de cinta de carrocero.
+            Con descompresión elástica de resorte (spring), los faros son proyectados hacia el espectador con sobreimpulso de escala (1.35x) y aro cromado reluciente.
           </p>
           <div class="tag-row">
-            <span class="tag gold">Header Fijo</span>
-            <span class="tag">Cinta Masking</span>
+            <span class="tag gold">Spring Overshoot</span>
+            <span class="tag">Aro Cromado</span>
           </div>
         </div>
       </article>
 
-      <!-- 5. GASTRONOMY -->
+      <!-- 5. REVEAL CONTINUA -->
       <article class="still-card">
         <div class="still-img-wrap">
-          <img src="/assets/grafit/motion/van/stills/mobile_scene5_frame130_gastronomy_reveal.png" alt="5. Faros gastronómicos">
+          <img src="/assets/grafit/motion/van/stills/v2_still5_frame172_contents_emerging.png" alt="5. Revelación continua: Sándwich y Salón">
         </div>
         <div class="still-content">
           <div class="still-header">
-            <span class="still-step">05. GASTRONOMÍA</span>
-            <span class="still-timing">4.3s (f130)</span>
+            <span class="still-step">05. REVELACIÓN</span>
+            <span class="still-timing">5.7s (f172)</span>
           </div>
-          <h4 class="still-title">Productos en Faros</h4>
+          <h4 class="still-title">Cocina Non-Stop y Gran Salón</h4>
           <p class="still-desc">
-            Los faros redondos emiten luz; la lente izquierda expande la Burger con pegatina roja y la derecha el sándwich con pegatina dorada.
+            Faro izquierdo desvela el sándwich de barra con pegatina "COCINA NON-STOP". Faro derecho desvela las mesas y mural del salón con pegatina "EL GRAN SALÓN".
           </p>
           <div class="tag-row">
-            <span class="tag gold">Burger 100% Buey</span>
-            <span class="tag">Cocina Non-Stop</span>
+            <span class="tag green">Salón Real</span>
+            <span class="tag gold">Cocina Non-Stop</span>
           </div>
         </div>
       </article>
 
-      <!-- 6. EXPLODED & EVENTS -->
+      <!-- 6. TRANSITION EVENTS -->
       <article class="still-card">
         <div class="still-img-wrap">
-          <img src="/assets/grafit/motion/van/stills/mobile_scene6_frame175_emblem_detaching.png" alt="6. Despiece y eventos">
+          <img src="/assets/grafit/motion/van/stills/v2_still6_frame205_transition_events.png" alt="6. Despliegue de carteles de eventos">
         </div>
         <div class="still-content">
           <div class="still-header">
-            <span class="still-step">06. DESPIECE</span>
-            <span class="still-timing">5.8s (f175)</span>
+            <span class="still-step">06. EVENTOS</span>
+            <span class="still-timing">6.8s (f205)</span>
           </div>
-          <h4 class="still-title">Emblema y Eventos</h4>
+          <h4 class="still-title">Despliegue Grupos y Eventos</h4>
           <p class="still-desc">
-            El emblema VW se desprende flotando en 3D; la matrícula cae y surgen del interior de la furgoneta los carteles de GRUPOS y EVENTOS.
+            Desde la cabina frontal surgen escalonadamente los carteles de gran impacto: "★ GRUPOS ★", "EVENTOS" y "EL GRAN SALÓN MULTIUSOS".
           </p>
           <div class="tag-row">
-            <span class="tag red">Sin Duplicados</span>
-            <span class="tag">Grupos & Eventos</span>
+            <span class="tag red">Grupos & Eventos</span>
+            <span class="tag">Salón Multiusos</span>
           </div>
         </div>
       </article>
@@ -569,20 +623,20 @@
       <!-- 7. COMMERCIAL CLOSING -->
       <article class="still-card">
         <div class="still-img-wrap">
-          <img src="/assets/grafit/motion/van/stills/mobile_scene7_frame275_commercial_cta.png" alt="7. Cierre comercial y CTA">
+          <img src="/assets/grafit/motion/van/stills/v2_still7_frame275_closing_cta.png" alt="7. Cierre comercial y llamada a la acción">
         </div>
         <div class="still-content">
           <div class="still-header">
-            <span class="still-step">07. CIERRE</span>
+            <span class="still-step">07. CIERRE COMERCIAL</span>
             <span class="still-timing">9.2s (f275)</span>
           </div>
-          <h4 class="still-title">Conversión Comercial</h4>
+          <h4 class="still-title">Conversión y Ubicación Real</h4>
           <p class="still-desc">
-            Composición unificada: cabecera GRAFIT, Volkswagen con todos los carteles del salón y botón central "★ ORGANIZA TU EVENTO ★".
+            Cierre con la propuesta comercial unificada: "TU PRÓXIMA EXPERIENCIA EMPIEZA EN GRAFIT", botón "★ ORGANIZA TU EVENTO ★" y dirección física Urrutia Kalea 1.
           </p>
           <div class="tag-row">
-            <span class="tag gold">CTA Bilbao</span>
-            <span class="tag red">Conversión</span>
+            <span class="tag gold">CTA Comercial</span>
+            <span class="tag green">Urrutia Kalea 1</span>
           </div>
         </div>
       </article>
@@ -590,14 +644,14 @@
 
     <!-- AUDIT TABLE -->
     <h2 class="section-title">
-      Auditoría de Control y Verificación Técnica <span>(Fase 02.1)</span>
+      Auditoría de Control y Verificación Técnica <span>(Fase 02.2)</span>
     </h2>
 
     <div class="card">
       <table>
         <thead>
           <tr>
-            <th>Requisito Cliente</th>
+            <th>Requisito Cliente (Fase 02.2)</th>
             <th>Solución Técnica Ejecutada</th>
             <th>Evidencia Observable</th>
             <th>Estado</th>
@@ -605,39 +659,45 @@
         </thead>
         <tbody>
           <tr>
-            <td><strong>Prioridad Móvil (85–100% ancho)</strong></td>
-            <td>Composición 1080×1920 con escala base 1.35x. Ancho furgoneta: 972px (90% del viewport).</td>
-            <td>Visibilidad y detalle masivo comprobado en viewport 390×844.</td>
+            <td><strong>1. Conservar apertura validada</strong></td>
+            <td>Se preservan íntegras las letras ransom woodblock oficiales de <code>Header.tsx</code>, choque a f40 con screen shake y regreso elástico a la barra superior.</td>
+            <td>Fotogramas f15 a f80 idénticos a la demo móvil aprobada.</td>
             <td><span class="status-ok">SUPERADO</span></td>
           </tr>
           <tr>
-            <td><strong>Letras GRAFIT sin inventar logo</strong></td>
-            <td>Reutilización idéntica de la estructura CSS de `Header.tsx` (cajas Anton/Syne y colores de marca).</td>
-            <td>Colores, tipografías y bordes 100% fieles a la identidad web.</td>
+            <td><strong>2. Emblema VW cae hacia abajo</strong></td>
+            <td>Pop inicial hacia adelante (f85-94) y caída con aceleración de gravedad (\(y = 0.5 \cdot 1800 \cdot t^2\)) y rotación angular de -22°.</td>
+            <td>Fotograma f112 muestra el emblema desprendiéndose y cayendo de forma limpia y circular.</td>
             <td><span class="status-ok">SUPERADO</span></td>
           </tr>
           <tr>
-            <td><strong>Choque y reacción física</strong></td>
-            <td>Cálculo de impulso en f40 con screen shake y vectores de dispersión específicos por letra.</td>
-            <td>Fotograma f48 demuestra desalineación y giro realista.</td>
+            <td><strong>3. Hamburguesa sale del hueco del emblema</strong></td>
+            <td>Posicionada exactamente en las coordenadas centrales de la cavidad (x=498, y=580), expandiéndose desde escala 0.15 hasta tamaño hero central (1.22x).</td>
+            <td>Fotogramas f112, f145 y f160 muestran la hamburguesa emergiendo directamente de la cavidad.</td>
             <td><span class="status-ok">SUPERADO</span></td>
           </tr>
           <tr>
-            <td><strong>Regreso al Header real</strong></td>
-            <td>Interpolación suave con resortes (`spring`) desde el centro hacia `y=60px` superior.</td>
-            <td>Fotograma f80 y posteriores mantienen el header anclado.</td>
+            <td><strong>4. Faros: Hundimiento interior</strong></td>
+            <td>Fase de contracción a escala 0.70x y oscurecimiento (brillo 0.45) revelando las cuencas cóncavas oscuras de <code>layer_02_half_van_sockets.png</code>.</td>
+            <td>Fotograma f145 demuestra los faros hundidos en sus cuencas sin duplicados ni siluetas extrañas.</td>
             <td><span class="status-ok">SUPERADO</span></td>
           </tr>
           <tr>
-            <td><strong>Eliminación de parches y duplicados</strong></td>
-            <td>Re-extracción de la insignia completa y reconstrucción continua del capó y paragolpes con orificios de tornillo.</td>
-            <td>Cero marcas cuadradas ni siluetas duplicadas en despiece.</td>
+            <td><strong>5. Faros: Rebote elástico y revelación</strong></td>
+            <td>Proyección frontal hacia la cámara con resorte amortiguado (1.35x con rebote). Faro izquierdo revela el sándwich; faro derecho revela el gran salón multiusos.</td>
+            <td>Fotogramas f160 y f172 muestran la expulsión frontal y el desvele nítido de los contenidos.</td>
             <td><span class="status-ok">SUPERADO</span></td>
           </tr>
           <tr>
-            <td><strong>Retirada de teléfono provisional</strong></td>
-            <td>Se eliminó `944 12 34 56`; se mantiene únicamente la dirección física verificada: `Urrutia Kalea 1 • Indautxu`.</td>
-            <td>El cartel final muestra exclusivamente la dirección física.</td>
+            <td><strong>6. Contenido salón contrastado</strong></td>
+            <td>Sustitución del grafiti decorativo por la fotografía real de mesas y mural de concierto (<code>grafit-salon-mesas-11.jpg</code>).</td>
+            <td>Identificación clara e inmediata del salón multiusos para eventos.</td>
+            <td><span class="status-ok">SUPERADO</span></td>
+          </tr>
+          <tr>
+            <td><strong>7. Retención comercial y datos</strong></td>
+            <td>Cierre comercial con botón de reserva de eventos y dirección física verificada en Indautxu. Cero números telefónicos provisionales.</td>
+            <td>Fotograma f275 muestra exclusivamente la dirección física real Urrutia Kalea 1.</td>
             <td><span class="status-ok">SUPERADO</span></td>
           </tr>
         </tbody>
@@ -645,11 +705,14 @@
     </div>
 
     <div class="action-bar">
+      <a href="/assets/grafit/motion/van/demo_hero_grafit_v3_mobile_v2.mp4" download="demo_hero_grafit_v3_mobile_v2.mp4" class="btn btn-gold">
+        Descargar Nueva Demo Móvil V2 MP4 (4.6 MB)
+      </a>
       <a href="/assets/grafit/motion/van/demo_hero_grafit_v3_mobile.mp4" download="demo_hero_grafit_v3_mobile.mp4" class="btn">
-        Descargar Vídeo Móvil MP4 (4.9 MB)
+        Descargar Demo Móvil V1 (4.9 MB)
       </a>
       <a href="/assets/grafit/motion/van/demo_hero_grafit_v3.mp4" download="demo_hero_grafit_v3_desktop.mp4" class="btn btn-secondary">
-        Descargar Vídeo Escritorio MP4 (15.5 MB)
+        Descargar Versión Escritorio (15.5 MB)
       </a>
     </div>
   </div>
