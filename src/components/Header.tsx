@@ -18,15 +18,15 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
         <div className="bg-black text-white px-4 md:px-8 py-1.5 flex flex-wrap items-center justify-between font-mono-code text-[10px] md:text-xs uppercase tracking-wider font-bold border-b-2 border-white/20">
           <div className="flex items-center gap-2">
             <div className="crosshair shrink-0 border-white"><div className="crosshair-circle border-white"></div></div>
-            <span>★ HOJA VOLANDERA N° 35 // MEMORIA COLECTIVA DEL ROCK VIZCAÍNO ★</span>
+            <span>★ ESPACIO PARA GRUPOS Y CELEBRACIONES // INDAUTXU BILBAO ★</span>
           </div>
 
           <div className="hidden lg:block text-[#e2c044]">
-            URRUTIA KALEA 1 — INDAUTXU (BILBAO)
+            URRUTIA KALEA 1 — SALÓN MULTIUSOS & COCINA NON-STOP
           </div>
 
           <div className="text-[#b91c1c] font-bold">
-            DISTRIBUCIÓN GRATUITA EN TARIMA Y BARRIL
+            EXPERIENCIAS Y RESERVAS DE GRUPO
           </div>
         </div>
 
@@ -45,6 +45,7 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
             <button
               onClick={() => onNavigate('/')}
               className="flex items-center gap-2 md:gap-4 group focus:outline-none text-left"
+              aria-label="Ir a Inicio"
             >
               {/* G */}
               <div className="w-11 h-16 sm:w-18 sm:h-24 md:w-24 md:h-32 bg-[#0a0a0a] text-[#ebe5d8] flex items-center justify-center font-ransom text-4xl sm:text-6xl md:text-8xl transform -rotate-4 pasteup-shadow border-3 sm:border-4 border-white group-hover:rotate-0 transition-transform">
@@ -116,11 +117,11 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
             </div>
           </div>
 
-          {/* RUBBER STAMP */}
+          {/* RUBBER STAMP: IDENTIDAD DEL LOCAL */}
           <div className="absolute top-2 right-12 transform rotate-12 z-30 pointer-events-none hidden xl:block">
             <div className="stamped-badge px-5 py-2.5 border-4 rounded-sm font-typewriter text-xs text-center leading-tight shadow-md bg-white/95">
-              <div className="text-[10px] text-[#0a0a0a] font-mono-code">SELLO REGISTRO MUNICIPAL</div>
-              <div className="text-xl font-bold tracking-tight text-[#b91c1c]">35+ AÑOS DE ROCK</div>
+              <div className="text-[10px] text-[#0a0a0a] font-mono-code">SALÓN & EVENTOS</div>
+              <div className="text-xl font-bold tracking-tight text-[#b91c1c]">GRUPOS A MEDIDA</div>
               <div className="text-xs font-bold text-[#0a0a0a]">100% AUTÉNTICO INDAUTXU</div>
             </div>
           </div>

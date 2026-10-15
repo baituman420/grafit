@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Grafit Rock Café — Indautxu, Bilbao</title>
+    <script>
+      // Single Page Apps for GitHub Pages
+      // Redirige rutas profundas (/grafit/eventos, /grafit/espacio, etc.) a la URL base con parámetro de ruta
+      var l = window.location;
+      var path = l.pathname;
+      var isSubpath = path.startsWith('/grafit');
+      var cleanSegments = isSubpath ? 1 : 0;
+      var repoBase = isSubpath ? '/grafit' : '';
+
+      var redirectUrl = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        repoBase + '/?p=' +
+        encodeURIComponent(path.slice(1).split('/').slice(cleanSegments).join('/') + (l.search ? '&' + l.search.slice(1) : '')) +
+        l.hash;
+
+      window.location.replace(redirectUrl);
+    </script>
+  </head>
+  <body>
+    <p>Redirigiendo a Grafit Rock Café...</p>
+  </body>
+</html>

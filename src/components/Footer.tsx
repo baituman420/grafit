@@ -30,7 +30,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               GRAFIT
             </h2>
             <p className="font-mono-code text-sm sm:text-base text-[#e2c044] tracking-widest uppercase font-bold mt-2">
-              ROCK CAFÉ • COCINA NON-STOP • CONCIERTOS
+              ROCK CAFÉ • SALÓN MULTIUSOS • COCINA NON-STOP
             </p>
           </div>
 
@@ -113,7 +113,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* COL 3: NAVIGATION & SOCIALS */}
           <div className="space-y-4">
             <h3 className="font-ransom text-2xl text-[#e2c044] uppercase tracking-wider">
-              // NAVEGACIÓN DEMO
+              // SECCIONES
             </h3>
 
             <ul className="space-y-2.5 text-sm">

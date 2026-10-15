@@ -2,43 +2,89 @@ import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { HomePage } from './pages/HomePage';
+import { EventosPage } from './pages/EventosPage';
+import { EspacioPage } from './pages/EspacioPage';
 import { CartaPage } from './pages/CartaPage';
-import { AgendaPage } from './pages/AgendaPage';
-import { GruposPage } from './pages/GruposPage';
-import { GrafitPage } from './pages/GrafitPage';
+import { ContactoPage } from './pages/ContactoPage';
 import { ZineBackgroundWall } from './components/ZineBackgroundWall';
 
+const getRepoBase = (): string => {
+  return window.location.pathname.startsWith('/grafit') ? '/grafit' : '';
+};
+
+const resolveInitialPath = (): string => {
+  // 1. Check for SPA redirect parameter from 404.html (?p=...)
+  const params = new URLSearchParams(window.location.search);
+  const redirectParam = params.get('p');
+  const repoBase = getRepoBase();
+
+  if (redirectParam) {
+    let cleanRedirect = decodeURIComponent(redirectParam);
+    if (!cleanRedirect.startsWith('/')) {
+      cleanRedirect = '/' + cleanRedirect;
+    }
+    // Clean URL without ?p= in history
+    const targetUrl = repoBase + cleanRedirect;
+    window.history.replaceState(null, '', targetUrl);
+    return cleanRedirect.split('?')[0];
+  }
+
+  // 2. Normal pathname resolution
+  let path = window.location.pathname || '/';
+  if (repoBase && path.startsWith(repoBase)) {
+    path = path.slice(repoBase.length);
+  }
+
+  if (!path || path === '') {
+    path = '/';
+  }
+
+  return path;
+};
+
 export const App: React.FC = () => {
-  const [currentPath, setCurrentPath] = useState<string>(() => {
-    return window.location.pathname || '/';
-  });
+  const [currentPath, setCurrentPath] = useState<string>(resolveInitialPath);
 
   useEffect(() => {
     const handlePopState = () => {
-      setCurrentPath(window.location.pathname || '/');
+      const repoBase = getRepoBase();
+      let path = window.location.pathname || '/';
+      if (repoBase && path.startsWith(repoBase)) {
+        path = path.slice(repoBase.length);
+      }
+      if (!path || path === '') path = '/';
+      setCurrentPath(path);
     };
+
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  const handleNavigate = (path: string) => {
-    if (path !== currentPath) {
-      window.history.pushState({}, '', path);
-      setCurrentPath(path);
+  const handleNavigate = (pathWithPossibleQuery: string) => {
+    const repoBase = getRepoBase();
+    const cleanPathOnly = pathWithPossibleQuery.split('?')[0];
+    const fullTargetPath = repoBase + (pathWithPossibleQuery.startsWith('/') ? pathWithPossibleQuery : '/' + pathWithPossibleQuery);
+
+    if (cleanPathOnly !== currentPath || window.location.pathname + window.location.search !== fullTargetPath) {
+      window.history.pushState({}, '', fullTargetPath);
+      setCurrentPath(cleanPathOnly);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
   const renderCurrentPage = () => {
     switch (currentPath) {
+      case '/eventos':
+      case '/grupos': // Compatibilidad retrospectiva
+      case '/agenda': // Compatibilidad: agenda redirige al catálogo de eventos
+        return <EventosPage onNavigate={handleNavigate} />;
+      case '/espacio':
+      case '/grafit': // Compatibilidad retrospectiva
+        return <EspacioPage onNavigate={handleNavigate} />;
       case '/carta':
         return <CartaPage onNavigate={handleNavigate} />;
-      case '/agenda':
-        return <AgendaPage onNavigate={handleNavigate} />;
-      case '/grupos':
-        return <GruposPage onNavigate={handleNavigate} />;
-      case '/grafit':
-        return <GrafitPage onNavigate={handleNavigate} />;
+      case '/contacto':
+        return <ContactoPage onNavigate={handleNavigate} />;
       case '/':
       default:
         return <HomePage onNavigate={handleNavigate} />;

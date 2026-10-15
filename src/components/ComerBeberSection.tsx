@@ -1,16 +1,16 @@
 import React from 'react';
 import { GRAFIT_DATA } from '../data/grafit';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Utensils } from 'lucide-react';
 
 interface ComerBeberSectionProps {
   onNavigate: (path: string) => void;
 }
 
 export const ComerBeberSection: React.FC<ComerBeberSectionProps> = ({ onNavigate }) => {
-  const { gastronomia } = GRAFIT_DATA;
+  const { gastronomia, info } = GRAFIT_DATA;
 
   return (
-    <section className="py-14 lg:py-24 border-b-8 border-black relative overflow-hidden bg-newsprint/90">
+    <section className="py-14 lg:py-20 border-b-8 border-black relative overflow-hidden bg-newsprint/90">
       {/* SECTION HEADER */}
       <div className="w-full max-w-[1920px] mx-auto px-4 md:px-10 lg:px-16 mb-12">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b-4 border-black">
@@ -20,11 +20,11 @@ export const ComerBeberSection: React.FC<ComerBeberSectionProps> = ({ onNavigate
                 GASTRONOMÍA & TANQUES
               </span>
               <span className="font-mono-code text-xs font-bold text-[#b91c1c]">
-                ★ COCINA ININTERRUMPIDA
+                ★ {info.kitchenHours}
               </span>
             </div>
             <h2 className="font-ransom text-5xl sm:text-7xl text-black uppercase tracking-tight">
-              COMIDA NON-STOP & CERVEZA
+              {gastronomia.headline}
             </h2>
           </div>
 
@@ -38,11 +38,11 @@ export const ComerBeberSection: React.FC<ComerBeberSectionProps> = ({ onNavigate
         </div>
 
         <p className="font-woodblock text-xl text-neutral-900 max-w-4xl mt-4">
-          {gastronomia.description}
+          {gastronomia.subtext}
         </p>
       </div>
 
-      {/* CONTENT GRID: LEFT REAL POSTER + RIGHT FOOD COLLAGE CARDS */}
+      {/* CONTENT GRID */}
       <div className="w-full max-w-[1920px] mx-auto px-4 md:px-10 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           
@@ -57,11 +57,11 @@ export const ComerBeberSection: React.FC<ComerBeberSectionProps> = ({ onNavigate
                   loading="lazy"
                 />
                 <div className="absolute bottom-3 left-3 bg-[#b91c1c] text-white font-ransom text-base px-3 py-1 border-2 border-black shadow-md">
-                  HASTA LAS 23:30H
+                  COCINA NON-STOP
                 </div>
               </div>
               <div className="mt-3 flex items-center justify-between font-typewriter text-xs font-bold text-neutral-900">
-                <span>Cartel Oficial del Bar</span>
+                <span>Cartel Oficial del Local</span>
                 <span className="rubber-stamp text-[10px] py-0.5 px-1.5 bg-[#e2c044] text-black border-none">
                   KITCHEN NON STOP
                 </span>
@@ -71,7 +71,7 @@ export const ComerBeberSection: React.FC<ComerBeberSectionProps> = ({ onNavigate
 
           {/* RIGHT: FEATURED DISHES & BEER CUTOUT CARDS */}
           <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-8">
-            {gastronomia.featuredDishes.map((dish, idx) => {
+            {gastronomia.dishes.map((dish, idx) => {
               const rotationClass = idx % 2 === 0 ? 'rot-pos-2' : 'rot-neg-2';
               const offsetClass = idx === 1 ? 'sm:translate-y-6' : idx === 2 ? 'sm:-translate-y-4' : '';
               return (
@@ -102,9 +102,11 @@ export const ComerBeberSection: React.FC<ComerBeberSectionProps> = ({ onNavigate
                       <h3 className="font-ransom text-2xl text-black uppercase leading-tight">
                         {dish.name}
                       </h3>
-                      <span className="font-ransom text-xl text-[#b91c1c] shrink-0 bg-[#ebe5d8] px-2.5 py-0.5 border-2 border-black">
-                        {dish.price}
-                      </span>
+                      {dish.price && (
+                        <span className="font-ransom text-xl text-[#b91c1c] shrink-0 bg-[#ebe5d8] px-2.5 py-0.5 border-2 border-black">
+                          {dish.price}
+                        </span>
+                      )}
                     </div>
 
                     <p className="font-typewriter text-xs text-neutral-800 leading-relaxed mb-4">

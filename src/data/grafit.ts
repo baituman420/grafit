@@ -1,36 +1,45 @@
+export interface NavLinkItem {
+  label: string;
+  path: string;
+  isHome?: boolean;
+  badge?: string;
+}
+
 export interface MenuItem {
   id: string;
   name: string;
   description: string;
-  price: string;
+  price?: string;
   badge?: string;
   image?: string;
-  category: 'burger' | 'pintxo' | 'plato' | 'desayuno' | 'cerveza' | 'copa';
+  category: 'burger' | 'pintxo' | 'plato' | 'bebida';
+  isPendingValidation?: boolean;
 }
 
-export interface EventItem {
+export interface ExperienceType {
   id: string;
-  dateDay: string;
-  dateMonth: string;
-  artist: string;
-  genre: string;
-  time: string;
-  entry: string;
-  description: string;
-  image: string;
-  highlight?: boolean;
-  stampText?: string;
-}
-
-export interface HoyItem {
-  id: string;
-  tag: string;
   title: string;
-  time?: string;
-  price?: string;
+  subtitle: string;
   description: string;
-  type: 'comida' | 'deporte' | 'musica' | 'oferta';
-  badgeColor?: string;
+  idealFor: string;
+  image: string;
+  badge: string;
+}
+
+export interface SpaceFeature {
+  id: string;
+  title: string;
+  description: string;
+  status: 'confirmado' | 'pendiente_confirmacion';
+}
+
+export interface HistoricSnippet {
+  id: string;
+  context: string;
+  title: string;
+  quote: string;
+  yearHint?: string;
+  image?: string;
 }
 
 export interface InstagramPost {
@@ -38,8 +47,8 @@ export interface InstagramPost {
   src: string;
   caption: string;
   tag: string;
+  likes?: string;
   date: string;
-  likes?: number;
   rotation?: string;
 }
 
@@ -47,8 +56,7 @@ export const GRAFIT_DATA = {
   info: {
     name: 'Grafit Rock Café',
     subname: 'Indautxu — Bilbao',
-    tagline: 'Café, Cocina Non-Stop, Cervezas de Tanque, Conciertos y Copas',
-    established: '2017',
+    tagline: 'Espacio para eventos, grupos, gastronomía non-stop y cultura rock',
     address: 'Urrutia Kalea, 1',
     neighborhood: 'Indautxu',
     city: '48010 Bilbao, Bizkaia',
@@ -69,114 +77,204 @@ export const GRAFIT_DATA = {
   },
 
   navLinks: [
-    { label: 'HOME', path: '/', isHome: true },
-    { label: 'CARTA', path: '/carta', badge: 'Non-Stop' },
-    { label: 'AGENDA', path: '/agenda', badge: 'En Vivo' },
-    { label: 'GRUPOS', path: '/grupos' },
-    { label: 'GRAFIT 2017', path: '/grafit' },
-  ],
+    { label: 'INICIO', path: '/', isHome: true },
+    { label: 'EVENTOS', path: '/eventos', badge: 'Grupos' },
+    { label: 'EL ESPACIO', path: '/espacio', badge: 'Salón' },
+    { label: 'GASTRONOMÍA', path: '/carta', badge: 'Non-Stop' },
+    { label: 'CONTACTO', path: '/contacto' },
+  ] as NavLinkItem[],
 
   hero: {
     titleTop: 'GRAFIT',
     titleBottom: 'ROCK CAFÉ',
-    subtitle: 'EL PUNTO DE ENCUENTRO PUNK & ROCK EN INDAUTXU',
+    subtitle: 'EXPERIENCIAS, GRUPOS Y CELEBRACIONES EN INDAUTXU',
     locationBadge: 'URRUTIA KALEA 1 • INDAUTXU • BILBAO',
-    tickerText: '★ COCINA NON-STOP ★ CERVEZAS DE TANQUE ★ CONCIERTOS EN DIRECTO ★ PINTXOS DE BARRA ★ ROCK & ROLL ★ SIN ARTIFICIOS ★ INDAUTXU BILBAO ★',
-    mainTagline: 'Sin postureo. Cerveza fría, comida real, música alta y ambiente de local de toda la vida.',
+    tickerText: '★ ESPACIO PARA GRUPOS Y CELEBRACIONES ★ SALÓN MULTIUSOS VERSÁTIL ★ COCINA NON-STOP ★ AMBIENTE INTERGENERACIONAL ★ BILBAO INDAUTXU ★',
+    mainTagline: 'Un espacio singular en el corazón de Indautxu diseñado para acoger encuentros, comidas de grupo y celebraciones con identidad propia.',
     polaroids: [
       {
-        id: 'hero-bar',
-        src: './assets/grafit/interior/grafit-barra-01.jpg',
-        caption: 'La Barra • 08:00 a 02:00',
-        rotation: '-3deg',
-        top: '5%',
-        left: '2%'
+        id: 'hero-salon',
+        src: './assets/grafit/instagram/volkswagen.jpg',
+        caption: 'La Furgoneta Volkswagen • Salón Multiusos',
+        rotation: '-3deg'
       },
       {
         id: 'hero-food',
         src: './assets/grafit/instagram/burguer.webp',
-        caption: 'Burger Grafit Gourmet',
-        rotation: '4deg',
-        top: '12%',
-        right: '4%'
+        caption: 'Burger Grafit 100% Buey',
+        rotation: '3deg'
       },
       {
-        id: 'hero-live',
-        src: './assets/grafit/events/grafit-concierto-mikel-bizar-10.jpg',
-        caption: 'Mikel Bizar en Acústico',
-        rotation: '-2deg',
-        bottom: '8%',
-        left: '6%'
+        id: 'hero-bar',
+        src: './assets/grafit/interior/grafit-barra-01.jpg',
+        caption: 'La Barra de Urrutia Kalea',
+        rotation: '-2deg'
       }
     ]
   },
 
-  hoy: [
-    {
-      id: 'hoy-plato',
-      tag: 'PLATO DEL DÍA',
-      title: 'Cachopo Rústico con Patatas de la Huerta',
-      time: 'Servido de 12:30 a 16:30',
-      price: '12,50€',
-      description: 'Ternera seleccionada, jamón ibérico y queso fundido con patatas rústicas fritas al momento.',
-      type: 'comida'
-    },
-    {
-      id: 'hoy-partido',
-      tag: 'EN PANTALLA',
-      title: 'ATHLETIC CLUB vs REAL SOCIEDAD',
-      time: 'Hoy a las 21:00h',
-      description: 'Retransmisión del derbi vasco en directo en las pantallas de la sala principal con cañas bien tiradas.',
-      type: 'deporte'
-    },
-    {
-      id: 'hoy-musica',
-      tag: 'VINILOS & BEER',
-      title: 'Sesión Post-Punk & Classic Rock 33 RPM',
-      time: 'A partir de las 19:30h',
-      description: 'Selección musical pinchada en vinilo original: The Clash, Barricada, Radio Futura y Joy Division.',
-      type: 'musica'
-    },
-    {
-      id: 'hoy-desayuno',
-      tag: 'MAÑANAS GRAFIT',
-      title: 'Café Doble + Pintxo de Tortilla Especial',
-      time: 'De 08:00 a 11:30h',
-      price: '3,80€',
-      description: 'El desayuno clásico de los madrugadores de Indautxu con tortilla hecha a primera hora.',
-      type: 'oferta'
-    }
-  ] as HoyItem[],
+  // Eje 1: Experiencias y Tipologías de Eventos (Orientativas y adaptables)
+  eventos: {
+    headline: 'TU EVENTO CON PERSONALIDAD PROPIA EN BILBAO',
+    subtext: 'Desde comidas de cuadrilla y cumpleaños hasta reuniones de empresa y presentaciones. El salón multiusos de Grafit se adapta a lo que necesitas sin encorsetamientos.',
+    valueProps: [
+      {
+        title: 'Salón Multiusos Amplio y Flexible',
+        desc: 'Un espacio versátil de generosa superficie que permite redistribuir mesas, zona de pie o formato cóctel según el tamaño de tu grupo.'
+      },
+      {
+        title: 'Cocina Non-Stop Adaptada',
+        desc: 'Menús para compartir, hamburguesas gourmet, raciones de caserío y pintxos elaborados al momento sin prisas de horario.'
+      },
+      {
+        title: 'Atención Directa y Personalizada',
+        desc: 'Planificamos cada encuentro contigo para adaptar la disposición del salón, la propuesta gastronómica y el ritmo de la velada.'
+      }
+    ],
+    tipologias: [
+      {
+        id: 'cuadrillas',
+        title: 'Comidas y Cenas de Cuadrilla',
+        subtitle: 'El punto de encuentro tradicional con espacio de sobra',
+        description: 'Mesa larga, cañas bien tiradas de tanque, raciones abundantes y sobremesas sin presión para que disfrutéis juntos.',
+        idealFor: 'Grupos de amigos, reuniones anuales y previas de celebraciones.',
+        image: './assets/grafit/archive/grafit-inauguracion-2017-07.jpg',
+        badge: 'TRADICIÓN BILBAÍNA'
+      },
+      {
+        id: 'celebraciones',
+        title: 'Cumpleaños y Aniversarios',
+        subtitle: 'Festejos distendidos con música y buen rollo',
+        description: 'Reserva una zona exclusiva o el salón para tu gente. Combina picoteo informal, copas y tarta en un entorno desenfadado.',
+        idealFor: 'Cumpleaños de 30, 40, 50... y aniversarios señalados.',
+        image: './assets/grafit/interior/grafit-salon-mesas-03.jpg',
+        badge: 'CELEBRACIONES'
+      },
+      {
+        id: 'empresa',
+        title: 'Encuentros de Empresa y Afterworks',
+        subtitle: 'Cenas de equipo y reuniones sin la rigidez de un salón formal',
+        description: 'Un ambiente acogedor que fomenta la conversación distendida. Menús cerrados o picoteo dinámico para conectar con los compañeros.',
+        idealFor: 'Cenas de departamento, despedidas de proyectos y afterworks.',
+        image: './assets/grafit/instagram/fachada-noche.jpg',
+        badge: 'EQUIPOS & EMPRESA'
+      },
+      {
+        id: 'formatos-medida',
+        title: 'Reuniones y Formatos a Medida',
+        subtitle: 'El salón a tu disposición para proyectos especiales',
+        description: 'Presentaciones informales, quedadas temáticas o encuentros culturales que requieran amplitud y personalidad visual.',
+        idealFor: 'Iniciativas creativas, peñas y asociaciones.',
+        image: './assets/grafit/instagram/rolling-pared.jpg',
+        badge: 'FORMATO FLEXIBLE'
+      }
+    ] as ExperienceType[]
+  },
 
+  // Eje 2: El Espacio (Salón multiusos, Furgoneta Volkswagen y dos ambientes)
+  espacio: {
+    headline: 'EL SALÓN MULTIUSOS DE GRAFIT',
+    subtext: 'Un espacio singular en Indautxu que sorprende por su amplitud y calidez. Madera, ladrillo visto y el icono indiscutible: la furgoneta Volkswagen roja y blanca.',
+    furgoneta: {
+      title: 'El Icono del Salón: La Furgoneta Volkswagen',
+      description: 'Presidiendo el salón principal, nuestra furgoneta Volkswagen T2 roja y blanca es la seña de identidad más fotografiada de Grafit. Un homenaje a la cultura viajera y a la libertad del rock que convierte cualquier evento en un recuerdo memorable.',
+      image: './assets/grafit/instagram/volkswagen.jpg'
+    },
+    ambientes: [
+      {
+        id: 'ambiente-barra',
+        title: 'La Barra & Zona de Entrada',
+        description: 'Dinámica, cercana y luminosa. El rincón del café matinal, el aperitivo rápido, los tiradores de cerveza de tanque y el ambiente vivo de la calle Urrutia.',
+        vibe: 'Encuentro casual, tapeo y bienvenida'
+      },
+      {
+        id: 'ambiente-salon',
+        title: 'El Gran Salón Multiusos',
+        description: 'Espacioso, resguardado y versátil. Concebido para acoger mesas grupales, zona de charla o celebraciones con mayor intimidad y confort acústico.',
+        vibe: 'Eventos, reuniones amplias y sobremesas'
+      }
+    ],
+    gallery: [
+      {
+        src: './assets/grafit/instagram/volkswagen.jpg',
+        caption: 'La icónica furgoneta Volkswagen en el salón',
+        alt: 'Furgoneta Volkswagen roja y blanca en Grafit Café'
+      },
+      {
+        src: './assets/grafit/interior/grafit-salon-mesas-03.jpg',
+        caption: 'Composición de mesas del salón multiusos',
+        alt: 'Salón con mesas para grupos en Grafit'
+      },
+      {
+        src: './assets/grafit/interior/grafit-barra-01.jpg',
+        caption: 'La barra principal de madera y grifos de tanque',
+        alt: 'Barra del Grafit Café'
+      },
+      {
+        src: './assets/grafit/instagram/rolling-pared.jpg',
+        caption: 'Mural de The Rolling Stones en pared de ladrillo',
+        alt: 'Mural The Rolling Stones en Grafit'
+      },
+      {
+        src: './assets/grafit/instagram/fachada-noche.jpg',
+        caption: 'Exterior nocturno de Urrutia Kalea 1',
+        alt: 'Fachada nocturna de Grafit Café'
+      },
+      {
+        src: './assets/grafit/archive/grafit-inauguracion-2017-05.jpg',
+        caption: 'Perspectiva arquitectónica del local',
+        alt: 'Vista completa del local'
+      }
+    ],
+    // Incertidumbres técnicas identificadas internamente: no inventar datos sin evidencia del propietario
+    caracteristicasPendientes: [
+      {
+        id: 'feat-aforo',
+        title: 'Capacidad y Aforos de Salón',
+        description: 'Configurable para grupos pequeños, medianos o eventos completos. (Aforo numérico exacto por confirmar con el propietario).',
+        status: 'pendiente_confirmacion'
+      },
+      {
+        id: 'feat-tecnico',
+        title: 'Equipamiento Audiovisual',
+        description: 'Posibilidad de apoyo para pantallas o ambientación sonora. (Especificaciones técnicas precisas por validar).',
+        status: 'pendiente_confirmacion'
+      },
+      {
+        id: 'feat-reserva',
+        title: 'Condiciones de Reserva para Grupos',
+        description: 'Adaptadas al tamaño del grupo y formato gastronómico solicitado.',
+        status: 'pendiente_confirmacion'
+      }
+    ] as SpaceFeature[]
+  },
+
+  // Eje 3: Gastronomía real, compartible y adaptable
   gastronomia: {
-    headline: 'COMIDA NON-STOP & CERVEZA BIEN TIRADA',
-    description: 'En Grafit la cocina no cierra a deshoras. Hamburguesas contundentes, pintxos recién salidos de la cocina y tanques de cerveza helada a cualquier hora.',
+    headline: 'GASTRONOMÍA NON-STOP & PRODUCTO REAL',
+    subtext: 'En Grafit la cocina acompaña tu experiencia. Sin rigidez horaria: platos para compartir, hamburguesas de autor y producto de cercanía.',
     posterSrc: './assets/grafit/branding/grafit-cartel-cocina-nonstop.jpg',
-    beersPhoto: './assets/grafit/drinks/grafit-cerveza-canero-01.jpg',
-    featuredDishes: [
+    dishes: [
       {
         id: 'b1',
-        name: 'Burger Grafit Special',
-        description: '100% carne de buey (200g), queso cheddar ahumado, bacon crujiente, cebolla caramelizada y salsa secreta Rock.',
-        price: '11,90€',
-        badge: 'TOP VENTAS',
+        name: 'Burger Grafit 100% Buey',
+        description: '200g de carne seleccionada, queso cheddar ahumado, bacon crujiente, cebolla caramelizada y salsa casera Rock.',
+        badge: 'PRODUCTO ESTRELLA',
         image: './assets/grafit/instagram/burguer.webp',
         category: 'burger'
       },
       {
         id: 'p1',
-        name: 'Pintxo de Tortilla & Barra Fresca',
-        description: 'La reina de la barra. Jugosa, recién hecha, con o sin cebolla y selección de pintxos del día.',
-        price: '2,60€',
+        name: 'Pintxos & Tortilla de Barra',
+        description: 'Tortilla jugosa recién salida y selección de bocados tradicionales de la barra vasca para empezar el encuentro.',
         badge: 'RECIÉN HECHA',
         image: './assets/grafit/instagram/pintxos.jpg',
         category: 'pintxo'
       },
       {
         id: 's1',
-        name: 'Sandwich Especial de la Barra',
-        description: 'Pan crujiente a la plancha con queso fundente, pechuga a la parrilla, vegetales frescos y salsa de la casa.',
-        price: '7,50€',
+        name: 'Sandwiches & Bocadillos a la Plancha',
+        description: 'Pan artesano crujiente, quesos fundentes y rellenos sabrosos ideales para picoteos dinámicos de grupo.',
         badge: 'NON-STOP',
         image: './assets/grafit/instagram/sandwich-barra.jpg',
         category: 'plato'
@@ -184,153 +282,123 @@ export const GRAFIT_DATA = {
       {
         id: 'b2',
         name: 'Cerveza de Tanque Calibre 0',
-        description: 'Servida a la temperatura exacta desde nuestros tanques principales. Espuma densa y frescura máxima.',
-        price: '2,80€ / Caña',
-        badge: 'TANQUE DIRECTO',
+        description: 'Tirada a la temperatura óptima directamente desde tanques principales. Espuma densa, frescura y sabor puro.',
+        badge: 'CERVEZA DE TANQUE',
         image: './assets/grafit/drinks/grafit-cerveza-canero-01.jpg',
-        category: 'cerveza'
+        category: 'bebida'
       }
-    ] as MenuItem[]
+    ] as MenuItem[],
+    gruposNota: 'Para grupos y eventos diseñamos propuestas gastronómicas a medida (picoteo de pie, menús de mesa compartida o meriendas-cena). Consulta las opciones disponibles para tu fecha.'
   },
 
-  agenda: {
-    headline: 'CONCIERTOS & ACTUACIONES EN DIRECTO',
-    subtext: 'Música en vivo sin artificios. Acústicos íntimos, bandas locales y ambiente eléctrico.',
-    posterCutout: './assets/grafit/events/grafit-concierto-cuarto-traste-06.jpg',
-    eventsList: [
-      {
-        id: 'ev-1',
-        dateDay: '24',
-        dateMonth: 'SEP',
-        artist: 'MIKEL BIZAR',
-        genre: 'Rock Euskaldun / Acústico en Vivo',
-        time: '20:30h',
-        entry: 'Entrada Libre',
-        description: 'El vocalista histórico de Idi Bihotz repasa temas clásicos del rock en un formato acústico único e íntimo.',
-        image: './assets/grafit/events/grafit-concierto-mikel-bizar-10.jpg',
-        highlight: true,
-        stampText: 'IMPRESCINDIBLE'
-      },
-      {
-        id: 'ev-2',
-        dateDay: '02',
-        dateMonth: 'OCT',
-        artist: 'CUARTO TRASTE',
-        genre: 'Rock Urbano & Blues Electrizante',
-        time: '21:30h',
-        entry: 'Entrada Libre',
-        description: 'Banda bilbaína de rock en estado puro. Guitarrazos, distorsión y sala llena garantizada.',
-        image: './assets/grafit/events/grafit-concierto-cuarto-traste-06.jpg',
-        highlight: true,
-        stampText: 'DIRECTO ROCK'
-      },
-      {
-        id: 'ev-3',
-        dateDay: '15',
-        dateMonth: 'OCT',
-        artist: 'NOCHE DE VINILOS & JAM',
-        genre: 'Sesión Abierta & Post-Punk',
-        time: '19:30h',
-        entry: 'Entrada Libre',
-        description: 'Trae tus propios vinilos o súbete al micro abierto para la sesión de jam session comunitaria.',
-        image: './assets/grafit/events/grafit-concierto-mikel-bizar-17.jpg',
-        highlight: false,
-        stampText: 'JAM SESSION'
-      }
-    ] as EventItem[]
-  },
+  // Eje 4: Progresión Narrativa de Historia (Inspiración The Rolling Stones)
+  // La historia no interrumpe el flujo comercial; acompaña la evolución visual del recorrido.
+  historiaProgression: [
+    {
+      id: 'h-origen',
+      context: 'LAS RAÍCES DE INDAUTXU',
+      title: 'Materia, barrio y resistencia',
+      quote: 'Grafit nació de la voluntad de construir un refugio auténtico en Urrutia Kalea: madera noble, ladrillo visto y calor de taberna donde todo el mundo es bienvenido.',
+      yearHint: 'Memoria de Barrio',
+      image: './assets/grafit/interior/grafit-barra-01.jpg'
+    },
+    {
+      id: 'h-evolucion',
+      context: 'EVOLUCIÓN ROCKERA',
+      title: 'El rock como actitud, no como nostalgia',
+      quote: 'Al igual que las grandes bandas atemporales, la identidad del local ha ido madurando a través de los años. El rock aquí no es un disfraz: es la energía con la que acogemos cada encuentro.',
+      yearHint: 'Evolución Constante',
+      image: './assets/grafit/instagram/chupa-cuero.jpg'
+    },
+    {
+      id: 'h-icono',
+      context: 'EL ESPACIO VIVIDO',
+      title: 'Paredes que guardan miles de historias',
+      quote: 'El mural de The Rolling Stones, la furgoneta Volkswagen y las guitarras en las paredes son testigos mudos de celebraciones memorables que forman parte de la vida de Indautxu.',
+      yearHint: 'Espacio con Alma',
+      image: './assets/grafit/instagram/rolling-pared.jpg'
+    }
+  ] as HistoricSnippet[],
 
-  historia: {
-    headline: 'DESDE 2017 CONSTRUYENDO UN REFUGIO ROCK EN INDAUTXU',
-    quote: '"Grafit no se diseñó en un despacho de marketing. Se construyó con madera, guitarras en las paredes, fotos de amigos y mucha actitud."',
-    openingYear: '2017',
-    inaugurationPhoto: './assets/grafit/archive/grafit-inauguracion-2017-05.jpg',
-    reopeningPhoto: './assets/grafit/archive/grafit-inauguracion-2017-07.jpg',
-    muralPhoto: './assets/grafit/instagram/rolling-pared.jpg',
-    vwPhoto: './assets/grafit/instagram/volkswagen.jpg',
-    manifesto: [
-      'Un local nacido para quienes buscan buena música, cañas heladas y platos sustanciosos.',
-      'Ubicados en la céntrica calle Urrutia 1, entre la plaza Indautxu y los lugares de poteo emblemáticos de Bilbao.',
-      'Aquí el rock no es una pose decorativa: suena en los altavoces, se respira en el mural de vinilos y se vive en cada concierto.'
+  // Eje 5: Comunidad y Redes Reales
+  comunidad: {
+    instagramHandle: '@grafitcafe',
+    instagramUrl: 'https://instagram.com/grafitcafe',
+    tagline: 'Sigue el día a día de Grafit en nuestras redes oficiales',
+    realPhotos: [
+      {
+        src: './assets/grafit/instagram/burguer.webp',
+        alt: 'Burger Grafit Special en el bar'
+      },
+      {
+        src: './assets/grafit/instagram/volkswagen.jpg',
+        alt: 'Furgoneta Volkswagen en el salón'
+      },
+      {
+        src: './assets/grafit/instagram/pintxos.jpg',
+        alt: 'Barra de pintxos'
+      },
+      {
+        src: './assets/grafit/instagram/chupa-cuero.jpg',
+        alt: 'Ambiente en el bar'
+      }
     ]
   },
 
   instagramFeed: [
     {
       id: 'ig-1',
-      src: './assets/grafit/instagram/fachada-noche.jpg',
-      caption: 'Noches iluminadas en Indautxu. Urrutia Kalea 1.',
-      tag: '@grafitcafe',
-      date: 'Publicado recientement',
-      likes: 248,
-      rotation: '-rotate-3'
+      src: './assets/grafit/instagram/volkswagen.jpg',
+      caption: 'Nuestra mítica furgoneta Volkswagen esperando el próximo evento en el salón',
+      tag: '#SALONMULTIUSOS',
+      likes: '142',
+      date: 'Reciente',
+      rotation: 'rot-neg-2'
     },
     {
       id: 'ig-2',
       src: './assets/grafit/instagram/burguer.webp',
-      caption: 'La Burger Grafit Special 100% buey al detalle.',
-      tag: '#FoodPornBilbao',
-      date: 'Publicado recientemente',
-      likes: 312,
-      rotation: 'rotate-2'
+      caption: 'Burger 100% Buey con patatas rústicas. Fogones activos de 12:00 a 23:30',
+      tag: '#BURGERROCK',
+      likes: '198',
+      date: 'Reciente',
+      rotation: 'rot-pos-2'
     },
     {
       id: 'ig-3',
-      src: './assets/grafit/instagram/volkswagen.jpg',
-      caption: 'Furgoneta Volkswagen mítica en el salón principal del bar.',
-      tag: '#RockCafe',
-      date: 'Publicado recientemente',
-      likes: 419,
-      rotation: '-rotate-2'
+      src: './assets/grafit/instagram/rolling-pared.jpg',
+      caption: 'Mural de The Rolling Stones sobre el ladrillo visto de nuestro salón',
+      tag: '#STONESWALL',
+      likes: '167',
+      date: 'Reciente',
+      rotation: 'rot-neg-1'
     },
     {
       id: 'ig-4',
-      src: './assets/grafit/instagram/chupa-cuero.jpg',
-      caption: 'Chupa de cuero, cerveza de tanque y actitud rockera.',
-      tag: '#ParroquiaGrafit',
-      date: 'Publicado recientemente',
-      likes: 189,
-      rotation: 'rotate-3'
+      src: './assets/grafit/instagram/pintxos.jpg',
+      caption: 'Barra de pintxos recién salidos y tortilla jugosa para abrir boca',
+      tag: '#PINTXOSBILBAO',
+      likes: '115',
+      date: 'Reciente',
+      rotation: 'rot-pos-1'
     },
     {
       id: 'ig-5',
-      src: './assets/grafit/instagram/rolling-pared.jpg',
-      caption: 'Mural tributo a The Rolling Stones en las paredes de ladrillo.',
-      tag: '#RockOrDie',
-      date: 'Publicado recientemente',
-      likes: 375,
-      rotation: '-rotate-1'
+      src: './assets/grafit/instagram/sandwich-barra.jpg',
+      caption: 'Picoteo crujiente a la plancha para meriendas y cenas sin prisas',
+      tag: '#KITCHENNONSTOP',
+      likes: '89',
+      date: 'Reciente',
+      rotation: 'rot-neg-2'
     },
     {
       id: 'ig-6',
-      src: './assets/grafit/instagram/sandwich-barra.jpg',
-      caption: 'Bocata y sandwich caliente en la barra de madera.',
-      tag: '#KitchenNonStop',
-      date: 'Publicado recientemente',
-      likes: 204,
-      rotation: 'rotate-2'
-    },
-    {
-      id: 'ig-7',
-      src: './assets/grafit/instagram/pintxos.jpg',
-      caption: 'Pintxos recién hechos saliendo continuamente de la cocina.',
-      tag: '#BarraIndautxu',
-      date: 'Publicado recientemente',
-      likes: 298,
-      rotation: '-rotate-3'
+      src: './assets/grafit/instagram/fachada-noche.jpg',
+      caption: 'Urrutia Kalea 1 al caer la noche. Punto de encuentro en Indautxu',
+      tag: '#INDAUTXU',
+      likes: '174',
+      date: 'Reciente',
+      rotation: 'rot-pos-2'
     }
-  ] as InstagramPost[],
-
-  grupos: {
-    headline: 'CELEBRACIONES, CUMPLEAÑOS Y REUNIONES DE CUADRILLA',
-    description: '¿Tienes un cumpleaños, una cena de cuadrilla o un evento especial? Reserva nuestro espacio de mesas o la zona de la barra para tu grupo.',
-    photo: './assets/grafit/archive/grafit-inauguracion-2017-07.jpg',
-    nightPhoto: './assets/grafit/instagram/fachada-noche.jpg',
-    features: [
-      'Menús cerrados para grupos a medida',
-      'Zona reservada en salón con mural rock',
-      'Cocina non-stop adaptada a tu horario',
-      'Posibilidad de reservar barril o consumiciones'
-    ]
-  }
+  ] as InstagramPost[]
 };

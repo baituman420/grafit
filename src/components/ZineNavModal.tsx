@@ -50,7 +50,10 @@ export const ZineNavModal: React.FC<ZineNavModalProps> = ({
             return (
               <button
                 key={link.path}
-                onClick={() => onNavigate(link.path)}
+                onClick={() => {
+                  onNavigate(link.path);
+                  onClose();
+                }}
                 className={`w-full text-left p-4 border-3 border-black font-anton text-2xl uppercase tracking-wider flex items-center justify-between transition-transform ${rotationClass} ${
                   isActive
                     ? 'bg-black text-white shadow-[5px_5px_0px_#b91c1c]'
