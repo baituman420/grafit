@@ -25,8 +25,12 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
   return (
     <>
       <header
-        className={`sticky top-0 z-40 bg-[#ebe5d8]/95 backdrop-blur-md border-b-4 border-black transition-transform duration-300 ${
-          isHome && !isScrolled ? 'max-lg:translate-y-0 lg:-translate-y-full lg:opacity-0 lg:pointer-events-none' : 'translate-y-0 opacity-100'
+        className={`${
+          isHome
+            ? `fixed top-0 left-0 w-full z-40 bg-[#ebe5d8]/95 backdrop-blur-md border-b-4 border-black transition-transform duration-300 ${
+                isScrolled ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
+              }`
+            : 'sticky top-0 z-40 bg-[#ebe5d8]/95 backdrop-blur-md border-b-4 border-black translate-y-0 opacity-100'
         }`}
       >
         {/* INTERNAL PAGES ONLY: MINIMAL SUB-LINE & BREADCRUMB */}
@@ -114,6 +118,17 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
           </button>
         </div>
       </header>
+
+      {/* DISCREET MOBILE FLOATING BURGER (HOME ONLY BEFORE SCROLL) */}
+      {isHome && !isScrolled && (
+        <button
+          onClick={() => setIsMobileMenuOpen(true)}
+          className="lg:hidden fixed top-3 right-3 z-40 p-2.5 bg-black/80 hover:bg-[#b91c1c] text-white border border-neutral-700 shadow-[2px_2px_0_#000] backdrop-blur-sm transition-colors cursor-pointer"
+          aria-label="Abrir menú"
+        >
+          <Menu className="w-5 h-5" />
+        </button>
+      )}
 
       {/* MOBILE NAV MODAL */}
       <ZineNavModal
