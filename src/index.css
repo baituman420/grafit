@@ -112,12 +112,16 @@ html, body {
   text-transform: uppercase;
   font-family: 'Anton', sans-serif;
   letter-spacing: 0.08em;
-  border: 3px double var(--color-oxblood);
+  border: 2px dashed var(--color-oxblood);
   color: var(--color-oxblood);
   transform: rotate(-4deg);
-  opacity: 0.95;
-  mix-blend-mode: multiply;
   user-select: none;
+}
+
+.rubber-stamp.text-white,
+.rubber-stamp[class*="text-white"],
+.rubber-stamp[class*="bg-"] {
+  mix-blend-mode: normal;
 }
 
 /* PASTE-UP SHADOWS */

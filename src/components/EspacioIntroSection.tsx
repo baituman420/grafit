@@ -1,71 +1,94 @@
 import React from 'react';
-import { GRAFIT_DATA } from '../data/grafit';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, CheckCircle2, MapPin, Music2 } from 'lucide-react';
 
 interface EspacioIntroSectionProps {
   onNavigate: (path: string) => void;
 }
 
 export const EspacioIntroSection: React.FC<EspacioIntroSectionProps> = ({ onNavigate }) => {
-  const { espacio } = GRAFIT_DATA;
-
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b-4 border-black">
-      <div className="bg-[#fbf8f1] border-4 border-black p-6 sm:p-10 shadow-[8px_8px_0px_rgba(0,0,0,1)] relative">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <section className="relative py-12 sm:py-16 px-4 sm:px-6 lg:px-12 bg-[#0c0b0a] text-[#f5efe1] border-b-8 border-black">
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          {/* TEXTO */}
-          <div className="lg:col-span-7 space-y-4">
-            <div className="inline-block bg-black text-white px-3 py-1 font-mono-code text-xs uppercase tracking-widest rot-neg-1">
-              // EL SALÓN MULTIUSOS DE INDAUTXU
-            </div>
-            <h2 className="font-anton text-3xl sm:text-5xl uppercase tracking-wider text-black">
-              UN ESPACIO AMPLIO, VERSÁTIL Y CON PERSONALIDAD
-            </h2>
-            <p className="font-sans text-neutral-800 text-base sm:text-lg leading-relaxed">
-              El corazón de las celebraciones en Grafit es su amplio salón interior. Con la auténtica furgoneta Volkswagen presidiendo la estancia, paredes de ladrillo visto y mesas configurables, dispones de la amplitud necesaria para que tu grupo disfrute a su propio ritmo.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 font-mono-code text-xs">
-              <div className="p-3 bg-[#f4eedd] border-2 border-black">
-                <span className="font-bold text-black uppercase block mb-1">Configuración a Medida</span>
-                Formatos de pie, cóctel o mesas corridas para comidas y cenas.
-              </div>
-              <div className="p-3 bg-[#f4eedd] border-2 border-black">
-                <span className="font-bold text-black uppercase block mb-1">Identidad Visual</span>
-                La furgoneta Volkswagen y murales de vinilos para un ambiente único.
+          {/* PHOTO COMPOSITION (5 COLS) */}
+          <div className="lg:col-span-5 relative space-y-4">
+            {/* MAIN REAL SALON VIEW */}
+            <div className="relative border-3 border-[#33302c] bg-black shadow-[8px_8px_0_#000] overflow-hidden aspect-[4/3]">
+              <img
+                src="/assets/grafit/interior/grafit-salon-mesas-27.jpg"
+                alt="Amplitud del Salón Multiusos Grafit"
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+              <div className="absolute top-2 left-2 bg-[#b91c1c] text-white font-mono text-[10px] font-bold px-2.5 py-0.5 border border-black uppercase shadow">
+                DISTRIBUCIÓN DIÁFANA
               </div>
             </div>
 
-            <div className="pt-3 flex flex-wrap gap-4">
-              <button
-                onClick={() => onNavigate('/espacio')}
-                className="px-6 py-3 bg-black text-white hover:bg-[#b91c1c] border-2 border-black font-anton text-base uppercase tracking-wider flex items-center gap-2 shadow-[4px_4px_0px_rgba(0,0,0,1)] transition-colors"
-              >
-                <span>VER TODOS LOS DETALLES DEL SALÓN</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => onNavigate('/contacto')}
-                className="px-6 py-3 bg-white text-black hover:bg-neutral-100 border-2 border-black font-anton text-base uppercase tracking-wider flex items-center gap-2 shadow-[4px_4px_0px_rgba(0,0,0,1)] transition-colors"
-              >
-                <span>CONSULTAR DISPONIBILIDAD</span>
-              </button>
+            {/* SECONDARY POLAROID: VOLKSWAGEN DECORATIVA DEL SALÓN */}
+            <div className="relative p-2.5 bg-[#181615] border-2 border-[#e2c044] shadow-[5px_5px_0_#000] flex items-center gap-3">
+              <div className="w-20 h-16 bg-black border border-black shrink-0 overflow-hidden">
+                <img
+                  src="/assets/grafit/instagram/volkswagen.jpg"
+                  alt="Volkswagen decorativa del salón"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="font-mono text-xs">
+                <span className="text-[#e2c044] font-bold block uppercase">// EL ICONO DEL SALÓN</span>
+                <span className="text-[#b8b0a2] text-[11px] leading-tight block">
+                  Media furgoneta Volkswagen clásica instalada como decoración real.
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* FOTO DESTACADA FURGONETA */}
-          <div className="lg:col-span-5">
-            <div className="border-4 border-black shadow-[6px_6px_0px_#b91c1c] bg-black overflow-hidden relative">
-              <img
-                src={espacio.furgoneta.image}
-                alt="Furgoneta Volkswagen en el salón de Grafit"
-                className="w-full h-80 sm:h-96 object-cover object-center"
-              />
-              <div className="absolute bottom-0 inset-x-0 bg-black/85 text-white p-3 font-mono-code text-xs">
-                <span className="text-[#b91c1c] font-bold uppercase block">// ICONO EXCLUSIVO</span>
-                La icónica Volkswagen roja y blanca en nuestro salón multiusos.
+          {/* EDITORIAL CONTENT (7 COLS) */}
+          <div className="lg:col-span-7 space-y-4">
+            <div className="flex items-center gap-2 font-mono text-xs text-[#e2c044] uppercase tracking-widest">
+              <span className="w-2 h-2 bg-[#e2c044] rounded-full" />
+              <span>// VENTAJA COMPETITIVA EN INDAUTXU</span>
+            </div>
+
+            <h2 className="font-['Anton'] text-3xl sm:text-5xl uppercase tracking-wider text-[#f5efe1] leading-tight">
+              Un Salón Multiusos con Amplitud y Carácter
+            </h2>
+
+            <p className="font-['Space_Grotesk'] text-sm sm:text-base text-[#ded8cb] leading-relaxed">
+              La mayor ventaja de Grafit no es solo su barra de Indautxu: es su espacioso salón interior. Una estancia independiente, diáfana y con personalidad genuina presidida por la media Volkswagen y el gran mural de concierto.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 font-mono text-xs">
+              <div className="p-3 bg-[#181615] border border-[#33302c] shadow-[3px_3px_0_#000]">
+                <span className="text-[#e2c044] font-bold block mb-1 uppercase">★ VERSATILIDAD MODULAR</span>
+                <p className="text-[#b8b0a2] text-[11px] leading-snug">
+                  Mesas agrupables para comidas de cuadrilla, formato cóctel para celebraciones de pie o distribución abierta.
+                </p>
               </div>
+
+              <div className="p-3 bg-[#181615] border border-[#33302c] shadow-[3px_3px_0_#000]">
+                <span className="text-[#b91c1c] font-bold block mb-1 uppercase">★ INDEPENDENCIA DE AMBIENTE</span>
+                <p className="text-[#b8b0a2] text-[11px] leading-snug">
+                  Tu grupo disfruta a su propio ritmo sin interferir con la vida cotidiana de la barra delantera.
+                </p>
+              </div>
+            </div>
+
+            <div className="pt-4 flex flex-col sm:flex-row gap-3.5">
+              <button
+                onClick={() => onNavigate('/espacio')}
+                className="px-6 py-3 bg-[#e2c044] hover:bg-yellow-400 text-black font-['Anton'] text-sm uppercase tracking-wider border-2 border-black shadow-[4px_4px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
+              >
+                <span>EXPLORAR EL ESPACIO COMPLETO</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+
+              <button
+                onClick={() => onNavigate('/contacto?tipo=evento')}
+                className="px-6 py-3 bg-[#181615] hover:bg-[#222] text-[#f5efe1] font-mono text-xs font-bold uppercase border border-[#444] shadow-[3px_3px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-colors"
+              >
+                <span>CONSULTAR DISPONIBILIDAD</span>
+              </button>
             </div>
           </div>
 

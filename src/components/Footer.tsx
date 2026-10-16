@@ -1,6 +1,6 @@
 import React from 'react';
 import { GRAFIT_DATA } from '../data/grafit';
-import { MapPin, Phone, Mail, Instagram, Facebook, ArrowUp } from 'lucide-react';
+import { MapPin, Mail, Instagram, Facebook, ArrowUp, ArrowRight, MessageSquare } from 'lucide-react';
 
 interface FooterProps {
   onNavigate: (path: string) => void;
@@ -20,10 +20,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div>
             <div className="flex items-center gap-2 mb-3">
               <span className="rubber-stamp text-xs bg-[#b91c1c] text-white border-none py-0.5 px-2">
-                EST. 2017
+                ROCK CAFÉ // BILBAO
               </span>
               <span className="font-mono-code text-xs text-neutral-400 font-bold">
-                INDAUTXU • BILBAO
+                URRUTIA KALEA 1 • INDAUTXU
               </span>
             </div>
             <h2 className="font-ransom text-7xl sm:text-9xl lg:text-[11vw] text-white tracking-tighter leading-none">
@@ -39,13 +39,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <div className="aspect-[16/10] bg-black overflow-hidden border-2 border-black">
               <img
                 src="./assets/grafit/exterior/grafit-fachada-01.jpg"
-                alt="Fachada del Grafit Café"
+                alt="Fachada del Grafit Café en Urrutia Kalea 1"
                 className="w-full h-full object-cover contrast-110"
                 loading="lazy"
               />
             </div>
             <p className="mt-2 font-typewriter text-xs font-bold text-center text-neutral-900">
-              Fachada Urrutia Kalea 1
+              Fachada Urrutia Kalea 1 • Indautxu
             </p>
           </div>
         </div>
@@ -75,18 +75,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            <div className="flex items-center gap-3 pt-2">
-              <Phone className="w-5 h-5 text-[#b91c1c] shrink-0" />
-              <a href={`tel:${GRAFIT_DATA.info.phone}`} className="font-bold text-white text-base hover:underline">
-                {GRAFIT_DATA.info.phone}
-              </a>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <Mail className="w-5 h-5 text-[#b91c1c] shrink-0" />
-              <a href={`mailto:${GRAFIT_DATA.info.email}`} className="text-neutral-300 hover:underline">
-                {GRAFIT_DATA.info.email}
-              </a>
+            <div className="pt-2">
+              <button
+                onClick={() => onNavigate('/contacto')}
+                className="w-full py-2.5 px-3 bg-[#1a1a1a] border border-neutral-700 hover:border-[#b91c1c] text-left text-neutral-200 hover:text-white transition-colors flex items-center justify-between"
+              >
+                <span>Solicitud de eventos y reservas &rarr;</span>
+                <span className="text-[#e2c044] font-bold text-[10px] uppercase">Formulario web</span>
+              </button>
             </div>
           </div>
 
@@ -155,7 +151,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
         {/* BOTTOM COPYRIGHT & BACK TO TOP */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono-code text-xs text-neutral-400">
-          <p>© {new Date().getFullYear()} Grafit Rock Café • Indautxu, Bilbao. Todos los derechos reservados.</p>
+          <p>© {new Date().getFullYear()} Grafit Rock Café • Urrutia Kalea 1, Indautxu, Bilbao. Todos los derechos reservados.</p>
           
           <button
             onClick={scrollToTop}

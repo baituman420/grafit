@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { GRAFIT_DATA } from '../data/grafit';
 import { validateLead, submitLead, EventLead, SubmitResponse } from '../services/leadService';
-import { MapPin, Phone, Mail, Clock, Send, AlertTriangle, CheckCircle2, MessageSquare, Info } from 'lucide-react';
+import { MapPin, Mail, Clock, Send, AlertTriangle, CheckCircle2, MessageSquare, Info, ShieldCheck, ArrowRight } from 'lucide-react';
 
 interface ContactoPageProps {
   onNavigate?: (path: string) => void;
@@ -25,12 +25,52 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
   const [submitting, setSubmitting] = useState(false);
   const [submitResult, setSubmitResult] = useState<SubmitResponse | null>(null);
 
-  // Detect query param if navigated with ?motivo=...
+  // Detect query params if navigated with ?motivo=... or ?tipo=...
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const motivoParam = params.get('motivo');
+    const tipoParam = params.get('tipo');
+
     if (motivoParam === 'evento' || motivoParam === 'consulta' || motivoParam === 'otro') {
       setFormData((prev) => ({ ...prev, motivo: motivoParam }));
+    }
+
+    if (tipoParam) {
+      if (tipoParam.includes('cuadrilla')) {
+        setFormData((prev) => ({
+          ...prev,
+          motivo: 'evento',
+          tipoEvento: 'cuadrilla',
+          mensaje: prev.mensaje || 'Hola, nos gustaría consultar disponibilidad para una comida o cena de cuadrilla.',
+        }));
+      } else if (tipoParam.includes('cumple')) {
+        setFormData((prev) => ({
+          ...prev,
+          motivo: 'evento',
+          tipoEvento: 'particular',
+          mensaje: prev.mensaje || 'Hola, queremos celebrar un cumpleaños y nos interesa conocer opciones para el salón.',
+        }));
+      } else if (tipoParam.includes('empresa') || tipoParam.includes('afterwork')) {
+        setFormData((prev) => ({
+          ...prev,
+          motivo: 'evento',
+          tipoEvento: 'empresa',
+          mensaje: prev.mensaje || 'Hola, nos gustaría organizar un encuentro de empresa / afterwork en el salón multiusos.',
+        }));
+      } else if (tipoParam === 'comida-grupo') {
+        setFormData((prev) => ({
+          ...prev,
+          motivo: 'evento',
+          tipoEvento: 'cuadrilla',
+          mensaje: prev.mensaje || 'Hola, nos gustaría consultar opciones y disponibilidad para un menú de comida o picoteo de grupo.',
+        }));
+      } else if (tipoParam === 'visita') {
+        setFormData((prev) => ({
+          ...prev,
+          motivo: 'consulta',
+          mensaje: prev.mensaje || 'Hola, nos gustaría concertar una visita presencial para conocer el salón multiusos de Grafit.',
+        }));
+      }
     }
   }, []);
 
@@ -74,34 +114,37 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8 md:py-12">
+    <div className="max-w-6xl mx-auto px-4 py-8 md:py-12 space-y-10">
       {/* HEADER PAGE */}
-      <div className="mb-10 text-center md:text-left">
-        <div className="inline-block bg-black text-white px-3 py-1 font-mono-code text-xs uppercase tracking-widest mb-3 rot-neg-1">
-          // COMUNICACIÓN DIRECTA & SOLICITUD DE EVENTOS
+      <div className="p-6 sm:p-8 bg-[#f4eedd] border-4 border-black shadow-[8px_8px_0px_rgba(0,0,0,1)] relative tape-top space-y-3">
+        <div className="inline-block bg-black text-white px-3 py-1 font-mono-code text-xs uppercase tracking-widest rot-neg-1">
+          // CANAL DE COMUNICACIÓN OFICIAL & SOLICITUD DE EVENTOS
         </div>
         <h1 className="font-anton text-4xl sm:text-6xl uppercase tracking-wider text-black">
           CONTACTO & RESERVA DE EVENTOS
         </h1>
-        <p className="font-sans text-neutral-800 text-base sm:text-lg max-w-3xl mt-2">
-          ¿Planeas una comida de grupo, un cumpleaños o un encuentro corporativo en Indautxu?
-          Escríbenos o llámanos directamente. Te orientamos sobre disponibilidad y adaptamos el espacio.
+        <p className="font-sans text-neutral-800 text-base sm:text-lg max-w-3xl leading-relaxed">
+          ¿Planeas una comida de cuadrilla, una celebración de cumpleaños o un encuentro de empresa en Indautxu?
+          Indícanos los detalles de tu propuesta. Atendemos cada consulta de forma personalizada según el formato y la fecha.
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* FORMULARIO (7 COLS) */}
         <div className="lg:col-span-7 bg-[#fbf8f1] border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_rgba(0,0,0,1)] relative">
-          <div className="absolute -top-3 right-4 bg-[#b91c1c] text-white font-mono-code text-xs px-3 py-0.5 border-2 border-black rot-pos-1">
+          <div className="absolute -top-3 right-4 bg-[#b91c1c] text-white font-mono-code text-xs px-3 py-0.5 border-2 border-black rot-pos-1 font-bold">
             FORMULARIO OFICIAL
           </div>
 
           {/* AVISO DE ESTADO TÉCNICO HONESTO */}
-          <div className="mb-6 p-3 bg-amber-50 border-2 border-amber-800 text-amber-950 font-mono-code text-xs flex items-start gap-2.5">
-            <Info className="w-4 h-4 text-amber-800 shrink-0 mt-0.5" />
-            <div>
-              <span className="font-bold">Fase de maquetación:</span> El formulario realiza validación completa de datos en el navegador. La conexión al servidor de correo se activará en la integración final.
+          <div className="mb-6 p-4 bg-amber-50 border-3 border-amber-800 text-amber-950 font-mono-code text-xs space-y-1">
+            <div className="flex items-center gap-2 font-bold uppercase text-amber-900">
+              <Info className="w-4 h-4 shrink-0" />
+              <span>Transparencia Técnica del Prototipo</span>
             </div>
+            <p className="leading-relaxed">
+              Este formulario ejecuta la validación completa de los campos en el cliente. En esta fase de prototipo no simulamos envíos ficticios a servidores de correo: los datos validados se preparan para su conexión con el canal oficial de gerencia.
+            </p>
           </div>
 
           {submitResult && (
@@ -119,8 +162,8 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
                   <AlertTriangle className="w-5 h-5 text-red-800 shrink-0 mt-0.5" />
                 )}
                 <div>
-                  <p className="font-bold">{submitResult.success ? 'Solicitud Validada' : 'Error'}</p>
-                  <p className="text-xs mt-1">{submitResult.message}</p>
+                  <p className="font-bold">{submitResult.success ? 'Solicitud Validada con Éxito' : 'Error en los datos'}</p>
+                  <p className="text-xs mt-1 leading-relaxed">{submitResult.message}</p>
                 </div>
               </div>
             </div>
@@ -149,7 +192,7 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
                     }
                     className={`py-2 px-3 border-2 border-black font-mono-code text-xs font-bold uppercase transition-colors ${
                       formData.motivo === item.value
-                        ? 'bg-black text-white'
+                        ? 'bg-black text-white shadow-[2px_2px_0px_#b91c1c]'
                         : 'bg-white text-black hover:bg-neutral-100'
                     }`}
                   >
@@ -180,12 +223,12 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
                       name="tipoEvento"
                       value={formData.tipoEvento}
                       onChange={handleChange}
-                      className="w-full bg-white border-2 border-black p-2 font-mono-code text-xs focus:ring-2 focus:ring-[#b91c1c] outline-none"
+                      className="w-full bg-white border-2 border-black p-2.5 font-mono-code text-xs focus:ring-2 focus:ring-[#b91c1c] outline-none"
                     >
                       <option value="particular">Celebración / Cumpleaños</option>
                       <option value="cuadrilla">Comida / Cena de Cuadrilla</option>
                       <option value="empresa">Encuentro de Empresa / Afterwork</option>
-                      <option value="otro">Otro formato</option>
+                      <option value="otro">Otro formato a medida</option>
                     </select>
                     {errors.tipoEvento && (
                       <p className="text-red-600 font-mono-code text-xs mt-1">{errors.tipoEvento}</p>
@@ -206,7 +249,7 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
                       placeholder="Ej: 15-20 personas"
                       value={formData.asistentesAproximados}
                       onChange={handleChange}
-                      className="w-full bg-white border-2 border-black p-2 font-mono-code text-xs focus:ring-2 focus:ring-[#b91c1c] outline-none"
+                      className="w-full bg-white border-2 border-black p-2.5 font-mono-code text-xs focus:ring-2 focus:ring-[#b91c1c] outline-none"
                     />
                     {errors.asistentesAproximados && (
                       <p className="text-red-600 font-mono-code text-xs mt-1">
@@ -227,10 +270,10 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
                     id="fechaAproximada"
                     name="fechaAproximada"
                     type="text"
-                    placeholder="Ej: Sábado a mediados de noviembre / Noche"
+                    placeholder="Ej: Sábado a mediados de mes / Tarde-noche"
                     value={formData.fechaAproximada}
                     onChange={handleChange}
-                    className="w-full bg-white border-2 border-black p-2 font-mono-code text-xs focus:ring-2 focus:ring-[#b91c1c] outline-none"
+                    className="w-full bg-white border-2 border-black p-2.5 font-mono-code text-xs focus:ring-2 focus:ring-[#b91c1c] outline-none"
                   />
                 </div>
               </div>
@@ -243,13 +286,13 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
                   htmlFor="nombre"
                   className="block font-mono-code text-xs font-bold uppercase text-black mb-1"
                 >
-                  Nombre o Nombre de Grupo *
+                  Nombre o Colectivo *
                 </label>
                 <input
                   id="nombre"
                   name="nombre"
                   type="text"
-                  placeholder="Tu nombre o colectivo"
+                  placeholder="Tu nombre o grupo"
                   value={formData.nombre}
                   onChange={handleChange}
                   className="w-full bg-white border-2 border-black p-2.5 font-mono-code text-xs focus:ring-2 focus:ring-[#b91c1c] outline-none"
@@ -286,7 +329,7 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
                 htmlFor="telefono"
                 className="block font-mono-code text-xs font-bold uppercase text-black mb-1"
               >
-                Teléfono de Contacto (recomendado para coordinar disponibilidad)
+                Teléfono de Contacto (opcional, para agilizar confirmación)
               </label>
               <input
                 id="telefono"
@@ -304,13 +347,13 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
                 htmlFor="mensaje"
                 className="block font-mono-code text-xs font-bold uppercase text-black mb-1"
               >
-                Mensaje o Detalles de la propuesta *
+                Mensaje o Detalles de tu Propuesta *
               </label>
               <textarea
                 id="mensaje"
                 name="mensaje"
                 rows={4}
-                placeholder="Cuéntanos qué formato tienes en mente (comida sentada, picoteo informal, necesidad de pantalla o música de fondo...)"
+                placeholder="Cuéntanos el estilo de evento que tienes en mente (mesas reservadas, comida informal de pie, opciones gastronómicas preferidas...)"
                 value={formData.mensaje}
                 onChange={handleChange}
                 className="w-full bg-white border-2 border-black p-2.5 font-mono-code text-xs focus:ring-2 focus:ring-[#b91c1c] outline-none"
@@ -330,8 +373,8 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
                   onChange={handleChange}
                   className="mt-0.5 w-4 h-4 text-[#b91c1c] border-2 border-black focus:ring-0 rounded-none cursor-pointer"
                 />
-                <span className="font-mono-code text-xs text-neutral-800">
-                  Acepto que Grafit Rock Café utilice estos datos exclusivamente para responder a mi solicitud o reserva de evento. *
+                <span className="font-mono-code text-xs text-neutral-800 leading-normal">
+                  Acepto que Grafit Rock Café utilice estos datos exclusivamente para responder a mi solicitud o propuesta de evento. *
                 </span>
               </label>
               {errors.consentimiento && (
@@ -343,7 +386,7 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
             <button
               type="submit"
               disabled={submitting}
-              className="w-full py-3.5 bg-black text-white hover:bg-[#b91c1c] border-2 border-black font-anton text-xl uppercase tracking-wider flex items-center justify-center gap-2 shadow-[4px_4px_0px_rgba(0,0,0,1)] transition-colors"
+              className="w-full py-4 bg-black text-white hover:bg-[#b91c1c] border-2 border-black font-anton text-xl uppercase tracking-wider flex items-center justify-center gap-2 shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all"
             >
               <Send className="w-5 h-5" />
               <span>{submitting ? 'VALIDANDO DATOS...' : 'ENVIAR SOLICITUD DE EVENTO'}</span>
@@ -351,55 +394,51 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
           </form>
         </div>
 
-        {/* SIDEBAR DE CONTACTO DIRECTO (5 COLS) */}
+        {/* SIDEBAR DE INFORMACIÓN Y CANALES (5 COLS) */}
         <div className="lg:col-span-5 space-y-6">
-          {/* TARJETA VISITA RÁPIDA */}
+          {/* TARJETA DE ATENCIÓN DIRECTA */}
           <div className="bg-[#f4eedd] border-4 border-black p-6 shadow-[6px_6px_0px_rgba(0,0,0,1)] space-y-4">
-            <div className="inline-block bg-[#b91c1c] text-white font-mono-code text-xs px-2.5 py-0.5 border border-black uppercase">
-              CONTACTO INMEDIATO
+            <div className="inline-block bg-[#b91c1c] text-white font-mono-code text-xs px-2.5 py-0.5 border border-black uppercase font-bold rot-neg-1">
+              CANAL DIRECTO & TRANSPARENTE
             </div>
             <h2 className="font-anton text-2xl uppercase tracking-wider text-black">
-              ¿PREFIERES CONSULTAR DIRECTAMENTE?
+              ¿CÓMO GESTIONAMOS TU SOLICITUD?
             </h2>
-            <p className="font-sans text-sm text-neutral-800">
-              Si tu fecha está muy próxima o quieres resolver dudas al instante sobre el salón, puedes llamarnos o escribirnos por WhatsApp.
+            <p className="font-sans text-sm text-neutral-800 leading-relaxed">
+              Para garantizar que cada grupo reciba la atención y el espacio adecuado sin solapamientos, centralizamos la recepción de fechas y presupuestos a través del formulario oficial.
             </p>
 
-            <div className="pt-2 space-y-3 font-mono-code text-xs">
-              <a
-                href={`tel:${GRAFIT_DATA.info.phone}`}
-                className="flex items-center gap-3 p-3 bg-white border-2 border-black hover:bg-black hover:text-white transition-colors"
-              >
-                <Phone className="w-4 h-4 text-[#b91c1c] shrink-0" />
-                <div>
-                  <span className="block text-[10px] text-neutral-500 uppercase">Teléfono Local</span>
-                  <span className="font-bold text-sm">{GRAFIT_DATA.info.phone}</span>
-                </div>
-              </a>
+            <div className="space-y-3 font-mono-code text-xs pt-1">
+              <div className="p-3 bg-white border-2 border-black space-y-1">
+                <span className="block text-[10px] text-neutral-500 uppercase font-bold">Canal Recomendado</span>
+                <p className="font-bold text-sm text-black">Formulario Web de Solicitud</p>
+                <p className="text-[11px] text-neutral-700">Respuesta personalizada según la fecha y el tamaño del grupo.</p>
+              </div>
 
+              {/* ENLACE INSTAGRAM VERIFICADO */}
               <a
-                href={GRAFIT_DATA.info.socials.whatsapp}
+                href={GRAFIT_DATA.info.socials.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 p-3 bg-white border-2 border-black hover:bg-[#25D366] hover:text-white transition-colors"
+                className="flex items-center gap-3 p-3 bg-white border-2 border-black hover:bg-black hover:text-white transition-colors group"
               >
-                <MessageSquare className="w-4 h-4 text-[#25D366] shrink-0" />
+                <span className="w-6 h-6 bg-black text-white group-hover:bg-[#b91c1c] flex items-center justify-center font-anton text-xs shrink-0">
+                  IG
+                </span>
                 <div>
-                  <span className="block text-[10px] text-neutral-500 uppercase">WhatsApp Directo</span>
-                  <span className="font-bold text-sm">Escribir por WhatsApp</span>
+                  <span className="block text-[10px] text-neutral-500 uppercase">Comunidad & Fotos Reales</span>
+                  <span className="font-bold text-sm">@grafitcafe en Instagram ↗</span>
                 </div>
               </a>
 
-              <a
-                href={`mailto:${GRAFIT_DATA.info.email}`}
-                className="flex items-center gap-3 p-3 bg-white border-2 border-black hover:bg-black hover:text-white transition-colors"
-              >
-                <Mail className="w-4 h-4 text-[#b91c1c] shrink-0" />
-                <div>
-                  <span className="block text-[10px] text-neutral-500 uppercase">Correo Electrónico</span>
-                  <span className="font-bold text-sm">{GRAFIT_DATA.info.email}</span>
-                </div>
-              </a>
+              {/* ATENCIÓN PRESENCIAL */}
+              <div className="p-3 bg-neutral-100 border-2 border-black space-y-1">
+                <span className="block text-[10px] text-neutral-500 uppercase font-bold">Atención Presencial en Barra</span>
+                <p className="font-bold text-xs text-black">Pasa por Urrutia Kalea 1 (Indautxu)</p>
+                <p className="text-[11px] text-neutral-600">
+                  Nuestro personal puede mostrarte el salón multiusos in situ durante el horario de apertura.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -412,7 +451,7 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
             <div className="font-mono-code text-xs text-neutral-800 space-y-1">
               <p className="font-bold text-black text-sm">{GRAFIT_DATA.info.address}</p>
               <p>{GRAFIT_DATA.info.neighborhood} • {GRAFIT_DATA.info.city}</p>
-              <p className="text-neutral-600 pt-1">
+              <p className="text-neutral-600 pt-1 leading-relaxed">
                 A 3 minutos de la boca de metro de Indautxu. Zona céntrica con excelente conexión de transporte público.
               </p>
             </div>
@@ -430,7 +469,7 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
                   </li>
                 ))}
               </ul>
-              <div className="mt-3 p-2 bg-black text-white font-mono-code text-[11px]">
+              <div className="mt-3 p-2 bg-black text-white font-mono-code text-[11px] text-center font-bold">
                 {GRAFIT_DATA.info.kitchenHours}
               </div>
             </div>

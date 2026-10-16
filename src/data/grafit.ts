@@ -60,19 +60,19 @@ export const GRAFIT_DATA = {
     address: 'Urrutia Kalea, 1',
     neighborhood: 'Indautxu',
     city: '48010 Bilbao, Bizkaia',
-    phone: '+34 944 12 34 56',
-    email: 'hola@grafitcafe.com',
+    phone: '', // Teléfono oficial en proceso de verificación por la gerencia
+    email: '', // Consultas canalizadas por el formulario web oficial
     hours: [
       { days: 'Lunes a Jueves', time: '08:00 – 23:00' },
       { days: 'Viernes', time: '08:00 – 02:00' },
       { days: 'Sábados', time: '09:00 – 02:30' },
       { days: 'Domingos', time: '10:00 – 23:00' },
     ],
-    kitchenHours: 'Cocina Non-Stop: De 12:00 a 23:30 ininterrumpidamente',
+    kitchenHours: 'Cocina Non-Stop: Servicio continuo en barra y salón',
     socials: {
       instagram: 'https://instagram.com/grafitcafe',
       facebook: 'https://facebook.com/grafitcafe',
-      whatsapp: 'https://wa.me/34944123456'
+      whatsapp: ''
     }
   },
 

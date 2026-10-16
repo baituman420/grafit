@@ -1,6 +1,6 @@
 import React from 'react';
 import { GRAFIT_DATA } from '../data/grafit';
-import { X, MapPin, Phone, Clock, Music, Utensils } from 'lucide-react';
+import { X, MapPin, Clock, ArrowRight } from 'lucide-react';
 
 interface ZineNavModalProps {
   isOpen: boolean;
@@ -85,11 +85,17 @@ export const ZineNavModal: React.FC<ZineNavModalProps> = ({
             </div>
           </div>
 
-          <div className="flex items-center gap-2 font-mono-code text-xs text-neutral-800">
-            <Phone className="w-4 h-4 text-[#b91c1c] shrink-0" />
-            <a href={`tel:${GRAFIT_DATA.info.phone}`} className="font-bold underline text-black">
-              {GRAFIT_DATA.info.phone}
-            </a>
+          <div className="pt-2 border-t border-black/10">
+            <button
+              onClick={() => {
+                onNavigate('/contacto');
+                onClose();
+              }}
+              className="text-xs font-mono-code font-bold text-[#b91c1c] hover:text-black flex items-center gap-1.5 uppercase underline decoration-2"
+            >
+              <span>Consultar disponibilidad y eventos</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
           </div>
 
           <div className="flex items-start gap-2 font-mono-code text-xs text-neutral-800 pt-2 border-t border-black/20">

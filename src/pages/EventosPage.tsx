@@ -1,76 +1,94 @@
 import React from 'react';
 import { GRAFIT_DATA } from '../data/grafit';
-import { Users, Calendar, ArrowRight, Utensils, Sparkles, MessageSquare, Phone } from 'lucide-react';
+import { Users, Calendar, ArrowRight, Utensils, CheckCircle2, Info, Sparkles } from 'lucide-react';
 
 interface EventosPageProps {
   onNavigate: (path: string) => void;
 }
 
 export const EventosPage: React.FC<EventosPageProps> = ({ onNavigate }) => {
-  const { eventos, info, historiaProgression } = GRAFIT_DATA;
-  const historySnippet = historiaProgression[2] || historiaProgression[0];
+  const { eventos } = GRAFIT_DATA;
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8 md:py-12 space-y-16">
-      {/* HEADER SECTION */}
-      <div className="text-center md:text-left space-y-4">
-        <div className="inline-block bg-[#b91c1c] text-white px-3 py-1 font-mono-code text-xs uppercase tracking-widest rot-neg-1 border border-black">
-          // EXPERIENCIAS & CELEBRACIONES DE GRUPO
+    <div className="w-full bg-[#0c0b0a] text-[#f5efe1] py-8 sm:py-12 px-4 sm:px-6 lg:px-12 space-y-16 max-w-6xl mx-auto">
+      {/* 1. HEADER SECTION */}
+      <div className="space-y-4">
+        <div className="inline-block bg-[#b91c1c] text-white px-3 py-1 font-mono text-xs uppercase tracking-widest shadow-[3px_3px_0_#000]">
+          // EL ESPACIO PARA TUS CELEBRACIONES
         </div>
-        <h1 className="font-anton text-4xl sm:text-6xl uppercase tracking-wider text-black">
-          {eventos.headline}
+        <h1 className="font-['Anton'] text-4xl sm:text-6xl uppercase tracking-wider text-[#f5efe1] leading-tight">
+          Eventos y Comidas de Grupo con Identidad en Indautxu
         </h1>
-        <p className="font-sans text-neutral-800 text-base sm:text-lg max-w-3xl leading-relaxed">
-          {eventos.subtext}
+        <p className="font-['Space_Grotesk'] text-base sm:text-lg text-[#ded8cb] max-w-3xl leading-relaxed">
+          Reúne a tu cuadrilla, celebra un cumpleaños o planifica un encuentro de empresa en un salón diáfano y versátil con servicio continuo de cocina y barra propia.
         </p>
 
         {/* CTA RAPIDO HEADER */}
         <div className="pt-2 flex flex-wrap gap-4">
           <button
-            onClick={() => onNavigate('/contacto')}
-            className="px-6 py-3 bg-black text-white hover:bg-[#b91c1c] border-2 border-black font-anton text-lg uppercase tracking-wider flex items-center gap-2 shadow-[4px_4px_0px_rgba(0,0,0,1)] transition-colors"
+            onClick={() => onNavigate('/contacto?tipo=evento')}
+            className="px-6 py-3.5 bg-[#b91c1c] hover:bg-red-700 text-white font-['Anton'] text-sm sm:text-base uppercase tracking-wider border-2 border-black shadow-[4px_4px_0_#000] flex items-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
           >
-            <Calendar className="w-5 h-5" />
-            <span>CONSULTAR DISPONIBILIDAD</span>
+            <Calendar className="w-4 h-4" />
+            <span>SOLICITAR DISPONIBILIDAD DE FECHA</span>
           </button>
           <button
             onClick={() => onNavigate('/espacio')}
-            className="px-6 py-3 bg-white text-black hover:bg-neutral-100 border-2 border-black font-anton text-lg uppercase tracking-wider flex items-center gap-2 shadow-[4px_4px_0px_rgba(0,0,0,1)] transition-colors"
+            className="px-6 py-3.5 bg-[#181615] hover:bg-[#222] text-[#e2c044] font-mono text-xs font-bold uppercase border border-[#e2c044] shadow-[4px_4px_0_#000] flex items-center gap-2 cursor-pointer transition-colors"
           >
-            <span>VER EL SALÓN & LA FURGONETA</span>
+            <span>CONOCE EL SALÓN Y LA VOLKSWAGEN</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
       </div>
 
-      {/* 3 VALUE PROPOSITIONS */}
+      {/* 2. VALUE PROPOSITIONS */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {eventos.valueProps.map((prop, idx) => (
-          <div
-            key={idx}
-            className="p-6 bg-[#fbf8f1] border-3 border-black shadow-[5px_5px_0px_rgba(0,0,0,1)] relative"
-          >
-            <div className="absolute -top-3 left-4 bg-black text-white font-mono-code text-xs px-2 py-0.5 border border-black">
-              0{idx + 1}
-            </div>
-            <h3 className="font-anton text-xl uppercase tracking-wider text-black mt-2 mb-2">
-              {prop.title}
-            </h3>
-            <p className="font-sans text-sm text-neutral-700 leading-relaxed">
-              {prop.desc}
-            </p>
-          </div>
-        ))}
+        <div className="p-6 bg-[#181615] border-2 border-[#33302c] shadow-[6px_6px_0_#000] relative space-y-3">
+          <span className="font-mono text-xs font-bold text-[#e2c044] bg-black/80 px-2 py-0.5 border border-[#33302c]">
+            01 • VERSATILIDAD
+          </span>
+          <h3 className="font-['Anton'] text-xl uppercase tracking-wider text-[#f5efe1]">
+            Distribución Sin Rigideces
+          </h3>
+          <p className="font-['Space_Grotesk'] text-xs sm:text-sm text-[#b8b0a2] leading-relaxed">
+            Mesas largas configurables para sentarse a comer o espacios abiertos estilo cóctel para moverse libremente.
+          </p>
+        </div>
+
+        <div className="p-6 bg-[#181615] border-2 border-[#33302c] shadow-[6px_6px_0_#000] relative space-y-3">
+          <span className="font-mono text-xs font-bold text-[#b91c1c] bg-black/80 px-2 py-0.5 border border-[#33302c]">
+            02 • COCINA CONTINUA
+          </span>
+          <h3 className="font-['Anton'] text-xl uppercase tracking-wider text-[#f5efe1]">
+            Gastronomía Non-Stop
+          </h3>
+          <p className="font-['Space_Grotesk'] text-xs sm:text-sm text-[#b8b0a2] leading-relaxed">
+            Plancha caliente, hamburguesas 100% buey, sándwiches de barra, picoteo y cerveza de tanque fría durante todo el evento.
+          </p>
+        </div>
+
+        <div className="p-6 bg-[#181615] border-2 border-[#33302c] shadow-[6px_6px_0_#000] relative space-y-3">
+          <span className="font-mono text-xs font-bold text-[#16a34a] bg-black/80 px-2 py-0.5 border border-[#33302c]">
+            03 • UBICACIÓN
+          </span>
+          <h3 className="font-['Anton'] text-xl uppercase tracking-wider text-[#f5efe1]">
+            El Centro de Indautxu
+          </h3>
+          <p className="font-['Space_Grotesk'] text-xs sm:text-sm text-[#b8b0a2] leading-relaxed">
+            Urrutia Kalea 1, a 3 minutos del metro y en el corazón social de Bilbao. Máxima facilidad de acceso para tus invitados.
+          </p>
+        </div>
       </div>
 
-      {/* TIPOLOGÍAS DE EVENTOS */}
+      {/* 3. TIPOLOGÍAS DE EVENTOS */}
       <div className="space-y-8">
-        <div className="border-b-4 border-black pb-3">
-          <div className="font-mono-code text-xs font-bold text-neutral-600 uppercase tracking-widest">
+        <div className="border-b-2 border-[#33302c] pb-3">
+          <div className="font-mono text-xs font-bold text-[#e2c044] uppercase tracking-widest">
             // FORMATOS HABITUALES
           </div>
-          <h2 className="font-anton text-3xl sm:text-4xl uppercase tracking-wider text-black">
-            ¿QUÉ TIPO DE ENCUENTRO ESTÁS PREPARANDO?
+          <h2 className="font-['Anton'] text-3xl sm:text-4xl uppercase tracking-wider text-[#f5efe1]">
+            ¿Qué Tipo de Encuentro Estás Organizando?
           </h2>
         </div>
 
@@ -78,43 +96,41 @@ export const EventosPage: React.FC<EventosPageProps> = ({ onNavigate }) => {
           {eventos.tipologias.map((tipo) => (
             <div
               key={tipo.id}
-              className="bg-[#f4eedd] border-4 border-black shadow-[6px_6px_0px_rgba(0,0,0,1)] flex flex-col justify-between overflow-hidden"
+              className="bg-[#181615] border-3 border-[#33302c] shadow-[8px_8px_0_#000] flex flex-col justify-between overflow-hidden"
             >
-              {/* IMAGE HEADER */}
-              <div className="relative h-56 sm:h-64 border-b-3 border-black overflow-hidden bg-neutral-900">
+              <div className="relative h-60 overflow-hidden bg-black border-b border-[#2b2724]">
                 <img
                   src={tipo.image}
                   alt={tipo.title}
-                  className="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-300"
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 />
-                <div className="absolute top-3 left-3 bg-[#b91c1c] text-white font-mono-code text-xs px-2.5 py-0.5 border border-black font-bold">
+                <div className="absolute top-3 left-3 bg-[#b91c1c] text-white font-mono text-[11px] font-bold px-2.5 py-0.5 border border-black uppercase shadow">
                   {tipo.badge}
                 </div>
               </div>
 
-              {/* BODY */}
               <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                 <div className="space-y-2">
-                  <h3 className="font-anton text-2xl uppercase tracking-wider text-black">
+                  <h3 className="font-['Anton'] text-2xl uppercase tracking-wider text-[#f5efe1]">
                     {tipo.title}
                   </h3>
-                  <p className="font-mono-code text-xs font-bold text-[#b91c1c] uppercase">
+                  <p className="font-mono text-xs font-bold text-[#e2c044] uppercase">
                     {tipo.subtitle}
                   </p>
-                  <p className="font-sans text-sm text-neutral-800 leading-relaxed">
+                  <p className="font-['Space_Grotesk'] text-sm text-[#ded8cb] leading-relaxed">
                     {tipo.description}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t-2 border-black/20 space-y-3">
-                  <div className="font-mono-code text-xs text-neutral-700">
-                    <span className="font-bold text-black uppercase">Pensado para: </span>
+                <div className="pt-3 border-t border-[#2a2623] space-y-3">
+                  <div className="font-mono text-xs text-[#9c9488]">
+                    <span className="font-bold text-[#ded8cb] uppercase">Ideal para: </span>
                     {tipo.idealFor}
                   </div>
 
                   <button
-                    onClick={() => onNavigate('/contacto')}
-                    className="w-full py-2.5 bg-black text-white hover:bg-[#b91c1c] border-2 border-black font-anton text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-colors"
+                    onClick={() => onNavigate(`/contacto?tipo=${tipo.id}`)}
+                    className="w-full py-2.5 bg-[#1f1d1b] hover:bg-[#b91c1c] text-white border border-[#444] font-['Anton'] text-sm uppercase tracking-wider flex items-center justify-center gap-2 transition-colors cursor-pointer"
                   >
                     <span>CONSULTAR ESTE FORMATO</span>
                     <ArrowRight className="w-4 h-4" />
@@ -126,102 +142,78 @@ export const EventosPage: React.FC<EventosPageProps> = ({ onNavigate }) => {
         </div>
       </div>
 
-      {/* GASTRONOMÍA ASOCIADA A EVENTOS */}
-      <div className="bg-[#fbf8f1] border-4 border-black p-6 sm:p-10 shadow-[8px_8px_0px_rgba(0,0,0,1)] space-y-6">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b-2 border-black pb-4">
+      {/* 4. GASTRONOMÍA ASOCIADA A EVENTOS */}
+      <div className="bg-[#141312] border-3 border-[#e2c044] p-6 sm:p-10 shadow-[8px_8px_0_#000] space-y-6">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#2b2724] pb-4">
           <div>
-            <div className="font-mono-code text-xs font-bold text-[#b91c1c] uppercase tracking-wider">
-              // COCINA NON-STOP & FORMATOS COMPARTIDOS
+            <div className="font-mono text-xs font-bold text-[#b91c1c] uppercase tracking-wider">
+              // COCINA CONTINUA & FORMATOS COMPARTIDOS
             </div>
-            <h2 className="font-anton text-3xl uppercase tracking-wider text-black">
-              UNA PROPUESTA CULINARIA SIN PRISAS
+            <h2 className="font-['Anton'] text-2xl sm:text-3xl uppercase tracking-wider text-[#f5efe1]">
+              Una Propuesta Gastronómica Real
             </h2>
           </div>
           <button
             onClick={() => onNavigate('/carta')}
-            className="px-4 py-2 bg-white text-black hover:bg-black hover:text-white border-2 border-black font-anton text-sm uppercase tracking-wider shrink-0 transition-colors"
+            className="px-5 py-2.5 bg-[#e2c044] hover:bg-yellow-400 text-black font-['Anton'] text-xs sm:text-sm uppercase tracking-wider border border-black shadow-[3px_3px_0_#000] transition-colors cursor-pointer self-start md:self-auto"
           >
             VER CARTA COMPLETA
           </button>
         </div>
 
-        <p className="font-sans text-neutral-800 text-base leading-relaxed">
+        <p className="font-['Space_Grotesk'] text-sm sm:text-base text-[#ded8cb] leading-relaxed">
           {GRAFIT_DATA.gastronomia.gruposNota}
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
-          <div className="p-4 bg-white border-2 border-black">
-            <h4 className="font-anton text-lg uppercase text-black mb-1">Picoteo Informal</h4>
-            <p className="font-mono-code text-xs text-neutral-700">
-              Pintxos de barra, tortilla jugosa recién cuajada y raciones calientes para comer de pie o en mesas altas.
+          <div className="p-4 bg-[#1a1816] border border-[#33302c]">
+            <h4 className="font-['Anton'] text-base uppercase text-[#f5efe1] mb-1">Picoteo y Barra</h4>
+            <p className="font-mono text-xs text-[#a39b8e] leading-relaxed">
+              Barra de pintxos artesanos, raciones calientes de plancha y tablas para compartir de pie o sentado.
             </p>
           </div>
-          <div className="p-4 bg-white border-2 border-black">
-            <h4 className="font-anton text-lg uppercase text-black mb-1">Burger & Caserío</h4>
-            <p className="font-mono-code text-xs text-neutral-700">
-              Nuestras burgers 100% buey y platos contundentes para sentarse a la mesa con cerveza de tanque fría.
+          <div className="p-4 bg-[#1a1816] border border-[#33302c]">
+            <h4 className="font-['Anton'] text-base uppercase text-[#f5efe1] mb-1">Burger 100% Buey & Plancha</h4>
+            <p className="font-mono text-xs text-[#a39b8e] leading-relaxed">
+              Carne seleccionada de primera calidad, queso fundido, bacon crujiente y pan rústico con caña fría.
             </p>
           </div>
-          <div className="p-4 bg-white border-2 border-black">
-            <h4 className="font-anton text-lg uppercase text-black mb-1">Menús Personalizados</h4>
-            <p className="font-mono-code text-xs text-neutral-700">
-              Opciones acordadas previamente para cuadrillas y empresas con necesidades o preferencias específicas.
+          <div className="p-4 bg-[#1a1816] border border-[#33302c]">
+            <h4 className="font-['Anton'] text-base uppercase text-[#f5efe1] mb-1">Menús a Medida</h4>
+            <p className="font-mono text-xs text-[#a39b8e] leading-relaxed">
+              Opciones acordadas previamente para cuadrillas y empresas según preferencias y necesidades concretas.
             </p>
           </div>
         </div>
       </div>
 
-      {/* NARRATIVA DE IDENTIDAD INTEGRADA */}
-      {historySnippet && (
-        <div className="bg-black text-white p-6 sm:p-8 border-4 border-black shadow-[6px_6px_0px_#b91c1c] flex flex-col md:flex-row items-center gap-6">
-          <div className="w-full md:w-1/3 shrink-0 h-44 border-2 border-white/20 overflow-hidden">
-            <img
-              src={historySnippet.image || './assets/grafit/interior/grafit-barra-01.jpg'}
-              alt={historySnippet.title}
-              className="w-full h-full object-cover grayscale contrast-125"
-            />
-          </div>
-          <div className="space-y-2">
-            <div className="font-mono-code text-xs text-[#b91c1c] uppercase tracking-widest">
-              // {historySnippet.context}
-            </div>
-            <h3 className="font-anton text-2xl uppercase tracking-wider text-white">
-              {historySnippet.title}
-            </h3>
-            <blockquote className="font-serif italic text-sm text-neutral-300 border-l-2 border-[#b91c1c] pl-3 my-2">
-              «{historySnippet.quote}»
-            </blockquote>
-            <p className="font-mono-code text-xs text-neutral-400">
-              En Grafit, las generaciones conviven: la misma energía de siempre, adaptada a la comodidad que tu evento merece.
-            </p>
-          </div>
+      {/* 5. AVISO DE TRANSPARENCIA */}
+      <div className="p-5 bg-[#181615] border-2 border-amber-600/70 text-amber-200 font-mono text-xs flex items-start gap-3 shadow-[4px_4px_0_#000]">
+        <Info className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+        <div>
+          <strong className="text-white block uppercase mb-1">Compromiso de Honestidad y Reserva:</strong>
+          La solicitud enviada a través de la web no constituye una reserva confirmada de forma inmediata. Nuestro equipo revisará la disponibilidad de la fecha y contactará directamente contigo para detallar las opciones de distribución y menú del salón sin compromisos.
         </div>
-      )}
+      </div>
 
-      {/* CIERRE COMERCIAL DIRECTO */}
-      <div className="p-8 bg-[#f4eedd] border-4 border-black shadow-[8px_8px_0px_rgba(0,0,0,1)] text-center space-y-4">
-        <h2 className="font-anton text-3xl sm:text-4xl uppercase tracking-wider text-black">
-          ¿HABLÁIS DE FECHAS?
+      {/* 6. CIERRE COMERCIAL DIRECTO */}
+      <div className="p-8 sm:p-10 bg-[#181615] border-4 border-[#b91c1c] shadow-[10px_10px_0_#000] text-center space-y-4">
+        <h2 className="font-['Anton'] text-3xl sm:text-4xl uppercase tracking-wider text-[#f5efe1]">
+          ¿Hablamos de Fechas para tu Grupo?
         </h2>
-        <p className="font-sans text-neutral-800 text-base max-w-2xl mx-auto">
-          Cuéntanos el número aproximado de personas y qué idea tenéis. Te respondemos con las opciones disponibles y te orientamos sobre la mejor distribución.
+        <p className="font-['Space_Grotesk'] text-sm sm:text-base text-[#ded8cb] max-w-2xl mx-auto leading-relaxed">
+          Cuéntanos el número aproximado de personas y qué formato tenéis en mente. Te orientamos sobre disponibilidad y configuramos el salón a vuestra medida.
         </p>
 
-        <div className="pt-2 flex flex-wrap justify-center items-center gap-4">
+        <div className="pt-3 flex justify-center">
           <button
-            onClick={() => onNavigate('/contacto')}
-            className="px-8 py-3.5 bg-black text-white hover:bg-[#b91c1c] border-2 border-black font-anton text-xl uppercase tracking-wider flex items-center gap-2 shadow-[4px_4px_0px_rgba(0,0,0,1)] transition-colors"
+            onClick={() => onNavigate('/contacto?tipo=evento')}
+            className="px-8 py-4 bg-[#b91c1c] hover:bg-red-700 text-white font-['Anton'] text-base uppercase tracking-wider border-2 border-black shadow-[5px_5px_0_#000] flex items-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
           >
-            <span>PEDIR PRESUPUESTO & DISPONIBILIDAD</span>
+            <Calendar className="w-5 h-5" />
+            <span>SOLICITAR DISPONIBILIDAD SIN COMPROMISO</span>
             <ArrowRight className="w-5 h-5" />
           </button>
-          <a
-            href={`tel:${info.phone}`}
-            className="px-6 py-3.5 bg-white text-black hover:bg-neutral-100 border-2 border-black font-anton text-lg uppercase tracking-wider flex items-center gap-2 shadow-[4px_4px_0px_rgba(0,0,0,1)] transition-colors"
-          >
-            <Phone className="w-5 h-5 text-[#b91c1c]" />
-            <span>{info.phone}</span>
-          </a>
         </div>
       </div>
     </div>

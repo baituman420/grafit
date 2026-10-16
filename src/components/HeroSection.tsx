@@ -178,7 +178,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                 <div>
                   <span className="font-ransom text-2xl tracking-wide uppercase text-[#0a0a0a]">PUNTO DE ENCUENTRO INTERGENERACIONAL</span>
                   <p className="text-xs text-neutral-800">
-                    Desde 2017 acogiendo cuadrillas del barrio, celebraciones y amantes del rock en un ambiente cercano y sin artificios.
+                    Acogiendo cuadrillas del barrio, celebraciones y amantes de la buena música en un ambiente cercano y sin artificios.
                   </p>
                 </div>
               </div>
