@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
-import { RotateCcw, Calendar, ArrowDown } from 'lucide-react';
+import { RotateCcw, Calendar, ArrowDown, MapPin } from 'lucide-react';
 
 interface HeroVolkswagenV3Props {
   onNavigate: (path: string) => void;
@@ -372,30 +372,10 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
       />
       <div className="absolute inset-0 bg-radial-gradient from-transparent via-[#0c0b0a]/70 to-[#0c0b0a] pointer-events-none" />
 
-      {/* TOP META STRIP (Indautxu location & live badge) */}
-      <div className="relative z-30 bg-black/90 border-b border-[#33302c] px-4 py-1.5 flex items-center justify-between font-mono text-[10px] sm:text-xs text-[#9c9488] uppercase tracking-wider">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#16a34a] animate-pulse" />
-          <span className="text-[#f5efe1] font-bold">URRUTIA KALEA 1 • INDAUTXU (BILBAO)</span>
-        </div>
-        <div className="hidden sm:flex items-center gap-3">
-          <span className="text-[#e2c044]">★ SALÓN MULTIUSOS & COCINA NON-STOP</span>
-          <span className="text-[#b91c1c]">★ CULTURA ROCK & ATHLETIC</span>
-        </div>
-        <button
-          onClick={runHeroAnimation}
-          className="flex items-center gap-1.5 px-2 py-0.5 bg-[#1f1d1b] hover:bg-[#b91c1c] text-white border border-[#444] transition-colors cursor-pointer text-[10px] font-bold"
-          title="Repetir animación del Hero"
-        >
-          <RotateCcw className="w-3 h-3" />
-          <span>REPETIR INTRO</span>
-        </button>
-      </div>
-
       {/* MAIN ANIMATED STAGE */}
       <div
         ref={containerRef}
-        className="relative w-full max-w-5xl mx-auto px-4 pt-4 pb-8 sm:pt-6 sm:pb-10 flex flex-col items-center justify-center min-h-[560px] sm:min-h-[640px]"
+        className="relative w-full max-w-7xl mx-auto px-4 pt-6 pb-8 sm:pt-8 sm:pb-12 flex flex-col items-center justify-center min-h-[560px] sm:min-h-[640px]"
       >
         {/* ================================================================= */}
         {/* RANSOM WOODBLOCK LETTERS HEADER (G R A F I T)                      */}
@@ -418,26 +398,70 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
           ))}
         </div>
 
-        {/* SUBTITLE RIBBON */}
-        <div className="relative z-20 text-center mb-4">
-          <span className="inline-block bg-[#b91c1c] text-white font-mono text-[10px] sm:text-xs font-bold uppercase tracking-widest px-3 py-1 shadow-[3px_3px_0_#000]">
+        {/* SUBTITLE RIBBON & SECONDARY IDENTITY */}
+        <div className="relative z-20 flex flex-wrap items-center justify-center gap-2 mb-4">
+          <span className="inline-block bg-[#b91c1c] text-white font-mono text-[10px] sm:text-xs font-bold uppercase tracking-widest px-3 py-1 shadow-[3px_3px_0_#000] rot-neg-1">
             EXPERIENCIAS, GRUPOS Y CELEBRACIONES
+          </span>
+          <span className="hidden sm:inline-block bg-black text-[#e2c044] font-mono text-[10px] sm:text-xs font-bold uppercase tracking-widest px-3 py-1 border border-neutral-700 shadow-[2px_2px_0_#000]">
+            ROCK CAFÉ • INDAUTXU • BILBAO
           </span>
         </div>
 
         {/* ================================================================= */}
-        {/* THE VOLKSWAGEN STRUCTURE (720 x 900 COORDINATE SYSTEM)            */}
+        {/* PANORAMIC SCENIC STAGE (INTEGRATED IDENTITY + VAN + DIRECT NAV)   */}
         {/* ================================================================= */}
-        <div
-          ref={vanWrapperRef}
-          className="relative w-full max-w-[360px] sm:max-w-[440px] md:max-w-[500px] aspect-[720/900] mx-auto select-none"
-        >
-          {/* PODIUM SHADOWS */}
-          <img
-            src="/assets/grafit/motion/van/layers/layer_09_podium_shadows.png"
-            alt=""
-            className="absolute inset-0 w-full h-full object-contain pointer-events-none z-0"
-          />
+        <div className="relative w-full max-w-7xl mx-auto flex items-center justify-center gap-4 lg:gap-8">
+          
+          {/* DESKTOP SCENIC WING LEFT: INTEGRATED IDENTITY & LOCATION */}
+          <div className="hidden lg:flex flex-col items-end w-64 xl:w-72 shrink-0 self-center relative z-20">
+            <div className="w-full p-4 bg-[#141211]/95 border-3 border-neutral-800 shadow-[6px_6px_0px_#000] relative space-y-3 text-right">
+              <div className="masking-tape tape-corner-tl"></div>
+              
+              <div className="flex items-center justify-end gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#16a34a] animate-pulse" />
+                <span className="font-mono text-[9px] uppercase tracking-wider text-[#e2c044] font-bold">
+                  LOCAL AUTÉNTICO • BILBAO
+                </span>
+              </div>
+
+              <div>
+                <span className="font-anton text-4xl xl:text-5xl text-[#f5efe1] uppercase tracking-wider leading-none block">
+                  GRAFIT
+                </span>
+                <p className="font-mono text-[11px] xl:text-xs text-[#b91c1c] font-bold uppercase tracking-wider mt-1">
+                  ROCK CAFÉ <span className="text-white">//</span> INDAUTXU
+                </p>
+              </div>
+
+              <div className="pt-2 border-t border-neutral-800 space-y-1 font-mono text-[10px] xl:text-[11px] text-[#ded8cb]">
+                <p className="font-bold text-white flex items-center justify-end gap-1.5">
+                  <span>URRUTIA KALEA 1</span>
+                  <MapPin className="w-3.5 h-3.5 text-[#b91c1c]" />
+                </p>
+                <p className="text-neutral-400">48010 Indautxu, Bilbao</p>
+                <p className="text-[#e2c044] font-bold text-[9px]">A 3 MIN DEL METRO INDAUTXU</p>
+              </div>
+
+              <div className="pt-2 border-t border-neutral-800 flex flex-wrap justify-end gap-1 font-mono text-[8px] uppercase">
+                <span className="bg-black/80 text-[#ded8cb] px-1.5 py-0.5 border border-neutral-700">★ SALÓN MULTIUSOS</span>
+                <span className="bg-black/80 text-[#ded8cb] px-1.5 py-0.5 border border-neutral-700">★ COCINA CONTINUA</span>
+                <span className="bg-black/80 text-[#b91c1c] px-1.5 py-0.5 border border-neutral-700 font-bold">★ ATHLETIC 10'</span>
+              </div>
+            </div>
+          </div>
+
+          {/* CENTRAL VOLKSWAGEN STRUCTURE (MOBILE 92-95% / DESKTOP ANCHOR) */}
+          <div
+            ref={vanWrapperRef}
+            className="relative w-full max-w-[370px] sm:max-w-[440px] md:max-w-[480px] aspect-[720/900] mx-auto select-none shrink-0 z-20"
+          >
+            {/* PODIUM SHADOWS */}
+            <img
+              src="/assets/grafit/motion/van/layers/layer_09_podium_shadows.png"
+              alt=""
+              className="absolute inset-0 w-full h-full object-contain pointer-events-none z-0"
+            />
 
           {/* DYNAMIC CHASSIS BODY LAYER */}
           <img
@@ -600,6 +624,76 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
             <span className="mt-1 bg-[#e2c044] text-black font-mono text-[8px] sm:text-[10px] font-bold px-1.5 py-0.5 border border-black shadow-[2px_2px_0_#000] uppercase tracking-wider whitespace-nowrap">
               EL GRAN SALÓN
             </span>
+          </div>
+          </div>
+
+          {/* DESKTOP INTEGRATED SCENIC WING RIGHT: DIRECT NAVIGATION & ACTION */}
+          <div className="hidden lg:flex flex-col items-start w-64 xl:w-72 shrink-0 self-center relative z-20">
+            <div className="w-full p-4 bg-[#141211]/95 border-3 border-neutral-800 shadow-[6px_6px_0px_#b91c1c] relative space-y-3">
+              <div className="masking-tape tape-corner-tr"></div>
+              
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-[9px] uppercase tracking-wider text-[#ded8cb] font-bold">
+                  NAVEGACIÓN RÁPIDA
+                </span>
+                <button
+                  onClick={runHeroAnimation}
+                  className="flex items-center gap-1 font-mono text-[9px] text-[#e2c044] hover:text-white transition-colors cursor-pointer"
+                  title="Repetir animación del Hero"
+                >
+                  <RotateCcw className="w-2.5 h-2.5" />
+                  <span>REPETIR</span>
+                </button>
+              </div>
+
+              <nav className="space-y-1.5 w-full">
+                <button
+                  onClick={() => onNavigate('/')}
+                  className="w-full flex items-center justify-between px-2.5 py-1.5 bg-black/60 hover:bg-[#b91c1c] hover:text-white text-[#f5efe1] border border-neutral-800 transition-colors text-left font-anton text-sm uppercase tracking-wider cursor-pointer"
+                >
+                  <span>INICIO</span>
+                  <span className="font-mono text-[9px] text-[#e2c044]">01</span>
+                </button>
+                <button
+                  onClick={() => onNavigate('/eventos')}
+                  className="w-full flex items-center justify-between px-2.5 py-1.5 bg-black/60 hover:bg-[#b91c1c] hover:text-white text-[#f5efe1] border border-neutral-800 transition-colors text-left font-anton text-sm uppercase tracking-wider cursor-pointer"
+                >
+                  <span>EVENTOS</span>
+                  <span className="font-mono text-[9px] bg-[#b91c1c] text-white px-1 font-bold">GRUPOS</span>
+                </button>
+                <button
+                  onClick={() => onNavigate('/espacio')}
+                  className="w-full flex items-center justify-between px-2.5 py-1.5 bg-black/60 hover:bg-[#b91c1c] hover:text-white text-[#f5efe1] border border-neutral-800 transition-colors text-left font-anton text-sm uppercase tracking-wider cursor-pointer"
+                >
+                  <span>EL ESPACIO</span>
+                  <span className="font-mono text-[9px] text-neutral-400">SALÓN</span>
+                </button>
+                <button
+                  onClick={() => onNavigate('/carta')}
+                  className="w-full flex items-center justify-between px-2.5 py-1.5 bg-black/60 hover:bg-[#b91c1c] hover:text-white text-[#f5efe1] border border-neutral-800 transition-colors text-left font-anton text-sm uppercase tracking-wider cursor-pointer"
+                >
+                  <span>GASTRONOMÍA</span>
+                  <span className="font-mono text-[9px] text-[#e2c044] font-bold">NON-STOP</span>
+                </button>
+                <button
+                  onClick={() => onNavigate('/contacto')}
+                  className="w-full flex items-center justify-between px-2.5 py-1.5 bg-black/60 hover:bg-[#b91c1c] hover:text-white text-[#f5efe1] border border-neutral-800 transition-colors text-left font-anton text-sm uppercase tracking-wider cursor-pointer"
+                >
+                  <span>CONTACTO</span>
+                  <span className="font-mono text-[9px] text-neutral-400">05</span>
+                </button>
+              </nav>
+
+              <div className="pt-2 border-t border-neutral-800">
+                <button
+                  onClick={() => onNavigate('/contacto?tipo=evento')}
+                  className="w-full py-2 bg-[#b91c1c] hover:bg-red-700 text-white font-anton text-xs xl:text-sm tracking-wider uppercase border border-black shadow-[3px_3px_0_#000] flex items-center justify-center gap-1.5 cursor-pointer transition-transform hover:-translate-y-0.5"
+                >
+                  <Calendar className="w-3.5 h-3.5 text-amber-300" />
+                  <span>★ RESERVAR GRUPO ★</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 

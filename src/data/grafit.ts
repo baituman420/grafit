@@ -320,85 +320,115 @@ export const GRAFIT_DATA = {
     }
   ] as HistoricSnippet[],
 
-  // Eje 5: Comunidad y Redes Reales
-  comunidad: {
-    instagramHandle: '@grafitcafe',
-    instagramUrl: 'https://instagram.com/grafitcafe',
-    tagline: 'Sigue el día a día de Grafit en nuestras redes oficiales',
-    realPhotos: [
+  // Eje 5: Comunidad y Athletic
+  athletic: {
+    badge: 'ESPÍRITU DE BARRIO // INDAUTXU',
+    headline: 'EL ATHLETIC SE VIVE EN EL BARRIO',
+    subtext: 'A 10 minutos a pie de San Mamés. La previa de cuadrilla, la cerveza de tanque bien tirada y el punto de encuentro rojiblanco en Indautxu.',
+    distance: '10 MIN A SAN MAMÉS',
+    highlights: [
       {
-        src: './assets/grafit/instagram/burguer.webp',
-        alt: 'Burger Grafit Special en el bar'
+        title: 'LA PREVIA EN URRUTIA KALEA',
+        desc: 'Pintxos recién salidos, zuritos y ambiente animado antes de iniciar la kalejira por Licenciado Poza hacia la Catedral.',
+        tag: 'DÍAS DE PARTIDO'
       },
       {
-        src: './assets/grafit/instagram/volkswagen.jpg',
-        alt: 'Furgoneta Volkswagen en el salón'
+        title: 'CERVEZA DE TANQUE A TEMPERATURA',
+        desc: 'Tirada continua desde tanques directos para atender cuadrillas numerosas sin perder frescura ni densidad de espuma.',
+        tag: 'CALIBRE CERO'
       },
       {
-        src: './assets/grafit/instagram/pintxos.jpg',
-        alt: 'Barra de pintxos'
+        title: 'EL POSTPARTIDO EN EL SALÓN',
+        desc: 'Mesas en el salón multiusos para comentar el encuentro, reponer fuerzas con cocina non-stop y alargar la celebración con buen rock.',
+        tag: 'TERCER TIEMPO'
+      }
+    ],
+    gallery: [
+      {
+        src: './assets/grafit/drinks/grafit-cerveza-canero-01.jpg',
+        caption: 'Tiradores activos y cerveza fría en la barra de Urrutia Kalea',
+        alt: 'Grifos de cerveza en Grafit'
       },
       {
-        src: './assets/grafit/instagram/chupa-cuero.jpg',
-        alt: 'Ambiente en el bar'
+        src: './assets/grafit/archive/grafit-reapertura-celebracion-05.jpg',
+        caption: 'Celebraciones de cuadrillas y ambiente festivo en el salón',
+        alt: 'Celebración de amigos en Grafit'
+      },
+      {
+        src: './assets/grafit/interior/grafit-barra-01.jpg',
+        caption: 'La barra tradicional de Indautxu, punto de encuentro clásico',
+        alt: 'Barra de madera en Grafit'
       }
     ]
   },
 
-  instagramFeed: [
+  // Eje 6: Galería Editorial Rock (Inspiración WebGL Magazine)
+  magazineGallery: [
     {
-      id: 'ig-1',
-      src: './assets/grafit/instagram/volkswagen.jpg',
-      caption: 'Nuestra mítica furgoneta Volkswagen esperando el próximo evento en el salón',
-      tag: '#SALONMULTIUSOS',
-      likes: '142',
-      date: 'Reciente',
-      rotation: 'rot-neg-2'
-    },
-    {
-      id: 'ig-2',
+      id: 'mag-01',
+      num: '01',
+      title: 'LA BURGER 100% BUEY',
+      subtitle: 'Producto estrella de autor',
+      tag: 'CULINARY ROCK',
       src: './assets/grafit/instagram/burguer.webp',
-      caption: 'Burger 100% Buey con patatas rústicas. Fogones activos de 12:00 a 23:30',
-      tag: '#BURGERROCK',
-      likes: '198',
-      date: 'Reciente',
-      rotation: 'rot-pos-2'
+      caption: '200g de carne seleccionada, queso fundente y pan crujiente. Servicio non-stop de 12:00 a 23:30.',
+      orientation: 'portrait',
+      quote: 'El bocado contundente que identifica la cocina de Grafit.'
     },
     {
-      id: 'ig-3',
+      id: 'mag-02',
+      num: '02',
+      title: 'LA VOLKSWAGEN DEL SALÓN',
+      subtitle: 'El icono de las celebraciones',
+      tag: 'ESPACIO SINGULAR',
+      src: './assets/grafit/instagram/volkswagen.jpg',
+      caption: 'Media estructura decorativa frontal instalada en el salón multiusos. La firma visual del bar.',
+      orientation: 'landscape',
+      quote: 'Donde los eventos de grupo se convierten en recuerdos fotográficos.'
+    },
+    {
+      id: 'mag-03',
+      num: '03',
+      title: 'LA BARRA DE URRUTIA',
+      subtitle: 'Punto de encuentro en Indautxu',
+      tag: 'BARRA & TANQUE',
+      src: './assets/grafit/interior/grafit-barra-01.jpg',
+      caption: 'Madera cálida, grifos de cerveza de tanque y el dinamismo cotidiano de la calle Urrutia.',
+      orientation: 'square',
+      quote: 'El aperitivo rápido, el zurito de previa o el café matinal.'
+    },
+    {
+      id: 'mag-04',
+      num: '04',
+      title: 'MURAL THE ROLLING STONES',
+      subtitle: 'Actitud rock en ladrillo visto',
+      tag: 'CULTURA & ALMA',
       src: './assets/grafit/instagram/rolling-pared.jpg',
-      caption: 'Mural de The Rolling Stones sobre el ladrillo visto de nuestro salón',
-      tag: '#STONESWALL',
-      likes: '167',
-      date: 'Reciente',
-      rotation: 'rot-neg-1'
+      caption: 'Homenaje a las bandas atemporales que definen la banda sonora del establecimiento.',
+      orientation: 'portrait',
+      quote: 'El rock como energía para recibir a distintas generaciones.'
     },
     {
-      id: 'ig-4',
-      src: './assets/grafit/instagram/pintxos.jpg',
-      caption: 'Barra de pintxos recién salidos y tortilla jugosa para abrir boca',
-      tag: '#PINTXOSBILBAO',
-      likes: '115',
-      date: 'Reciente',
-      rotation: 'rot-pos-1'
+      id: 'mag-05',
+      num: '05',
+      title: 'MEMORIA DE CUADRILLAS',
+      subtitle: 'Celebraciones que hacen historia',
+      tag: 'MEMORIA VIVIDA',
+      src: './assets/grafit/archive/grafit-reapertura-celebracion-05.jpg',
+      caption: 'Encuentros multitudinarios, cumpleaños y brindis que han dado vida al salón multiusos.',
+      orientation: 'landscape',
+      quote: 'Espacio para reunir a quienes de verdad importan.'
     },
     {
-      id: 'ig-5',
-      src: './assets/grafit/instagram/sandwich-barra.jpg',
-      caption: 'Picoteo crujiente a la plancha para meriendas y cenas sin prisas',
-      tag: '#KITCHENNONSTOP',
-      likes: '89',
-      date: 'Reciente',
-      rotation: 'rot-neg-2'
-    },
-    {
-      id: 'ig-6',
+      id: 'mag-06',
+      num: '06',
+      title: 'NOCHE EN INDAUTXU',
+      subtitle: 'Urrutia Kalea 1',
+      tag: 'PUNTO DE ENCUENTRO',
       src: './assets/grafit/instagram/fachada-noche.jpg',
-      caption: 'Urrutia Kalea 1 al caer la noche. Punto de encuentro en Indautxu',
-      tag: '#INDAUTXU',
-      likes: '174',
-      date: 'Reciente',
-      rotation: 'rot-pos-2'
+      caption: 'Fachada iluminada en el centro de Bilbao. A 3 minutos del metro y 10 de San Mamés.',
+      orientation: 'square',
+      quote: 'Un refugio con carácter abierto a toda la ciudad.'
     }
-  ] as InstagramPost[]
+  ]
 };
