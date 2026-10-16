@@ -744,7 +744,7 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
                   }
                 }
               }}
-              className="w-full sm:w-auto bg-[#e2c044] hover:bg-yellow-400 text-black font-['Anton'] text-sm sm:text-base tracking-widest px-6 py-3 uppercase border-2 border-black shadow-[4px_4px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
+              className="w-full sm:w-auto bg-[#f5efe1] hover:bg-white text-black font-['Anton'] text-sm sm:text-base tracking-widest px-6 py-3 uppercase border-2 border-black shadow-[4px_4px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
             >
               <span>DESCUBRE LA GASTRONOMÍA</span>
               <ArrowDown className="w-4 h-4 animate-bounce" />

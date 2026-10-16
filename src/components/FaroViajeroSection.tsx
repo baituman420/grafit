@@ -359,7 +359,7 @@ export const FaroViajeroSection: React.FC<FaroViajeroSectionProps> = ({ onNaviga
             </button>
             <button
               onClick={() => onNavigate('/contacto?tipo=comida-grupo')}
-              className="bg-[#e2c044] text-black font-['Anton'] text-xs sm:text-sm tracking-wider py-2 px-3 uppercase border border-black shadow-[3px_3px_0_#000] hover:bg-yellow-400 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+              className="bg-[#f5efe1] text-black font-['Anton'] text-xs sm:text-sm tracking-wider py-2 px-3 uppercase border border-black shadow-[3px_3px_0_#000] hover:bg-white transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
             >
               <Calendar className="w-3.5 h-3.5" />
               <span>★ ORGANIZA UNA COMIDA DE GRUPO ★</span>

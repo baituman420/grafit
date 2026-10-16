@@ -12,7 +12,7 @@ export const CierreComercialSection: React.FC<CierreComercialSectionProps> = ({ 
   return (
     <section className="py-14 sm:py-20 px-4 sm:px-6 lg:px-12 bg-[#0c0b0a] text-[#f5efe1] border-b-8 border-black">
       <div className="max-w-4xl mx-auto">
-        <div className="bg-[#181615] border-4 border-[#e2c044] p-8 sm:p-12 shadow-[12px_12px_0_#000] text-center space-y-6 relative overflow-hidden">
+        <div className="bg-[#181615] border-4 border-black p-8 sm:p-12 shadow-[12px_12px_0_#000] text-center space-y-6 relative overflow-hidden">
           
           <div className="inline-block bg-[#b91c1c] text-white px-3 py-1 font-mono text-xs uppercase tracking-widest shadow-[3px_3px_0_#000]">
             // PLANIFICA TU CELEBRACIÓN EN INDAUTXU
@@ -38,7 +38,7 @@ export const CierreComercialSection: React.FC<CierreComercialSectionProps> = ({ 
 
             <button
               onClick={() => onNavigate('/eventos')}
-              className="w-full sm:w-auto px-6 py-4 bg-[#e2c044] hover:bg-yellow-400 text-black font-['Anton'] text-base uppercase tracking-wider border-2 border-black shadow-[5px_5px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
+              className="w-full sm:w-auto px-6 py-4 bg-[#f5efe1] hover:bg-white text-black font-['Anton'] text-base uppercase tracking-wider border-2 border-black shadow-[5px_5px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
             >
               <span>VER GUÍA DE EVENTOS</span>
             </button>

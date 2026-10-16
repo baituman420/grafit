@@ -77,7 +77,7 @@ export const EspacioIntroSection: React.FC<EspacioIntroSectionProps> = ({ onNavi
             <div className="pt-4 flex flex-col sm:flex-row gap-3.5">
               <button
                 onClick={() => onNavigate('/espacio')}
-                className="px-6 py-3 bg-[#e2c044] hover:bg-yellow-400 text-black font-['Anton'] text-sm uppercase tracking-wider border-2 border-black shadow-[4px_4px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
+                className="px-6 py-3 bg-[#f5efe1] hover:bg-white text-black font-['Anton'] text-sm uppercase tracking-wider border-2 border-black shadow-[4px_4px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
               >
                 <span>EXPLORAR EL ESPACIO COMPLETO</span>
                 <ArrowRight className="w-4 h-4" />
@@ -85,7 +85,7 @@ export const EspacioIntroSection: React.FC<EspacioIntroSectionProps> = ({ onNavi
 
               <button
                 onClick={() => onNavigate('/contacto?tipo=evento')}
-                className="px-6 py-3 bg-[#181615] hover:bg-[#222] text-[#f5efe1] font-mono text-xs font-bold uppercase border border-[#444] shadow-[3px_3px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-colors"
+                className="px-6 py-3 bg-[#b91c1c] hover:bg-red-700 text-white font-['Anton'] text-sm uppercase tracking-wider border-2 border-black shadow-[4px_4px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
               >
                 <span>CONSULTAR DISPONIBILIDAD</span>
               </button>

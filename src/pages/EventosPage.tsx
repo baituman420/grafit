@@ -155,7 +155,7 @@ export const EventosPage: React.FC<EventosPageProps> = ({ onNavigate }) => {
           </div>
           <button
             onClick={() => onNavigate('/carta')}
-            className="px-5 py-2.5 bg-[#e2c044] hover:bg-yellow-400 text-black font-['Anton'] text-xs sm:text-sm uppercase tracking-wider border border-black shadow-[3px_3px_0_#000] transition-colors cursor-pointer self-start md:self-auto"
+            className="px-5 py-2.5 bg-[#b91c1c] hover:bg-red-700 text-white font-['Anton'] text-xs sm:text-sm uppercase tracking-wider border border-black shadow-[3px_3px_0_#000] transition-colors cursor-pointer self-start md:self-auto"
           >
             VER CARTA COMPLETA
           </button>

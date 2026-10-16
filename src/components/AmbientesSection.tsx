@@ -67,7 +67,7 @@ export const AmbientesSection: React.FC<AmbientesSectionProps> = ({ onNavigate }
           </div>
 
           {/* LADO B: EL SALÓN MULTIUSOS */}
-          <div className="relative bg-[#181615] border-3 border-[#e2c044] shadow-[8px_8px_0_#000] flex flex-col justify-between overflow-hidden group">
+          <div className="relative bg-[#181615] border-3 border-neutral-800 hover:border-[#b91c1c] transition-colors shadow-[8px_8px_0_#000] flex flex-col justify-between overflow-hidden group">
             {/* PHOTO WITH VIGNETTE */}
             <div className="relative h-64 sm:h-72 overflow-hidden bg-black border-b-2 border-[#2b2724]">
               <img
@@ -103,13 +103,13 @@ export const AmbientesSection: React.FC<AmbientesSectionProps> = ({ onNavigate }
               <div className="pt-4 border-t border-[#262320] flex items-center justify-between">
                 <button
                   onClick={() => onNavigate('/contacto?tipo=evento')}
-                  className="px-4 py-2 bg-[#e2c044] hover:bg-yellow-400 text-black font-['Anton'] text-xs uppercase tracking-wider border border-black shadow-[3px_3px_0_#000] cursor-pointer transition-transform hover:-translate-y-0.5"
+                  className="px-4 py-2 bg-[#b91c1c] hover:bg-red-700 text-white font-['Anton'] text-xs uppercase tracking-wider border border-black shadow-[3px_3px_0_#000] cursor-pointer transition-transform hover:-translate-y-0.5"
                 >
                   ★ RESERVAR SALÓN ★
                 </button>
                 <button
                   onClick={() => onNavigate('/espacio')}
-                  className="font-mono text-xs font-bold text-[#e2c044] hover:underline flex items-center gap-1 cursor-pointer"
+                  className="font-mono text-xs font-bold text-[#f5efe1] hover:text-[#b91c1c] hover:underline flex items-center gap-1 cursor-pointer"
                 >
                   <span>MÁS DETALLES</span>
                   <ArrowRight className="w-3.5 h-3.5" />
