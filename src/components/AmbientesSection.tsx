@@ -7,8 +7,19 @@ interface AmbientesSectionProps {
 
 export const AmbientesSection: React.FC<AmbientesSectionProps> = ({ onNavigate }) => {
   return (
-    <section className="relative py-14 sm:py-20 px-4 sm:px-6 lg:px-12 bg-[#121110] text-[#f5efe1] border-b-8 border-black">
-      <div className="max-w-6xl mx-auto">
+    <section className="relative py-14 sm:py-20 px-4 sm:px-6 lg:px-12 bg-[#100e0d] text-[#f5efe1] border-b-8 border-black overflow-hidden">
+      {/* AUTHENTIC PUNK WALLPAPER SUBSTRATE (DARK TREATMENT) */}
+      <div
+        className="absolute inset-0 opacity-20 pointer-events-none mix-blend-luminosity bg-cover bg-center"
+        style={{ backgroundImage: `url('./assets/grafit/punk-wall-bg.jpg')` }}
+      />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'linear-gradient(180deg, rgba(12,11,10,0.95) 0%, rgba(16,14,12,0.75) 50%, rgba(12,11,10,0.95) 100%)',
+        }}
+      />
+      <div className="relative z-10 max-w-6xl mx-auto">
         {/* HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <div className="inline-block bg-[#b91c1c] text-white px-3 py-1 font-mono text-xs uppercase tracking-widest mb-3 shadow-[3px_3px_0_#000]">

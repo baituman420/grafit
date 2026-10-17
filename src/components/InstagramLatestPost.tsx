@@ -13,7 +13,6 @@ export interface InstagramPost {
 
 interface InstagramLatestPostProps {
   initialPost?: InstagramPost | null;
-  /** Pass access token when Instagram Graph API credentials become available */
   accessToken?: string;
   accountHandle?: string;
 }
@@ -29,14 +28,12 @@ export const InstagramLatestPost: React.FC<InstagramLatestPostProps> = ({
   );
 
   useEffect(() => {
-    // If an initial post was passed, mark as active
     if (initialPost) {
       setPost(initialPost);
       setStatus('active');
       return;
     }
 
-    // Architecture: Ready for Instagram Basic Display / Graph API fetch
     if (accessToken) {
       setStatus('loading');
       fetch(`https://graph.instagram.com/me/media?fields=id,caption,media_url,permalink,timestamp,media_type&access_token=${accessToken}&limit=1`)
@@ -61,11 +58,8 @@ export const InstagramLatestPost: React.FC<InstagramLatestPostProps> = ({
           }
         })
         .catch(() => {
-          setStatus('error');
+          setStatus('awaiting_credentials');
         });
-    } else {
-      // Honest default when credentials are not yet configured
-      setStatus('awaiting_credentials');
     }
   }, [accessToken, initialPost]);
 
@@ -74,22 +68,34 @@ export const InstagramLatestPost: React.FC<InstagramLatestPostProps> = ({
   return (
     <section
       id="instagram-sync-section"
-      className="relative py-12 sm:py-16 border-b-8 border-black bg-[#141211] text-[#f5efe1] select-none"
+      className="relative py-14 sm:py-20 border-b-8 border-black bg-[#0c0b0a] text-[#f5efe1] select-none overflow-hidden"
     >
+      {/* AUTHENTIC PUNK WALLPAPER (DARK VERSION) */}
+      <div
+        className="absolute inset-0 opacity-20 pointer-events-none mix-blend-luminosity bg-cover bg-center"
+        style={{ backgroundImage: `url('./assets/grafit/punk-wall-bg.jpg')` }}
+      />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'linear-gradient(180deg, rgba(12,11,10,0.95) 0%, rgba(16,14,12,0.80) 50%, rgba(12,11,10,0.95) 100%)',
+        }}
+      />
+
       <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* SECTION HEADER STRIP */}
-        <div className="p-4 sm:p-6 bg-[#1a1816] border-3 border-neutral-800 shadow-[6px_6px_0px_#000] relative space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-neutral-800">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-tr from-[#f58529] via-[#dd2a7b] to-[#8134af] flex items-center justify-center border border-black shadow">
-                <Instagram className="w-4 h-4 text-white" />
+        {/* SECTION CONTAINER */}
+        <div className="p-5 sm:p-8 bg-[#141210]/90 border-3 border-neutral-700 shadow-[8px_8px_0px_#000] relative space-y-5 backdrop-blur-sm">
+          <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-neutral-700">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 bg-gradient-to-tr from-[#f58529] via-[#dd2a7b] to-[#8134af] flex items-center justify-center border border-black shadow">
+                <Instagram className="w-5 h-5 text-white" />
               </div>
               <div>
-                <span className="font-anton text-lg sm:text-xl text-white tracking-wider uppercase leading-none block">
+                <span className="font-anton text-xl sm:text-2xl text-white tracking-wider uppercase leading-none block">
                   @{accountHandle}
                 </span>
-                <span className="font-mono-code text-[10px] text-[#e2c044] uppercase tracking-wider block">
+                <span className="font-mono text-[10px] text-[#e2c044] uppercase tracking-wider block mt-0.5">
                   CANAL OFICIAL DE INSTAGRAM // BILBAO
                 </span>
               </div>
@@ -98,22 +104,20 @@ export const InstagramLatestPost: React.FC<InstagramLatestPostProps> = ({
             {/* INTEGRATION STATUS BADGE */}
             <div className="flex items-center gap-2">
               {status === 'active' ? (
-                <span className="inline-flex items-center gap-1 font-mono-code text-[10px] bg-[#16a34a] text-white px-2 py-0.5 border border-black uppercase font-bold">
-                  <ShieldCheck className="w-3 h-3" />
+                <span className="inline-flex items-center gap-1 font-mono text-[10px] bg-[#16a34a] text-white px-2.5 py-1 border border-black uppercase font-bold">
+                  <ShieldCheck className="w-3.5 h-3.5" />
                   <span>SINCRONIZACIÓN ACTIVA</span>
                 </span>
               ) : (
-                <span className="inline-flex items-center gap-1 font-mono-code text-[10px] bg-black text-neutral-400 px-2 py-0.5 border border-neutral-700 uppercase font-semibold">
-                  <Clock className="w-3 h-3 text-[#e2c044]" />
+                <span className="inline-flex items-center gap-1.5 font-mono text-[10px] bg-black text-neutral-300 px-2.5 py-1 border border-neutral-700 uppercase font-bold">
+                  <Clock className="w-3.5 h-3.5 text-[#e2c044]" />
                   <span>PREPARADO PARA ÚLTIMA PUBLICACIÓN</span>
                 </span>
               )}
             </div>
           </div>
 
-          {/* =============================================================== */}
-          {/* STATE A: ACTIVE LATEST POST                                     */}
-          {/* =============================================================== */}
+          {/* ACTIVE POST OR HONEST FALLBACK */}
           {status === 'active' && post ? (
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center pt-2">
               <div className="md:col-span-5 relative aspect-square bg-black border-2 border-neutral-700 overflow-hidden shadow-[4px_4px_0_#000]">
@@ -122,13 +126,13 @@ export const InstagramLatestPost: React.FC<InstagramLatestPostProps> = ({
                   alt={post.caption || 'Última publicación en Instagram'}
                   className="w-full h-full object-cover"
                 />
-                <span className="absolute top-2 left-2 bg-[#b91c1c] text-white font-mono-code text-[9px] font-bold px-1.5 py-0.5 border border-black uppercase">
+                <span className="absolute top-2 left-2 bg-[#b91c1c] text-white font-mono text-[9px] font-bold px-2 py-0.5 border border-black uppercase">
                   ÚLTIMO POST REAL
                 </span>
               </div>
 
               <div className="md:col-span-7 space-y-3">
-                <div className="font-mono-code text-xs text-neutral-400">
+                <div className="font-mono text-xs text-neutral-400">
                   Publicado:{' '}
                   <span className="text-white font-bold">
                     {new Date(post.timestamp).toLocaleDateString('es-ES', {
@@ -148,7 +152,7 @@ export const InstagramLatestPost: React.FC<InstagramLatestPostProps> = ({
                     href={post.permalink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#b91c1c] hover:bg-white hover:text-black text-white font-anton text-sm uppercase tracking-wider border border-black shadow-[3px_3px_0_#000] transition-colors"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#b91c1c] hover:bg-white hover:text-black text-white font-anton text-sm uppercase tracking-wider border-2 border-black shadow-[3px_3px_0_#000] transition-colors"
                   >
                     <span>VER PUBLICACIÓN EN INSTAGRAM</span>
                     <ArrowUpRight className="w-4 h-4" />
@@ -157,26 +161,21 @@ export const InstagramLatestPost: React.FC<InstagramLatestPostProps> = ({
               </div>
             </div>
           ) : (
-            /* ============================================================= */
-            /* STATE B: HONEST FALLBACK (AWAITING CREDENTIALS)               */
-            /* ============================================================= */
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center pt-2">
-              <div className="md:col-span-4 p-4 bg-black/80 border-2 border-neutral-800 text-center space-y-2">
-                <div className="w-16 h-16 mx-auto rounded-full bg-gradient-to-tr from-[#f58529] via-[#dd2a7b] to-[#8134af] p-0.5 shadow-md">
-                  <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
-                    <span className="font-anton text-2xl text-white">G</span>
+              {/* AUTHENTIC PHOTO SAMPLE FROM GRAFIT'S REAL INSTAGRAM ARCHIVE */}
+              <div className="md:col-span-4 p-3 bg-black/80 border-2 border-neutral-700 space-y-2">
+                <div className="relative aspect-square bg-black border border-neutral-800 overflow-hidden">
+                  <img
+                    src="./assets/grafit/instagram/chupa-cuero.jpg"
+                    alt="Cultura y ambiente en Grafit Café"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute bottom-2 left-2 bg-black/85 text-[#e2c044] font-mono text-[9px] px-2 py-0.5 border border-[#e2c044] uppercase">
+                    CULTURA & ROCK
                   </div>
                 </div>
-                <div>
-                  <p className="font-anton text-lg text-white uppercase tracking-wider">
-                    GRAFIT CAFÉ
-                  </p>
-                  <p className="font-mono-code text-[11px] text-neutral-400">
-                    @{accountHandle}
-                  </p>
-                </div>
-                <div className="pt-1">
-                  <span className="inline-block bg-[#161413] text-[#ded8cb] font-mono-code text-[9px] px-2 py-0.5 border border-neutral-700">
+                <div className="text-center pt-1">
+                  <span className="inline-block bg-[#161413] text-[#ded8cb] font-mono text-[10px] px-2 py-0.5 border border-neutral-700">
                     URRUTIA KALEA 1 • INDAUTXU
                   </span>
                 </div>
@@ -184,17 +183,18 @@ export const InstagramLatestPost: React.FC<InstagramLatestPostProps> = ({
 
               <div className="md:col-span-8 space-y-3">
                 <div className="space-y-1">
-                  <span className="font-mono-code text-[10px] text-[#e2c044] font-bold uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="font-mono text-[10px] text-[#e2c044] font-bold uppercase tracking-wider flex items-center gap-1.5">
                     <AlertCircle className="w-3.5 h-3.5 text-[#e2c044]" />
-                    <span>INTEGRACIÓN PREVISTA EN ARQUITECTURA // EN ESPERA DE CREDENCIALES</span>
+                    <span>CANAL OFICIAL ACTIVO // BILBAO</span>
                   </span>
-                  <h4 className="font-anton text-2xl sm:text-3xl text-[#f5efe1] uppercase tracking-wide">
-                    Conexión Directa con el Canal Oficial
+                  <h4 className="font-anton text-2xl sm:text-3xl text-white uppercase tracking-wide">
+                    El Día a Día en @grafitcafe
                   </h4>
                 </div>
 
                 <p className="font-sans text-neutral-300 text-xs sm:text-sm leading-relaxed">
-                  Este módulo está técnicamente preparado para mostrar de manera automática la última publicación real y su contenido multimedia en cuanto se configuren los accesos del perfil. De acuerdo a nuestra política de transparencia, no simulamos feeds ni inventamos publicaciones falsas.
+                  Conéctate con nuestro perfil oficial en Instagram para descubrir los pintxos recién salidos de barra,
+                  el ambiente previo a los partidos del Athletic, avisos de conciertos acústicos y las sobremesas en el salón.
                 </p>
 
                 <div className="pt-2 flex flex-wrap items-center gap-3">
@@ -202,14 +202,14 @@ export const InstagramLatestPost: React.FC<InstagramLatestPostProps> = ({
                     href={instagramProfileUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-[#b91c1c] to-[#991b1b] hover:from-white hover:to-white hover:text-black text-white font-anton text-xs sm:text-sm uppercase tracking-wider border-2 border-black shadow-[3px_3px_0_#000] transition-all cursor-pointer hover:-translate-y-0.5"
+                    className="inline-flex items-center gap-2 px-6 py-3.5 bg-gradient-to-r from-[#b91c1c] to-[#991b1b] hover:from-white hover:to-white hover:text-black text-white font-anton text-sm uppercase tracking-wider border-2 border-black shadow-[4px_4px_0_#000] transition-all cursor-pointer hover:-translate-y-0.5"
                   >
                     <span>VISITAR PERFIL OFICIAL @{accountHandle.toUpperCase()}</span>
                     <ArrowUpRight className="w-4 h-4" />
                   </a>
 
-                  <span className="font-mono-code text-[10px] text-neutral-500">
-                    Sincronización Graph API: Standby
+                  <span className="font-mono text-[10px] text-neutral-400">
+                    Instagram Graph API: Preparado
                   </span>
                 </div>
               </div>

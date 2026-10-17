@@ -7,8 +7,19 @@ interface EspacioIntroSectionProps {
 
 export const EspacioIntroSection: React.FC<EspacioIntroSectionProps> = ({ onNavigate }) => {
   return (
-    <section className="relative py-12 sm:py-16 px-4 sm:px-6 lg:px-12 bg-[#0c0b0a] text-[#f5efe1] border-b-8 border-black">
-      <div className="max-w-6xl mx-auto">
+    <section className="relative py-12 sm:py-16 px-4 sm:px-6 lg:px-12 bg-[#0c0b0a] text-[#f5efe1] border-b-8 border-black overflow-hidden">
+      {/* AUTHENTIC PUNK WALLPAPER SUBSTRATE (DARK TREATMENT) */}
+      <div
+        className="absolute inset-0 opacity-20 pointer-events-none mix-blend-luminosity bg-cover bg-center"
+        style={{ backgroundImage: `url('./assets/grafit/punk-wall-bg.jpg')` }}
+      />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'linear-gradient(180deg, rgba(12,11,10,0.95) 0%, rgba(16,14,12,0.75) 50%, rgba(12,11,10,0.95) 100%)',
+        }}
+      />
+      <div className="relative z-10 max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* PHOTO COMPOSITION (5 COLS) */}

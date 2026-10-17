@@ -10,7 +10,19 @@ export const EventosPage: React.FC<EventosPageProps> = ({ onNavigate }) => {
   const { eventos } = GRAFIT_DATA;
 
   return (
-    <div className="w-full bg-[#0c0b0a] text-[#f5efe1] py-8 sm:py-12 px-4 sm:px-6 lg:px-12 space-y-16 max-w-6xl mx-auto">
+    <div className="relative w-full bg-[#0c0b0a] text-[#f5efe1] py-8 sm:py-12 px-4 sm:px-6 lg:px-12 space-y-16 max-w-6xl mx-auto overflow-hidden">
+      {/* AUTHENTIC PUNK WALLPAPER SUBSTRATE */}
+      <div
+        className="absolute inset-0 opacity-20 pointer-events-none mix-blend-luminosity bg-cover bg-center"
+        style={{ backgroundImage: `url('./assets/grafit/punk-wall-bg.jpg')` }}
+      />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'linear-gradient(180deg, rgba(12,11,10,0.95) 0%, rgba(16,14,12,0.80) 50%, rgba(12,11,10,0.95) 100%)',
+        }}
+      />
+      <div className="relative z-10 space-y-16">
       {/* 1. HEADER SECTION */}
       <div className="space-y-4">
         <div className="inline-block bg-[#b91c1c] text-white px-3 py-1 font-mono text-xs uppercase tracking-widest shadow-[3px_3px_0_#000]">
@@ -215,6 +227,7 @@ export const EventosPage: React.FC<EventosPageProps> = ({ onNavigate }) => {
             <ArrowRight className="w-5 h-5" />
           </button>
         </div>
+      </div>
       </div>
     </div>
   );
