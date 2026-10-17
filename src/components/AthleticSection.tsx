@@ -17,7 +17,7 @@ export const AthleticSection: React.FC<AthleticSectionProps> = ({ onNavigate }) 
       {/* ATMOSPHERIC SUBSTRATE */}
       <div
         className="absolute inset-0 opacity-15 pointer-events-none mix-blend-luminosity bg-cover bg-center"
-        style={{ backgroundImage: `url('/assets/grafit/fanzine-wall-bg.jpg')` }}
+        style={{ backgroundImage: `url('./assets/grafit/fanzine-wall-bg.jpg')` }}
       />
       <div className="absolute inset-0 bg-radial-gradient from-transparent via-[#0a0908]/85 to-[#0a0908] pointer-events-none" />
 
@@ -183,7 +183,7 @@ export const AthleticSection: React.FC<AthleticSectionProps> = ({ onNavigate }) 
               <div className="masking-tape tape-corner-tr" />
               <div className="relative aspect-[4/3] bg-black border-2 border-neutral-800 overflow-hidden">
                 <img
-                  src="/assets/grafit/interior/grafit-barra-01.jpg"
+                  src="./assets/grafit/interior/grafit-barra-01.jpg"
                   alt="Barra viva de Grafit con cañeros de tanque"
                   className="w-full h-full object-cover contrast-110"
                 />
@@ -200,7 +200,7 @@ export const AthleticSection: React.FC<AthleticSectionProps> = ({ onNavigate }) 
             <div className="p-3 bg-[#181615] border-3 border-black shadow-[6px_6px_0px_#b91c1c] relative">
               <div className="relative aspect-[4/3] bg-black border-2 border-neutral-800 overflow-hidden">
                 <img
-                  src="/assets/grafit/interior/grafit-salon-mesas-11.jpg"
+                  src="./assets/grafit/interior/grafit-salon-mesas-11.jpg"
                   alt="Mesas corridas para cuadrillas en el salón"
                   className="w-full h-full object-cover contrast-110"
                 />

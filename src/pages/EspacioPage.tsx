@@ -63,7 +63,7 @@ export const EspacioPage: React.FC<EspacioPageProps> = ({ onNavigate }) => {
           <div className="lg:col-span-5">
             <div className="relative border-3 border-[#33302c] bg-black shadow-[6px_6px_0_#000] overflow-hidden aspect-[4/3] group">
               <img
-                src="/assets/grafit/instagram/volkswagen.jpg"
+                src="./assets/grafit/instagram/volkswagen.jpg"
                 alt="Volkswagen decorativa del salón Grafit"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />

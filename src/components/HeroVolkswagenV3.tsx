@@ -337,7 +337,7 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
       <div
         className="absolute inset-0 w-full h-full pointer-events-none opacity-30 mix-blend-luminosity"
         style={{
-          backgroundImage: 'url(/assets/grafit/punk-wall-bg.jpg)',
+          backgroundImage: 'url(./assets/grafit/punk-wall-bg.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center 15%',
         }}
@@ -437,7 +437,7 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
           >
             {/* PODIUM SHADOWS */}
             <img
-              src="/assets/grafit/motion/van/layers/layer_09_podium_shadows.png"
+              src="./assets/grafit/motion/van/layers/layer_09_podium_shadows.png"
               alt=""
               className="absolute inset-0 w-full h-full object-contain pointer-events-none z-0"
             />
@@ -445,21 +445,21 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
           {/* PRISTINE CHASSIS BODY LAYER */}
           <img
             ref={vanBodyRef}
-            src="/assets/grafit/motion/van/layers/layer_02_half_van_complete.png"
+            src="./assets/grafit/motion/van/layers/layer_02_half_van_complete.png"
             alt="Volkswagen T1 Decorativa Grafit"
             className="absolute inset-0 w-full h-full object-contain pointer-events-none z-10"
           />
 
           {/* WINDSHIELD GLASS */}
           <img
-            src="/assets/grafit/motion/van/layers/layer_07_windshield_glass.png"
+            src="./assets/grafit/motion/van/layers/layer_07_windshield_glass.png"
             alt=""
             className="absolute inset-0 w-full h-full object-contain pointer-events-none z-15 opacity-90"
           />
 
           {/* LICENSE PLATE */}
           <img
-            src="/assets/grafit/motion/van/layers/layer_06_license_plate.png"
+            src="./assets/grafit/motion/van/layers/layer_06_license_plate.png"
             alt="Matrícula Grafit"
             className="absolute inset-0 w-full h-full object-contain pointer-events-none z-20"
           />
@@ -478,7 +478,7 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
             }}
           >
             <img
-              src="/assets/grafit/motion/van/layers/layer_03_vw_emblem.png"
+              src="./assets/grafit/motion/van/layers/layer_03_vw_emblem.png"
               alt="Emblema Volkswagen"
               className="w-full h-full object-contain filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]"
             />
@@ -513,7 +513,7 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
               {/* Glass fluting texture */}
               <div ref={hlLeftGlassRef} className="absolute inset-0 w-full h-full z-10 pointer-events-none">
                 <img
-                  src="/assets/grafit/motion/van/layers/headlight_glass_centered.png"
+                  src="./assets/grafit/motion/van/layers/headlight_glass_centered.png"
                   alt=""
                   className="w-full h-full object-cover brightness-105 contrast-125"
                 />
@@ -565,7 +565,7 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
               {/* Glass fluting texture */}
               <div ref={hlRightGlassRef} className="absolute inset-0 w-full h-full z-10 pointer-events-none">
                 <img
-                  src="/assets/grafit/motion/van/layers/headlight_glass_centered.png"
+                  src="./assets/grafit/motion/van/layers/headlight_glass_centered.png"
                   alt=""
                   className="w-full h-full object-cover brightness-105 contrast-125"
                 />

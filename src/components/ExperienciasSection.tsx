@@ -28,7 +28,7 @@ const FORMATOS: FormatoEvento[] = [
     subtitle: 'Mesas largas, cocina continua y ambiente distendido',
     description:
       'El salón multiusos permite reunir a grupos grandes en mesas corridas sin las limitaciones de un comedor tradicional. Disfruta de nuestras hamburguesas 100% buey, sándwiches calientes, raciones y cañón de cerveza helada a -2°C con total comodidad.',
-    photo: '/assets/grafit/interior/grafit-salon-mesas-11.jpg',
+    photo: './assets/grafit/interior/grafit-salon-mesas-11.jpg',
     photoCaption: 'Mesas preparadas frente al mural de concierto en el salón',
     highlights: [
       'Mesas modulares para grupos de diferentes tamaños',
@@ -45,7 +45,7 @@ const FORMATOS: FormatoEvento[] = [
     subtitle: 'Tu fiesta con personalidad rock en el corazón de Indautxu',
     description:
       'Celebra tu fecha especial con un espacio singular presidido por la media Volkswagen y paredes llenas de cultura musical. Un entorno acogedor y desenfadado donde compartir picoteo, copas y buena música.',
-    photo: '/assets/grafit/interior/grafit-salon-mesas-27.jpg',
+    photo: './assets/grafit/interior/grafit-salon-mesas-27.jpg',
     photoCaption: 'Distribución espaciosa y ambiente cálido para celebraciones',
     highlights: [
       'Espacio diáfano y versátil con identidad propia',
@@ -62,7 +62,7 @@ const FORMATOS: FormatoEvento[] = [
     subtitle: 'Reuniones informales de equipo y despedidas de año',
     description:
       'Huye de los comedores protocolarios. Grafit ofrece un marco dinámico para comidas de departamento, reuniones informales de networking y celebraciones de fin de año con ambiente auténtico.',
-    photo: '/assets/grafit/interior/grafit-salon-mesas-03.jpg',
+    photo: './assets/grafit/interior/grafit-salon-mesas-03.jpg',
     photoCaption: 'Área versátil preparada para presentaciones y distensión',
     highlights: [
       'Entorno distendido para conectar fuera de la oficina',
@@ -79,7 +79,7 @@ const FORMATOS: FormatoEvento[] = [
     subtitle: 'Cuéntanos tu idea y adaptamos el salón',
     description:
       'Desde despedidas hasta reuniones de asociaciones o encuentros generacionales. Explícanos lo que buscas y te orientamos sobre disponibilidad y opciones del espacio sin compromisos.',
-    photo: '/assets/grafit/interior/grafit-salon-mesas-31.jpg',
+    photo: './assets/grafit/interior/grafit-salon-mesas-31.jpg',
     photoCaption: 'Configuración modulable para proyectos y reuniones',
     highlights: [
       'Distribución adaptable según el tipo de encuentro',

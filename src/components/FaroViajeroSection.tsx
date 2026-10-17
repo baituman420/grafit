@@ -201,7 +201,7 @@ export const FaroViajeroSection: React.FC<FaroViajeroSectionProps> = ({ onNaviga
         <div
           className="absolute inset-0 w-full h-full pointer-events-none"
           style={{
-            backgroundImage: 'url(/assets/grafit/punk-wall-bg.jpg)',
+            backgroundImage: 'url(./assets/grafit/punk-wall-bg.jpg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             opacity: 0.85,

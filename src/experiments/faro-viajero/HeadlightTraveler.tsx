@@ -82,7 +82,7 @@ export const HeadlightTraveler: React.FC<HeadlightTravelerProps> = ({
           }}
         >
           <img
-            src="/assets/grafit/instagram/burguer.webp"
+            src="./assets/grafit/instagram/burguer.webp"
             alt="Burger Grafit 100% Buey"
             className="w-full h-full object-cover"
             style={{ transform: 'scale(1.08)' }}
@@ -107,7 +107,7 @@ export const HeadlightTraveler: React.FC<HeadlightTravelerProps> = ({
           }}
         >
           <img
-            src="/assets/grafit/instagram/sandwich-barra.jpg"
+            src="./assets/grafit/instagram/sandwich-barra.jpg"
             alt="Sándwich de barra a la plancha"
             className="w-full h-full object-cover"
             style={{ transform: 'scale(1.12)' }}
@@ -131,7 +131,7 @@ export const HeadlightTraveler: React.FC<HeadlightTravelerProps> = ({
           }}
         >
           <img
-            src="/assets/grafit/instagram/pintxos.jpg"
+            src="./assets/grafit/instagram/pintxos.jpg"
             alt="Barra de pintxos artesanos Grafit"
             className="w-full h-full object-cover"
             style={{ transform: 'scale(1.05)' }}
@@ -157,7 +157,7 @@ export const HeadlightTraveler: React.FC<HeadlightTravelerProps> = ({
         >
           {/* Real optical fluted glass layer from isolated headlight */}
           <img
-            src="/assets/grafit/motion/van/layers/headlight_glass_centered.png"
+            src="./assets/grafit/motion/van/layers/headlight_glass_centered.png"
             alt="Óptica del faro"
             aria-hidden="true"
             className="w-full h-full object-cover"

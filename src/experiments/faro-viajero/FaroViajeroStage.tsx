@@ -456,7 +456,7 @@ export const FaroViajeroStage: React.FC<FaroViajeroStageProps> = ({ reducedMotio
           {/* Card 1: Burger */}
           <div className="bg-[#181615] border-2 border-[#33302c] overflow-hidden shadow-[6px_6px_0_#000]">
             <div className="aspect-square overflow-hidden bg-black">
-              <img src="/assets/grafit/instagram/burguer.webp" alt="Burger 100% Buey" className="w-full h-full object-cover" />
+              <img src="./assets/grafit/instagram/burguer.webp" alt="Burger 100% Buey" className="w-full h-full object-cover" />
             </div>
             <div className="p-4">
               <span className="font-mono text-xs text-[#e2c044] font-bold">01 • CARÁCTER</span>
@@ -470,7 +470,7 @@ export const FaroViajeroStage: React.FC<FaroViajeroStageProps> = ({ reducedMotio
           {/* Card 2: Sandwich */}
           <div className="bg-[#181615] border-2 border-[#33302c] overflow-hidden shadow-[6px_6px_0_#000]">
             <div className="aspect-square overflow-hidden bg-black">
-              <img src="/assets/grafit/instagram/sandwich-barra.jpg" alt="Sándwich de barra" className="w-full h-full object-cover" />
+              <img src="./assets/grafit/instagram/sandwich-barra.jpg" alt="Sándwich de barra" className="w-full h-full object-cover" />
             </div>
             <div className="p-4">
               <span className="font-mono text-xs text-[#e2c044] font-bold">02 • NON-STOP</span>
@@ -484,7 +484,7 @@ export const FaroViajeroStage: React.FC<FaroViajeroStageProps> = ({ reducedMotio
           {/* Card 3: Pintxos */}
           <div className="bg-[#181615] border-2 border-[#33302c] overflow-hidden shadow-[6px_6px_0_#000]">
             <div className="aspect-square overflow-hidden bg-black">
-              <img src="/assets/grafit/instagram/pintxos.jpg" alt="Pintxos artesanos" className="w-full h-full object-cover" />
+              <img src="./assets/grafit/instagram/pintxos.jpg" alt="Pintxos artesanos" className="w-full h-full object-cover" />
             </div>
             <div className="p-4">
               <span className="font-mono text-xs text-[#e2c044] font-bold">03 • TRADICIÓN</span>
@@ -527,7 +527,7 @@ export const FaroViajeroStage: React.FC<FaroViajeroStageProps> = ({ reducedMotio
         <div
           className="absolute inset-0 w-full h-full pointer-events-none"
           style={{
-            backgroundImage: 'url(/assets/grafit/punk-wall-bg.jpg)',
+            backgroundImage: 'url(./assets/grafit/punk-wall-bg.jpg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             opacity: 0.85,

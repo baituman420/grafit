@@ -350,7 +350,7 @@ export const GRAFIT_DATA = {
         alt: 'Grifos de cerveza en Grafit'
       },
       {
-        src: './assets/grafit/archive/grafit-reapertura-celebracion-05.jpg',
+        src: './assets/grafit/archive/grafit-inauguracion-2017-05.jpg',
         caption: 'Celebraciones de cuadrillas y ambiente festivo en el salón',
         alt: 'Celebración de amigos en Grafit'
       },
@@ -414,7 +414,7 @@ export const GRAFIT_DATA = {
       title: 'MEMORIA DE CUADRILLAS',
       subtitle: 'Celebraciones que hacen historia',
       tag: 'MEMORIA VIVIDA',
-      src: './assets/grafit/archive/grafit-reapertura-celebracion-05.jpg',
+      src: './assets/grafit/archive/grafit-inauguracion-2017-05.jpg',
       caption: 'Encuentros multitudinarios, cumpleaños y brindis que han dado vida al salón multiusos.',
       orientation: 'landscape',
       quote: 'Espacio para reunir a quienes de verdad importan.'

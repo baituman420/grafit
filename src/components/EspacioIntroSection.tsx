@@ -16,7 +16,7 @@ export const EspacioIntroSection: React.FC<EspacioIntroSectionProps> = ({ onNavi
             {/* MAIN REAL SALON VIEW */}
             <div className="relative border-3 border-[#33302c] bg-black shadow-[8px_8px_0_#000] overflow-hidden aspect-[4/3]">
               <img
-                src="/assets/grafit/interior/grafit-salon-mesas-27.jpg"
+                src="./assets/grafit/interior/grafit-salon-mesas-27.jpg"
                 alt="Amplitud del Salón Multiusos Grafit"
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />
@@ -29,7 +29,7 @@ export const EspacioIntroSection: React.FC<EspacioIntroSectionProps> = ({ onNavi
             <div className="relative p-2.5 bg-[#181615] border-2 border-[#e2c044] shadow-[5px_5px_0_#000] flex items-center gap-3">
               <div className="w-20 h-16 bg-black border border-black shrink-0 overflow-hidden">
                 <img
-                  src="/assets/grafit/instagram/volkswagen.jpg"
+                  src="./assets/grafit/instagram/volkswagen.jpg"
                   alt="Volkswagen decorativa del salón"
                   className="w-full h-full object-cover"
                 />

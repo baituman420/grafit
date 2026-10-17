@@ -30,7 +30,7 @@ export const AmbientesSection: React.FC<AmbientesSectionProps> = ({ onNavigate }
             {/* PHOTO WITH VIGNETTE */}
             <div className="relative h-64 sm:h-72 overflow-hidden bg-black border-b-2 border-[#2b2724]">
               <img
-                src="/assets/grafit/interior/grafit-barra-01.jpg"
+                src="./assets/grafit/interior/grafit-barra-01.jpg"
                 alt="La Barra del Grafit Café"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
@@ -71,7 +71,7 @@ export const AmbientesSection: React.FC<AmbientesSectionProps> = ({ onNavigate }
             {/* PHOTO WITH VIGNETTE */}
             <div className="relative h-64 sm:h-72 overflow-hidden bg-black border-b-2 border-[#2b2724]">
               <img
-                src="/assets/grafit/interior/grafit-salon-mesas-11.jpg"
+                src="./assets/grafit/interior/grafit-salon-mesas-11.jpg"
                 alt="El Salón Multiusos para Grupos"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />

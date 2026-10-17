@@ -116,7 +116,7 @@ export const SlicedTextTransition: React.FC<SlicedTextTransitionProps> = ({ onEx
       {/* BACKGROUND PUNK WALLPAPER SUBSTRATE */}
       <div
         className="absolute inset-0 opacity-15 pointer-events-none mix-blend-luminosity bg-cover bg-center"
-        style={{ backgroundImage: `url('/assets/grafit/fanzine-wall-bg.jpg')` }}
+        style={{ backgroundImage: `url('./assets/grafit/fanzine-wall-bg.jpg')` }}
       />
       <div className="absolute inset-0 bg-radial-gradient from-transparent via-[#0e0c0b]/80 to-[#0e0c0b] pointer-events-none" />
 

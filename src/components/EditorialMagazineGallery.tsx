@@ -48,7 +48,7 @@ const MAGAZINE_SPREADS: MagazineSpread[] = [
       ],
     },
     rightPage: {
-      photo: '/assets/grafit/instagram/burguer.webp',
+      photo: './assets/grafit/instagram/burguer.webp',
       caption: 'Hamburguesa 100% buey con queso fundido, bacon crujiente y salsa especial.',
       stamp: 'PLATO INSIGNIA',
       tagline: 'FOTOGRAFÍA REAL // BARRA DE GRAFIT',
@@ -76,7 +76,7 @@ const MAGAZINE_SPREADS: MagazineSpread[] = [
       ],
     },
     rightPage: {
-      photo: '/assets/grafit/interior/grafit-salon-mesas-11.jpg',
+      photo: './assets/grafit/interior/grafit-salon-mesas-11.jpg',
       caption: 'Mesas corridas dispuestas frente al gran mural de concierto en el salón.',
       stamp: 'CONFORT & REUNIÓN',
       tagline: 'FOTOGRAFÍA REAL // SALÓN INTERIOR',
@@ -104,7 +104,7 @@ const MAGAZINE_SPREADS: MagazineSpread[] = [
       ],
     },
     rightPage: {
-      photo: '/assets/grafit/instagram/volkswagen.jpg',
+      photo: './assets/grafit/instagram/volkswagen.jpg',
       caption: 'La media Volkswagen clásica del salón con faros cromados y matrícula Grafit.',
       stamp: 'ICONO REAL',
       tagline: 'FOTOGRAFÍA REAL // INSTALACIÓN SALÓN',
@@ -132,7 +132,7 @@ const MAGAZINE_SPREADS: MagazineSpread[] = [
       ],
     },
     rightPage: {
-      photo: '/assets/grafit/interior/grafit-barra-01.jpg',
+      photo: './assets/grafit/interior/grafit-barra-01.jpg',
       caption: 'Cañeros de tanque y barra viva durante la previa del partido.',
       stamp: 'ATMÓSFERA ZURIGORRI',
       tagline: 'FOTOGRAFÍA REAL // BARRA DE GRIFOS',
@@ -160,7 +160,7 @@ const MAGAZINE_SPREADS: MagazineSpread[] = [
       ],
     },
     rightPage: {
-      photo: '/assets/grafit/instagram/copas.webp',
+      photo: './assets/grafit/drinks/grafit-copas-combinados-02.jpg',
       caption: 'Copas preparadas con mimo en la barra de Grafit durante el turno de noche.',
       stamp: 'AFTERWORK & NIGHT',
       tagline: 'FOTOGRAFÍA REAL // NOCHE EN INDAUTXU',
@@ -188,7 +188,7 @@ const MAGAZINE_SPREADS: MagazineSpread[] = [
       ],
     },
     rightPage: {
-      photo: '/assets/grafit/instagram/sandwich.webp',
+      photo: './assets/grafit/instagram/sandwich-barra.jpg',
       caption: 'Sándwich tostado al momento con ingredientes seleccionados.',
       stamp: 'CLÁSICO DE BARRA',
       tagline: 'FOTOGRAFÍA REAL // COCINA CONTINUA',
@@ -248,7 +248,7 @@ export const EditorialMagazineGallery: React.FC = () => {
       {/* 1. BACKGROUND NEWSPRINT & AMBIENT DEPTH */}
       <div
         className="absolute inset-0 opacity-15 pointer-events-none mix-blend-luminosity bg-cover bg-center"
-        style={{ backgroundImage: `url('/assets/grafit/fanzine-wall-bg.jpg')` }}
+        style={{ backgroundImage: `url('./assets/grafit/fanzine-wall-bg.jpg')` }}
       />
       <div className="absolute inset-0 bg-radial-gradient from-transparent via-[#100f0e]/80 to-[#100f0e] pointer-events-none" />
 
