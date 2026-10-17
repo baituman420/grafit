@@ -544,7 +544,7 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
             className="absolute z-30 flex items-center justify-center select-none"
             style={{
               left: '70%',
-              top: '49.4%',
+              top: '50%',
               width: '19.2%',
               height: '15.4%',
               transformOrigin: 'center center',
