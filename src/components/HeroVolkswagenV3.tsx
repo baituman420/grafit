@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { RotateCcw, Calendar, ArrowDown, MapPin } from 'lucide-react';
 
@@ -96,17 +96,16 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
   const vanWrapperRef = useRef<HTMLDivElement>(null);
   const vanBodyRef = useRef<HTMLImageElement>(null);
   const emblemRef = useRef<HTMLDivElement>(null);
-  const burgerRef = useRef<HTMLDivElement>(null);
   const hlLeftRef = useRef<HTMLDivElement>(null);
   const hlRightRef = useRef<HTMLDivElement>(null);
-  const hlLeftContentRef = useRef<HTMLDivElement>(null);
-  const hlRightContentRef = useRef<HTMLDivElement>(null);
+  const hlLeftGlowRef = useRef<HTMLDivElement>(null);
+  const hlRightGlowRef = useRef<HTMLDivElement>(null);
+  const hlLeftBeamRef = useRef<HTMLDivElement>(null);
+  const hlRightBeamRef = useRef<HTMLDivElement>(null);
   const hlLeftGlassRef = useRef<HTMLDivElement>(null);
   const hlRightGlassRef = useRef<HTMLDivElement>(null);
   const ctaOverlayRef = useRef<HTMLDivElement>(null);
   const lettersRef = useRef<(HTMLDivElement | null)[]>([]);
-
-  const [bodyState, setBodyState] = useState<'complete' | 'debadged' | 'sockets'>('complete');
 
   const runHeroAnimation = () => {
     if (!containerRef.current || !vanWrapperRef.current) return;
@@ -114,16 +113,16 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
     const isMobile = window.innerWidth < 768;
 
     // Reset initial states
-    setBodyState('complete');
     gsap.killTweensOf([
       containerRef.current,
       vanWrapperRef.current,
       emblemRef.current,
-      burgerRef.current,
       hlLeftRef.current,
       hlRightRef.current,
-      hlLeftContentRef.current,
-      hlRightContentRef.current,
+      hlLeftGlowRef.current,
+      hlRightGlowRef.current,
+      hlLeftBeamRef.current,
+      hlRightBeamRef.current,
       hlLeftGlassRef.current,
       hlRightGlassRef.current,
       ctaOverlayRef.current,
@@ -144,23 +143,22 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
       opacity: 1,
     });
 
-    gsap.set(burgerRef.current, {
-      scale: 0.1,
-      opacity: 0,
-      y: 0,
-    });
-
     gsap.set([hlLeftRef.current, hlRightRef.current], {
       scale: 1,
       filter: 'brightness(1)',
     });
 
     gsap.set([hlLeftGlassRef.current, hlRightGlassRef.current], {
-      opacity: 1,
+      opacity: 0.9,
     });
 
-    gsap.set([hlLeftContentRef.current, hlRightContentRef.current], {
+    gsap.set([hlLeftGlowRef.current, hlRightGlowRef.current], {
       opacity: 0,
+    });
+
+    gsap.set([hlLeftBeamRef.current, hlRightBeamRef.current], {
+      opacity: 0,
+      scale: 0.85,
     });
 
     gsap.set(ctaOverlayRef.current, {
@@ -183,7 +181,7 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
 
     const masterTl = gsap.timeline();
 
-    // 1. Letters Intro (0.0s - 0.7s)
+    // 1. Letters Intro (0.2s - 0.7s)
     masterTl.to(lettersRef.current, {
       scale: 1,
       opacity: 1,
@@ -260,93 +258,67 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
       }
     });
 
-    // 4. VW Emblem Detachment and Gravity Fall (2.4s - 3.4s)
-    // Pop forward in 3D
-    masterTl.to(emblemRef.current, {
-      scale: 1.18,
-      duration: 0.3,
-      ease: 'back.out(1.5)',
-      boxShadow: '0 12px 24px rgba(0,0,0,0.7)',
-    }, 2.4);
+    // 4. Headlights Ignition Sequence (1.8s - 2.5s)
+    // Electrical switch click & micro-spark
+    masterTl.to([hlLeftGlowRef.current, hlRightGlowRef.current], {
+      opacity: 0.45,
+      duration: 0.06,
+    }, 1.82);
 
-    // Gravity fall accelerating downward
-    masterTl.to(emblemRef.current, {
-      y: isMobile ? 420 : 550,
-      rotation: -24,
-      opacity: 0,
-      duration: 0.75,
-      ease: 'power2.in',
-      onStart: () => setBodyState('debadged'),
-    }, 2.7);
+    masterTl.to([hlLeftGlowRef.current, hlRightGlowRef.current], {
+      opacity: 0.1,
+      duration: 0.05,
+    }, 1.88);
 
-    // 5. Burger Eclosion from empty emblem socket (2.8s - 3.8s)
-    masterTl.to(burgerRef.current, {
-      scale: isMobile ? 1.15 : 1.28,
+    // Full warm tungsten & halogen ignition bloom
+    masterTl.to([hlLeftGlowRef.current, hlRightGlowRef.current], {
       opacity: 1,
-      y: isMobile ? 6 : 10,
-      duration: 0.85,
-      ease: 'back.out(1.4)',
-    }, 2.85);
+      duration: 0.4,
+      ease: 'power2.out',
+    }, 1.93);
 
-    // 6. Headlights Sink & Rebound (3.7s - 4.9s)
-    // Sink phase: both headlights sink inwards into sockets
+    // Subtle physical vibration / kick on the headlight housings
     masterTl.to([hlLeftRef.current, hlRightRef.current], {
-      scale: 0.72,
-      filter: 'brightness(0.4)',
-      duration: 0.35,
-      ease: 'power2.in',
-      onComplete: () => setBodyState('sockets'),
-    }, 3.7);
+      scale: 1.06,
+      duration: 0.18,
+      ease: 'back.out(2)',
+    }, 1.93);
 
-    // Left headlight elastic rebound -> reveals Sandwich
-    masterTl.to(hlLeftRef.current, {
-      scale: 1.35,
-      filter: 'brightness(1.15)',
-      duration: 0.7,
-      ease: 'elastic.out(1.2, 0.45)',
-    }, 4.1);
+    masterTl.to([hlLeftRef.current, hlRightRef.current], {
+      scale: 1.0,
+      duration: 0.25,
+      ease: 'power1.out',
+    }, 2.11);
 
-    masterTl.to(hlLeftGlassRef.current, {
-      opacity: 0,
-      duration: 0.4,
-    }, 4.2);
+    // Forward beam flare blossoms into the atmosphere
+    masterTl.to([hlLeftBeamRef.current, hlRightBeamRef.current], {
+      opacity: 0.85,
+      scale: 1.1,
+      duration: 0.6,
+      ease: 'power2.out',
+    }, 1.98);
 
-    masterTl.to(hlLeftContentRef.current, {
-      opacity: 1,
-      duration: 0.5,
-    }, 4.25);
-
-    // Right headlight elastic rebound (offset by 0.15s) -> reveals Multipurpose Hall
-    masterTl.to(hlRightRef.current, {
-      scale: 1.35,
-      filter: 'brightness(1.15)',
-      duration: 0.7,
-      ease: 'elastic.out(1.2, 0.45)',
-    }, 4.25);
-
-    masterTl.to(hlRightGlassRef.current, {
-      opacity: 0,
-      duration: 0.4,
-    }, 4.35);
-
-    masterTl.to(hlRightContentRef.current, {
-      opacity: 1,
-      duration: 0.5,
-    }, 4.4);
-
-    // 7. Commercial Banners & CTAs Bloom (4.8s - 5.6s)
+    // 5. Commercial Banners & CTAs Bloom (2.4s - 3.1s)
     masterTl.to(ctaOverlayRef.current, {
       opacity: 1,
       y: 0,
-      duration: 0.8,
+      duration: 0.7,
       ease: 'power3.out',
-    }, 4.8);
+    }, 2.4);
   };
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
-      setBodyState('sockets');
+      if (hlLeftGlowRef.current && hlRightGlowRef.current) {
+        gsap.set([hlLeftGlowRef.current, hlRightGlowRef.current], { opacity: 1 });
+      }
+      if (hlLeftBeamRef.current && hlRightBeamRef.current) {
+        gsap.set([hlLeftBeamRef.current, hlRightBeamRef.current], { opacity: 0.8, scale: 1 });
+      }
+      if (ctaOverlayRef.current) {
+        gsap.set(ctaOverlayRef.current, { opacity: 1, y: 0 });
+      }
       return;
     }
 
@@ -470,16 +442,10 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
               className="absolute inset-0 w-full h-full object-contain pointer-events-none z-0"
             />
 
-          {/* DYNAMIC CHASSIS BODY LAYER */}
+          {/* PRISTINE CHASSIS BODY LAYER */}
           <img
             ref={vanBodyRef}
-            src={
-              bodyState === 'sockets'
-                ? '/assets/grafit/motion/van/layers/layer_02_half_van_sockets.png'
-                : bodyState === 'debadged'
-                ? '/assets/grafit/motion/van/layers/layer_02_half_van_debadged.png'
-                : '/assets/grafit/motion/van/layers/layer_02_half_van_complete.png'
-            }
+            src="/assets/grafit/motion/van/layers/layer_02_half_van_complete.png"
             alt="Volkswagen T1 Decorativa Grafit"
             className="absolute inset-0 w-full h-full object-contain pointer-events-none z-10"
           />
@@ -499,7 +465,7 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
           />
 
           {/* =============================================================== */}
-          {/* A. THE VW EMBLEM (FALLS WITH GRAVITY ACCELERATION)               */}
+          {/* A. THE VW EMBLEM (CLEAN, PROUD & ICONIC)                        */}
           {/* =============================================================== */}
           <div
             ref={emblemRef}
@@ -519,38 +485,11 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
           </div>
 
           {/* =============================================================== */}
-          {/* B. BURGER 100% BUEY (EMERGES FROM EMBLEM CAVITY)                */}
-          {/* =============================================================== */}
-          <div
-            ref={burgerRef}
-            className="absolute z-30 flex flex-col items-center justify-center pointer-events-none"
-            style={{
-              left: '33%',
-              top: '37%',
-              width: '34%',
-              height: '27%',
-            }}
-          >
-            {/* Circular clipped burger with golden rim */}
-            <div className="relative w-full h-full rounded-full overflow-hidden border-3 border-[#e2c044] shadow-[0_0_30px_rgba(226,192,68,0.5)] bg-black">
-              <img
-                src="/assets/grafit/instagram/burguer.webp"
-                alt="Burger Grafit 100% Buey"
-                className="w-full h-full object-cover scale-110"
-              />
-            </div>
-            {/* Zine sticker badge */}
-            <span className="mt-1 bg-black text-[#e2c044] font-mono text-[9px] sm:text-[11px] font-bold px-2 py-0.5 border border-[#e2c044] shadow-[2px_2px_0_#000] uppercase tracking-wider whitespace-nowrap">
-              ★ BURGER 100% BUEY ★
-            </span>
-          </div>
-
-          {/* =============================================================== */}
-          {/* C. LEFT HEADLIGHT (SINKS, REBOUNDS & REVEALS SANDWICH)           */}
+          {/* B. LEFT HEADLIGHT (WARM HALOGEN/INCANDESCENT ILLUMINATION)       */}
           {/* =============================================================== */}
           <div
             ref={hlLeftRef}
-            className="absolute z-30 flex flex-col items-center justify-center select-none"
+            className="absolute z-30 flex items-center justify-center select-none"
             style={{
               left: '12%',
               top: '51.5%',
@@ -559,42 +498,60 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
               transformOrigin: 'center center',
             }}
           >
-            {/* High-fidelity Vector SVG Chrome Bezel */}
-            <div className="relative w-full h-full rounded-full overflow-hidden flex items-center justify-center bg-black border-2 border-[#888] shadow-[0_8px_20px_rgba(0,0,0,0.85)]">
-              {/* Glass fluting layer (starts visible, fades on rebound) */}
-              <div ref={hlLeftGlassRef} className="absolute inset-0 w-full h-full z-20">
+            {/* Atmospheric Forward Projection Beam / Flare */}
+            <div
+              ref={hlLeftBeamRef}
+              className="absolute -top-[50%] -left-[50%] w-[200%] h-[200%] rounded-full pointer-events-none z-0 mix-blend-screen opacity-0"
+              style={{
+                background: 'radial-gradient(circle at 50% 50%, rgba(255,245,210,0.6) 0%, rgba(250,204,21,0.3) 35%, rgba(234,179,8,0.12) 60%, transparent 80%)',
+                filter: 'blur(12px)',
+              }}
+            />
+
+            {/* Atmospheric Forward Projection Beam / Flare */}
+            <div
+              ref={hlLeftBeamRef}
+              className="absolute -top-[65%] -left-[65%] w-[230%] h-[230%] rounded-full pointer-events-none z-30 mix-blend-screen opacity-0"
+              style={{
+                background: 'radial-gradient(circle at 50% 50%, rgba(255,248,220,0.85) 0%, rgba(250,204,21,0.45) 30%, rgba(234,179,8,0.18) 55%, transparent 75%)',
+                filter: 'blur(16px)',
+              }}
+            />
+
+            {/* High-fidelity Vector SVG Chrome Bezel & Fluted Lens */}
+            <div className="relative w-full h-full rounded-full overflow-hidden flex items-center justify-center bg-[#181614] border-2 border-[#999] shadow-[0_8px_24px_rgba(0,0,0,0.9)] z-10">
+              {/* Glass fluting texture */}
+              <div ref={hlLeftGlassRef} className="absolute inset-0 w-full h-full z-10 pointer-events-none">
                 <img
                   src="/assets/grafit/motion/van/layers/headlight_glass_centered.png"
                   alt=""
-                  className="w-full h-full object-cover brightness-110 contrast-125"
+                  className="w-full h-full object-cover brightness-105 contrast-125"
                 />
               </div>
 
-              {/* Revealed Content: Sándwich de barra */}
-              <div ref={hlLeftContentRef} className="absolute inset-0 w-full h-full z-10 opacity-0">
-                <img
-                  src="/assets/grafit/instagram/sandwich-barra.jpg"
-                  alt="Sándwich de Barra"
-                  className="w-full h-full object-cover scale-110"
-                />
+              {/* Warm Incandescent Filament & Radial Core Glow (Above glass for authentic internal bulb glow) */}
+              <div
+                ref={hlLeftGlowRef}
+                className="absolute inset-0 rounded-full z-20 pointer-events-none mix-blend-screen flex items-center justify-center opacity-0"
+                style={{
+                  background: 'radial-gradient(circle at 50% 50%, rgba(255,255,250,1) 0%, rgba(254,240,138,0.95) 25%, rgba(234,179,8,0.8) 55%, rgba(180,83,9,0.3) 80%, transparent 100%)',
+                }}
+              >
+                {/* Hot incandescent filament core point */}
+                <div className="w-5 h-5 rounded-full bg-white shadow-[0_0_14px_6px_rgba(255,255,255,0.95),0_0_28px_10px_rgba(250,204,21,0.85)]" />
               </div>
 
               {/* Chrome rim specular gleam */}
               <div className="absolute inset-0 rounded-full border border-white/40 pointer-events-none z-30" />
             </div>
-
-            {/* Zine Tag */}
-            <span className="mt-1 bg-[#b91c1c] text-white font-mono text-[8px] sm:text-[10px] font-bold px-1.5 py-0.5 border border-black shadow-[2px_2px_0_#000] uppercase tracking-wider whitespace-nowrap">
-              COCINA NON-STOP
-            </span>
           </div>
 
           {/* =============================================================== */}
-          {/* D. RIGHT HEADLIGHT (SINKS, REBOUNDS & REVEALS SALÓN MULTIUSOS)   */}
+          {/* C. RIGHT HEADLIGHT (WARM HALOGEN/INCANDESCENT ILLUMINATION)      */}
           {/* =============================================================== */}
           <div
             ref={hlRightRef}
-            className="absolute z-30 flex flex-col items-center justify-center select-none"
+            className="absolute z-30 flex items-center justify-center select-none"
             style={{
               left: '68%',
               top: '51.5%',
@@ -603,34 +560,42 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
               transformOrigin: 'center center',
             }}
           >
-            {/* High-fidelity Vector SVG Chrome Bezel */}
-            <div className="relative w-full h-full rounded-full overflow-hidden flex items-center justify-center bg-black border-2 border-[#888] shadow-[0_8px_20px_rgba(0,0,0,0.85)]">
-              {/* Glass fluting layer */}
-              <div ref={hlRightGlassRef} className="absolute inset-0 w-full h-full z-20">
+            {/* Atmospheric Forward Projection Beam / Flare */}
+            <div
+              ref={hlRightBeamRef}
+              className="absolute -top-[65%] -left-[65%] w-[230%] h-[230%] rounded-full pointer-events-none z-30 mix-blend-screen opacity-0"
+              style={{
+                background: 'radial-gradient(circle at 50% 50%, rgba(255,248,220,0.85) 0%, rgba(250,204,21,0.45) 30%, rgba(234,179,8,0.18) 55%, transparent 75%)',
+                filter: 'blur(16px)',
+              }}
+            />
+
+            {/* High-fidelity Vector SVG Chrome Bezel & Fluted Lens */}
+            <div className="relative w-full h-full rounded-full overflow-hidden flex items-center justify-center bg-[#181614] border-2 border-[#999] shadow-[0_8px_24px_rgba(0,0,0,0.9)] z-10">
+              {/* Glass fluting texture */}
+              <div ref={hlRightGlassRef} className="absolute inset-0 w-full h-full z-10 pointer-events-none">
                 <img
                   src="/assets/grafit/motion/van/layers/headlight_glass_centered.png"
                   alt=""
-                  className="w-full h-full object-cover brightness-110 contrast-125"
+                  className="w-full h-full object-cover brightness-105 contrast-125"
                 />
               </div>
 
-              {/* Revealed Content: El Gran Salón con mesas preparadas */}
-              <div ref={hlRightContentRef} className="absolute inset-0 w-full h-full z-10 opacity-0">
-                <img
-                  src="/assets/grafit/interior/grafit-salon-mesas-11.jpg"
-                  alt="El Gran Salón Multiusos"
-                  className="w-full h-full object-cover scale-115"
-                />
+              {/* Warm Incandescent Filament & Radial Core Glow (Above glass for authentic internal bulb glow) */}
+              <div
+                ref={hlRightGlowRef}
+                className="absolute inset-0 rounded-full z-20 pointer-events-none mix-blend-screen flex items-center justify-center opacity-0"
+                style={{
+                  background: 'radial-gradient(circle at 50% 50%, rgba(255,255,250,1) 0%, rgba(254,240,138,0.95) 25%, rgba(234,179,8,0.8) 55%, rgba(180,83,9,0.3) 80%, transparent 100%)',
+                }}
+              >
+                {/* Hot incandescent filament core point */}
+                <div className="w-5 h-5 rounded-full bg-white shadow-[0_0_14px_6px_rgba(255,255,255,0.95),0_0_28px_10px_rgba(250,204,21,0.85)]" />
               </div>
 
               {/* Chrome rim specular gleam */}
               <div className="absolute inset-0 rounded-full border border-white/40 pointer-events-none z-30" />
             </div>
-
-            {/* Zine Tag */}
-            <span className="mt-1 bg-[#e2c044] text-black font-mono text-[8px] sm:text-[10px] font-bold px-1.5 py-0.5 border border-black shadow-[2px_2px_0_#000] uppercase tracking-wider whitespace-nowrap">
-              EL GRAN SALÓN
-            </span>
           </div>
           </div>
 
