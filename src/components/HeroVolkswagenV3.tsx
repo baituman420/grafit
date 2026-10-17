@@ -491,23 +491,13 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
             ref={hlLeftRef}
             className="absolute z-30 flex items-center justify-center select-none"
             style={{
-              left: '12%',
-              top: '51.5%',
-              width: '20%',
-              height: '16%',
+              left: '12.0%',
+              top: '50.5%',
+              width: '19.2%',
+              height: '15.4%',
               transformOrigin: 'center center',
             }}
           >
-            {/* Atmospheric Forward Projection Beam / Flare */}
-            <div
-              ref={hlLeftBeamRef}
-              className="absolute -top-[50%] -left-[50%] w-[200%] h-[200%] rounded-full pointer-events-none z-0 mix-blend-screen opacity-0"
-              style={{
-                background: 'radial-gradient(circle at 50% 50%, rgba(255,245,210,0.6) 0%, rgba(250,204,21,0.3) 35%, rgba(234,179,8,0.12) 60%, transparent 80%)',
-                filter: 'blur(12px)',
-              }}
-            />
-
             {/* Atmospheric Forward Projection Beam / Flare */}
             <div
               ref={hlLeftBeamRef}
@@ -553,10 +543,10 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
             ref={hlRightRef}
             className="absolute z-30 flex items-center justify-center select-none"
             style={{
-              left: '68%',
-              top: '51.5%',
-              width: '20%',
-              height: '16%',
+              left: '72.8%',
+              top: '49.4%',
+              width: '19.2%',
+              height: '15.4%',
               transformOrigin: 'center center',
             }}
           >
