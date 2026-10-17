@@ -543,7 +543,7 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
             ref={hlRightRef}
             className="absolute z-30 flex items-center justify-center select-none"
             style={{
-              left: '72.8%',
+              left: '70%',
               top: '49.4%',
               width: '19.2%',
               height: '15.4%',
