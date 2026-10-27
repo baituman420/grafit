@@ -14,29 +14,29 @@ declare(strict_types=1);
 
 return [
     // --------------------------------------------------------------------------
-    // CONFIGURACIÓN DE CORREO SALIENTE (SMTP AUTENTICADO)
+    // CONFIGURACIÓN DE CORREO SALIENTE (SMTP AUTENTICADO - PUERTO 465 SSL)
     // --------------------------------------------------------------------------
     'smtp_enabled' => true,
     
-    // Servidor SMTP (ej. 'localhost', 'mail.grafitcafe.com', o '5.56.166.21')
+    // Servidor SMTP oficial de Grafit Café (resuelve a 5.181.44.105, Postfix ESMTP)
     'smtp_host' => 'mail.grafitcafe.com',
     
-    // Puerto SMTP (comúnmente 587 para STARTTLS, 465 para SSL/TLS, o 25 en local)
-    'smtp_port' => 587,
+    // Puerto SMTP: 465 para SSL/TLS implícito (SMTPS directo), o 587 para STARTTLS
+    'smtp_port' => 465,
     
-    // Cifrado ('tls', 'ssl', o '' para conexión sin cifrado)
-    'smtp_secure' => 'tls',
+    // Cifrado ('ssl' para conexión cifrada directa en puerto 465; 'tls' para puerto 587)
+    'smtp_secure' => 'ssl',
     
-    // Autenticación SMTP requerida
+    // Autenticación SMTP requerida (servidor admite AUTH LOGIN y AUTH PLAIN)
     'smtp_auth' => true,
     
-    // Usuario de correo (buzón completo oficial)
+    // Usuario de correo (dirección completa de la cuenta autorizada en el servidor)
     'smtp_user' => 'grafitcafe@grafitcafe.com',
     
-    // Contraseña del buzón de correo
+    // Contraseña del buzón de correo (mantener estrictamente fuera del repositorio)
     'smtp_password' => 'AQUI_TU_CONTRASENA_SMTP',
     
-    // Remitente del mensaje
+    // Remitente del mensaje (debe coincidir con la cuenta autenticada para evitar rechazos SPF/DMARC)
     'mail_from' => 'grafitcafe@grafitcafe.com',
     'mail_from_name' => 'Web Grafit Café (Solicitudes de Eventos)',
     

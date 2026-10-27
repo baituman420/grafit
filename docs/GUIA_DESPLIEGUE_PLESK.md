@@ -57,14 +57,14 @@ declare(strict_types=1);
 
 return [
     // -------------------------------------------------------------------------
-    // PARÁMETROS SMTP AUTENTICADOS (Buzón Oficial)
+    // PARÁMETROS SMTP AUTENTICADOS (Buzón Oficial Grafit Café)
     // -------------------------------------------------------------------------
     'smtp_enabled'   => true,
-    'smtp_host'      => 'mail.grafitcafe.com', // o 'localhost' / '5.56.166.21'
-    'smtp_port'      => 587,                   // 587 (STARTTLS) o 465 (SSL)
-    'smtp_secure'    => 'tls',                 // 'tls' o 'ssl'
+    'smtp_host'      => 'mail.grafitcafe.com', // Resuelve a 5.181.44.105 (Postfix ESMTP)
+    'smtp_port'      => 465,                   // 465: SSL/TLS implícito directo
+    'smtp_secure'    => 'ssl',                 // 'ssl' con validación estricta Let's Encrypt / ISRG Root X1
     'smtp_auth'      => true,
-    'smtp_user'      => 'grafitcafe@grafitcafe.com',
+    'smtp_user'      => 'grafitcafe@grafitcafe.com', // Dirección completa autorizada
     'smtp_password'  => 'CONTRASENA_REAL_DEL_BUZON',
     'mail_from'      => 'grafitcafe@grafitcafe.com',
     'mail_from_name' => 'Web Grafit Café (Solicitudes de Eventos)',
@@ -79,8 +79,19 @@ return [
 ];
 ```
 
+### Verificación previa de conexión SMTP antes de activar:
+En el servidor Plesk (mediante SSH o terminal de Plesk), se puede ejecutar la herramienta de diagnóstico CLI para comprobar la conectividad y autenticación antes de habilitar el formulario de producción:
+
+```bash
+# Comprobación de DNS, socket SSL puerto 465 y saludo ESMTP:
+php scripts/verify_smtp.php
+
+# Comprobación completa incluyendo autenticación de buzón:
+php scripts/verify_smtp.php --password="CONTRASENA_REAL_DEL_BUZON"
+```
+
 > [!IMPORTANT]
-> **Seguridad garantizada**: El archivo `.htaccess` incluye la regla `Require all denied` para `config.php`, impidiendo cualquier descarga directa desde navegadores web. Además, está incluido en `.gitignore`.
+> **Seguridad garantizada**: El archivo `.htaccess` incluye la regla `Require all denied` para `config.php`, impidiendo cualquier descarga directa desde navegadores web. Además, está incluido en `.gitignore`. NUNCA se utiliza `mail()` nativo como fallback ante fallos de conexión.
 
 ---
 

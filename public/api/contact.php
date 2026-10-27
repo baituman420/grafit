@@ -120,11 +120,11 @@ $cleanAsistentes = str_replace(["\r", "\n"], '', strip_tags($asistentesAproximad
 $cleanFecha = str_replace(["\r", "\n"], '', strip_tags($fechaAproximada));
 
 // 4. Verificación de configuración SMTP
-$smtpHost = $config['smtp_host'] ?? '';
-$smtpPort = (int)($config['smtp_port'] ?? 587);
-$smtpUser = $config['smtp_user'] ?? '';
+$smtpHost = $config['smtp_host'] ?? 'mail.grafitcafe.com';
+$smtpPort = (int)($config['smtp_port'] ?? 465);
+$smtpUser = $config['smtp_user'] ?? 'grafitcafe@grafitcafe.com';
 $smtpPass = $config['smtp_password'] ?? '';
-$smtpSecure = strtolower((string)($config['smtp_secure'] ?? 'tls'));
+$smtpSecure = strtolower((string)($config['smtp_secure'] ?? ($smtpPort === 465 ? 'ssl' : 'tls')));
 $mailTo = $config['mail_to'] ?? 'grafitcafe@grafitcafe.com';
 $mailFrom = $config['mail_from'] ?? 'grafitcafe@grafitcafe.com';
 $mailFromName = $config['mail_from_name'] ?? 'Web Grafit Café';
@@ -179,16 +179,21 @@ function sendSmtpMail(
     string $subject,
     string $body
 ): array {
-    $remote = ($secure === 'ssl' ? 'ssl://' : '') . $host . ':' . $port;
+    $isSsl = ($secure === 'ssl' || $port === 465);
+    $remote = ($isSsl ? 'ssl://' : 'tcp://') . $host . ':' . $port;
+    
+    // Validación de certificados estricta y obligatoria (verificación de peer y de hostname)
     $context = stream_context_create([
         'ssl' => [
             'verify_peer' => true,
-            'verify_peer_name' => false,
-            'allow_self_signed' => true
+            'verify_peer_name' => true,
+            'peer_name' => $host,
+            'allow_self_signed' => false,
+            'SNI_enabled' => true,
         ]
     ]);
     
-    $socket = @stream_socket_client($remote, $errno, $errstr, 10, STREAM_CLIENT_CONNECT, $context);
+    $socket = @stream_socket_client($remote, $errno, $errstr, 12, STREAM_CLIENT_CONNECT, $context);
     if (!$socket) {
         return ['ok' => false, 'error' => "Conexión rechazada al servidor SMTP ({$errstr})"];
     }
@@ -214,14 +219,15 @@ function sendSmtpMail(
         return ['ok' => false, 'error' => "Respuesta inicial no válida: " . $initial['text']];
     }
 
-    $ehlo = $sendCommand($socket, "EHLO " . gethostname(), 250);
+    $clientDomain = 'grafitcafe.com';
+    $ehlo = $sendCommand($socket, "EHLO " . $clientDomain, 250);
     if (!$ehlo['ok']) {
         fclose($socket);
         return ['ok' => false, 'error' => "EHLO falló: " . $ehlo['text']];
     }
 
-    // STARTTLS si procede
-    if ($secure === 'tls') {
+    // STARTTLS solo si procede (cuando la conexión socket no es SSL implícito nativo)
+    if (!$isSsl && $secure === 'tls') {
         $tls = $sendCommand($socket, "STARTTLS", 220);
         if (!$tls['ok']) {
             fclose($socket);
@@ -232,7 +238,7 @@ function sendSmtpMail(
             return ['ok' => false, 'error' => "Negociación TLS criptográfica fallida."];
         }
         // Repetir EHLO tras TLS
-        $ehloAfterTls = $sendCommand($socket, "EHLO " . gethostname(), 250);
+        $ehloAfterTls = $sendCommand($socket, "EHLO " . $clientDomain, 250);
         if (!$ehloAfterTls['ok']) {
             fclose($socket);
             return ['ok' => false, 'error' => "EHLO post-TLS falló."];
