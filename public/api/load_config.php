@@ -52,10 +52,9 @@ if (!function_exists('grafit_load_config')) {
         $searchPaths[] = dirname($dir, 2) . '/private/grafit_config.php';
         $searchPaths[] = dirname($dir, 2) . '/grafit_config.php';
         $searchPaths[] = dirname($dir, 3) . '/private/grafit_config.php';
-        $searchPaths[] = dirname($dir, 3) . '/grafit_config.php';
-
-        // 4. Ubicación de desarrollo / fallback local
-        $searchPaths[] = $dir . '/config.php';
+        // NOTA DE SEGURIDAD: Se ha eliminado categóricamente cualquier fallback local
+        // a __DIR__ . '/config.php'. Las credenciales se buscan EXCLUSIVAMENTE
+        // en ubicaciones privadas fuera del Document Root público.
 
         foreach ($searchPaths as $path) {
             if (!empty($path) && file_exists($path) && is_readable($path)) {
@@ -66,6 +65,8 @@ if (!function_exists('grafit_load_config')) {
             }
         }
 
+        // Si no existe el archivo privado o no se puede leer, devuelve array vacío
+        // activando el fallo controlado (HTTP 503) sin confirmar envíos ni revelar rutas.
         return [];
     }
 }
