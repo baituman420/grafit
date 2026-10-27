@@ -1,0 +1,97 @@
+# ==============================================================================
+# GRAFIT CAFÉ — CONFIGURACIÓN DE SERVIDOR APACHE / PLESK (.htaccess)
+# ==============================================================================
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # ----------------------------------------------------------------------------
+  # 1. DETECCIÓN AUTOMÁTICA DEL ENTORNO BETA (PROTECCIÓN NOINDEX)
+  # ----------------------------------------------------------------------------
+  # Si la petición procede del subdominio beta.grafitcafe.com, inyecta la cabecera
+  # noindex para evitar que los buscadores indexen el entorno de pruebas.
+  # Esta directriz queda automáticamente inactiva en el dominio definitivo.
+  SetEnvIfNoCase Host "^beta\." IS_BETA_HOST
+
+  # ----------------------------------------------------------------------------
+  # 2. MAPA DE REDIRECCIONES PERMANENTES 301 DESDE WORDPRESS HISTÓRICO
+  # ----------------------------------------------------------------------------
+  # Mantiene el posicionamiento orgánico y previene errores 404 en enlaces indexados
+  RewriteRule ^contenidos/?$ /carta [R=301,L]
+  RewriteRule ^info/?$ /espacio [R=301,L]
+  RewriteRule ^agenda/?$ /eventos [R=301,L]
+  RewriteRule ^grafit-rock-cafe-esta-a-punto/?$ /espacio [R=301,L]
+  RewriteRule ^el-grafit-rock-cafe-de-bilbao-se-reforma/?$ /espacio [R=301,L]
+  RewriteRule ^cuarto-traste-en-el-grafit-rock-cafe/?$ /eventos [R=301,L]
+  RewriteRule ^wellcome-to-grafit-rock-cafe/?$ / [R=301,L]
+  RewriteRule ^feed/?$ / [R=301,L]
+  RewriteRule ^comments/feed/?$ / [R=301,L]
+
+  # ----------------------------------------------------------------------------
+  # 3. BLOQUEO DE RUTAS OBSOLETAS DE WORDPRESS (REDUCCIÓN DE ATAQUES DE BOTS)
+  # ----------------------------------------------------------------------------
+  RewriteRule ^wp-login\.php$ - [F,L]
+  RewriteRule ^xmlrpc\.php$ - [F,L]
+  RewriteRule ^wp-admin/? - [F,L]
+
+  # ----------------------------------------------------------------------------
+  # 4. ENRUTADO DE APLICACIÓN DE PÁGINA ÚNICA (SPA FALLBACK)
+  # ----------------------------------------------------------------------------
+  # Permite que rutas como /eventos, /carta, /espacio, /aviso-legal se resuelvan
+  # por el enrutador cliente de React sin devolver 404.
+  # Excluye archivos físicos existentes y el directorio de endpoints /api/
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  RewriteCond %{REQUEST_URI} !^/api/
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 5. CABECERAS DE SEGURIDAD Y PROTECCIÓN SEO
+# ------------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  # Cabecera X-Robots-Tag aplicada EXCLUSIVAMENTE al subdominio beta
+  Header set X-Robots-Tag "noindex, nofollow, noarchive" env=IS_BETA_HOST
+
+  # Cabeceras de seguridad fundamentales
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 6. PROTECCIÓN DE ARCHIVOS SENSIBLES Y CONFIGURACIÓN PRIVADA
+# ------------------------------------------------------------------------------
+<Files "config.php">
+  Require all denied
+</Files>
+
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
+
+# ------------------------------------------------------------------------------
+# 7. POLÍTICA DE CACHÉ DE ARCHIVOS ESTÁTICOS
+# ------------------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 week"
+
+  # HTML: sin caché prolongada para permitir actualizaciones inmediatas
+  ExpiresByType text/html "access plus 0 seconds"
+
+  # CSS y JavaScript compilados por Vite (tienen hash en el nombre)
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+
+  # Imágenes estáticas WebP y JPEG
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 year"
+</IfModule>

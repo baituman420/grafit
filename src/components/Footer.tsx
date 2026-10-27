@@ -199,13 +199,43 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
         </div>
 
+        {/* LEGAL NAVIGATION LINKS */}
+        <div className="mt-8 pt-6 pb-2 border-t border-neutral-800 flex flex-wrap items-center justify-between gap-3 font-mono-code text-[11px] text-neutral-400">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-5">
+            <button
+              onClick={() => onNavigate('/aviso-legal')}
+              className="hover:text-white hover:underline transition-colors cursor-pointer"
+            >
+              Aviso Legal (LSSI)
+            </button>
+            <span className="text-neutral-600">/</span>
+            <button
+              onClick={() => onNavigate('/politica-privacidad')}
+              className="hover:text-white hover:underline transition-colors cursor-pointer"
+            >
+              Política de Privacidad (RGPD)
+            </button>
+            <span className="text-neutral-600">/</span>
+            <button
+              onClick={() => onNavigate('/politica-cookies')}
+              className="hover:text-white hover:underline transition-colors cursor-pointer"
+            >
+              Política de Cookies
+            </button>
+          </div>
+          <span className="text-[10px] text-neutral-400">
+            JARNAIBEN S.L. • CIF B95435269
+          </span>
+        </div>
+
         {/* BOTTOM COPYRIGHT & BACK TO TOP */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono-code text-xs text-neutral-400">
+        <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono-code text-xs text-neutral-400">
           <p>© {new Date().getFullYear()} Grafit Rock Café • Urrutia Kalea 1, Indautxu, Bilbao. Todos los derechos reservados.</p>
           
           <button
             onClick={scrollToTop}
-            className="flex items-center gap-2 bg-neutral-900 text-white px-4 py-2 border-2 border-neutral-700 hover:bg-[#b91c1c] transition-colors font-bold"
+            className="flex items-center gap-2 bg-neutral-900 text-white px-4 py-2 border-2 border-neutral-700 hover:bg-[#b91c1c] transition-colors font-bold cursor-pointer"
+            aria-label="Volver al inicio de la página"
           >
             <span>SUBIR ARRIBA</span>
             <ArrowUp className="w-4 h-4" />

@@ -249,9 +249,9 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
         // Letters elastic spring back and dock to top position
         masterTl.to(el, {
           x: 0,
-          y: isMobile ? -24 : -36,
+          y: isMobile ? 4 : -24,
           rotation: RANSOM_LETTERS[i].baseRot,
-          scale: isMobile ? 0.85 : 1.0,
+          scale: isMobile ? 0.9 : 1.0,
           duration: 0.8,
           ease: 'elastic.out(1.1, 0.45)',
         }, 1.65);
@@ -358,12 +358,12 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
         {/* ================================================================= */}
         {/* RANSOM WOODBLOCK LETTERS HEADER (G R A F I T)                      */}
         {/* ================================================================= */}
-        <div className="relative z-20 flex items-center justify-center gap-1.5 sm:gap-3 md:gap-4 mb-5 sm:mb-7">
+        <div className="relative z-20 flex items-center justify-center gap-1 sm:gap-3 md:gap-4 mb-5 sm:mb-7 px-2">
           {RANSOM_LETTERS.map((letter, i) => (
             <div
               key={letter.char}
               ref={(el) => { lettersRef.current[i] = el; }}
-              className={`w-11 h-15 sm:w-15 sm:h-22 md:w-18 md:h-26 flex items-center justify-center ${letter.font} text-3xl sm:text-5xl md:text-6xl shadow-[4px_4px_0_#000]`}
+              className={`w-10 h-14 sm:w-15 sm:h-22 md:w-18 md:h-26 flex items-center justify-center ${letter.font} text-2xl sm:text-5xl md:text-6xl shadow-[3px_3px_0_#000] sm:shadow-[4px_4px_0_#000] select-none`}
               style={{
                 backgroundColor: letter.bg,
                 color: letter.color,

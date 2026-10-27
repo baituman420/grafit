@@ -188,3 +188,25 @@ html, body {
   white-space: nowrap;
   animation: marquee 25s linear infinite;
 }
+
+/* WCAG 2.2 AA / AAA VISIBLE FOCUS RING */
+:focus-visible {
+  outline: 3px solid var(--color-oxblood) !important;
+  outline-offset: 3px !important;
+}
+
+/* ACCESSIBILITY: PREFERS-REDUCED-MOTION */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-marquee {
+    animation: none !important;
+  }
+}
+

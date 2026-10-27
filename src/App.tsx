@@ -6,6 +6,9 @@ import { EventosPage } from './pages/EventosPage';
 import { EspacioPage } from './pages/EspacioPage';
 import { CartaPage } from './pages/CartaPage';
 import { ContactoPage } from './pages/ContactoPage';
+import { AvisoLegalPage } from './pages/AvisoLegalPage';
+import { PoliticaPrivacidadPage } from './pages/PoliticaPrivacidadPage';
+import { PoliticaCookiesPage } from './pages/PoliticaCookiesPage';
 import { ZineBackgroundWall } from './components/ZineBackgroundWall';
 
 const getRepoBase = (): string => {
@@ -85,6 +88,12 @@ export const App: React.FC = () => {
         return <CartaPage onNavigate={handleNavigate} />;
       case '/contacto':
         return <ContactoPage onNavigate={handleNavigate} />;
+      case '/aviso-legal':
+        return <AvisoLegalPage onNavigate={handleNavigate} />;
+      case '/politica-privacidad':
+        return <PoliticaPrivacidadPage onNavigate={handleNavigate} />;
+      case '/politica-cookies':
+        return <PoliticaCookiesPage onNavigate={handleNavigate} />;
       case '/':
       default:
         return <HomePage onNavigate={handleNavigate} />;

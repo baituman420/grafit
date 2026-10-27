@@ -60,7 +60,7 @@ export const GRAFIT_DATA = {
     address: 'Urrutia Kalea, 1',
     neighborhood: 'Indautxu',
     city: '48010 Bilbao, Bizkaia',
-    phone: '', // Teléfono oficial en proceso de verificación por la gerencia
+    phone: '944 102 772',
     email: 'grafitcafe@grafitcafe.com',
     hours: [
       { days: 'Lunes a Jueves', time: '08:00 – 23:00' },

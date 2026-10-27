@@ -1,0 +1,11 @@
+# robots.txt para Grafit Café (https://www.grafitcafe.com/)
+# Producción: Permite el rastreo de páginas públicas e indexación SEO local
+# Los entornos de prueba (beta.grafitcafe.com) reciben cabecera X-Robots-Tag: noindex, nofollow vía .htaccess
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /scratch/
+
+# Sitemap canónico oficial
+Sitemap: https://www.grafitcafe.com/sitemap.xml

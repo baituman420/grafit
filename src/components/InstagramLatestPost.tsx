@@ -13,18 +13,18 @@ export interface InstagramPost {
 
 interface InstagramLatestPostProps {
   initialPost?: InstagramPost | null;
-  accessToken?: string;
   accountHandle?: string;
+  apiEndpoint?: string;
 }
 
 export const InstagramLatestPost: React.FC<InstagramLatestPostProps> = ({
   initialPost = null,
-  accessToken,
   accountHandle = 'grafitcafe',
+  apiEndpoint = './api/instagram.php',
 }) => {
   const [post, setPost] = useState<InstagramPost | null>(initialPost);
   const [status, setStatus] = useState<'awaiting_credentials' | 'loading' | 'active' | 'error'>(
-    initialPost ? 'active' : accessToken ? 'loading' : 'awaiting_credentials'
+    initialPost ? 'active' : 'loading'
   );
 
   useEffect(() => {
@@ -34,34 +34,31 @@ export const InstagramLatestPost: React.FC<InstagramLatestPostProps> = ({
       return;
     }
 
-    if (accessToken) {
-      setStatus('loading');
-      fetch(`https://graph.instagram.com/me/media?fields=id,caption,media_url,permalink,timestamp,media_type&access_token=${accessToken}&limit=1`)
-        .then((res) => {
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          return res.json();
-        })
-        .then((data) => {
-          if (data && data.data && data.data.length > 0) {
-            const raw = data.data[0];
-            setPost({
-              id: raw.id,
-              caption: raw.caption || '',
-              mediaUrl: raw.media_url,
-              permalink: raw.permalink,
-              timestamp: raw.timestamp,
-              mediaType: raw.media_type,
-            });
-            setStatus('active');
-          } else {
-            setStatus('awaiting_credentials');
-          }
-        })
-        .catch(() => {
+    let isMounted = true;
+    fetch(apiEndpoint)
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then((data) => {
+        if (!isMounted) return;
+        if (data && data.ok && data.post) {
+          setPost(data.post);
+          setStatus('active');
+        } else {
           setStatus('awaiting_credentials');
-        });
-    }
-  }, [accessToken, initialPost]);
+        }
+      })
+      .catch(() => {
+        if (!isMounted) return;
+        // En entorno local o sin PHP, activa el respaldo auténtico sin interrumpir la experiencia
+        setStatus('awaiting_credentials');
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [apiEndpoint, initialPost]);
 
   const instagramProfileUrl = `https://instagram.com/${accountHandle}`;
 

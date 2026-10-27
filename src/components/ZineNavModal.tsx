@@ -15,10 +15,19 @@ export const ZineNavModal: React.FC<ZineNavModalProps> = ({
   currentPath,
   onNavigate,
 }) => {
+  React.useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col bg-[#e5dfd0] bg-grafit-texture overflow-y-auto animate-fadeIn">
+    <div className="fixed inset-0 z-50 flex flex-col bg-[#e5dfd0] bg-grafit-texture overflow-y-auto animate-fadeIn" role="dialog" aria-modal="true" aria-label="Menú de navegación principal">
       {/* HEADER BAR */}
       <div className="p-4 border-b-4 border-black bg-black text-white flex items-center justify-between">
         <div className="flex items-center gap-2">
@@ -29,8 +38,8 @@ export const ZineNavModal: React.FC<ZineNavModalProps> = ({
         </div>
         <button
           onClick={onClose}
-          className="p-2 bg-[#b91c1c] text-white border-2 border-white hover:bg-white hover:text-black transition-colors"
-          aria-label="Cerrar menú"
+          className="min-w-[48px] min-h-[48px] p-2.5 bg-[#b91c1c] text-white border-2 border-white hover:bg-white hover:text-black transition-colors flex items-center justify-center cursor-pointer"
+          aria-label="Cerrar menú de navegación"
         >
           <X className="w-6 h-6" />
         </button>
@@ -103,6 +112,38 @@ export const ZineNavModal: React.FC<ZineNavModalProps> = ({
             <div>
               <p className="font-bold text-black">{GRAFIT_DATA.info.kitchenHours}</p>
             </div>
+          </div>
+
+          <div className="pt-3 border-t border-black/15 flex flex-wrap items-center gap-2 font-mono-code text-[10px] text-neutral-600">
+            <button
+              onClick={() => {
+                onNavigate('/aviso-legal');
+                onClose();
+              }}
+              className="hover:underline hover:text-black cursor-pointer"
+            >
+              Aviso Legal
+            </button>
+            <span>•</span>
+            <button
+              onClick={() => {
+                onNavigate('/politica-privacidad');
+                onClose();
+              }}
+              className="hover:underline hover:text-black cursor-pointer"
+            >
+              Privacidad
+            </button>
+            <span>•</span>
+            <button
+              onClick={() => {
+                onNavigate('/politica-cookies');
+                onClose();
+              }}
+              className="hover:underline hover:text-black cursor-pointer"
+            >
+              Cookies
+            </button>
           </div>
         </div>
       </div>

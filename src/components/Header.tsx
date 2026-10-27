@@ -25,12 +25,12 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
   return (
     <>
       <header
-        className={`${
+        className={`sticky top-0 z-40 bg-[#ebe5d8]/95 backdrop-blur-md border-b-4 border-black transition-all duration-300 ${
           isHome
-            ? `fixed top-0 left-0 w-full z-40 bg-[#ebe5d8]/95 backdrop-blur-md border-b-4 border-black transition-transform duration-300 ${
-                isScrolled ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0 pointer-events-none'
-              }`
-            : 'sticky top-0 z-40 bg-[#ebe5d8]/95 backdrop-blur-md border-b-4 border-black translate-y-0 opacity-100'
+            ? isScrolled
+              ? 'translate-y-0 opacity-100 shadow-md'
+              : 'translate-y-0 opacity-100 lg:-translate-y-full lg:opacity-0 lg:pointer-events-none'
+            : 'translate-y-0 opacity-100 shadow-md'
         }`}
       >
         {/* INTERNAL PAGES ONLY: MINIMAL SUB-LINE & BREADCRUMB */}
@@ -52,23 +52,23 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
           </div>
         )}
 
-        {/* MAIN NAV BAR - CLEAN, STREAMLINED & LIGHTWEIGHT */}
-        <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-12 py-2.5 sm:py-3.5 flex items-center justify-between gap-4">
+        {/* MAIN NAV BAR - CLEAN, STREAMLINED & ACCESSIBLE FLEX FLOW */}
+        <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-12 py-2.5 sm:py-3.5 flex items-center justify-between gap-3 sm:gap-4">
           
-          {/* COMPACT BRAND BADGE - NO COMPETITION WITH HERO */}
+          {/* COMPACT BRAND BADGE - GUARANTEED VISIBILITY WITHOUT SOLAPAMIENTO */}
           <button
             onClick={() => onNavigate('/')}
-            className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none text-left cursor-pointer"
+            className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none text-left cursor-pointer min-w-0"
             aria-label="Grafit Rock Café Inicio"
           >
             <div className="w-9 h-9 sm:w-11 sm:h-11 bg-black text-white flex items-center justify-center font-anton text-2xl sm:text-3xl border-2 border-black shadow-[2px_2px_0px_#b91c1c] group-hover:bg-[#b91c1c] transition-colors shrink-0">
               G
             </div>
-            <div className="flex flex-col">
-              <span className="font-anton text-2xl sm:text-3xl text-black tracking-wider uppercase leading-none group-hover:text-[#b91c1c] transition-colors">
+            <div className="flex flex-col min-w-0">
+              <span className="font-anton text-2xl sm:text-3xl text-black tracking-wider uppercase leading-none group-hover:text-[#b91c1c] transition-colors truncate">
                 GRAFIT
               </span>
-              <span className="font-mono-code text-[10px] sm:text-[11px] font-bold text-neutral-700 tracking-wider uppercase mt-0.5">
+              <span className="font-mono-code text-[10px] sm:text-[11px] font-bold text-neutral-700 tracking-wider uppercase mt-0.5 truncate">
                 ROCK CAFÉ <span className="text-[#b91c1c]">//</span> INDAUTXU
               </span>
             </div>
@@ -108,27 +108,16 @@ export const Header: React.FC<HeaderProps> = ({ currentPath, onNavigate }) => {
             </button>
           </nav>
 
-          {/* MOBILE MENU TRIGGER */}
+          {/* MOBILE MENU TRIGGER - 48x48PX ACCESSIBLE TOUCH TARGET */}
           <button
             onClick={() => setIsMobileMenuOpen(true)}
-            className="lg:hidden p-2.5 bg-black text-white border-2 border-black shadow-[3px_3px_0px_#b91c1c] active:translate-y-0.5 shrink-0 cursor-pointer"
-            aria-label="Abrir menú"
+            className="lg:hidden min-w-[48px] min-h-[48px] p-2.5 bg-black text-white border-2 border-black shadow-[3px_3px_0px_#b91c1c] active:translate-y-0.5 shrink-0 flex items-center justify-center cursor-pointer focus-visible:outline-3 focus-visible:outline-[#b91c1c] focus-visible:outline-offset-2"
+            aria-label="Abrir menú de navegación"
           >
             <Menu className="w-6 h-6" />
           </button>
         </div>
       </header>
-
-      {/* DISCREET MOBILE FLOATING BURGER (HOME ONLY BEFORE SCROLL) */}
-      {isHome && !isScrolled && (
-        <button
-          onClick={() => setIsMobileMenuOpen(true)}
-          className="lg:hidden fixed top-3 right-3 z-40 p-2.5 bg-black/80 hover:bg-[#b91c1c] text-white border border-neutral-700 shadow-[2px_2px_0_#000] backdrop-blur-sm transition-colors cursor-pointer"
-          aria-label="Abrir menú"
-        >
-          <Menu className="w-5 h-5" />
-        </button>
-      )}
 
       {/* MOBILE NAV MODAL */}
       <ZineNavModal

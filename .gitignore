@@ -18,3 +18,11 @@ pnpm-debug.log*
 .vscode
 .idea
 scratch/
+
+# Backend sensitive configs and caches
+public/api/config.php
+public/api/cache/
+dist/api/config.php
+dist/api/cache/
+api/config.php
+

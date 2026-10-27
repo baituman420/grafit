@@ -59,26 +59,67 @@ export interface SubmitResponse {
   success: boolean;
   message: string;
   isBackendConnected: boolean;
+  errors?: Record<string, string>;
 }
 
-// Handler preparado para integración futura con endpoint REST
-export const submitLead = async (lead: EventLead): Promise<SubmitResponse> => {
+// Handler de conexión con endpoint PHP 8.3 autenticado
+export const submitLead = async (
+  lead: EventLead,
+  renderedAt: number = Math.floor(Date.now() / 1000)
+): Promise<SubmitResponse> => {
   const validation = validateLead(lead);
   if (!validation.isValid) {
     return {
       success: false,
       message: 'Hay errores en el formulario que deben corregirse.',
       isBackendConnected: false,
+      errors: validation.errors,
     };
   }
 
-  // Comportamiento honesto de desarrollo/demo: no simular respuesta de servidor falsa.
-  // Registra en consola el payload para verificación técnica.
-  console.info('[LeadService] Datos validados listos para procesar:', lead);
+  try {
+    const payload = {
+      ...lead,
+      website_check_trap: '', // Honeypot antispam vacío
+      form_rendered_at: renderedAt,
+    };
 
-  return {
-    success: true,
-    message: 'Formulario validado correctamente en cliente. El servicio de envío real se activará al conectar el servidor de correo definitivo.',
-    isBackendConnected: false,
-  };
+    const response = await fetch('./api/contact.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    });
+
+    const json = await response.json().catch(() => null);
+
+    if (response.ok && json && json.success) {
+      return {
+        success: true,
+        message: json.message || 'Solicitud recibida correctamente.',
+        isBackendConnected: true,
+      };
+    }
+
+    // Errores controlados devueltos por el servidor (ej: 503 SMTP pendiente o 422 validación)
+    return {
+      success: false,
+      message:
+        json?.message ||
+        `El servicio de correo devolvió un estado no disponible (${response.status}). Puedes contactarnos directamente en grafitcafe@grafitcafe.com.`,
+      isBackendConnected: false,
+      errors: json?.errors,
+    };
+  } catch (err) {
+    // Si la llamada fetch falla (ejemplo: Vite en localhost donde no hay servidor PHP activo)
+    console.info('[LeadService] Entorno local sin backend PHP activo:', err);
+    return {
+      success: false,
+      message:
+        'Aviso de entorno de desarrollo: En este servidor local de pruebas no se encuentra activo el intérprete PHP 8.3. En el servidor Plesk de producción, esta solicitud se procesará mediante envío seguro SMTP.',
+      isBackendConnected: false,
+    };
+  }
 };

@@ -94,6 +94,8 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
     }
   };
 
+  const [renderedAt] = useState<number>(() => Math.floor(Date.now() / 1000));
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitResult(null);
@@ -106,8 +108,24 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
 
     setSubmitting(true);
     try {
-      const response = await submitLead(formData);
+      const response = await submitLead(formData, renderedAt);
       setSubmitResult(response);
+      if (response.success) {
+        // En caso de éxito real, resetear campos
+        setFormData({
+          nombre: '',
+          email: '',
+          telefono: '',
+          motivo: 'evento',
+          tipoEvento: 'particular',
+          fechaAproximada: '',
+          asistentesAproximados: '',
+          mensaje: '',
+          consentimiento: false,
+        });
+      } else if (response.errors) {
+        setErrors(response.errors);
+      }
     } finally {
       setSubmitting(false);
     }
@@ -136,15 +154,19 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
             FORMULARIO OFICIAL
           </div>
 
-          {/* AVISO DE ESTADO TÉCNICO HONESTO */}
-          <div className="mb-6 p-4 bg-amber-50 border-3 border-amber-800 text-amber-950 font-mono-code text-xs space-y-1">
-            <div className="flex items-center gap-2 font-bold uppercase text-amber-900">
-              <Info className="w-4 h-4 shrink-0" />
-              <span>Transparencia Técnica del Prototipo</span>
+          {/* PRIMERA CAPA INFORMATIVA RGPD (TRANSPARENCIA LEGAL) */}
+          <div className="mb-6 p-4 bg-[#f4eedd] border-2 border-neutral-700 font-mono-code text-xs space-y-2">
+            <div className="flex items-center gap-2 font-bold uppercase text-black">
+              <ShieldCheck className="w-4 h-4 text-[#b91c1c] shrink-0" />
+              <span>Información básica de protección de datos (1.ª Capa RGPD)</span>
             </div>
-            <p className="leading-relaxed">
-              Este formulario ejecuta la validación completa de los campos en el cliente. En esta fase de prototipo no simulamos envíos ficticios a servidores de correo: los datos validados se preparan para su conexión con el canal oficial de gerencia.
-            </p>
+            <div className="text-[11px] text-neutral-800 space-y-1 leading-relaxed">
+              <p><strong>• Responsable:</strong> JARNAIBEN S.L. (CIF B95435269).</p>
+              <p><strong>• Finalidad:</strong> Tramitar y responder a tu solicitud de reserva, disponibilidad y presupuesto de evento.</p>
+              <p><strong>• Base jurídica:</strong> Aplicación de medidas precontractuales solicitadas por el interesado (Art. 6.1.b RGPD).</p>
+              <p><strong>• Destinatarios:</strong> Servidor de hosting MásBytes (España/UE). Cero cesiones a terceros.</p>
+              <p><strong>• Derechos:</strong> Acceso, rectificación, supresión y demás derechos en <a href="mailto:grafitcafe@grafitcafe.com" className="text-[#b91c1c] underline">grafitcafe@grafitcafe.com</a>.</p>
+            </div>
           </div>
 
           {submitResult && (
@@ -162,7 +184,7 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
                   <AlertTriangle className="w-5 h-5 text-red-800 shrink-0 mt-0.5" />
                 )}
                 <div>
-                  <p className="font-bold">{submitResult.success ? 'Solicitud Validada con Éxito' : 'Error en los datos'}</p>
+                  <p className="font-bold">{submitResult.success ? 'Solicitud Enviada con Éxito' : 'Aviso del Servicio de Envío'}</p>
                   <p className="text-xs mt-1 leading-relaxed">{submitResult.message}</p>
                 </div>
               </div>
@@ -170,6 +192,17 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
           )}
 
           <form onSubmit={handleSubmit} noValidate className="space-y-5">
+            {/* HONEYPOT ANTISPAM INVISIBLE */}
+            <div className="hidden" aria-hidden="true">
+              <label htmlFor="website_check_trap">No rellenar este campo si eres humano</label>
+              <input
+                id="website_check_trap"
+                type="text"
+                name="website_check_trap"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
             {/* MOTIVO SELECTOR */}
             <div>
               <label className="block font-mono-code text-xs font-bold uppercase tracking-wider text-black mb-2">
@@ -374,7 +407,18 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
                   className="mt-0.5 w-4 h-4 text-[#b91c1c] border-2 border-black focus:ring-0 rounded-none cursor-pointer"
                 />
                 <span className="font-mono-code text-xs text-neutral-800 leading-normal">
-                  Acepto que Grafit Rock Café utilice estos datos exclusivamente para responder a mi solicitud o propuesta de evento. *
+                  He leído y acepto la{' '}
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      onNavigate?.('/politica-privacidad');
+                    }}
+                    className="text-[#b91c1c] underline font-bold hover:text-black cursor-pointer"
+                  >
+                    Política de Privacidad
+                  </button>{' '}
+                  para la gestión y tramitación de mi consulta o solicitud de evento. *
                 </span>
               </label>
               {errors.consentimiento && (
