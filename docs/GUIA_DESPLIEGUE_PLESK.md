@@ -84,7 +84,7 @@ Una vez confirmada la resolución pública del DNS de `beta.grafitcafe.com`:
 El archivo comprimido definitivo se encuentra en la raíz del proyecto con el nombre:
 **`grafit_beta_deploy.zip`**
 - **Tamaño**: 137 MB
-- **Huella SHA-256**: `4c9a0b68d7432126def8dffb1e94e89e21eaa22400bec130993ea5de71e4f721`
+- **Huella SHA-256**: `6d413c58f688488360b21f7198e8a576b2f2f0c8a189e1150de5b35143ed9185`
 - **Contenido**: 0 credenciales, 0 archivos de configuración pública; cargador privado `api/load_config.php` enlazado exclusivamente a rutas privadas fuera del Document Root.
 
 ### Paso 2: Subida y extracción en Plesk

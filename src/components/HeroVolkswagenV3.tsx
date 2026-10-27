@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { RotateCcw, Calendar, ArrowDown, MapPin } from 'lucide-react';
+import { HeroTornPaperEdge } from './HeroTornPaperEdge';
 
 interface HeroVolkswagenV3Props {
   onNavigate: (path: string) => void;
@@ -332,7 +333,10 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-[#0c0b0a] text-[#f5efe1] border-b-8 border-black select-none">
+    <section className="relative overflow-hidden lg:overflow-x-clip lg:overflow-y-visible bg-[#0c0b0a] text-[#f5efe1] border-b-8 border-black select-none">
+      {/* TRANSICIÓN DE PAPEL RASGADO EN ESCRITORIO (ELIMINA EL CORTE RECTO HORIZONTAL) */}
+      <HeroTornPaperEdge />
+
       {/* 1. AUTHENTIC PUNK WALLPOSTER WALLPAPER WITH DEPTH */}
       <div
         className="absolute inset-0 w-full h-full pointer-events-none opacity-30 mix-blend-luminosity"
