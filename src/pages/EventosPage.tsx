@@ -32,7 +32,7 @@ export const EventosPage: React.FC<EventosPageProps> = ({ onNavigate }) => {
           Eventos y Comidas de Grupo con Identidad en Indautxu
         </h1>
         <p className="font-['Space_Grotesk'] text-base sm:text-lg text-[#ded8cb] max-w-3xl leading-relaxed">
-          Reúne a tu cuadrilla, celebra un cumpleaños o planifica un encuentro de empresa en un salón diáfano y versátil con servicio continuo de cocina y barra propia.
+          Reúne a tu cuadrilla, celebra un cumpleaños o planifica un encuentro de empresa en un salón diáfano y versátil con barra propia y opciones de picoteo y menús adaptados para grupos.
         </p>
 
         {/* CTA RAPIDO HEADER */}
@@ -70,13 +70,13 @@ export const EventosPage: React.FC<EventosPageProps> = ({ onNavigate }) => {
 
         <div className="p-6 bg-[#181615] border-2 border-[#33302c] shadow-[6px_6px_0_#000] relative space-y-3">
           <span className="font-mono text-xs font-bold text-[#b91c1c] bg-black/80 px-2 py-0.5 border border-[#33302c]">
-            02 • COCINA CONTINUA
+            02 • PROPUESTAS A MEDIDA
           </span>
           <h3 className="font-['Anton'] text-xl uppercase tracking-wider text-[#f5efe1]">
-            Gastronomía Non-Stop
+            Gastronomía y Picoteo
           </h3>
           <p className="font-['Space_Grotesk'] text-xs sm:text-sm text-[#b8b0a2] leading-relaxed">
-            Plancha caliente, hamburguesas 100% buey, sándwiches de barra, picoteo y cerveza de tanque fría durante todo el evento.
+            Hamburguesas 100% buey, sándwiches artesanos, tablas de picoteo y cañas bien tiradas adaptadas al formato de tu grupo.
           </p>
         </div>
 
@@ -159,7 +159,7 @@ export const EventosPage: React.FC<EventosPageProps> = ({ onNavigate }) => {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#2b2724] pb-4">
           <div>
             <div className="font-mono text-xs font-bold text-[#b91c1c] uppercase tracking-wider">
-              // COCINA CONTINUA & FORMATOS COMPARTIDOS
+              // GASTRONOMÍA & FORMATOS COMPARTIDOS
             </div>
             <h2 className="font-['Anton'] text-2xl sm:text-3xl uppercase tracking-wider text-[#f5efe1]">
               Una Propuesta Gastronómica Real

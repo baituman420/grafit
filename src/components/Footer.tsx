@@ -1,6 +1,6 @@
 import React from 'react';
 import { GRAFIT_DATA } from '../data/grafit';
-import { MapPin, Mail, Instagram, Facebook, ArrowUp, ArrowRight, MessageSquare } from 'lucide-react';
+import { MapPin, Mail, Instagram, Facebook, Linkedin, Youtube, Cloud, ArrowUp, ArrowRight, MessageSquare } from 'lucide-react';
 
 interface FooterProps {
   onNavigate: (path: string) => void;
@@ -30,7 +30,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               GRAFIT
             </h2>
             <p className="font-mono-code text-sm sm:text-base text-[#e2c044] tracking-widest uppercase font-bold mt-2">
-              ROCK CAFÉ • SALÓN MULTIUSOS • COCINA NON-STOP
+              ROCK CAFÉ • SALÓN MULTIUSOS • GRUPOS & EVENTOS
             </p>
           </div>
 
@@ -38,14 +38,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div className="w-full lg:w-80 polaroid-frame rot-pos-2 text-black p-3 bg-[#fdfbf7] shrink-0">
             <div className="aspect-[16/10] bg-black overflow-hidden border-2 border-black">
               <img
-                src="./assets/grafit/exterior/grafit-fachada-01.jpg"
-                alt="Fachada del Grafit Café en Urrutia Kalea 1"
+                src="./assets/grafit/exterior/grafit-fachada-negra.jpg"
+                alt="Fachada exterior de madera negra del Grafit Café en Urrutia Kalea 1"
                 className="w-full h-full object-cover contrast-110"
                 loading="lazy"
               />
             </div>
             <p className="mt-2 font-typewriter text-xs font-bold text-center text-neutral-900">
-              Fachada Urrutia Kalea 1 • Indautxu
+              Fachada negra Urrutia Kalea 1 • Indautxu
             </p>
           </div>
         </div>
@@ -125,24 +125,74 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               ))}
             </ul>
 
-            <div className="pt-4 border-t border-neutral-800 flex items-center gap-4">
-              <a
-                href={GRAFIT_DATA.info.socials.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 bg-neutral-800 text-white hover:bg-[#b91c1c] transition-colors border border-neutral-700"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
+            <div className="pt-4 border-t border-neutral-800 flex flex-wrap items-center gap-2">
               <a
                 href={GRAFIT_DATA.info.socials.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 bg-neutral-800 text-white hover:bg-[#b91c1c] transition-colors border border-neutral-700"
+                className="w-9 h-9 flex items-center justify-center bg-neutral-800 text-white hover:bg-[#b91c1c] transition-colors border border-neutral-700"
                 aria-label="Facebook"
+                title="Facebook"
               >
-                <Facebook className="w-5 h-5" />
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a
+                href={GRAFIT_DATA.info.socials.x}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 flex items-center justify-center bg-neutral-800 text-white hover:bg-[#b91c1c] transition-colors border border-neutral-700 font-bold"
+                aria-label="X (Twitter)"
+                title="X"
+              >
+                <span className="font-sans font-black text-sm">𝕏</span>
+              </a>
+              <a
+                href={GRAFIT_DATA.info.socials.email}
+                className="w-9 h-9 flex items-center justify-center bg-neutral-800 text-white hover:bg-[#b91c1c] transition-colors border border-neutral-700"
+                aria-label="Email"
+                title="Email"
+              >
+                <Mail className="w-4 h-4" />
+              </a>
+              <a
+                href={GRAFIT_DATA.info.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 flex items-center justify-center bg-neutral-800 text-white hover:bg-[#b91c1c] transition-colors border border-neutral-700"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a
+                href={GRAFIT_DATA.info.socials.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 flex items-center justify-center bg-neutral-800 text-white hover:bg-[#b91c1c] transition-colors border border-neutral-700"
+                aria-label="YouTube"
+                title="YouTube"
+              >
+                <Youtube className="w-4 h-4" />
+              </a>
+              <a
+                href={GRAFIT_DATA.info.socials.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 flex items-center justify-center bg-neutral-800 text-white hover:bg-[#b91c1c] transition-colors border border-neutral-700"
+                aria-label="Instagram"
+                title="Instagram"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+              <a
+                href={GRAFIT_DATA.info.socials.soundcloud}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 flex items-center justify-center bg-neutral-800 text-white hover:bg-[#b91c1c] transition-colors border border-neutral-700"
+                aria-label="SoundCloud"
+                title="SoundCloud"
+              >
+                <Cloud className="w-4 h-4" />
               </a>
             </div>
           </div>

@@ -56,22 +56,27 @@ export const GRAFIT_DATA = {
   info: {
     name: 'Grafit Rock Café',
     subname: 'Indautxu — Bilbao',
-    tagline: 'Espacio para eventos, grupos, gastronomía non-stop y cultura rock',
+    tagline: 'Espacio para eventos, grupos, gastronomía y cultura rock en Indautxu',
     address: 'Urrutia Kalea, 1',
     neighborhood: 'Indautxu',
     city: '48010 Bilbao, Bizkaia',
     phone: '', // Teléfono oficial en proceso de verificación por la gerencia
-    email: '', // Consultas canalizadas por el formulario web oficial
+    email: 'grafitcafe@grafitcafe.com',
     hours: [
       { days: 'Lunes a Jueves', time: '08:00 – 23:00' },
       { days: 'Viernes', time: '08:00 – 02:00' },
       { days: 'Sábados', time: '09:00 – 02:30' },
       { days: 'Domingos', time: '10:00 – 23:00' },
     ],
-    kitchenHours: 'Cocina Non-Stop: Servicio continuo en barra y salón',
+    kitchenHours: 'Gastronomía y carta de barra y salón',
     socials: {
-      instagram: 'https://instagram.com/grafitcafe',
-      facebook: 'https://facebook.com/grafitcafe',
+      facebook: 'https://www.facebook.com/grafitrockcafe',
+      x: 'https://x.com/grafitcafe',
+      email: 'mailto:grafitcafe@grafitcafe.com',
+      linkedin: 'https://www.linkedin.com/in/grafitcafe',
+      youtube: 'https://www.youtube.com/channel/UCBv2dtRS_xFM6jYE_xOxFNQ',
+      instagram: 'https://www.instagram.com/grafitcafe',
+      soundcloud: 'https://soundcloud.com/grafitcafe',
       whatsapp: ''
     }
   },
@@ -80,7 +85,7 @@ export const GRAFIT_DATA = {
     { label: 'INICIO', path: '/', isHome: true },
     { label: 'EVENTOS', path: '/eventos', badge: 'Grupos' },
     { label: 'EL ESPACIO', path: '/espacio', badge: 'Salón' },
-    { label: 'GASTRONOMÍA', path: '/carta', badge: 'Non-Stop' },
+    { label: 'GASTRONOMÍA', path: '/carta', badge: 'Carta' },
     { label: 'CONTACTO', path: '/contacto' },
   ] as NavLinkItem[],
 
@@ -89,7 +94,7 @@ export const GRAFIT_DATA = {
     titleBottom: 'ROCK CAFÉ',
     subtitle: 'EXPERIENCIAS, GRUPOS Y CELEBRACIONES EN INDAUTXU',
     locationBadge: 'URRUTIA KALEA 1 • INDAUTXU • BILBAO',
-    tickerText: '★ ESPACIO PARA GRUPOS Y CELEBRACIONES ★ SALÓN MULTIUSOS VERSÁTIL ★ COCINA NON-STOP ★ AMBIENTE INTERGENERACIONAL ★ BILBAO INDAUTXU ★',
+    tickerText: '★ ESPACIO PARA GRUPOS Y CELEBRACIONES ★ SALÓN MULTIUSOS VERSÁTIL ★ HAMBURGUESAS Y PICOTEO ★ AMBIENTE INTERGENERACIONAL ★ BILBAO INDAUTXU ★',
     mainTagline: 'Un espacio singular en el corazón de Indautxu diseñado para acoger encuentros, comidas de grupo y celebraciones con identidad propia.',
     polaroids: [
       {
@@ -123,8 +128,8 @@ export const GRAFIT_DATA = {
         desc: 'Un espacio versátil de generosa superficie que permite redistribuir mesas, zona de pie o formato cóctel según el tamaño de tu grupo.'
       },
       {
-        title: 'Cocina Non-Stop Adaptada',
-        desc: 'Menús para compartir, hamburguesas gourmet, raciones de caserío y pintxos elaborados al momento sin prisas de horario.'
+        title: 'Gastronomía para Grupos',
+        desc: 'Menús para compartir, hamburguesas gourmet, raciones y pintxos elaborados al momento.'
       },
       {
         title: 'Atención Directa y Personalizada',
@@ -136,9 +141,9 @@ export const GRAFIT_DATA = {
         id: 'cuadrillas',
         title: 'Comidas y Cenas de Cuadrilla',
         subtitle: 'El punto de encuentro tradicional con espacio de sobra',
-        description: 'Mesa larga, cañas bien tiradas de tanque, raciones abundantes y sobremesas sin presión para que disfrutéis juntos.',
+        description: 'Mesa larga, cañas bien tiradas, raciones abundantes y sobremesas sin presión para que disfrutéis juntos.',
         idealFor: 'Grupos de amigos, reuniones anuales y previas de celebraciones.',
-        image: './assets/grafit/archive/grafit-inauguracion-2017-07.jpg',
+        image: './assets/grafit/instagram/621137527_18159238840410802_2351787220592329803_n.jpg',
         badge: 'TRADICIÓN BILBAÍNA'
       },
       {
@@ -147,7 +152,7 @@ export const GRAFIT_DATA = {
         subtitle: 'Festejos distendidos con música y buen rollo',
         description: 'Reserva una zona exclusiva o el salón para tu gente. Combina picoteo informal, copas y tarta en un entorno desenfadado.',
         idealFor: 'Cumpleaños de 30, 40, 50... y aniversarios señalados.',
-        image: './assets/grafit/interior/grafit-salon-mesas-03.jpg',
+        image: './assets/grafit/instagram/650038313_18016798205818470_3726701705553018311_n.jpg',
         badge: 'CELEBRACIONES'
       },
       {
@@ -156,7 +161,7 @@ export const GRAFIT_DATA = {
         subtitle: 'Cenas de equipo y reuniones sin la rigidez de un salón formal',
         description: 'Un ambiente acogedor que fomenta la conversación distendida. Menús cerrados o picoteo dinámico para conectar con los compañeros.',
         idealFor: 'Cenas de departamento, despedidas de proyectos y afterworks.',
-        image: './assets/grafit/instagram/fachada-noche.jpg',
+        image: './assets/grafit/instagram/649233943_18113393878655824_4936967214840179256_n.jpg',
         badge: 'EQUIPOS & EMPRESA'
       },
       {
@@ -165,7 +170,7 @@ export const GRAFIT_DATA = {
         subtitle: 'El salón a tu disposición para proyectos especiales',
         description: 'Presentaciones informales, quedadas temáticas o encuentros culturales que requieran amplitud y personalidad visual.',
         idealFor: 'Iniciativas creativas, peñas y asociaciones.',
-        image: './assets/grafit/instagram/rolling-pared.jpg',
+        image: './assets/grafit/instagram/pintxos_eventos.webp',
         badge: 'FORMATO FLEXIBLE'
       }
     ] as ExperienceType[]
@@ -184,7 +189,7 @@ export const GRAFIT_DATA = {
       {
         id: 'ambiente-barra',
         title: 'La Barra & Zona de Entrada',
-        description: 'Dinámica, cercana y luminosa. El rincón del café matinal, el aperitivo rápido, los tiradores de cerveza de tanque y el ambiente vivo de la calle Urrutia.',
+        description: 'Dinámica, cercana y luminosa. El rincón del café matinal, el aperitivo rápido, las cañas y el ambiente vivo de la calle Urrutia.',
         vibe: 'Encuentro casual, tapeo y bienvenida'
       },
       {
@@ -207,7 +212,7 @@ export const GRAFIT_DATA = {
       },
       {
         src: './assets/grafit/interior/grafit-barra-01.jpg',
-        caption: 'La barra principal de madera y grifos de tanque',
+        caption: 'La barra principal de madera y tiradores de cerveza',
         alt: 'Barra del Grafit Café'
       },
       {
@@ -251,41 +256,41 @@ export const GRAFIT_DATA = {
 
   // Eje 3: Gastronomía real, compartible y adaptable
   gastronomia: {
-    headline: 'GASTRONOMÍA NON-STOP & PRODUCTO REAL',
-    subtext: 'En Grafit la cocina acompaña tu experiencia. Sin rigidez horaria: platos para compartir, hamburguesas de autor y producto de cercanía.',
-    posterSrc: './assets/grafit/branding/grafit-cartel-cocina-nonstop.jpg',
+    headline: 'GASTRONOMÍA & PRODUCTO REAL',
+    subtext: 'En Grafit la gastronomía acompaña tu experiencia: platos para compartir, hamburguesas de autor y picoteo de barra.',
+    posterSrc: './assets/grafit/instagram/burguer.webp',
     dishes: [
       {
         id: 'b1',
         name: 'Burger Grafit 100% Buey',
-        description: '200g de carne seleccionada, queso cheddar ahumado, bacon crujiente, cebolla caramelizada y salsa casera Rock.',
-        badge: 'PRODUCTO ESTRELLA',
+        description: 'Carne seleccionada 100% buey, queso cheddar ahumado, bacon crujiente, cebolla pochada y salsa casera Rock en pan brioche artesano.',
+        badge: 'PLATO INSIGNIA',
         image: './assets/grafit/instagram/burguer.webp',
         category: 'burger'
       },
       {
         id: 'p1',
-        name: 'Pintxos & Tortilla de Barra',
-        description: 'Tortilla jugosa recién salida y selección de bocados tradicionales de la barra vasca para empezar el encuentro.',
-        badge: 'RECIÉN HECHA',
-        image: './assets/grafit/instagram/pintxos.jpg',
+        name: 'Tortillas Jugosas & Pintxos de Barra',
+        description: 'Tortillas jugosas recién salidas y selección de pintxos y gildas tradicionales de la barra de Indautxu.',
+        badge: 'BARRA AL DÍA',
+        image: './assets/grafit/instagram/619354530_18068635448548618_8267537641264067155_n.webp',
         category: 'pintxo'
       },
       {
         id: 's1',
-        name: 'Sandwiches & Bocadillos a la Plancha',
-        description: 'Pan artesano crujiente, quesos fundentes y rellenos sabrosos ideales para picoteos dinámicos de grupo.',
-        badge: 'NON-STOP',
+        name: 'Sándwiches Tostados a la Plancha',
+        description: 'Pan artesano crujiente tostado al momento, quesos fundentes y combinaciones sabrosas para reponer fuerzas.',
+        badge: 'ESPECIALIDAD',
         image: './assets/grafit/instagram/sandwich-barra.jpg',
         category: 'plato'
       },
       {
-        id: 'b2',
-        name: 'Cerveza de Tanque Calibre 0',
-        description: 'Tirada a la temperatura óptima directamente desde tanques principales. Espuma densa, frescura y sabor puro.',
-        badge: 'CERVEZA DE TANQUE',
-        image: './assets/grafit/drinks/grafit-cerveza-canero-01.jpg',
-        category: 'bebida'
+        id: 'g1',
+        name: 'Bandejas de Catering para Grupos',
+        description: 'Surtido de bocaditos variados, raciones calientes y tablas pensadas para compartir en celebraciones en el salón.',
+        badge: 'GRUPOS & EVENTOS',
+        image: './assets/grafit/instagram/pintxos_eventos.webp',
+        category: 'plato'
       }
     ] as MenuItem[],
     gruposNota: 'Para grupos y eventos diseñamos propuestas gastronómicas a medida (picoteo de pie, menús de mesa compartida o meriendas-cena). Consulta las opciones disponibles para tu fecha.'
@@ -323,8 +328,8 @@ export const GRAFIT_DATA = {
   // Eje 5: Comunidad y Athletic
   athletic: {
     badge: 'ESPÍRITU DE BARRIO // INDAUTXU',
-    headline: 'EL ATHLETIC SE VIVE EN EL BARRIO',
-    subtext: 'A 10 minutos a pie de San Mamés. La previa de cuadrilla, la cerveza de tanque bien tirada y el punto de encuentro rojiblanco en Indautxu.',
+    headline: 'EL ATHLETIC SE VIVE EN GRAFIT',
+    subtext: 'A 10 minutos a pie de San Mamés. La previa de cuadrilla, las cañas bien tiradas y el punto de encuentro rojiblanco en Indautxu.',
     distance: '10 MIN A SAN MAMÉS',
     highlights: [
       {
@@ -333,20 +338,20 @@ export const GRAFIT_DATA = {
         tag: 'DÍAS DE PARTIDO'
       },
       {
-        title: 'CERVEZA DE TANQUE A TEMPERATURA',
-        desc: 'Tirada continua desde tanques directos para atender cuadrillas numerosas sin perder frescura ni densidad de espuma.',
-        tag: 'CALIBRE CERO'
+        title: 'CAÑAS Y POTEO DE PREVIA',
+        desc: 'Servicio ágil desde barra para atender cuadrillas y grupos antes de subir al estadio.',
+        tag: 'LA PREVIA'
       },
       {
         title: 'EL POSTPARTIDO EN EL SALÓN',
-        desc: 'Mesas en el salón multiusos para comentar el encuentro, reponer fuerzas con cocina non-stop y alargar la celebración con buen rock.',
+        desc: 'Mesas en el salón multiusos para comentar el encuentro, reponer fuerzas con hamburguesas y raciones, y alargar la celebración con buen rock.',
         tag: 'TERCER TIEMPO'
       }
     ],
     gallery: [
       {
         src: './assets/grafit/drinks/grafit-cerveza-canero-01.jpg',
-        caption: 'Tiradores activos y cerveza fría en la barra de Urrutia Kalea',
+        caption: 'Tiradores activos y cañas frías en la barra de Urrutia Kalea',
         alt: 'Grifos de cerveza en Grafit'
       },
       {
@@ -371,7 +376,7 @@ export const GRAFIT_DATA = {
       subtitle: 'Producto estrella de autor',
       tag: 'CULINARY ROCK',
       src: './assets/grafit/instagram/burguer.webp',
-      caption: '200g de carne seleccionada, queso fundente y pan crujiente. Servicio non-stop de 12:00 a 23:30.',
+      caption: '200g de carne seleccionada, queso fundente y pan crujiente.',
       orientation: 'portrait',
       quote: 'El bocado contundente que identifica la cocina de Grafit.'
     },
@@ -391,9 +396,9 @@ export const GRAFIT_DATA = {
       num: '03',
       title: 'LA BARRA DE URRUTIA',
       subtitle: 'Punto de encuentro en Indautxu',
-      tag: 'BARRA & TANQUE',
+      tag: 'BARRA & INDAUTXU',
       src: './assets/grafit/interior/grafit-barra-01.jpg',
-      caption: 'Madera cálida, grifos de cerveza de tanque y el dinamismo cotidiano de la calle Urrutia.',
+      caption: 'Madera cálida, tiradores de cerveza y el dinamismo cotidiano de la calle Urrutia.',
       orientation: 'square',
       quote: 'El aperitivo rápido, el zurito de previa o el café matinal.'
     },

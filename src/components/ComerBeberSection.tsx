@@ -17,7 +17,7 @@ export const ComerBeberSection: React.FC<ComerBeberSectionProps> = ({ onNavigate
           <div>
             <div className="flex items-center gap-2 mb-1">
               <span className="rubber-stamp text-xs bg-black text-white border-none py-0.5 px-2">
-                GASTRONOMÍA & TANQUES
+                GASTRONOMÍA & PICOTEO
               </span>
               <span className="font-mono-code text-xs font-bold text-[#b91c1c]">
                 ★ {info.kitchenHours}
@@ -46,24 +46,24 @@ export const ComerBeberSection: React.FC<ComerBeberSectionProps> = ({ onNavigate
       <div className="w-full max-w-[1920px] mx-auto px-4 md:px-10 lg:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           
-          {/* LEFT: OFFICIAL KITCHEN NON-STOP POSTER */}
+          {/* LEFT: OFFICIAL POSTER */}
           <div className="lg:col-span-5 relative flex justify-center lg:justify-start">
             <div className="polaroid-frame rot-neg-3 w-full max-w-md sm:max-w-lg tape-top lg:-ml-4">
               <div className="relative aspect-[3/4] bg-black overflow-hidden border-3 border-black">
                 <img
                   src={gastronomia.posterSrc}
-                  alt="Cartel Cocina Non-Stop Grafit"
+                  alt="Cartel Carta y Menú Grafit"
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
                 <div className="absolute bottom-3 left-3 bg-[#b91c1c] text-white font-ransom text-base px-3 py-1 border-2 border-black shadow-md">
-                  COCINA NON-STOP
+                  CARTA Y PICOTEO
                 </div>
               </div>
               <div className="mt-3 flex items-center justify-between font-typewriter text-xs font-bold text-neutral-900">
                 <span>Cartel Oficial del Local</span>
                 <span className="rubber-stamp text-[10px] py-0.5 px-1.5 bg-[#e2c044] text-black border-none">
-                  KITCHEN NON STOP
+                  100% BUEY & PICOTEO
                 </span>
               </div>
             </div>

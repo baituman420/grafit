@@ -25,14 +25,14 @@ const FORMATOS: FormatoEvento[] = [
     badge: 'CUADRILLAS & AMIGOS',
     badgeColor: '#b91c1c',
     title: 'Comidas y Cenas de Cuadrilla',
-    subtitle: 'Mesas largas, cocina continua y ambiente distendido',
+    subtitle: 'Mesas largas, picoteo y ambiente distendido',
     description:
-      'El salón multiusos permite reunir a grupos grandes en mesas corridas sin las limitaciones de un comedor tradicional. Disfruta de nuestras hamburguesas 100% buey, sándwiches calientes, raciones y cañón de cerveza helada a -2°C con total comodidad.',
+      'El salón multiusos permite reunir a grupos grandes en mesas corridas sin las limitaciones de un comedor tradicional. Disfruta de nuestras hamburguesas 100% buey, sándwiches calientes, raciones y cañas bien tiradas con total comodidad.',
     photo: './assets/grafit/interior/grafit-salon-mesas-11.jpg',
     photoCaption: 'Mesas preparadas frente al mural de concierto en el salón',
     highlights: [
       'Mesas modulares para grupos de diferentes tamaños',
-      'Servicio continuo de cocina y barra propia',
+      'Menús de grupo, raciones y barra propia',
       'Sin prisas de rotación de turno',
     ],
   },

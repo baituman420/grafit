@@ -30,15 +30,15 @@ const FORMATOS: FormatoEvento[] = [
     badge: 'CUADRILLAS & AMIGOS',
     badgeColor: '#b91c1c',
     title: 'Comidas y Cenas de Cuadrilla',
-    subtitle: 'Mesas largas, cocina continua y ambiente distendido',
+    subtitle: 'Mesas largas, picoteo y ambiente distendido',
     description:
-      'El salón multiusos permite reunir a cuadrillas y grupos grandes en mesas corridas sin las limitaciones de un comedor tradicional. Disfruta de nuestras hamburguesas 100% buey, sándwiches calientes, raciones y cañón de cerveza helada a -2°C con total comodidad y sin turnos forzados.',
-    photo: './assets/grafit/interior/grafit-salon-mesas-11.jpg',
-    photoCaption: 'Mesas preparadas frente al mural de concierto en el salón',
+      'El salón multiusos permite reunir a cuadrillas y grupos grandes en mesas corridas sin las limitaciones de un comedor tradicional. Disfruta de nuestras hamburguesas 100% buey, sándwiches calientes, raciones y cañas bien tiradas con total comodidad y sin turnos forzados.',
+    photo: './assets/grafit/instagram/621137527_18159238840410802_2351787220592329803_n.jpg',
+    photoCaption: 'Comida de cuadrilla compartiendo mesa en el salón de Grafit',
     capacity: '10 - 45 PERSONAS',
     highlights: [
       'Mesas modulares para cuadrillas de cualquier tamaño',
-      'Servicio continuo de cocina y barra propia',
+      'Menús de grupo, raciones y barra propia',
       'Sin prisas ni rotaciones forzadas de turno',
       'Ambiente rockero y acústica cuidada para conversar',
     ],
@@ -52,12 +52,12 @@ const FORMATOS: FormatoEvento[] = [
     subtitle: 'Tu fiesta con personalidad rock en el corazón de Indautxu',
     description:
       'Celebra tu fecha especial en un espacio singular presidido por la media Volkswagen y paredes llenas de cultura musical. Un entorno acogedor y desenfadado donde compartir picoteo variado, copas bien servidas y buena música en pleno centro de Bilbao.',
-    photo: './assets/grafit/interior/grafit-salon-mesas-27.jpg',
-    photoCaption: 'Distribución espaciosa y ambiente cálido para celebraciones',
+    photo: './assets/grafit/instagram/650038313_18016798205818470_3726701705553018311_n.jpg',
+    photoCaption: 'Celebración y brindis de fiesta privada en el salón',
     capacity: '15 - 50 PERSONAS',
     highlights: [
       'Espacio diáfano y versátil con identidad propia',
-      'Picoteo variado de barra y carta adaptada',
+      'Picoteo variado de barra y catering adaptado',
       'Ubicación inmejorable a 3 minutos del metro Indautxu',
       'Posibilidad de ambientación y música a vuestra medida',
     ],
@@ -71,8 +71,8 @@ const FORMATOS: FormatoEvento[] = [
     subtitle: 'Reuniones informales de equipo y despedidas de año',
     description:
       'Huye de los comedores protocolarios y rígidos. Grafit ofrece un marco dinámico para comidas de departamento, reuniones informales de networking y celebraciones de fin de año con ambiente auténtico y atención directa.',
-    photo: './assets/grafit/interior/grafit-salon-mesas-03.jpg',
-    photoCaption: 'Área versátil preparada para presentaciones y distensión',
+    photo: './assets/grafit/instagram/649233943_18113393878655824_4936967214840179256_n.jpg',
+    photoCaption: 'Encuentro de equipo y presentación en el salón multiusos',
     capacity: '12 - 40 PERSONAS',
     highlights: [
       'Entorno distendido para conectar fuera de la oficina',
@@ -90,8 +90,8 @@ const FORMATOS: FormatoEvento[] = [
     subtitle: 'Cuéntanos tu idea y adaptamos el salón',
     description:
       'Desde despedidas hasta reuniones de asociaciones o encuentros generacionales. Explícanos lo que buscas y te orientamos sobre disponibilidad y opciones del espacio sin compromisos.',
-    photo: './assets/grafit/interior/grafit-salon-mesas-31.jpg',
-    photoCaption: 'Configuración modulable para proyectos y reuniones',
+    photo: './assets/grafit/instagram/pintxos_eventos.webp',
+    photoCaption: 'Bandejas de catering y raciones dispuestas para eventos de grupo',
     capacity: 'ADAPTABLE',
     highlights: [
       'Distribución adaptable según el tipo de encuentro',
@@ -218,11 +218,11 @@ export const EventosSectionV3: React.FC<EventosSectionV3Props> = ({ onNavigate }
         <div
           className="bg-slice-layer absolute inset-0 w-full h-full will-change-transform"
           style={{
-            backgroundImage: 'url(./assets/grafit/punk-wall-bg.jpg)',
+            backgroundImage: 'url(./assets/grafit/interior/grafit-mural-azul-eventos.webp)',
             backgroundSize: 'cover',
-            backgroundPosition: 'center 10%',
+            backgroundPosition: 'center 15%',
             clipPath: 'polygon(0% 0%, 100% 0%, 100% 36%, 0% 36%)',
-            opacity: 0.82,
+            opacity: 0.85,
           }}
         />
 
@@ -230,11 +230,11 @@ export const EventosSectionV3: React.FC<EventosSectionV3Props> = ({ onNavigate }
         <div
           className="bg-slice-layer absolute inset-0 w-full h-full will-change-transform"
           style={{
-            backgroundImage: 'url(./assets/grafit/punk-wall-bg.jpg)',
+            backgroundImage: 'url(./assets/grafit/interior/grafit-mural-azul-eventos.webp)',
             backgroundSize: 'cover',
             backgroundPosition: 'center 50%',
             clipPath: 'polygon(0% 34%, 100% 34%, 100% 71%, 0% 71%)',
-            opacity: 0.82,
+            opacity: 0.85,
           }}
         />
 
@@ -242,20 +242,20 @@ export const EventosSectionV3: React.FC<EventosSectionV3Props> = ({ onNavigate }
         <div
           className="bg-slice-layer absolute inset-0 w-full h-full will-change-transform"
           style={{
-            backgroundImage: 'url(./assets/grafit/punk-wall-bg.jpg)',
+            backgroundImage: 'url(./assets/grafit/interior/grafit-mural-azul-eventos.webp)',
             backgroundSize: 'cover',
             backgroundPosition: 'center 85%',
             clipPath: 'polygon(0% 69%, 100% 69%, 100% 100%, 0% 100%)',
-            opacity: 0.82,
+            opacity: 0.85,
           }}
         />
 
-        {/* ATMOSPHERIC DESCANSO VISUAL VEIL (UNIFIES CONTRAST WITHOUT BOXING IN CARDS) */}
+        {/* ATMOSPHERIC DESCANSO VISUAL VEIL (UNIFIES CONTRAST & PRESERVES BLUE GLOW) */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(180deg, rgba(12,11,10,0.85) 0%, rgba(20,18,16,0.62) 18%, rgba(20,18,16,0.68) 82%, rgba(12,11,10,0.88) 100%)',
+              'linear-gradient(180deg, rgba(12,11,10,0.88) 0%, rgba(10,14,24,0.72) 20%, rgba(10,14,24,0.75) 80%, rgba(12,11,10,0.92) 100%)',
           }}
         />
 
@@ -302,7 +302,7 @@ export const EventosSectionV3: React.FC<EventosSectionV3Props> = ({ onNavigate }
 
           <p className="font-sans text-sm sm:text-base text-[#ded8cb] max-w-3xl leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]">
             En pleno centro de Indautxu, Grafit dispone de una sala independiente, diáfana y con personalidad genuina.
-            Cocina ininterrumpida, barra propia, acústica cuidada y total libertad para celebrar sin prisas de rotación.
+            Gastronomía a medida, barra propia, acústica cuidada y total libertad para celebrar sin prisas de rotación.
           </p>
         </div>
 

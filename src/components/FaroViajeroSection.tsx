@@ -50,7 +50,7 @@ export const FaroViajeroSection: React.FC<FaroViajeroSectionProps> = ({ onNaviga
           start: 'top top',
           end: 'bottom bottom',
           pin: stageRef.current,
-          scrub: 1,
+          scrub: 0.6,
           anticipatePin: 1,
           onUpdate: (self) => {
             const p = self.progress;
@@ -191,7 +191,7 @@ export const FaroViajeroSection: React.FC<FaroViajeroSectionProps> = ({ onNaviga
   }, []);
 
   return (
-    <div id="faro-viajero-section" ref={trackRef} className="relative w-full h-[450vh] bg-[#0c0b0a] border-b-8 border-black">
+    <div id="faro-viajero-section" ref={trackRef} className="relative w-full h-[280vh] bg-[#0c0b0a] border-b-8 border-black">
       {/* PINNED STAGE VIEWPORT */}
       <div
         ref={stageRef}
@@ -309,9 +309,9 @@ export const FaroViajeroSection: React.FC<FaroViajeroSectionProps> = ({ onNaviga
             stepNumber="02"
             badgeText="Movimiento C"
             badgeColor="gold"
-            title="Cocina Non-Stop"
+            title="Plancha y Picoteo"
             subtitle="Sándwich de Barra a la Plancha"
-            description="El faro se desplaza lateralmente mientras la hamburguesa muta en sándwich caliente. Servicio ininterrumpido en el corazón de Indautxu."
+            description="El faro se desplaza lateralmente mientras la hamburguesa muta en sándwich caliente. Hamburguesas 100% buey y sándwiches recién hechos en el corazón de Indautxu."
             align="center"
           />
         </div>

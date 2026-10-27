@@ -55,7 +55,7 @@ export const CierreComercialSection: React.FC<CierreComercialSectionProps> = ({ 
         </h2>
 
         <p className="font-sans text-sm sm:text-base text-[#ded8cb] max-w-2xl mx-auto leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]">
-          El salón multiusos de Grafit y nuestra cocina continua están a vuestra disposición. Explícanos qué tipo de encuentro tenéis en mente,
+          El salón multiusos de Grafit y nuestras propuestas gastronómicas están a vuestra disposición. Explícanos qué tipo de encuentro tenéis en mente,
           la fecha aproximada y el número estimado de comensales: te responderemos con opciones y disponibilidad directa sin costes de sala.
         </p>
 

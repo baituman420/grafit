@@ -473,10 +473,10 @@ export const FaroViajeroStage: React.FC<FaroViajeroStageProps> = ({ reducedMotio
               <img src="./assets/grafit/instagram/sandwich-barra.jpg" alt="Sándwich de barra" className="w-full h-full object-cover" />
             </div>
             <div className="p-4">
-              <span className="font-mono text-xs text-[#e2c044] font-bold">02 • NON-STOP</span>
+              <span className="font-mono text-xs text-[#e2c044] font-bold">02 • PLANCHA & PICOTEO</span>
               <h3 className="font-['Anton'] text-xl text-[#f5efe1] uppercase mt-1">Sándwich a la Plancha</h3>
               <p className="font-['Space_Grotesk'] text-xs text-[#b8b0a2] mt-2">
-                Cocina continua a cualquier hora del día. Servicio ininterrumpido en barra.
+                Hamburguesas 100% buey y sándwiches recién preparados en barra.
               </p>
             </div>
           </div>
@@ -663,9 +663,9 @@ export const FaroViajeroStage: React.FC<FaroViajeroStageProps> = ({ reducedMotio
             stepNumber="02"
             badgeText="Movimiento C"
             badgeColor="gold"
-            title="Cocina Non-Stop"
+            title="Plancha y Picoteo"
             subtitle="Sándwich de Barra a la Plancha"
-            description="El faro se desplaza lateralmente mientras la hamburguesa muta en sándwich caliente. Servicio ininterrumpido en el corazón de Indautxu."
+            description="El faro se desplaza lateralmente mientras la hamburguesa muta en sándwich caliente. Hamburguesas 100% buey y sándwiches recién hechos en el corazón de Indautxu."
             align="center"
           />
         </div>

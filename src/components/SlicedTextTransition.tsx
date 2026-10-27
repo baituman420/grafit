@@ -203,7 +203,7 @@ export const SlicedTextTransition: React.FC<SlicedTextTransitionProps> = ({ onEx
           className="mt-6 max-w-2xl text-center space-y-4"
         >
           <p className="font-sans text-sm sm:text-base text-neutral-300 leading-relaxed">
-            Ya sea una comida de cuadrilla, un cumpleaños o un encuentro corporativo distendido, el salón multiusos de Grafit te ofrece intimidad acústica, barra propia y cocina ininterrumpida.
+            Ya sea una comida de cuadrilla, un cumpleaños o un encuentro corporativo distendido, el salón multiusos de Grafit te ofrece intimidad acústica, barra propia y picoteo adaptado para compartir.
           </p>
 
           <button

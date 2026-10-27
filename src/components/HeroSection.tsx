@@ -41,7 +41,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                   <span className="text-[#b91c1c]">CABINA & BARRAS</span>
                 </div>
                 <p className="text-[13px] text-neutral-800">
-                  Paredes con historia, mural de discos de vinilo y la barra donde convive el primer cortado matinal con las cañas heladas de tanque.
+                  Paredes con historia, mural de discos de vinilo y la barra donde convive el primer cortado matinal con las cañas bien tiradas.
                 </p>
               </div>
               <div className="absolute -bottom-4 -right-3 bg-[#b91c1c] text-white font-ransom px-4 py-1 text-base tracking-wider uppercase transform rotate-6 border-2 border-black">
@@ -61,22 +61,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                   «En el Grafit los días de partido no son una promoción comercial: son la vida del barrio.»
                 </p>
                 <p className="text-[13px] text-neutral-800">
-                  La marea zurigorri desemboca en estas maderas. Cañón de cerveza recién tirado a -2°C, pintxos recién salidos y ambiente que une a varias generaciones.
+                  La marea zurigorri desemboca en estas maderas. Cañón de cerveza bien tirado, pintxos recién salidos y ambiente que une a varias generaciones.
                 </p>
               </div>
               <div className="mt-5 border-2 border-dashed border-black p-4 bg-[#e2c044]/30 flex justify-between items-center">
                 <div>
                   <div className="font-mono-code text-[11px] tracking-widest uppercase font-bold">REGISTRO DE BARRA</div>
-                  <div className="font-ransom text-2xl">CERVEZA DE TANQUE ESTRELLA</div>
-                  <div className="font-mono-code text-[11px]">PRESIÓN DIRECTA • CERO PASTEURIZAR</div>
+                  <div className="font-ransom text-2xl">CAÑAS BIEN TIRADAS</div>
+                  <div className="font-mono-code text-[11px]">COPA FRÍA • SERVICIO PROFESIONAL</div>
                 </div>
                 <div className="font-ransom text-4xl text-[#b91c1c]">
-                  -2°C
+                  ★
                 </div>
               </div>
             </article>
 
-            {/* ARTIFACT 3: FOOD CUTOUT & KITCHEN NON-STOP */}
+            {/* ARTIFACT 3: FOOD CUTOUT & BURGER */}
             <article className="relative bg-white p-4 border-4 border-black pasteup-shadow transform -rotate-2 lg:-translate-x-2">
               <div className="masking-tape tape-bottom-center"></div>
               <div className="flex gap-4">
@@ -97,8 +97,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                     </p>
                   </div>
                   <div className="border-t border-black pt-2 mt-2">
-                    <div className="font-typewriter text-xs text-[#b91c1c] font-bold">KITCHEN NON-STOP</div>
-                    <div className="text-[11px] text-neutral-700">Cocina abierta de 12:00 a 23:30</div>
+                    <div className="font-typewriter text-xs text-[#b91c1c] font-bold">HAMBURGUESAS & PICOTEO</div>
+                    <div className="text-[11px] text-neutral-700">Carne 100% buey y raciones</div>
                   </div>
                 </div>
               </div>

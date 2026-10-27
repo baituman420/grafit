@@ -1,191 +1,141 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ChevronLeft, ChevronRight, BookOpen, Maximize2, X, Sparkles, Volume2, Bookmark, Eye, ArrowRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Eye, Maximize2, X, Sparkles, Layers, ShieldCheck } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface MagazineSpread {
+interface EditorialCard {
   id: string;
-  spreadNumber: string;
+  cardNum: string;
   category: string;
   themeColor: string;
-  leftPage: {
-    vol: string;
-    headline: string;
-    subhead: string;
-    editorialText: string;
-    quote: string;
-    quoteAuthor: string;
-    tags: string[];
-    specs: { label: string; value: string }[];
-  };
-  rightPage: {
-    photo: string;
-    caption: string;
-    stamp: string;
-    tagline: string;
-    aspectRatio: string;
-  };
+  badge: string;
+  headline: string;
+  subhead: string;
+  story: string;
+  photo: string;
+  caption: string;
+  realDocLabel: string;
+  tags: string[];
+  specs: { label: string; value: string }[];
+  isArchiveDoc?: boolean;
 }
 
-const MAGAZINE_SPREADS: MagazineSpread[] = [
+const EDITORIAL_CARDS: EditorialCard[] = [
   {
-    id: 'culinary-rock',
-    spreadNumber: '01 — 02',
+    id: 'burger-rock',
+    cardNum: '01 / 05',
     category: 'GASTRONOMÍA // ROCK FOOD',
     themeColor: '#b91c1c',
-    leftPage: {
-      vol: 'VOL. 03 // ARCHIVO GASTRONÓMICO',
-      headline: 'CULINARY ROCK & BUEY 100%',
-      subhead: 'La cocina de Grafit no cierra: ritmo ininterrumpido en Indautxu',
-      editorialText:
-        'Lejos del concepto de comida rápida industrial, en Grafit las hamburguesas se elaboran con carne 100% buey seleccionada, pan artesano tostado y acompañamientos caseros. Una propuesta sólida pensada para disfrutar tanto en barra rápida como en mesa larga de cuadrilla.',
-      quote: '"La cocina debe sonar tan rotunda y sincera como un acorde de distorsión."',
-      quoteAuthor: 'Grafit Rock Café — Cocina Non-Stop',
-      tags: ['100% BUEY', 'COCINA NON-STOP', 'PAN ARTESANO', 'RACIONES'],
-      specs: [
-        { label: 'DISPONIBILIDAD', value: 'Mediodía, tarde y noche' },
-        { label: 'ESPECIALIDAD', value: 'Burger Buey & Sándwich Club' },
-        { label: 'SERVICIO', value: 'Barra y Salón Multiusos' },
-      ],
-    },
-    rightPage: {
-      photo: './assets/grafit/instagram/burguer.webp',
-      caption: 'Hamburguesa 100% buey con queso fundido, bacon crujiente y salsa especial.',
-      stamp: 'PLATO INSIGNIA',
-      tagline: 'FOTOGRAFÍA REAL // BARRA DE GRAFIT',
-      aspectRatio: 'aspect-[4/5]',
-    },
+    badge: 'PLATO INSIGNIA',
+    headline: 'BURGER 100% BUEY & SABOR ROCK',
+    subhead: 'Carne seleccionada, pan artesano tostado y receta propia en Indautxu',
+    story:
+      'Elaboradas con carne 100% buey seleccionada, queso fundido, bacon crujiente y pan brioche artesano tostado al momento. Una propuesta contundente y sincera pensada tanto para picoteo rápido en barra como para comidas largas de cuadrilla.',
+    photo: './assets/grafit/instagram/burguer.webp',
+    caption: 'Hamburguesa 100% buey servida en la barra de Grafit Café.',
+    realDocLabel: 'FOTOGRAFÍA REAL // BARRA DE GRAFIT',
+    tags: ['100% BUEY', 'PAN ARTESANO', 'SABOR ROTUNDO', 'INDAUTXU'],
+    specs: [
+      { label: 'PRODUCTO', value: 'Carne 100% buey' },
+      { label: 'SERVICIO', value: 'Barra y Salón' },
+      { label: 'ELABORACIÓN', value: 'Al momento' },
+    ],
   },
   {
-    id: 'salon-multiusos',
-    spreadNumber: '03 — 04',
-    category: 'EL ESPACIO // SALÓN INDAUTXU',
+    id: 'barra-pintxos',
+    cardNum: '02 / 05',
+    category: 'RITUAL // LA BARRA VIVA',
     themeColor: '#e2c044',
-    leftPage: {
-      vol: 'VOL. 02 // ARQUITECTURA INTERIOR',
-      headline: 'EL REFUGIO DEL SALÓN MULTIUSOS',
-      subhead: 'Un espacio diáfano con historia propia para grupos y cuadrillas',
-      editorialText:
-        'El salón interior de Grafit no es un comedor encorsetado. Es un espacio polivalente presidido por la mítica media furgoneta Volkswagen y decorado con guitarras, vinilos y carteles históricos. Mesas corridas que se adaptan a cumpleaños, cenas de cuadrilla o reuniones de empresa.',
-      quote: '"Un lugar donde las sobremesas no tienen prisa ni turnos forzados."',
-      quoteAuthor: 'Grafit Rock Café — Crónica de Sala',
-      tags: ['HASTA 50 PAX', 'BARRA PROPIA', 'SIN ALQUILER DE SALA', 'FLEXIBILIDAD'],
-      specs: [
-        { label: 'CAPACIDAD', value: '10 a 50 comensales' },
-        { label: 'ELEMENTO CENTRAL', value: 'Furgoneta Volkswagen T1' },
-        { label: 'SONIDO', value: 'Rock & Acústica cuidada' },
-      ],
-    },
-    rightPage: {
-      photo: './assets/grafit/interior/grafit-salon-mesas-27.jpg',
-      caption: 'Vista del salón multiusos con mesas largas y murales decorativos.',
-      stamp: 'ESPACIO SINGULAR',
-      tagline: 'FOTOGRAFÍA REAL // SALÓN DE EVENTOS',
-      aspectRatio: 'aspect-[4/5]',
-    },
+    badge: 'PULSO DE BARRIO',
+    headline: 'PINTXOS, TORTILLAS & CAÑAS AL DÍA',
+    subhead: 'El latido cotidiano de Urrutia 1 desde primera hora',
+    story:
+      'Mostrador con tortillas jugosas recién preparadas, gildas clásicas y variedad de raciones para acompañar el poteo diario. El punto de reunión de Indautxu donde se cruzan el café matinal y el ambiente previo al partido en San Mamés.',
+    photo: './assets/grafit/instagram/619354530_18068635448548618_8267537641264067155_n.webp',
+    caption: 'Mostrador de pintxos y tortillas al día en la barra de Urrutia 1.',
+    realDocLabel: 'FOTOGRAFÍA REAL // MOSTRADOR DE PINTXOS',
+    tags: ['TORTILLAS JUGOSAS', 'GILDAS', 'CAÑAS BIEN TIRADAS', 'PREVIAS'],
+    specs: [
+      { label: 'BARRA', value: 'Pintxos al día' },
+      { label: 'ACCESO', value: 'Libre sin reserva' },
+      { label: 'UBICACIÓN', value: 'Urrutia Kalea 1' },
+    ],
   },
   {
-    id: 'musica-directo',
-    spreadNumber: '05 — 06',
-    category: 'CULTURA // MÚSICA EN VIVO',
+    id: 'volkswagen-salon',
+    cardNum: '03 / 05',
+    category: 'EL ESPACIO // SALÓN MULTIUSOS',
     themeColor: '#b91c1c',
-    leftPage: {
-      vol: 'VOL. 01 // MEMORIA MUSICAL',
-      headline: 'CONCIERTOS, DIRECTOS & CULTURA ROCK',
-      subhead: 'El escenario íntimo de Mikel Bizar, Cuarto Traste y el directo bilbaíno',
-      editorialText:
-        'Por el escenario de Grafit han pasado voces emblemáticas de la escena vasca y estatal. Conciertos en acústico de Mikel Bizar (Idi Bihotz), la energía vibrante de Cuarto Traste y noches de música sincera a escasos centímetros del público. La música en vivo forma parte de nuestra historia.',
-      quote: '"El rock no es decoración: es la banda sonora con la que abrimos cada mañana."',
-      quoteAuthor: 'Grafit Rock Café — Archivo de Directos',
-      tags: ['ACÚSTICOS', 'BANDAS LOCALES', 'SONIDO DIRECTO', 'BILBAO ROCK'],
-      specs: [
-        { label: 'HISTÓRICOS', value: 'Mikel Bizar, Cuarto Traste' },
-        { label: 'FORMATO', value: 'Acústico & Eléctrico de sala' },
-        { label: 'ACCESO', value: 'Entrada libre según aforo' },
-      ],
-    },
-    rightPage: {
-      photo: './assets/grafit/events/grafit-concierto-mikel-bizar-10.jpg',
-      caption: 'Mikel Bizar en actuación acústica íntima en el escenario de Grafit.',
-      stamp: 'DIRECTO HISTÓRICO',
-      tagline: 'FOTOGRAFÍA REAL // ARCHIVO DE CONCIERTOS',
-      aspectRatio: 'aspect-[4/5]',
-    },
+    badge: 'PIEZA EMBLEMÁTICA',
+    headline: 'EL MÍTICO FRONTAL VOLKSWAGEN EN EL SALÓN',
+    subhead: 'Icono de libertad y punto focal del espacio multiusos',
+    story:
+      'El frontal real de la furgoneta Volkswagen T1 integrado en la pared de ladrillo visto del salón interior. Un elemento arquitectónico singular que preside las reuniones de grupo y refuerza la identidad underground de Grafit.',
+    photo: './assets/grafit/instagram/599139401_17934885522129317_243501184606504542_n.jpg',
+    caption: 'Vista del frontal Volkswagen y murales artísticos en el salón interior.',
+    realDocLabel: 'FOTOGRAFÍA REAL // SALÓN DE GRAFIT',
+    tags: ['VOLKSWAGEN T1', 'LADRILLO VISTO', 'ESPACIO SINGULAR', 'GRUPOS'],
+    specs: [
+      { label: 'SALÓN', value: 'Hasta 50 personas' },
+      { label: 'ELEMENTO', value: 'Frontal VW T1 real' },
+      { label: 'AMBIENTE', value: 'Polivalente y diáfano' },
+    ],
   },
   {
-    id: 'barra-cerveza',
-    spreadNumber: '07 — 08',
-    category: 'BARRA // CAÑÓN GLACIAR',
+    id: 'catering-eventos',
+    cardNum: '04 / 05',
+    category: 'GRUPOS // CELEBRACIONES PRIVADAS',
     themeColor: '#e2c044',
-    leftPage: {
-      vol: 'VOL. 04 // EL RITUAL DE LA BARRA',
-      headline: 'CERVEZA DE TANQUE A -2°C & PINTXOS',
-      subhead: 'El tiro perfecto, la espuma densa y el picoteo sin interrupciones',
-      editorialText:
-        'Dos imponentes tanques presenciales alimentan los grifos de cerveza sin pasteurizar directamente servida a copa fría. Acompañada de una barra de pintxos clásicos, gildas selectas y raciones recién preparadas. El punto de encuentro cotidiano en Urrutia Kalea 1.',
-      quote: '"La caña perfecta no admite atajos: temperatura exacta y servicio honesto."',
-      quoteAuthor: 'Grafit Rock Café — Filosofía de Barra',
-      tags: ['CERVEZA TANQUE', '-2°C GLACIAR', 'PINTXOS DE BARRA', 'INDAUTXU'],
-      specs: [
-        { label: 'TEMPERATURA', value: '-2°C servicio continuo' },
-        { label: 'SISTEMA', value: 'Tanques presenciales de bodega' },
-        { label: 'HORARIO', value: 'Desde la mañana hasta la noche' },
-      ],
-    },
-    rightPage: {
-      photo: './assets/grafit/drinks/grafit-cerveza-canero-01.jpg',
-      caption: 'Tiro de caña helada con espuma cremosa desde los cañeros de tanque.',
-      stamp: 'RITUAL GRAFIT',
-      tagline: 'FOTOGRAFÍA REAL // BARRA DE INDAUTXU',
-      aspectRatio: 'aspect-[4/5]',
-    },
+    badge: 'EVENTOS A MEDIDA',
+    headline: 'CATERING ARTESANO & BANDEJAS PARA GRUPOS',
+    subhead: 'Celebraciones privadas y encuentros sin turnos forzados',
+    story:
+      'Bandejas preparadas con bocaditos artesanales, raciones de picoteo y servicio personalizado para celebraciones de cuadrilla, cumpleaños, aniversarios o reuniones de empresa en el salón interior de Grafit.',
+    photo: './assets/grafit/instagram/pintxos_eventos.webp',
+    caption: 'Bandejas de catering y raciones dispuestas para eventos de grupo.',
+    realDocLabel: 'FOTOGRAFÍA REAL // CATERING PARA GRUPOS',
+    tags: ['BANDEJAS GRUPOS', 'CELEBRACIONES', 'SIN ALQUILER DE SALA', 'A MEDIDA'],
+    specs: [
+      { label: 'CAPACIDAD', value: '10 a 50 comensales' },
+      { label: 'FORMATO', value: 'Picoteo o menú sentado' },
+      { label: 'RESERVA', value: 'Personalizada' },
+    ],
   },
   {
-    id: 'sandwich-barra',
-    spreadNumber: '09 — 10',
-    category: 'COCINA // SÁNDWICHES DE AUTOR',
+    id: 'concierto-historico',
+    cardNum: '05 / 05',
+    category: 'CULTURA // ARCHIVO DOCUMENTAL',
     themeColor: '#b91c1c',
-    leftPage: {
-      vol: 'VOL. 05 // ARCHIVO DE BOCADOS',
-      headline: 'EL ARTE DEL SÁNDWICH PLANCHA',
-      subhead: 'Tostado crujiente al momento y recetas con personalidad',
-      editorialText:
-        'Sándwiches calientes con panes seleccionados, fundidos intensos y combinaciones sabrosas para reponer fuerzas a cualquier hora del día. Desde el clásico club hasta creaciones con toque rockero para disfrutar de pie en barra o sentado en el salón.',
-      quote: '"Rápido no significa industrial: cuidamos cada planchado como el primer día."',
-      quoteAuthor: 'Grafit Rock Café — Plancha Non-Stop',
-      tags: ['PLANCHA VIVA', 'PAN ARTESANO', 'QUESOS FUNDIDOS', 'NON-STOP'],
-      specs: [
-        { label: 'ELABORACIÓN', value: 'Al momento bajo pedido' },
-        { label: 'SERVICIO', value: 'Para tomar o para llevar' },
-        { label: 'ACOMPAÑAMIENTO', value: 'Caña o refresco de autor' },
-      ],
-    },
-    rightPage: {
-      photo: './assets/grafit/instagram/sandwich-barra.jpg',
-      caption: 'Sándwich tostado al momento con ingredientes seleccionados.',
-      stamp: 'CLÁSICO DE BARRA',
-      tagline: 'FOTOGRAFÍA REAL // COCINA CONTINUA',
-      aspectRatio: 'aspect-[4/5]',
-    },
+    badge: 'ARCHIVO DOCUMENTAL • HISTÓRICO 2018',
+    headline: 'DIRECTOS ÍNTIMOS: LA MEMORIA DEL ESCENARIO',
+    subhead: 'Registro histórico de actuaciones acústicas que marcaron época',
+    story:
+      'Por el escenario de Grafit han pasado voces emblemáticas como Mikel Bizar en recitales acústicos íntimos a escasos centímetros del público. Este registro forma parte de nuestro archivo documental histórico, testigo del compromiso de Grafit con la música.',
+    photo: './assets/grafit/events/grafit-concierto-mikel-bizar-10.jpg',
+    caption: 'Mikel Bizar en actuación acústica íntima en Grafit Café (Archivo histórico 2018).',
+    realDocLabel: 'ARCHIVO DOCUMENTAL // CONCIERTO HISTÓRICO 2018',
+    tags: ['ARCHIVO 2018', 'MIKEL BIZAR', 'MEMORIA MUSICAL', 'DIRECTO CERCANO'],
+    specs: [
+      { label: 'REGISTRO', value: 'Concierto histórico 2018' },
+      { label: 'ARTISTA', value: 'Mikel Bizar (Acústico)' },
+      { label: 'CARÁCTER', value: 'Archivo documental' },
+    ],
+    isArchiveDoc: true,
   },
 ];
 
 export const EditorialMagazineGallery: React.FC = () => {
-  const [currentSpreadIndex, setCurrentSpreadIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [isInspecting, setIsInspecting] = useState(false);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0, rx: 0, ry: 0 });
   const [isReducedMotion, setIsReducedMotion] = useState(false);
 
   const sectionRef = useRef<HTMLDivElement>(null);
-  const accordionStageRef = useRef<HTMLDivElement>(null);
-  const bookRef = useRef<HTMLDivElement>(null);
-  const leftPageRef = useRef<HTMLDivElement>(null);
-  const rightPageRef = useRef<HTMLDivElement>(null);
-  const spineCreaseRef = useRef<HTMLDivElement>(null);
+  const deckContainerRef = useRef<HTMLDivElement>(null);
+  const touchStartXRef = useRef<number | null>(null);
 
-  const spread = MAGAZINE_SPREADS[currentSpreadIndex];
+  const currentCard = EDITORIAL_CARDS[activeIndex];
 
   useEffect(() => {
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -195,414 +145,355 @@ export const EditorialMagazineGallery: React.FC = () => {
     return () => mq.removeEventListener('change', handler);
   }, []);
 
-  // GSAP SCROLL-DRIVEN ACCORDION UNFOLD EFFECT (WEBGL-MAGAZINE ACCORDION OPENING)
+  // GSAP INTRO FAN-OUT ANIMATION
   useEffect(() => {
-    if (!sectionRef.current) return;
-    if (isReducedMotion) return;
+    if (!sectionRef.current || !deckContainerRef.current || isReducedMotion) return;
 
     const ctx = gsap.context(() => {
-      const isMobile = window.innerWidth < 768;
-
-      if (!isMobile) {
-        // DESKTOP: 3D ACCORDION BOOK UNFOLDING FROM SPINE
-        gsap.set(leftPageRef.current, {
-          transformOrigin: 'right center',
-          rotateY: -55,
-          z: -80,
-          scale: 0.94,
-        });
-
-        gsap.set(rightPageRef.current, {
-          transformOrigin: 'left center',
-          rotateY: 55,
-          z: -80,
-          scale: 0.94,
-        });
-
-        gsap.set(spineCreaseRef.current, {
-          opacity: 0.85,
-        });
-
-        gsap.set(bookRef.current, {
-          scale: 0.90,
-          y: 40,
-        });
-
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 80%',
-            end: 'top 25%',
-            scrub: 0.9,
-            invalidateOnRefresh: true,
-          },
-        });
-
-        tl.to(
-          [leftPageRef.current, rightPageRef.current],
+      const cards = deckContainerRef.current?.querySelectorAll('.editorial-deck-card');
+      if (cards && cards.length > 0) {
+        gsap.fromTo(
+          cards,
           {
-            rotateY: 0,
-            z: 0,
+            scale: 0.9,
+            y: 40,
+            opacity: 0,
+          },
+          {
             scale: 1,
+            y: 0,
+            opacity: 1,
+            stagger: 0.1,
+            duration: 0.8,
             ease: 'power2.out',
-          },
-          0
-        )
-          .to(
-            bookRef.current,
-            {
-              scale: 1,
-              y: 0,
-              ease: 'power2.out',
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: 'top 75%',
+              once: true,
             },
-            0
-          )
-          .to(
-            spineCreaseRef.current,
-            {
-              opacity: 0.35,
-              ease: 'power1.out',
-            },
-            0
-          );
-      } else {
-        // MOBILE: PROGRESSIVE ACCORDION REVEAL WITHOUT CLIPPING
-        gsap.set(bookRef.current, {
-          scale: 0.92,
-          y: 35,
-          rotateX: -12,
-          transformOrigin: 'center top',
-        });
-
-        gsap.to(bookRef.current, {
-          scale: 1,
-          y: 0,
-          rotateX: 0,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 85%',
-            end: 'top 30%',
-            scrub: 0.8,
-          },
-        });
+          }
+        );
       }
     }, sectionRef);
 
     return () => ctx.revert();
   }, [isReducedMotion]);
 
-  // 3D Perspective Tilt on Mouse Movement (Once Unfolded)
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      if (isReducedMotion || !accordionStageRef.current || window.innerWidth < 768) return;
-      const rect = accordionStageRef.current.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
+  // KEYBOARD NAVIGATION
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        setActiveIndex((prev) => (prev - 1 + EDITORIAL_CARDS.length) % EDITORIAL_CARDS.length);
+      } else if (e.key === 'ArrowRight') {
+        setActiveIndex((prev) => (prev + 1) % EDITORIAL_CARDS.length);
+      } else if (e.key === 'Escape' && isInspecting) {
+        setIsInspecting(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isInspecting]);
 
-      const rx = -y * 10;
-      const ry = x * 14;
-
-      setMousePos({ x, y, rx, ry });
-    },
-    [isReducedMotion]
-  );
-
-  const handleMouseLeave = () => {
-    setMousePos({ x: 0, y: 0, rx: 0, ry: 0 });
+  const handleNext = () => {
+    setActiveIndex((prev) => (prev + 1) % EDITORIAL_CARDS.length);
   };
 
-  const nextSpread = () => {
-    setCurrentSpreadIndex((prev) => (prev + 1) % MAGAZINE_SPREADS.length);
+  const handlePrev = () => {
+    setActiveIndex((prev) => (prev - 1 + EDITORIAL_CARDS.length) % EDITORIAL_CARDS.length);
   };
 
-  const prevSpread = () => {
-    setCurrentSpreadIndex((prev) => (prev - 1 + MAGAZINE_SPREADS.length) % MAGAZINE_SPREADS.length);
+  // TOUCH SWIPE HANDLERS FOR MOBILE
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartXRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartXRef.current === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartXRef.current - touchEndX;
+
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+    touchStartXRef.current = null;
   };
 
   return (
     <section
       id="magazine-gallery-section"
       ref={sectionRef}
-      className="relative py-16 sm:py-26 border-b-8 border-black overflow-hidden bg-[#0c0b0a] text-[#f5efe1] select-none"
+      className="relative py-14 sm:py-20 lg:py-24 border-b-8 border-black overflow-hidden bg-[#0c0b0a] text-[#f5efe1] select-none"
     >
-      {/* =================================================================== */}
-      {/* 1. AUTHENTIC PUNK WALLPAPER (DARK VERSION WITH AMBIENT DEPTH)       */}
-      {/* =================================================================== */}
+      {/* PUNK WALLPAPER SUBSTRATE */}
       <div
-        className="absolute inset-0 w-full h-full pointer-events-none opacity-25 mix-blend-luminosity bg-cover bg-center"
-        style={{
-          backgroundImage: 'url(./assets/grafit/punk-wall-bg.jpg)',
-        }}
+        className="absolute inset-0 w-full h-full pointer-events-none opacity-20 mix-blend-luminosity bg-cover bg-center"
+        style={{ backgroundImage: 'url(./assets/grafit/punk-wall-bg.jpg)' }}
       />
-      {/* ATMOSPHERIC DARK RADIAL VIGNETTE FOR 3D MAGAZINE STAGE */}
+      {/* RADIAL VIGNETTE */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse at 50% 45%, rgba(24,20,18,0.2) 0%, rgba(12,11,10,0.85) 60%, #0c0b0a 100%)',
+            'radial-gradient(ellipse at 50% 45%, rgba(26,22,20,0.2) 0%, rgba(12,11,10,0.9) 65%, #0c0b0a 100%)',
         }}
       />
 
-      {/* TOP & BOTTOM SEAMLESS FADES */}
-      <div
-        className="absolute top-0 left-0 right-0 h-24 pointer-events-none"
-        style={{
-          background: 'linear-gradient(to bottom, #0c0a09 0%, transparent 100%)',
-        }}
-      />
-      <div
-        className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
-        style={{
-          background: 'linear-gradient(to top, #0c0b0a 0%, transparent 100%)',
-        }}
-      />
-
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
-        {/* ================================================================= */}
-        {/* MAGAZINE FOLIO HEADER                                             */}
-        {/* ================================================================= */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b-2 border-neutral-700">
+        {/* SECTION HEADER */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b-2 border-[#2b2724]">
           <div className="space-y-3">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 bg-[#b91c1c] text-white font-mono text-[11px] px-3 py-1 border border-black uppercase font-bold rot-neg-1 shadow-[2px_2px_0_#000]">
-                <BookOpen className="w-3.5 h-3.5 text-amber-300" />
-                <span>GRAFIT ZINE // ARCHIVO EDITORIAL DESPLEGABLE</span>
+              <span className="inline-flex items-center gap-1.5 bg-[#b91c1c] text-white font-mono text-[11px] px-3 py-1 border border-black uppercase font-bold shadow-[2px_2px_0_#000]">
+                <Layers className="w-3.5 h-3.5 text-[#e2c044]" />
+                <span>GRAFIT ZINE // DESPLIEGUE EN ABANICO</span>
               </span>
-              <span className="font-mono text-[11px] text-[#e2c044] bg-black px-2.5 py-1 border border-neutral-700">
-                PÁGINAS {spread.spreadNumber} DE 10
+              <span className="font-mono text-[11px] text-[#e2c044] bg-black px-2.5 py-1 border border-[#33302c]">
+                CARTA {currentCard.cardNum}
               </span>
             </div>
 
-            <h2 className="font-anton text-4xl sm:text-6xl text-white uppercase tracking-wider leading-none drop-shadow-md">
+            <h2 className="font-['Anton'] text-3xl sm:text-5xl lg:text-6xl text-white uppercase tracking-wider leading-none drop-shadow-md">
               MEMORIA EDITORIAL & VIDA EN GRAFIT
             </h2>
-            <p className="font-sans text-neutral-300 text-sm max-w-2xl leading-relaxed drop-shadow-sm">
-              Revista interactiva desplegable con efecto acordeón 3D inspirada en la cultura fanzine musical.
-              Fotografías reales capturadas en el local de Urrutia 1, Indautxu.
+            <p className="font-['Space_Grotesk'] text-[#b8b0a2] text-sm sm:text-base max-w-2xl leading-relaxed drop-shadow-sm">
+              Instantáneas reales capturadas en el local de Urrutia 1, Indautxu. Explora el abanico interactivo tocando o deslizando las cartas.
             </p>
           </div>
 
-          {/* SPREAD NAVIGATION CONTROLS */}
+          {/* ARROW CONTROLS */}
           <div className="flex items-center gap-2 self-start md:self-auto">
             <button
-              onClick={prevSpread}
-              className="p-3 bg-black hover:bg-[#b91c1c] text-white border-2 border-neutral-700 hover:border-black shadow-[3px_3px_0_#000] transition-colors cursor-pointer"
-              aria-label="Página anterior"
+              onClick={handlePrev}
+              className="p-3 bg-black hover:bg-[#b91c1c] text-white border-2 border-[#33302c] hover:border-black shadow-[3px_3px_0_#000] transition-colors cursor-pointer"
+              aria-label="Carta anterior"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
-            <span className="font-mono text-xs px-3.5 py-2.5 bg-neutral-900 border border-neutral-700 text-neutral-200 font-bold">
-              {currentSpreadIndex + 1} / {MAGAZINE_SPREADS.length}
+            <span className="font-mono text-xs px-3.5 py-2.5 bg-[#181615] border border-[#33302c] text-[#f5efe1] font-bold">
+              {activeIndex + 1} / {EDITORIAL_CARDS.length}
             </span>
             <button
-              onClick={nextSpread}
-              className="p-3 bg-black hover:bg-[#b91c1c] text-white border-2 border-neutral-700 hover:border-black shadow-[3px_3px_0_#000] transition-colors cursor-pointer"
-              aria-label="Página siguiente"
+              onClick={handleNext}
+              className="p-3 bg-black hover:bg-[#b91c1c] text-white border-2 border-[#33302c] hover:border-black shadow-[3px_3px_0_#000] transition-colors cursor-pointer"
+              aria-label="Carta siguiente"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>
         </div>
 
-        {/* ================================================================= */}
-        {/* SPREAD TABS QUICK ACCESS (DIRECT THEME SELECTOR)                  */}
-        {/* ================================================================= */}
+        {/* PILL SELECTOR FOR DIRECT NAVIGATION */}
         <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-thin">
-          {MAGAZINE_SPREADS.map((s, idx) => (
+          {EDITORIAL_CARDS.map((card, idx) => (
             <button
-              key={s.id}
-              onClick={() => setCurrentSpreadIndex(idx)}
-              className={`shrink-0 px-3 py-1.5 font-mono text-xs border transition-all cursor-pointer ${
-                idx === currentSpreadIndex
+              key={card.id}
+              onClick={() => setActiveIndex(idx)}
+              className={`shrink-0 px-3.5 py-2 font-mono text-xs border transition-all cursor-pointer ${
+                idx === activeIndex
                   ? 'bg-[#b91c1c] text-white border-black font-bold shadow-[3px_3px_0_#000]'
-                  : 'bg-black/75 text-neutral-400 border-neutral-800 hover:text-white hover:border-neutral-600'
+                  : 'bg-black/80 text-[#9c9488] border-[#2b2724] hover:text-white hover:border-neutral-500'
               }`}
             >
-              <span className="text-amber-300 mr-1.5 font-bold">[{s.spreadNumber}]</span>
-              <span>{s.category.split('//')[0].trim()}</span>
+              <span className="text-[#e2c044] mr-1.5 font-bold">[{card.cardNum.split('/')[0].trim()}]</span>
+              <span>{card.category.split('//')[0].trim()}</span>
             </button>
           ))}
         </div>
 
         {/* ================================================================= */}
-        {/* 3D ACCORDION MAGAZINE STAGE (GSAP UNFOLD & PERSPECTIVE SPREAD)    */}
+        {/* FAN-OUT CARD DECK STAGE                                           */}
         {/* ================================================================= */}
         <div
-          ref={accordionStageRef}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          className="relative w-full max-w-6xl mx-auto py-4 [perspective:1800px]"
+          ref={deckContainerRef}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          className="relative w-full max-w-5xl mx-auto py-4"
         >
-          {/* ACCORDION 3D SPREAD CONTAINER */}
-          <div
-            ref={bookRef}
-            className="relative w-full bg-[#f6f2e8] text-black border-4 border-black shadow-[20px_25px_50px_rgba(0,0,0,0.95)] will-change-transform"
-            style={{
-              transformStyle: 'preserve-3d',
-              transform: isReducedMotion
-                ? 'none'
-                : `rotateX(${mousePos.rx}deg) rotateY(${mousePos.ry}deg)`,
-            }}
-          >
-            {/* DYNAMIC SPECULAR LIGHT GRADIENT */}
-            {!isReducedMotion && (
-              <div
-                className="absolute inset-0 pointer-events-none z-40 transition-opacity duration-300"
-                style={{
-                  background: `radial-gradient(circle at ${(mousePos.x + 0.5) * 100}% ${(mousePos.y + 0.5) * 100}%, rgba(255,255,255,0.20) 0%, rgba(255,255,255,0) 65%)`,
-                }}
-              />
-            )}
+          {/* DESKTOP FAN-OUT STACK VISUAL PREVIEW BAR (5 PEEKING TABS) */}
+          <div className="hidden lg:grid grid-cols-5 gap-3 mb-6">
+            {EDITORIAL_CARDS.map((card, idx) => {
+              const isActive = idx === activeIndex;
+              const rotationDeg = (idx - 2) * 3;
+              return (
+                <div
+                  key={card.id}
+                  onClick={() => setActiveIndex(idx)}
+                  style={{
+                    transform: isReducedMotion ? 'none' : `rotate(${rotationDeg}deg)`,
+                  }}
+                  className={`relative cursor-pointer transition-all duration-300 rounded overflow-hidden border-2 p-2 ${
+                    isActive
+                      ? 'bg-[#181615] border-[#e2c044] shadow-[6px_6px_0_#b91c1c] scale-105 z-20'
+                      : 'bg-black/70 border-[#2b2724] hover:border-neutral-400 opacity-60 hover:opacity-100 z-10'
+                  }`}
+                >
+                  <div className="relative aspect-[4/3] bg-black overflow-hidden mb-2">
+                    <img
+                      src={card.photo}
+                      alt={card.headline}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-1 left-1 bg-black/90 text-white font-mono text-[9px] px-1.5 py-0.5 border border-neutral-700">
+                      {card.cardNum}
+                    </div>
+                  </div>
+                  <p className="font-['Anton'] text-xs uppercase tracking-wide truncate text-[#f5efe1]">
+                    {card.headline}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
 
-            {/* MAGAZINE SPINE CREASE (CENTER ACCORDION FOLD) */}
+          {/* MAIN PROTAGONIST CARD (EXPANDED EDITORIAL PRESENTATION) */}
+          <div className="editorial-deck-card relative bg-[#181615] border-4 border-black shadow-[12px_12px_0_#000] overflow-hidden transition-all duration-500">
+            {/* TOP ACCENT STRIP */}
             <div
-              ref={spineCreaseRef}
-              className="absolute top-0 bottom-0 left-1/2 w-10 -translate-x-1/2 bg-gradient-to-r from-black/35 via-black/50 to-black/35 pointer-events-none z-30 hidden md:block"
+              className="h-2 w-full"
+              style={{ backgroundColor: currentCard.themeColor }}
             />
 
-            <div className="grid grid-cols-1 md:grid-cols-2 divide-y-2 md:divide-y-0 md:divide-x-2 divide-neutral-900">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
               
-              {/* =========================================================== */}
-              {/* LEFT PAGE: ACCORDION PANEL 1 (TYPOGRAPHIC EDITORIAL SPREAD) */}
-              {/* =========================================================== */}
-              <div
-                ref={leftPageRef}
-                className="p-6 sm:p-10 lg:p-12 flex flex-col justify-between space-y-6 relative bg-[#f7f3ea] will-change-transform"
-                style={{ transformStyle: 'preserve-3d' }}
-              >
-                <div className="masking-tape tape-corner-tl" />
+              {/* LEFT/TOP: LARGE PHOTOGRAPHIC CANVAS (7 COLS ON DESKTOP) */}
+              <div className="lg:col-span-7 relative bg-black min-h-[300px] sm:min-h-[420px] lg:min-h-[500px] overflow-hidden flex flex-col justify-between border-b-4 lg:border-b-0 lg:border-r-4 border-black group">
+                <img
+                  src={currentCard.photo}
+                  alt={currentCard.caption}
+                  className="w-full h-full object-cover object-center absolute inset-0 transition-transform duration-700 group-hover:scale-105"
+                />
+                
+                {/* GRADIENTS FOR TEXT READABILITY OVER REAL PHOTO */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/40 pointer-events-none" />
 
-                {/* PAGE FOLIO HEADER */}
-                <div className="flex items-center justify-between pb-3 border-b-2 border-black">
-                  <span className="font-mono text-[11px] font-bold text-neutral-700 uppercase tracking-widest">
-                    {spread.leftPage.vol}
-                  </span>
-                  <span className="font-mono text-xs font-bold text-[#b91c1c] bg-white px-2 py-0.5 border border-black">
-                    PAG. {spread.spreadNumber.split('—')[0].trim()}
-                  </span>
-                </div>
-
-                {/* MAIN HEADLINE */}
-                <div className="space-y-3">
+                {/* TOP BADGES */}
+                <div className="relative z-10 p-4 sm:p-6 flex items-start justify-between gap-3">
                   <span
-                    className="inline-block text-[10px] font-mono font-bold px-2 py-0.5 border border-black uppercase text-white shadow-xs"
-                    style={{ backgroundColor: spread.themeColor }}
+                    className="inline-block font-mono text-xs font-bold text-white px-3 py-1 border border-black shadow-[3px_3px_0_#000] uppercase"
+                    style={{ backgroundColor: currentCard.themeColor }}
                   >
-                    {spread.category}
+                    {currentCard.badge}
                   </span>
-                  <h3 className="font-anton text-3xl sm:text-4xl lg:text-5xl uppercase tracking-wide leading-[0.95] text-black">
-                    {spread.leftPage.headline}
-                  </h3>
-                  <p className="font-mono text-xs text-neutral-800 font-bold uppercase">
-                    {spread.leftPage.subhead}
-                  </p>
+
+                  <button
+                    onClick={() => setIsInspecting(true)}
+                    className="inline-flex items-center gap-1.5 bg-black/90 hover:bg-[#b91c1c] text-[#f5efe1] font-mono text-xs font-bold px-3 py-1.5 border border-white/30 hover:border-black shadow transition-colors cursor-pointer"
+                  >
+                    <Maximize2 className="w-3.5 h-3.5 text-[#e2c044]" />
+                    <span>AMPLIAR FOTO</span>
+                  </button>
                 </div>
 
-                {/* BODY STORY */}
-                <p className="font-sans text-neutral-800 text-sm sm:text-base leading-relaxed">
-                  {spread.leftPage.editorialText}
-                </p>
-
-                {/* PULL QUOTE */}
-                <blockquote className="p-4 bg-white border-l-4 border-[#b91c1c] shadow-[3px_3px_0_#000] space-y-1">
-                  <p className="font-sans italic text-xs sm:text-sm text-neutral-900 font-semibold leading-snug">
-                    {spread.leftPage.quote}
+                {/* BOTTOM CAPTION OVER PHOTO */}
+                <div className="relative z-10 p-4 sm:p-6 text-white space-y-1">
+                  <span className="font-mono text-[10px] sm:text-xs text-[#e2c044] font-bold tracking-widest uppercase block drop-shadow">
+                    ★ {currentCard.realDocLabel}
+                  </span>
+                  <p className="font-['Space_Grotesk'] text-xs sm:text-sm text-neutral-200 italic drop-shadow-md">
+                    "{currentCard.caption}"
                   </p>
-                  <footer className="font-mono text-[10px] text-neutral-500 uppercase tracking-wider">
-                    — {spread.leftPage.quoteAuthor}
-                  </footer>
-                </blockquote>
+                </div>
+              </div>
 
-                {/* SPECS AND TAGS */}
-                <div className="space-y-3 pt-3 border-t-2 border-black">
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                    {spread.leftPage.specs.map((spec, i) => (
-                      <div key={i} className="font-mono text-[10px]">
-                        <span className="text-neutral-500 block">{spec.label}</span>
-                        <span className="font-bold text-black">{spec.value}</span>
+              {/* RIGHT/BOTTOM: TYPOGRAPHIC EDITORIAL ESSAY (5 COLS ON DESKTOP) */}
+              <div className="lg:col-span-5 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6 bg-[#181615] text-[#f5efe1]">
+                
+                <div className="space-y-4">
+                  {/* CATEGORY & INDEX */}
+                  <div className="flex items-center justify-between pb-3 border-b border-[#2b2724]">
+                    <span className="font-mono text-xs font-bold text-[#e2c044] uppercase tracking-wider">
+                      {currentCard.category}
+                    </span>
+                    <span className="font-mono text-xs font-bold text-white bg-black px-2 py-0.5 border border-[#33302c]">
+                      {currentCard.cardNum}
+                    </span>
+                  </div>
+
+                  {/* HEADLINE */}
+                  <h3 className="font-['Anton'] text-2xl sm:text-3xl lg:text-4xl uppercase tracking-wide text-[#f5efe1] leading-tight">
+                    {currentCard.headline}
+                  </h3>
+
+                  <p className="font-mono text-xs text-[#e2c044] uppercase font-bold">
+                    {currentCard.subhead}
+                  </p>
+
+                  {/* EDITORIAL STORY */}
+                  <p className="font-['Space_Grotesk'] text-sm sm:text-base text-[#b8b0a2] leading-relaxed">
+                    {currentCard.story}
+                  </p>
+
+                  {/* ARCHIVE NOTICE IF DOCUMENTARY CONCERT */}
+                  {currentCard.isArchiveDoc && (
+                    <div className="p-3 bg-black/80 border-l-4 border-[#b91c1c] text-[#e2c044] font-mono text-xs space-y-1">
+                      <p className="font-bold uppercase tracking-wider">
+                        ★ ARCHIVO DOCUMENTAL • REGISTRO HISTÓRICO
+                      </p>
+                      <p className="text-neutral-300 text-[11px] leading-tight">
+                        Este registro pertenece al histórico de eventos musicales de Grafit (2018). No constituye programación vigente ni música en vivo activa.
+                      </p>
+                    </div>
+                  )}
+                </div>
+
+                {/* SPECS & TAGS */}
+                <div className="space-y-4 pt-4 border-t border-[#262320]">
+                  <div className="grid grid-cols-3 gap-2 text-left">
+                    {currentCard.specs.map((spec, i) => (
+                      <div key={i} className="font-mono text-[11px]">
+                        <span className="text-[#9c9488] block text-[10px]">{spec.label}</span>
+                        <span className="font-bold text-[#f5efe1]">{spec.value}</span>
                       </div>
                     ))}
                   </div>
 
                   <div className="flex flex-wrap gap-1.5 pt-1">
-                    {spread.leftPage.tags.map((tag, i) => (
+                    {currentCard.tags.map((tag, i) => (
                       <span
                         key={i}
-                        className="bg-black text-[#f5efe1] font-mono text-[9px] px-2 py-0.5 border border-black uppercase"
+                        className="bg-black text-[#e2c044] font-mono text-[10px] px-2.5 py-1 border border-[#33302c] uppercase font-bold"
                       >
                         #{tag}
                       </span>
                     ))}
                   </div>
                 </div>
-              </div>
 
-              {/* =========================================================== */}
-              {/* RIGHT PAGE: ACCORDION PANEL 2 (PHOTOGRAPHIC ESSAY)          */}
-              {/* =========================================================== */}
-              <div
-                ref={rightPageRef}
-                className="p-6 sm:p-10 lg:p-12 flex flex-col justify-between space-y-6 relative bg-[#fdfbf7] will-change-transform"
-                style={{ transformStyle: 'preserve-3d' }}
-              >
-                <div className="masking-tape tape-corner-tr" />
-
-                {/* PAGE FOLIO HEADER */}
-                <div className="flex items-center justify-between pb-3 border-b-2 border-black">
-                  <span className="font-mono text-[11px] font-bold text-neutral-700 uppercase tracking-widest">
-                    {spread.rightPage.tagline}
-                  </span>
-                  <span className="font-mono text-xs font-bold text-black bg-[#e2c044] px-2 py-0.5 border border-black">
-                    PAG. {spread.spreadNumber.split('—')[1].trim()}
-                  </span>
-                </div>
-
-                {/* PHOTOGRAPHIC CANVAS WITH DEPTH */}
-                <div className="relative group cursor-pointer" onClick={() => setIsInspecting(true)}>
-                  <div className="relative aspect-[4/3] bg-black border-4 border-black overflow-hidden shadow-[8px_8px_0_#000]">
-                    <img
-                      src={spread.rightPage.photo}
-                      alt={spread.rightPage.caption}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute top-2 left-2 bg-[#b91c1c] text-white font-mono text-[10px] font-bold px-2 py-0.5 border border-black uppercase shadow">
-                      {spread.rightPage.stamp}
-                    </div>
-
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 text-white font-mono text-xs font-bold uppercase">
-                      <Maximize2 className="w-5 h-5 text-[#e2c044]" />
-                      <span>AMPLIAR DETALLE</span>
-                    </div>
-                  </div>
-
-                  <p className="font-mono text-xs text-neutral-800 mt-2 italic leading-relaxed text-center">
-                    "{spread.rightPage.caption}"
-                  </p>
-                </div>
-
-                {/* BOTTOM METADATA BAR */}
-                <div className="pt-3 border-t-2 border-black flex items-center justify-between font-mono text-[10px] text-neutral-600">
-                  <span>DOCUMENTO REAL // INDAUTXU BILBAO</span>
+                {/* QUICK PREV / NEXT IN CARD */}
+                <div className="pt-2 flex items-center justify-between font-mono text-xs">
                   <button
-                    onClick={() => setIsInspecting(true)}
-                    className="inline-flex items-center gap-1 text-[#b91c1c] hover:text-black font-bold uppercase cursor-pointer"
+                    onClick={handlePrev}
+                    className="text-[#9c9488] hover:text-[#e2c044] flex items-center gap-1 cursor-pointer"
                   >
-                    <Eye className="w-3.5 h-3.5" />
-                    <span>MODO INSPECCIÓN</span>
+                    <ChevronLeft className="w-4 h-4" />
+                    <span>ANTERIOR</span>
+                  </button>
+                  <span className="text-[#9c9488]">
+                    DESLIZA O TOCA PARA NAVEGAR
+                  </span>
+                  <button
+                    onClick={handleNext}
+                    className="text-[#e2c044] hover:text-white flex items-center gap-1 cursor-pointer font-bold"
+                  >
+                    <span>SIGUIENTE</span>
+                    <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>
+
               </div>
+
             </div>
           </div>
         </div>
 
       </div>
 
-      {/* =================================================================== */}
-      {/* HIGH-RES IMAGE INSPECTOR MODAL                                      */}
-      {/* =================================================================== */}
+      {/* FULL RESOLUTION INSPECTOR MODAL */}
       {isInspecting && (
         <div
           className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 animate-fadeIn"
@@ -612,9 +503,9 @@ export const EditorialMagazineGallery: React.FC = () => {
             className="relative max-w-4xl w-full bg-[#181615] border-4 border-black p-4 sm:p-6 shadow-[16px_16px_0_#b91c1c] text-white space-y-4"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between pb-3 border-b border-neutral-800">
+            <div className="flex items-center justify-between pb-3 border-b border-[#2b2724]">
               <span className="font-mono text-xs font-bold text-[#e2c044] uppercase">
-                INSPECTOR DE ARCHIVO REAL // {spread.rightPage.stamp}
+                INSPECTOR DE ARCHIVO REAL // {currentCard.badge}
               </span>
               <button
                 onClick={() => setIsInspecting(false)}
@@ -624,16 +515,16 @@ export const EditorialMagazineGallery: React.FC = () => {
               </button>
             </div>
 
-            <div className="relative aspect-[16/10] bg-black border-2 border-neutral-800 overflow-hidden">
+            <div className="relative aspect-[16/10] bg-black border-2 border-[#2b2724] overflow-hidden">
               <img
-                src={spread.rightPage.photo}
-                alt={spread.rightPage.caption}
+                src={currentCard.photo}
+                alt={currentCard.caption}
                 className="w-full h-full object-contain"
               />
             </div>
 
-            <p className="font-mono text-xs text-neutral-300 text-center">
-              {spread.rightPage.caption}
+            <p className="font-mono text-xs text-[#b8b0a2] text-center">
+              {currentCard.caption}
             </p>
           </div>
         </div>

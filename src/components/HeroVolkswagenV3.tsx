@@ -422,7 +422,7 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
                 ★ SALÓN MULTIUSOS DECORADO
               </span>
               <span className="text-[#ded8cb] hover:text-white transition-colors">
-                ★ COCINA NON-STOP & HAMBURGUESAS
+                ★ HAMBURGUESAS 100% BUEY & PICOTEO
               </span>
               <span className="text-[#b91c1c] font-bold">
                 ★ ESPÍRITU ATHLETIC CLUB
@@ -465,22 +465,22 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
           />
 
           {/* =============================================================== */}
-          {/* A. THE VW EMBLEM (CLEAN, PROUD & ICONIC)                        */}
+          {/* A. THE VW EMBLEM (CLEAN, PROUD & ICONIC - REAL REFERENCE)       */}
           {/* =============================================================== */}
           <div
             ref={emblemRef}
             className="absolute z-25 flex items-center justify-center pointer-events-none"
             style={{
-              left: '37.8%',
-              top: '40.6%',
-              width: '24.4%',
-              height: '19.5%',
+              left: '41.8%',
+              top: '36.2%',
+              width: '21.0%',
+              height: '16.8%',
             }}
           >
             <img
               src="./assets/grafit/motion/van/layers/layer_03_vw_emblem.png"
               alt="Emblema Volkswagen"
-              className="w-full h-full object-contain filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]"
+              className="w-full h-full object-contain filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.7)]"
             />
           </div>
 
@@ -612,7 +612,7 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
                 { path: '/', num: '01', label: 'INICIO', tag: '' },
                 { path: '/eventos', num: '02', label: 'EVENTOS', tag: 'GRUPOS' },
                 { path: '/espacio', num: '03', label: 'EL ESPACIO', tag: 'SALÓN' },
-                { path: '/carta', num: '04', label: 'GASTRONOMÍA', tag: 'NON-STOP' },
+                { path: '/carta', num: '04', label: 'GASTRONOMÍA', tag: 'CARTA' },
                 { path: '/contacto', num: '05', label: 'CONTACTO', tag: '' },
               ].map((item) => (
                 <button
