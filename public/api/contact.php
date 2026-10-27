@@ -26,12 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// Cargar configuración privada
-$configFile = __DIR__ . '/config.php';
-$config = [];
-if (file_exists($configFile)) {
-    $config = require $configFile;
-}
+// Cargar configuración privada situada físicamente fuera del directorio público
+require_once __DIR__ . '/load_config.php';
+$config = grafit_load_config();
 
 // 1. Obtener y parsear el payload de la solicitud (JSON o form-data)
 $rawBody = file_get_contents('php://input');

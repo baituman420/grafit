@@ -25,4 +25,8 @@ public/api/cache/
 dist/api/config.php
 dist/api/cache/
 api/config.php
+*grafit_config.php
+private/
+*.zip
+!public/**/*.zip
 

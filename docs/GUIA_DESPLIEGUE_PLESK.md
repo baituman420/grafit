@@ -1,55 +1,39 @@
-# GUÍA TÉCNICA DE DESPLIEGUE EN MÁSBYTES / PLESK Y OPERACIONES
+# GUÍA OPERATIVA DE DESPLIEGUE EN MÁSBYTES / PLESK (SIN SSH)
 ## Web Oficial de Grafit Café (JARNAIBEN S.L.)
 
-> **ESTADO DE AUTORIZACIÓN**: 
-> - Entorno de trabajo local y repositorio GitHub: **AUTORIZADO**.
-> - Despliegue en subdominio beta: **PREPARADO** (pendiente de propagación DNS pública).
-> - Despliegue en producción (`grafitcafe.com`) y sustitución de WordPress: **NO AUTORIZADO HASTA APROBACIÓN EXPRESA**.
+> [!IMPORTANT]
+> **ESTADO DE AUTORIZACIÓN ACTUAL**:
+> - Entorno de trabajo local y repositorio GitHub: **AUTORIZADO Y COMPILADO**.
+> - Despliegue en subdominio beta: **PREPARADO TÉCNICAMENTE** (pendiente de propagación de su DNS público).
+> - Despliegue en producción (`grafitcafe.com`) y sustitución de WordPress: **NO AUTORIZADO HASTA APROBACIÓN EXPRESA**. La web actual de WordPress permanece 100% activa e intacta.
 
 ---
 
-## 1. Características del Entorno de Alojamiento (MásBytes)
+## 1. Características del Alojamiento y Herramientas Disponibles
 
+- **Proveedor**: MásBytes (servidores en España / UE).
 - **Panel de control**: Plesk Obsidian (Linux / PleskLin).
-- **Dirección IP**: `5.56.166.21`
-- **Versión de PHP**: 8.3.36 (con módulos `curl`, `json`, `mbstring`, `openssl`, `sockets`).
-- **Servidor web**: Nginx (reverse proxy) + Apache (soporte completo de `.htaccess`).
-- **Acceso a terminal (SSH)**: No disponible / prohibido por política del proveedor.
-- **Acceso a archivos**: Administrador de archivos de Plesk y FTP/SFTP.
-- **Servidores DNS públicos**: `ns1.masbytes.es` y `ns2.masbytes.es`.
+- **IP del servidor**: `5.56.166.21`
+- **Versión de PHP**: 8.3 (soporte nativo de `openssl`, `sockets`, `curl`, `json`, `mbstring`).
+- **Servidor web**: Nginx (reverse proxy) + Apache (soporte de `.htaccess`).
+- **Herramienta de gestión autorizada**: **Administrador de archivos de Plesk** (interfaz web gráfica, sin comandos SSH).
 - **Dominio principal**: `grafitcafe.com` / `www.grafitcafe.com` (WordPress activo en `httpdocs`).
 - **Subdominio de pruebas**: `beta.grafitcafe.com` (alojamiento independiente creado en Plesk).
 
 ---
 
-## 2. Estructura del Paquete de Producción (`dist/`)
+## 2. Ubicación Privada de Credenciales (`grafit_config.php`)
 
-La compilación estática (`npm run build`) genera un directorio autónomo `dist/` con la siguiente estructura lista para transferir al servidor:
+Para que las credenciales de correo nunca dependan únicamente de `.htaccess` y queden **físicamente fuera del alcance de cualquier navegador web o bot**, el archivo de configuración debe situarse en el espacio privado de Plesk.
 
-```text
-httpdocs/ (o directorio raíz del vhost)
-├── .htaccess                     # Enrutado SPA, 301 redirects de WordPress, noindex en beta y seguridad
-├── index.html                    # HTML principal con metadatos Open Graph, Twitter y Schema.org JSON-LD
-├── robots.txt                    # Permite rastreo en producción (beta protegido por .htaccess)
-├── sitemap.xml                   # Mapa del sitio XML canónico oficial
-├── assets/                       # Paquete estático compilado (JS, CSS, imágenes WebP, fuentes)
-└── api/                          # Endpoints seguros PHP 8.3 (backend desacoplado)
-    ├── contact.php               # Procesamiento de formulario de eventos y envío SMTP autenticado
-    ├── instagram.php             # Consulta a Instagram Graph API con caché local en disco (2h)
-    └── config.sample.php         # Plantilla de configuración privada
-```
-
----
-
-## 3. Configuración de Credenciales Privadas (`api/config.php`)
-
-Para que el formulario de eventos y la sincronización de Instagram funcionen en el servidor, debe crearse un archivo **`api/config.php`** en el servidor (fuera de Git).
-
-### Pasos en Plesk:
-1. Accede al Administrador de Archivos de Plesk.
-2. Navega a la carpeta `api/`.
-3. Haz una copia de `config.sample.php` y nómbrala **`config.php`**.
-4. Edita los valores correspondientes:
+### Pasos en el Administrador de Archivos de Plesk:
+1. Accede al panel de control de Plesk y haz clic en **Administrador de archivos**.
+2. En el árbol de carpetas de la izquierda, haz clic en la **raíz del espacio de alojamiento** (el nivel superior donde ves las carpetas `httpdocs`, `logs`, `error_docs` y la carpeta de tu subdominio `beta.grafitcafe.com`).
+3. Comprueba si existe la carpeta **`private`**:
+   - Si no existe: haz clic en el botón superior **Nuevo** > **Crear directorio**, y nómbralo `private`.
+4. Entra en la carpeta `private/` (o quédate en la raíz si prefieres no crear subcarpetas).
+5. Haz clic en **Nuevo** > **Crear archivo** y nómbralo **`grafit_config.php`** (o sube la plantilla `grafit_config.sample.php` y renómbrala a `grafit_config.php`).
+6. Edita el archivo con el editor de Plesk y pega los parámetros del buzón oficial:
 
 ```php
 <?php
@@ -57,15 +41,15 @@ declare(strict_types=1);
 
 return [
     // -------------------------------------------------------------------------
-    // PARÁMETROS SMTP AUTENTICADOS (Buzón Oficial Grafit Café)
+    // CORREO SALIENTE (SMTP PUERTO 465 SSL/TLS IMPLÍCITO)
     // -------------------------------------------------------------------------
     'smtp_enabled'   => true,
     'smtp_host'      => 'mail.grafitcafe.com', // Resuelve a 5.181.44.105 (Postfix ESMTP)
-    'smtp_port'      => 465,                   // 465: SSL/TLS implícito directo
-    'smtp_secure'    => 'ssl',                 // 'ssl' con validación estricta Let's Encrypt / ISRG Root X1
+    'smtp_port'      => 465,                   // SSL implícito directo
+    'smtp_secure'    => 'ssl',                 // Validación criptográfica estricta Let's Encrypt / ISRG Root X1
     'smtp_auth'      => true,
-    'smtp_user'      => 'grafitcafe@grafitcafe.com', // Dirección completa autorizada
-    'smtp_password'  => 'CONTRASENA_REAL_DEL_BUZON',
+    'smtp_user'      => 'grafitcafe@grafitcafe.com', // Buzón autorizado
+    'smtp_password'  => 'AQUI_LA_CONTRASENA_REAL_DEL_BUZON',
     'mail_from'      => 'grafitcafe@grafitcafe.com',
     'mail_from_name' => 'Web Grafit Café (Solicitudes de Eventos)',
     'mail_to'        => 'grafitcafe@grafitcafe.com',
@@ -75,99 +59,77 @@ return [
     // META GRAPH API (INSTAGRAM v21.0)
     // -------------------------------------------------------------------------
     'instagram_handle'       => 'grafitcafe',
-    'instagram_access_token' => 'TOKEN_DE_LARGA_DURACION_DE_META', // Opcional
+    'instagram_access_token' => '', // Opcional (dejar vacío para mantener modo fanzine seguro)
 ];
 ```
+7. Guarda los cambios.
 
-### Verificación previa de conexión SMTP antes de activar:
-En el servidor Plesk (mediante SSH o terminal de Plesk), se puede ejecutar la herramienta de diagnóstico CLI para comprobar la conectividad y autenticación antes de habilitar el formulario de producción:
-
-```bash
-# Comprobación de DNS, socket SSL puerto 465 y saludo ESMTP:
-php scripts/verify_smtp.php
-
-# Comprobación completa incluyendo autenticación de buzón:
-php scripts/verify_smtp.php --password="CONTRASENA_REAL_DEL_BUZON"
-```
-
-> [!IMPORTANT]
-> **Seguridad garantizada**: El archivo `.htaccess` incluye la regla `Require all denied` para `config.php`, impidiendo cualquier descarga directa desde navegadores web. Además, está incluido en `.gitignore`. NUNCA se utiliza `mail()` nativo como fallback ante fallos de conexión.
+> [!TIP]
+> **¿Cómo encuentra el backend este archivo?**
+> El endpoint `api/contact.php` ejecuta `grafit_load_config()`, que busca de forma ascendente en:
+> 1. `../private/grafit_config.php`
+> 2. `../grafit_config.php`
+> 3. `../../private/grafit_config.php`
+> 4. `../../grafit_config.php`
+>
+> Al estar fuera del Document Root web, es física e informáticamente inaccesible desde internet por HTTP.
 
 ---
 
-## 4. Procedimiento de Despliegue en el Entorno Beta (`beta.grafitcafe.com`)
+## 3. Procedimiento de Despliegue en Beta (`beta.grafitcafe.com`)
 
-Una vez confirmada la propagación del registro DNS público de `beta.grafitcafe.com`:
+Una vez confirmada la resolución pública del DNS de `beta.grafitcafe.com`:
 
-1. **Subir archivos**:
-   - Comprimir localmente la carpeta `dist/` en `grafit_dist.zip`.
-   - En Plesk, seleccionar el dominio `beta.grafitcafe.com` > **Administrador de archivos**.
-   - Subir `grafit_dist.zip` y descomprimir directamente en el directorio raíz del subdominio.
-2. **Configurar archivo privado**:
-   - Crear `api/config.php` con los datos SMTP verificados.
-3. **Comprobar protección de noindex**:
-   - Enviar petición de prueba: `curl -sI https://beta.grafitcafe.com/`
-   - Verificar la presencia de: `X-Robots-Tag: noindex, nofollow, noarchive`.
-4. **Validación funcional**:
-   - Probar navegación en móvil y escritorio.
-   - Enviar una solicitud real de prueba en el formulario de eventos y comprobar la entrega en el buzón `grafitcafe@grafitcafe.com`.
+### Paso 1: Localizar el paquete preparado
+El archivo comprimido definitivo se encuentra en la raíz del proyecto con el nombre:
+**`grafit_beta_deploy.zip`**
+
+### Paso 2: Subida y extracción en Plesk
+1. En Plesk, accede a la sección de **`beta.grafitcafe.com`** > **Administrador de archivos**.
+2. Asegúrate de estar dentro del directorio raíz del subdominio (suele llamarse `beta.grafitcafe.com/` o `httpdocs/` del subdominio).
+3. Si hay archivos previos temporales de Plesk (ej. `index.html` de bienvenida o `favicon.ico` por defecto), elimínalos o muévelos a una carpeta temporal.
+4. Haz clic en el botón superior **Cargar**. Selecciona el archivo **`grafit_beta_deploy.zip`**.
+5. Una vez cargado, marca la casilla del archivo `grafit_beta_deploy.zip`, haz clic en **Extraer archivos** y pulsa **Aceptar**.
+6. (Opcional): Elimina el archivo `grafit_beta_deploy.zip` de la carpeta para no ocupar espacio innecesario.
+
+### Paso 3: Comprobación de Seguridad de Indexación (noindex en Beta)
+El archivo `.htaccess` incluido detecta automáticamente el subdominio y aplica:
+`X-Robots-Tag: noindex, nofollow, noarchive`
+Ningún motor de búsqueda indexará la versión beta.
+
+### Paso 4: Pruebas Funcionales en Beta
+1. Navega por `https://beta.grafitcafe.com/` en móvil y en escritorio.
+2. Comprueba las páginas de la Carta, Espacio, Eventos, Historia y Textos Legales.
+3. Comprueba el formulario de contacto:
+   - Mientras la contraseña real no esté guardada en `grafit_config.php`, el formulario responderá con un error controlado informando de la vía telefónica alternativa (`944 102 772`), **sin confirmar jamás una recepción falsa ni usar mail() nativo**.
+   - Tras introducir la contraseña en `grafit_config.php`, realiza un envío de prueba para validar la entrega en `grafitcafe@grafitcafe.com`.
 
 ---
 
-## 5. Procedimiento de Transición desde WordPress a Producción (`grafitcafe.com`)
+## 4. Procedimiento Futuro de Sustitución de WordPress en Producción (`grafitcafe.com`)
 
 > [!CAUTION]
-> **ESTE PROCEDIMIENTO SOLO SE EJECUTARÁ TRAS LA APROBACIÓN EXPRESA DEL EQUIPO DE GRAFIT.**
+> **ESTE PASO NO SE DEBE EJECUTAR AHORA.**
+> Solo se llevará a cabo cuando el equipo de Grafit apruebe la versión beta y autorice el cambio definitivo.
 
-### Paso 1: Copia de Seguridad Integral de WordPress
-1. En Plesk, ir a `grafitcafe.com` > **Administrador de archivos**.
-2. Seleccionar la carpeta `httpdocs/` y comprimirla como `backup_wordpress_completo.zip`.
-3. Descargar una copia de seguridad local del archivo ZIP.
-4. En Plesk > **Bases de datos**, exportar un volcado SQL de la base de datos de WordPress.
+### Paso 1: Copia de Seguridad Inmediata de WordPress desde Plesk
+1. En Plesk, ve a `grafitcafe.com` > **Administrador de archivos**.
+2. Selecciona la carpeta **`httpdocs`** y haz clic en **Añadir a un archivo comprimido**. Nómbralo `backup_wordpress_completo.zip`.
+3. Haz clic en el archivo ZIP creado y pulsa **Descargar** para guardarlo localmente en vuestro ordenador.
+4. En Plesk > **Bases de datos**, haz clic en **Exportar volcado** de la base de datos de WordPress y descárgalo.
 
 ### Paso 2: Aislamiento del WordPress Original
-1. Renombrar la carpeta actual `httpdocs` a **`httpdocs_wordpress_backup`**.
-2. Crear un nuevo directorio vacío llamado **`httpdocs`**.
+1. En el Administrador de archivos, selecciona la carpeta `httpdocs` y haz clic en **Renombrar**.
+2. Cambia su nombre a: **`httpdocs_wordpress_backup`**.
+3. Haz clic en **Nuevo** > **Crear directorio** y nómbralo: **`httpdocs`**.
 
-### Paso 3: Despliegue de la Nueva Web
-1. Descomprimir el contenido de `dist/` en el nuevo `httpdocs/`.
-2. Copiar `api/config.php` configurado en `httpdocs/api/config.php`.
-3. Verificar permisos de lectura (`0755` para directorios, `0644` para archivos).
+### Paso 3: Despliegue en Producción
+1. Entra en el nuevo directorio `httpdocs` vacío.
+2. Sube y extrae el archivo **`grafit_beta_deploy.zip`**.
+3. El archivo `grafit_config.php` situado en la carpeta privada servirá inmediatamente tanto a beta como a producción sin tener que volver a escribir credenciales.
 
-### Paso 4: Pruebas de Humo en Producción
-- [ ] Comprobar que `https://www.grafitcafe.com/` carga con certificado SSL válido.
-- [ ] Comprobar que `https://www.grafitcafe.com/contenidos/` redirige (301) a `https://www.grafitcafe.com/carta`.
-- [ ] Comprobar que `https://www.grafitcafe.com/info/` redirige (301) a `https://www.grafitcafe.com/espacio`.
-- [ ] Comprobar que `https://www.grafitcafe.com/agenda/` redirige (301) a `https://www.grafitcafe.com/eventos`.
-- [ ] Realizar un envío de prueba en el formulario de contacto y verificar acuse y recepción.
-- [ ] Comprobar en Google Search Console que el `sitemap.xml` responde 200 OK.
-
----
-
-## 6. Plan de Reversión Inmediata (Rollback < 1 minuto)
-
-Si durante las comprobaciones en producción se detectase cualquier incidencia crítica imprevista:
-
-1. En el Administrador de Archivos de Plesk, renombrar `httpdocs` a `httpdocs_v4_failed`.
-2. Renombrar **`httpdocs_wordpress_backup`** nuevamente a **`httpdocs`**.
-3. **Resultado**: WordPress y su contenido original vuelven a estar 100% operativos de forma inmediata.
-
----
-
-## 7. Guía de Conexión de Instagram (Meta Graph API)
-
-La integración está preparada y operando en modo **respaldo honesto** (mostrando la fotografía real de cultura de Grafit y enlace directo al perfil `@grafitcafe`).
-
-Para activar la sincronización automática de la última publicación real:
-1. Acceder a [Meta for Developers](https://developers.facebook.com/).
-2. Crear o seleccionar una App de tipo **Negocio / Creator**.
-3. Añadir el producto **Instagram Graph API**.
-4. En el Explorador de la Graph API, seleccionar la cuenta de Instagram `@grafitcafe` vinculada a la página de Facebook del establecimiento.
-5. Solicitar los permisos:
-   - `instagram_business_basic` (lectura de publicaciones y perfil).
-6. Generar un **Token de Acceso de Usuario de Larga Duración** (validez de 60 días).
-7. Pegar el token en `api/config.php`:
-   ```php
-   'instagram_access_token' => 'EAABw...',
-   ```
-8. La web comenzará a sincronizar automáticamente y cacheará las publicaciones durante 2 horas.
+### Paso 4: Plan de Reversión Instantánea (< 1 minuto)
+Si por cualquier motivo se deseara volver al WordPress original:
+1. En el Administrador de archivos de Plesk, renombra el directorio `httpdocs` a `httpdocs_v4_pausado`.
+2. Renombra **`httpdocs_wordpress_backup`** nuevamente a **`httpdocs`**.
+3. **Resultado**: WordPress y toda su información vuelven a estar activos al instante.

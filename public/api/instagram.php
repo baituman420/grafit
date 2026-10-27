@@ -18,12 +18,9 @@ header('Content-Type: application/json; charset=UTF-8');
 header('X-Content-Type-Options: nosniff');
 header('Cache-Control: public, max-age=300'); // Caché HTTP de 5 min para navegadores
 
-// Cargar configuración privada (fuera de control de versiones)
-$configFile = __DIR__ . '/config.php';
-$config = [];
-if (file_exists($configFile)) {
-    $config = require $configFile;
-}
+// Cargar configuración privada situada físicamente fuera del directorio público
+require_once __DIR__ . '/load_config.php';
+$config = grafit_load_config();
 
 $accessToken = $config['instagram_access_token'] ?? null;
 $accountHandle = $config['instagram_handle'] ?? 'grafitcafe';
