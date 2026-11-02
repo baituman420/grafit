@@ -50,7 +50,7 @@ export const PoliticaPrivacidadPage: React.FC<PoliticaPrivacidadPageProps> = ({ 
             <p><strong className="text-black">NIF/CIF:</strong> B95435269</p>
             <p><strong className="text-black">Establecimiento comercial:</strong> Grafit Café</p>
             <p><strong className="text-black">Dirección postal:</strong> Calle Urrutia 1, bajo, 48010 Bilbao (Bizkaia)</p>
-            <p><strong className="text-black">Correo electrónico de contacto:</strong> <a href="mailto:grafitcafe@grafitcafe.com" className="text-[#b91c1c] underline">grafitcafe@grafitcafe.com</a></p>
+            <p><strong className="text-black">Correo electrónico de contacto:</strong> <a href="mailto:grafitcafe@gmail.com" className="text-[#b91c1c] underline">grafitcafe@gmail.com</a></p>
             <p><strong className="text-black">Teléfono:</strong> 944 102 772</p>
           </div>
         </section>
@@ -179,7 +179,7 @@ export const PoliticaPrivacidadPage: React.FC<PoliticaPrivacidadPageProps> = ({ 
               <strong>Forma de ejercicio:</strong> Para ejercitar estos derechos, puede remitir una solicitud por escrito a <strong>JARNAIBEN S.L.</strong> a través de:
             </p>
             <p>
-              • Correo electrónico: <a href="mailto:grafitcafe@grafitcafe.com" className="text-[#b91c1c] underline font-bold">grafitcafe@grafitcafe.com</a> (asunto: «Protección de Datos — Ejercicio de Derechos»).
+              • Correo electrónico: <a href="mailto:grafitcafe@gmail.com" className="text-[#b91c1c] underline font-bold">grafitcafe@gmail.com</a> (asunto: «Protección de Datos — Ejercicio de Derechos»).
             </p>
             <p>
               • Correo postal: Calle Urrutia 1, bajo, 48010 Bilbao (Bizkaia).

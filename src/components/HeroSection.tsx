@@ -91,14 +91,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
                 <div className="w-1/2 flex flex-col justify-between font-typewriter">
                   <div>
                     <span className="inline-block bg-[#0a0a0a] text-white text-[11px] px-2 py-0.5 font-mono-code mb-1">FOGONES REALES</span>
-                    <h4 className="font-ransom text-3xl leading-none text-[#0a0a0a]">BURGER GRAFIT 100% BUEY</h4>
+                    <h4 className="font-ransom text-3xl leading-none text-[#0a0a0a]">BURGER GRAFIT DE AUTOR</h4>
                     <p className="text-[12px] leading-tight text-neutral-700 mt-2">
-                      Carne seleccionada, cheddar ahumado, bacon y salsa especial.
+                      Carne 100% vaca seleccionada, cheddar ahumado, bacon y salsa especial.
                     </p>
                   </div>
                   <div className="border-t border-black pt-2 mt-2">
                     <div className="font-typewriter text-xs text-[#b91c1c] font-bold">HAMBURGUESAS & PICOTEO</div>
-                    <div className="text-[11px] text-neutral-700">Carne 100% buey y raciones</div>
+                    <div className="text-[11px] text-neutral-700">Carne 100% vaca seleccionada y raciones</div>
                   </div>
                 </div>
               </div>

@@ -76,7 +76,7 @@ export const EventosPage: React.FC<EventosPageProps> = ({ onNavigate }) => {
             Gastronomía y Picoteo
           </h3>
           <p className="font-['Space_Grotesk'] text-xs sm:text-sm text-[#b8b0a2] leading-relaxed">
-            Hamburguesas 100% buey, sándwiches artesanos, tablas de picoteo y cañas bien tiradas adaptadas al formato de tu grupo.
+            Hamburguesas de autor y de vaca seleccionada, sándwiches artesanos, tablas de picoteo y cañas bien tiradas adaptadas al formato de tu grupo.
           </p>
         </div>
 
@@ -185,7 +185,7 @@ export const EventosPage: React.FC<EventosPageProps> = ({ onNavigate }) => {
             </p>
           </div>
           <div className="p-4 bg-[#1a1816] border border-[#33302c]">
-            <h4 className="font-['Anton'] text-base uppercase text-[#f5efe1] mb-1">Burger 100% Buey & Plancha</h4>
+            <h4 className="font-['Anton'] text-base uppercase text-[#f5efe1] mb-1">Burger de Autor & Plancha</h4>
             <p className="font-mono text-xs text-[#a39b8e] leading-relaxed">
               Carne seleccionada de primera calidad, queso fundido, bacon crujiente y pan rústico con caña fría.
             </p>

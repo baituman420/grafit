@@ -50,16 +50,16 @@ export const FaroViajeroSection: React.FC<FaroViajeroSectionProps> = ({ onNaviga
           start: 'top top',
           end: 'bottom bottom',
           pin: stageRef.current,
-          scrub: 0.6,
+          scrub: 0.25,
           anticipatePin: 1,
           onUpdate: (self) => {
             const p = self.progress;
             setCurrentProgress(Math.round(p * 100));
 
-            if (p < 0.20) setActiveZone('A');
-            else if (p < 0.45) setActiveZone('B');
-            else if (p < 0.70) setActiveZone('C');
-            else if (p < 0.88) setActiveZone('D');
+            if (p < 0.18) setActiveZone('A');
+            else if (p < 0.42) setActiveZone('B');
+            else if (p < 0.68) setActiveZone('C');
+            else if (p < 0.86) setActiveZone('D');
             else setActiveZone('E');
           },
         },
@@ -87,7 +87,7 @@ export const FaroViajeroSection: React.FC<FaroViajeroSectionProps> = ({ onNaviga
       gsap.set(secERef.current, { opacity: 0, y: 40 });
 
       // =====================================================================
-      // MOVIMIENTO A -> B: LLEGADA Y PRIMERA REVELACIÓN (HAMBURGUESA)
+      // MOVIMIENTO A -> B: LLEGADA RÁPIDA Y PRIMERA REVELACIÓN (HAMBURGUESA)
       // =====================================================================
       tl.to(
         hlContainerRef.current,
@@ -96,23 +96,23 @@ export const FaroViajeroSection: React.FC<FaroViajeroSectionProps> = ({ onNaviga
           x: isMobile ? 18 : 160,
           scale: isMobile ? 1.05 : 1.25,
           rotation: isMobile ? 2.5 : 2,
-          duration: 1.8,
-          ease: 'power1.inOut',
+          duration: 1.0,
+          ease: 'power2.out',
         },
         0
       );
 
-      tl.to(secARef.current, { opacity: 0, y: -25, duration: 0.8, ease: 'power1.out' }, 0.6);
-      tl.to(hlGlassRef.current, { opacity: 0, duration: 1.0, ease: 'power2.out' }, 0.8);
-      tl.to(hlImgBurgerRef.current, { opacity: 1, scale: 1.04, duration: 1.2, ease: 'power2.out' }, 0.8);
-      tl.to(secBRef.current, { opacity: 1, y: 0, duration: 1.0, ease: 'power2.out' }, 1.0);
-      tl.to(hlTagRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'back.out(1.5)' }, 1.2);
-      tl.to(bgOverlayRef.current, { opacity: 0.82, duration: 1.5, ease: 'power1.inOut' }, 0.5);
+      tl.to(secARef.current, { opacity: 0, y: -20, duration: 0.4, ease: 'power1.out' }, 0.2);
+      tl.to(hlGlassRef.current, { opacity: 0, duration: 0.5, ease: 'power2.out' }, 0.3);
+      tl.to(hlImgBurgerRef.current, { opacity: 1, scale: 1.04, duration: 0.6, ease: 'power2.out' }, 0.3);
+      tl.to(secBRef.current, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, 0.5);
+      tl.to(hlTagRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.4, ease: 'back.out(1.5)' }, 0.6);
+      tl.to(bgOverlayRef.current, { opacity: 0.82, duration: 0.8, ease: 'power1.inOut' }, 0.2);
 
       // =====================================================================
-      // MOVIMIENTO B -> C: DESPLAZAMIENTO Y SÁNDWICH DE BARRA
+      // MOVIMIENTO B -> C: DESPLAZAMIENTO DINÁMICO Y SÁNDWICH DE BARRA
       // =====================================================================
-      tl.to(secBRef.current, { opacity: 0, y: -25, duration: 0.8, ease: 'power1.in' }, 2.2);
+      tl.to(secBRef.current, { opacity: 0, y: -20, duration: 0.4, ease: 'power1.in' }, 1.2);
       tl.to(
         hlContainerRef.current,
         {
@@ -120,20 +120,20 @@ export const FaroViajeroSection: React.FC<FaroViajeroSectionProps> = ({ onNaviga
           y: isMobile ? -95 : 10,
           scale: isMobile ? 1.05 : 1.15,
           rotation: isMobile ? -3 : -3,
-          duration: 2.0,
-          ease: 'power1.inOut',
+          duration: 1.0,
+          ease: 'power2.inOut',
         },
-        2.2
+        1.2
       );
 
-      tl.to(hlImgBurgerRef.current, { opacity: 0, scale: 1.2, duration: 1.2, ease: 'power2.inOut' }, 2.4);
-      tl.to(hlImgSandwichRef.current, { opacity: 1, scale: 1.05, duration: 1.4, ease: 'power2.inOut' }, 2.5);
-      tl.to(secCRef.current, { opacity: 1, y: 0, duration: 1.0, ease: 'power2.out' }, 2.8);
+      tl.to(hlImgBurgerRef.current, { opacity: 0, scale: 1.2, duration: 0.6, ease: 'power2.inOut' }, 1.3);
+      tl.to(hlImgSandwichRef.current, { opacity: 1, scale: 1.05, duration: 0.7, ease: 'power2.inOut' }, 1.3);
+      tl.to(secCRef.current, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, 1.5);
 
       // =====================================================================
       // MOVIMIENTO C -> D: PINTXOS EN EL CENTRO
       // =====================================================================
-      tl.to(secCRef.current, { opacity: 0, y: -25, duration: 0.8, ease: 'power1.in' }, 4.4);
+      tl.to(secCRef.current, { opacity: 0, y: -20, duration: 0.4, ease: 'power1.in' }, 2.3);
       tl.to(
         hlContainerRef.current,
         {
@@ -141,32 +141,32 @@ export const FaroViajeroSection: React.FC<FaroViajeroSectionProps> = ({ onNaviga
           y: isMobile ? -90 : -20,
           scale: isMobile ? 1.10 : 1.35,
           rotation: 0,
-          duration: 2.0,
-          ease: 'power1.inOut',
+          duration: 1.0,
+          ease: 'power2.inOut',
         },
-        4.4
+        2.3
       );
 
-      tl.to(hlImgSandwichRef.current, { opacity: 0, scale: 1.18, duration: 1.2, ease: 'power2.inOut' }, 4.6);
-      tl.to(hlImgPintxosRef.current, { opacity: 1, scale: 1.03, duration: 1.4, ease: 'power2.inOut' }, 4.7);
-      tl.to(secDRef.current, { opacity: 1, y: 0, duration: 1.0, ease: 'power2.out' }, 5.0);
-      tl.to(hlBezelRef.current, { opacity: 0.45, duration: 1.2, ease: 'power1.out' }, 5.2);
+      tl.to(hlImgSandwichRef.current, { opacity: 0, scale: 1.18, duration: 0.6, ease: 'power2.inOut' }, 2.4);
+      tl.to(hlImgPintxosRef.current, { opacity: 1, scale: 1.03, duration: 0.7, ease: 'power2.inOut' }, 2.4);
+      tl.to(secDRef.current, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, 2.6);
+      tl.to(hlBezelRef.current, { opacity: 0.45, duration: 0.6, ease: 'power1.out' }, 2.7);
 
       // =====================================================================
       // MOVIMIENTO D -> E: EL FARO SE CONVIERTE EN FOTOGRAFÍA AMPLIA
       // =====================================================================
-      tl.to(secDRef.current, { opacity: 0, y: -25, duration: 0.7, ease: 'power1.in' }, 6.6);
-      tl.to(hlTagRef.current, { opacity: 0, scale: 0.5, duration: 0.5 }, 6.6);
-      tl.to(hlBezelRef.current, { opacity: 0, duration: 0.8, ease: 'power2.out' }, 6.8);
+      tl.to(secDRef.current, { opacity: 0, y: -20, duration: 0.4, ease: 'power1.in' }, 3.4);
+      tl.to(hlTagRef.current, { opacity: 0, scale: 0.5, duration: 0.3 }, 3.4);
+      tl.to(hlBezelRef.current, { opacity: 0, duration: 0.4, ease: 'power2.out' }, 3.5);
 
       tl.to(
         hlInnerRef.current,
         {
           borderRadius: '16px',
-          duration: 1.6,
+          duration: 0.8,
           ease: 'power2.inOut',
         },
-        6.8
+        3.5
       );
 
       tl.to(
@@ -177,21 +177,21 @@ export const FaroViajeroSection: React.FC<FaroViajeroSectionProps> = ({ onNaviga
           scale: 1.0,
           y: isMobile ? -130 : -70,
           x: 0,
-          duration: 1.6,
+          duration: 0.8,
           ease: 'power2.inOut',
         },
-        6.8
+        3.5
       );
 
-      tl.to(bgOverlayRef.current, { opacity: 0.94, duration: 1.2 }, 6.8);
-      tl.to(secERef.current, { opacity: 1, y: 0, duration: 1.2, ease: 'power2.out' }, 7.2);
+      tl.to(bgOverlayRef.current, { opacity: 0.94, duration: 0.6 }, 3.5);
+      tl.to(secERef.current, { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, 3.7);
     }, stageRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <div id="faro-viajero-section" ref={trackRef} className="relative w-full h-[280vh] bg-[#0c0b0a] border-b-8 border-black">
+    <div id="faro-viajero-section" ref={trackRef} className="relative w-full h-[165vh] bg-[#0c0b0a] border-b-8 border-black">
       {/* PINNED STAGE VIEWPORT */}
       <div
         ref={stageRef}
@@ -248,7 +248,7 @@ export const FaroViajeroSection: React.FC<FaroViajeroSectionProps> = ({ onNaviga
             tagRef={hlTagRef}
             tagText={
               activeZone === 'B'
-                ? 'BURGER 100% BUEY'
+                ? 'BURGER DE AUTOR'
                 : activeZone === 'C'
                 ? 'SÁNDWICH DE BARRA'
                 : activeZone === 'D'
@@ -293,8 +293,8 @@ export const FaroViajeroSection: React.FC<FaroViajeroSectionProps> = ({ onNaviga
             badgeText="Movimiento B"
             badgeColor="red"
             title="Gastronomía con Carácter"
-            subtitle="Burger 100% Buey"
-            description="Carne de buey de primera calidad, queso fundido, bacon crujiente y pan rústico. El faro enmarca el sabor más contundente de nuestra cocina."
+            subtitle="Burger de Autor 100% Vaca"
+            description="Carne de vaca seleccionada de primera calidad, queso fundido, bacon crujiente y pan rústico. El faro enmarca las hamburguesas de autor de nuestra cocina."
             align="center"
           />
         </div>
@@ -311,7 +311,7 @@ export const FaroViajeroSection: React.FC<FaroViajeroSectionProps> = ({ onNaviga
             badgeColor="gold"
             title="Plancha y Picoteo"
             subtitle="Sándwich de Barra a la Plancha"
-            description="El faro se desplaza lateralmente mientras la hamburguesa muta en sándwich caliente. Hamburguesas 100% buey y sándwiches recién hechos en el corazón de Indautxu."
+            description="El faro se desplaza lateralmente mientras la hamburguesa muta en sándwich caliente. Hamburguesas de autor y sándwiches recién hechos en el corazón de Indautxu."
             align="center"
           />
         </div>

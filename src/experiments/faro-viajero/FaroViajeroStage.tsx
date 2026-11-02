@@ -456,13 +456,13 @@ export const FaroViajeroStage: React.FC<FaroViajeroStageProps> = ({ reducedMotio
           {/* Card 1: Burger */}
           <div className="bg-[#181615] border-2 border-[#33302c] overflow-hidden shadow-[6px_6px_0_#000]">
             <div className="aspect-square overflow-hidden bg-black">
-              <img src="./assets/grafit/instagram/burguer.webp" alt="Burger 100% Buey" className="w-full h-full object-cover" />
+              <img src="./assets/grafit/burgers/burger-rulo-cabra.jpg" alt="Burger de Autor" className="w-full h-full object-cover" />
             </div>
             <div className="p-4">
               <span className="font-mono text-xs text-[#e2c044] font-bold">01 • CARÁCTER</span>
-              <h3 className="font-['Anton'] text-xl text-[#f5efe1] uppercase mt-1">Burger 100% Buey</h3>
+              <h3 className="font-['Anton'] text-xl text-[#f5efe1] uppercase mt-1">Burger de Autor</h3>
               <p className="font-['Space_Grotesk'] text-xs text-[#b8b0a2] mt-2">
-                Carne seleccionada, pan artesano tostado y receta propia en el corazón de Indautxu.
+                Carne 100% vaca seleccionada, pan artesano tostado y receta propia en el corazón de Indautxu.
               </p>
             </div>
           </div>
@@ -476,7 +476,7 @@ export const FaroViajeroStage: React.FC<FaroViajeroStageProps> = ({ reducedMotio
               <span className="font-mono text-xs text-[#e2c044] font-bold">02 • PLANCHA & PICOTEO</span>
               <h3 className="font-['Anton'] text-xl text-[#f5efe1] uppercase mt-1">Sándwich a la Plancha</h3>
               <p className="font-['Space_Grotesk'] text-xs text-[#b8b0a2] mt-2">
-                Hamburguesas 100% buey y sándwiches recién preparados en barra.
+                Hamburguesas de autor y sándwiches recién preparados en barra.
               </p>
             </div>
           </div>
@@ -594,7 +594,7 @@ export const FaroViajeroStage: React.FC<FaroViajeroStageProps> = ({ reducedMotio
             tagRef={hlTagRef}
             tagText={
               activeZone === 'B'
-                ? 'BURGER 100% BUEY'
+                ? 'BURGER DE AUTOR'
                 : activeZone === 'C'
                 ? 'SÁNDWICH DE BARRA'
                 : activeZone === 'D'
@@ -643,8 +643,8 @@ export const FaroViajeroStage: React.FC<FaroViajeroStageProps> = ({ reducedMotio
             badgeText="Movimiento B"
             badgeColor="red"
             title="Gastronomía con Carácter"
-            subtitle="Burger 100% Buey"
-            description="Carne de buey de primera calidad, queso fundido, bacon crujiente y pan rústico. El faro enmarca el sabor más contundente de nuestra cocina."
+            subtitle="Burger de Autor"
+            description="Carne 100% vaca de primera calidad, queso fundido, bacon crujiente y pan rústico. El faro enmarca el sabor más contundente de nuestra cocina."
             align="center"
           />
         </div>
@@ -665,7 +665,7 @@ export const FaroViajeroStage: React.FC<FaroViajeroStageProps> = ({ reducedMotio
             badgeColor="gold"
             title="Plancha y Picoteo"
             subtitle="Sándwich de Barra a la Plancha"
-            description="El faro se desplaza lateralmente mientras la hamburguesa muta en sándwich caliente. Hamburguesas 100% buey y sándwiches recién hechos en el corazón de Indautxu."
+            description="El faro se desplaza lateralmente mientras la hamburguesa muta en sándwich caliente. Hamburguesas de autor y sándwiches recién hechos en el corazón de Indautxu."
             align="center"
           />
         </div>

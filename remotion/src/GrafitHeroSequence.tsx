@@ -520,7 +520,7 @@ export const GrafitHeroSequence: React.FC = () => {
                 opacity: foodTagOpacity
               }}
             >
-              BURGER 100% BUEY
+              BURGER DE AUTOR
             </div>
 
             <div

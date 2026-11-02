@@ -470,7 +470,7 @@ export const GrafitHeroMobile: React.FC = () => {
                     zIndex: 46
                   }}
                 >
-                  BURGER 100% BUEY
+                  BURGER DE AUTOR
                 </div>
 
                 {/* SÁNDWICH STICKER */}

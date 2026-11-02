@@ -108,7 +108,7 @@ export const submitLead = async (
       success: false,
       message:
         json?.message ||
-        `El servicio de correo devolvió un estado no disponible (${response.status}). Puedes contactarnos directamente en grafitcafe@grafitcafe.com.`,
+        `El servicio de correo devolvió un estado no disponible (${response.status}). Puedes contactarnos directamente en grafitcafe@gmail.com.`,
       isBackendConnected: false,
       errors: json?.errors,
     };

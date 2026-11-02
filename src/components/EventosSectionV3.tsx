@@ -32,7 +32,7 @@ const FORMATOS: FormatoEvento[] = [
     title: 'Comidas y Cenas de Cuadrilla',
     subtitle: 'Mesas largas, picoteo y ambiente distendido',
     description:
-      'El salón multiusos permite reunir a cuadrillas y grupos grandes en mesas corridas sin las limitaciones de un comedor tradicional. Disfruta de nuestras hamburguesas 100% buey, sándwiches calientes, raciones y cañas bien tiradas con total comodidad y sin turnos forzados.',
+      'El salón multiusos permite reunir a cuadrillas y grupos grandes en mesas corridas sin las limitaciones de un comedor tradicional. Disfruta de nuestras hamburguesas de autor 100% vaca, sándwiches calientes, raciones y cañas bien tiradas con total comodidad y sin turnos forzados.',
     photo: './assets/grafit/instagram/621137527_18159238840410802_2351787220592329803_n.jpg',
     photoCaption: 'Comida de cuadrilla compartiendo mesa en el salón de Grafit',
     capacity: '10 - 45 PERSONAS',
@@ -90,8 +90,8 @@ const FORMATOS: FormatoEvento[] = [
     subtitle: 'Cuéntanos tu idea y adaptamos el salón',
     description:
       'Desde despedidas hasta reuniones de asociaciones o encuentros generacionales. Explícanos lo que buscas y te orientamos sobre disponibilidad y opciones del espacio sin compromisos.',
-    photo: './assets/grafit/instagram/pintxos_eventos.webp',
-    photoCaption: 'Bandejas de catering y raciones dispuestas para eventos de grupo',
+    photo: './assets/grafit/interior/grafit-salon-mesas-11.jpg',
+    photoCaption: 'Salón multiusos con mesas y mural de concierto para eventos a medida en Grafit',
     capacity: 'ADAPTABLE',
     highlights: [
       'Distribución adaptable según el tipo de encuentro',

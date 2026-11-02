@@ -29,16 +29,16 @@ const EDITORIAL_CARDS: EditorialCard[] = [
     category: 'GASTRONOMÍA // ROCK FOOD',
     themeColor: '#b91c1c',
     badge: 'PLATO INSIGNIA',
-    headline: 'BURGER 100% BUEY & SABOR ROCK',
-    subhead: 'Carne seleccionada, pan artesano tostado y receta propia en Indautxu',
+    headline: 'BURGER GOURMET & SABOR ROCK',
+    subhead: 'Carne 100% de vaca, rulo de cabra y pan brioche artesano',
     story:
-      'Elaboradas con carne 100% buey seleccionada, queso fundido, bacon crujiente y pan brioche artesano tostado al momento. Una propuesta contundente y sincera pensada tanto para picoteo rápido en barra como para comidas largas de cuadrilla.',
-    photo: './assets/grafit/instagram/burguer.webp',
-    caption: 'Hamburguesa 100% buey servida en la barra de Grafit Café.',
-    realDocLabel: 'FOTOGRAFÍA REAL // BARRA DE GRAFIT',
-    tags: ['100% BUEY', 'PAN ARTESANO', 'SABOR ROTUNDO', 'INDAUTXU'],
+      'Elaboradas con carne 100% vaca seleccionada, rulo de cabra a la plancha caramelizado, cebolla crujiente, chutney artesano de tomate y pan brioche tostado al momento. Una propuesta de autor contundente pensada tanto para barra como para celebraciones en el salón.',
+    photo: './assets/grafit/burgers/burger-rulo-cabra.jpg',
+    caption: 'Hamburguesa 100% vaca con rulo de cabra y chutney en Grafit Café.',
+    realDocLabel: 'FOTOGRAFÍA REAL // GASTRONOMÍA GRAFIT',
+    tags: ['100% VACA', 'RULO DE CABRA', 'PAN BRIOCHE', 'INDAUTXU'],
     specs: [
-      { label: 'PRODUCTO', value: 'Carne 100% buey' },
+      { label: 'PRODUCTO', value: 'Carne 100% vaca' },
       { label: 'SERVICIO', value: 'Barra y Salón' },
       { label: 'ELABORACIÓN', value: 'Al momento' },
     ],
@@ -72,9 +72,9 @@ const EDITORIAL_CARDS: EditorialCard[] = [
     headline: 'EL MÍTICO FRONTAL VOLKSWAGEN EN EL SALÓN',
     subhead: 'Icono de libertad y punto focal del espacio multiusos',
     story:
-      'El frontal real de la furgoneta Volkswagen T1 integrado en la pared de ladrillo visto del salón interior. Un elemento arquitectónico singular que preside las reuniones de grupo y refuerza la identidad underground de Grafit.',
-    photo: './assets/grafit/instagram/599139401_17934885522129317_243501184606504542_n.jpg',
-    caption: 'Vista del frontal Volkswagen y murales artísticos en el salón interior.',
+      'El frontal real de la furgoneta Volkswagen T1 integrado en la pared de ladrillo visto del salón interior. Presidiendo las celebraciones de grupo y reforzando la identidad única de Grafit.',
+    photo: './assets/grafit/instagram/volkswagen.jpg',
+    caption: 'El frontal Volkswagen presidiendo el salón multiusos con identidad rockera.',
     realDocLabel: 'FOTOGRAFÍA REAL // SALÓN DE GRAFIT',
     tags: ['VOLKSWAGEN T1', 'LADRILLO VISTO', 'ESPACIO SINGULAR', 'GRUPOS'],
     specs: [
@@ -92,9 +92,9 @@ const EDITORIAL_CARDS: EditorialCard[] = [
     headline: 'CATERING ARTESANO & BANDEJAS PARA GRUPOS',
     subhead: 'Celebraciones privadas y encuentros sin turnos forzados',
     story:
-      'Bandejas preparadas con bocaditos artesanales, raciones de picoteo y servicio personalizado para celebraciones de cuadrilla, cumpleaños, aniversarios o reuniones de empresa en el salón interior de Grafit.',
-    photo: './assets/grafit/instagram/pintxos_eventos.webp',
-    caption: 'Bandejas de catering y raciones dispuestas para eventos de grupo.',
+      'Bandejas preparadas con canapés artesanales, mini sándwiches, raciones de picoteo y servicio personalizado para celebraciones de cuadrilla, cumpleaños, aniversarios o reuniones de empresa en el salón de Grafit.',
+    photo: './assets/grafit/catering/catering-salon-04.jpg',
+    caption: 'Composición de mesas y catering en el salón multiusos para eventos.',
     realDocLabel: 'FOTOGRAFÍA REAL // CATERING PARA GRUPOS',
     tags: ['BANDEJAS GRUPOS', 'CELEBRACIONES', 'SIN ALQUILER DE SALA', 'A MEDIDA'],
     specs: [
@@ -126,9 +126,48 @@ const EDITORIAL_CARDS: EditorialCard[] = [
   },
 ];
 
+const REAL_MOMENTS = [
+  {
+    src: './assets/grafit/catering/catering-volkswagen-01.jpg',
+    title: 'Salón con la Volkswagen',
+    tag: 'ESPACIO SINGULAR',
+    desc: 'La mítica furgoneta Volkswagen presidiendo las celebraciones privadas y comidas de cuadrilla.',
+  },
+  {
+    src: './assets/grafit/burgers/burger-trufa.jpg',
+    title: 'Burger de Pollo Trufada',
+    tag: 'ESPECIAL DE AUTOR',
+    desc: 'Pechuga seleccionada, queso emmental, bacon crujiente y mahonesa de trufa.',
+  },
+  {
+    src: './assets/grafit/catering/catering-bandejas-03.jpg',
+    title: 'Bandejas Artesanales',
+    tag: 'CATERING GRUPOS',
+    desc: 'Canapés variados y mini sándwiches recién preparados para compartir en eventos.',
+  },
+  {
+    src: './assets/grafit/burgers/burger-vegana.jpg',
+    title: 'Burger Veggie en Cristal',
+    tag: '100% VEGETAL',
+    desc: 'Medallón artesano de calabaza, zanahoria y queso con aguacate y pan cristal.',
+  },
+  {
+    src: './assets/grafit/instagram/657913291_18417429862135194_8041400893067437478_n.webp',
+    title: 'Celebraciones en Salón',
+    tag: 'CUADRILLAS',
+    desc: 'Ambiente diáfano, barra viva y cuadrillas disfrutando de las celebraciones en Grafit.',
+  },
+  {
+    src: './assets/grafit/catering/catering-escenario-02.jpg',
+    title: 'Pista y Escenario',
+    tag: 'EVENTOS A MEDIDA',
+    desc: 'Disposición flexible de mesas para presentaciones, aniversarios y encuentros en Indautxu.',
+  },
+];
+
 export const EditorialMagazineGallery: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [isInspecting, setIsInspecting] = useState(false);
+  const [customInspect, setCustomInspect] = useState<{ src: string; caption: string; title: string } | null>(null);
   const [isReducedMotion, setIsReducedMotion] = useState(false);
 
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -186,13 +225,13 @@ export const EditorialMagazineGallery: React.FC = () => {
         setActiveIndex((prev) => (prev - 1 + EDITORIAL_CARDS.length) % EDITORIAL_CARDS.length);
       } else if (e.key === 'ArrowRight') {
         setActiveIndex((prev) => (prev + 1) % EDITORIAL_CARDS.length);
-      } else if (e.key === 'Escape' && isInspecting) {
-        setIsInspecting(false);
+      } else if (e.key === 'Escape' && customInspect) {
+        setCustomInspect(null);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isInspecting]);
+  }, [customInspect]);
 
   const handleNext = () => {
     setActiveIndex((prev) => (prev + 1) % EDITORIAL_CARDS.length);
@@ -381,7 +420,13 @@ export const EditorialMagazineGallery: React.FC = () => {
                   </span>
 
                   <button
-                    onClick={() => setIsInspecting(true)}
+                    onClick={() =>
+                      setCustomInspect({
+                        src: currentCard.photo,
+                        caption: currentCard.caption,
+                        title: currentCard.headline,
+                      })
+                    }
                     className="inline-flex items-center gap-1.5 bg-black/90 hover:bg-[#b91c1c] text-[#f5efe1] font-mono text-xs font-bold px-3 py-1.5 border border-white/30 hover:border-black shadow transition-colors cursor-pointer"
                   >
                     <Maximize2 className="w-3.5 h-3.5 text-[#e2c044]" />
@@ -491,40 +536,101 @@ export const EditorialMagazineGallery: React.FC = () => {
           </div>
         </div>
 
+        {/* ========================================================================= */}
+        {/* NUEVA COMBINACIÓN VISUAL: MOSAICO DE MOMENTOS REALES (ÚLTIMO TRAMO)       */}
+        {/* ========================================================================= */}
+        <div className="pt-12 space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 border-b-2 border-neutral-700 pb-3">
+            <div>
+              <div className="inline-block bg-[#e2c044] text-black font-mono text-xs font-bold px-2.5 py-0.5 uppercase tracking-widest mb-1 shadow-[2px_2px_0_#000]">
+                GALERÍA VISUAL // INDAUTXU
+              </div>
+              <h3 className="font-anton text-2xl sm:text-4xl text-white uppercase tracking-wider">
+                MOMENTOS REALES EN EL GRAFIT
+              </h3>
+            </div>
+            <span className="font-mono text-xs text-[#9c9488]">
+              ★ Gastronomía de autor, furgoneta y celebraciones en salón
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+            {REAL_MOMENTS.map((moment, idx) => (
+              <div
+                key={idx}
+                className="group relative bg-[#181615] border-2 border-[#33302c] hover:border-[#b91c1c] transition-all p-2 shadow-[4px_4px_0_#000] cursor-pointer overflow-hidden flex flex-col justify-between"
+                onClick={() =>
+                  setCustomInspect({
+                    src: moment.src,
+                    title: moment.title,
+                    caption: moment.desc,
+                  })
+                }
+              >
+                <div className="aspect-square bg-black overflow-hidden relative">
+                  <img
+                    src={moment.src}
+                    alt={moment.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-black/35 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <Maximize2 className="w-5 h-5 text-[#e2c044]" />
+                  </div>
+                </div>
+                <div className="pt-2">
+                  <span className="block font-mono text-[9px] font-bold text-[#e2c044] uppercase truncate">
+                    {moment.tag}
+                  </span>
+                  <p className="font-sans text-[11px] text-[#ded8cb] font-bold truncate">
+                    {moment.title}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
 
       {/* FULL RESOLUTION INSPECTOR MODAL */}
-      {isInspecting && (
+      {customInspect && (
         <div
           className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 animate-fadeIn"
-          onClick={() => setIsInspecting(false)}
+          onClick={() => setCustomInspect(null)}
         >
           <div
             className="relative max-w-4xl w-full bg-[#181615] border-4 border-black p-4 sm:p-6 shadow-[16px_16px_0_#b91c1c] text-white space-y-4"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between pb-3 border-b border-[#2b2724]">
-              <span className="font-mono text-xs font-bold text-[#e2c044] uppercase">
-                INSPECTOR DE ARCHIVO REAL // {currentCard.badge}
-              </span>
+              <div className="space-y-0.5">
+                <span className="font-mono text-xs font-bold text-[#e2c044] uppercase block">
+                  DETALLE FOTOGRÁFICO // GRAFIT BILBAO
+                </span>
+                <span className="font-anton text-xl text-white tracking-wide uppercase">
+                  {customInspect.title}
+                </span>
+              </div>
               <button
-                onClick={() => setIsInspecting(false)}
-                className="p-1 bg-black hover:bg-[#b91c1c] text-white border border-neutral-700 cursor-pointer"
+                onClick={() => setCustomInspect(null)}
+                className="p-1.5 bg-black hover:bg-[#b91c1c] text-white border border-neutral-700 cursor-pointer transition-colors"
+                aria-label="Cerrar modal"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="relative aspect-[16/10] bg-black border-2 border-[#2b2724] overflow-hidden">
+            <div className="relative aspect-[16/10] bg-black border-2 border-[#2b2724] overflow-hidden flex items-center justify-center">
               <img
-                src={currentCard.photo}
-                alt={currentCard.caption}
-                className="w-full h-full object-contain"
+                src={customInspect.src}
+                alt={customInspect.title}
+                className="max-h-full max-w-full object-contain"
               />
             </div>
 
-            <p className="font-mono text-xs text-[#b8b0a2] text-center">
-              {currentCard.caption}
+            <p className="font-sans text-xs sm:text-sm text-[#ded8cb] text-center pt-1">
+              {customInspect.caption}
             </p>
           </div>
         </div>

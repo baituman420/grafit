@@ -483,7 +483,7 @@ export const GrafitHeroMobileV2: React.FC = () => {
               />
             </div>
 
-            {/* STICKER "BURGER 100% BUEY" */}
+            {/* STICKER "BURGER DE AUTOR" */}
             {frame >= 115 && (
               <div
                 style={{
@@ -503,7 +503,7 @@ export const GrafitHeroMobileV2: React.FC = () => {
                   zIndex: 60
                 }}
               >
-                BURGER 100% BUEY
+                BURGER DE AUTOR
               </div>
             )}
           </div>

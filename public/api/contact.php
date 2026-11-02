@@ -122,7 +122,7 @@ $smtpPort = (int)($config['smtp_port'] ?? 465);
 $smtpUser = $config['smtp_user'] ?? 'grafitcafe@grafitcafe.com';
 $smtpPass = $config['smtp_password'] ?? '';
 $smtpSecure = strtolower((string)($config['smtp_secure'] ?? ($smtpPort === 465 ? 'ssl' : 'tls')));
-$mailTo = $config['mail_to'] ?? 'grafitcafe@grafitcafe.com';
+$mailTo = $config['mail_to'] ?? 'grafitcafe@gmail.com';
 $mailFrom = $config['mail_from'] ?? 'grafitcafe@grafitcafe.com';
 $mailFromName = $config['mail_from_name'] ?? 'Web Grafit Café';
 
@@ -133,7 +133,7 @@ if (empty($smtpHost) || empty($smtpUser) || empty($smtpPass) || $smtpPass === 'A
     echo json_encode([
         'success' => false,
         'code' => 'SMTP_PENDING_CONFIGURATION',
-        'message' => 'El servicio de envío web está pendiente de los parámetros definitivos de correo en el alojamiento. Por favor, escríbenos directamente a grafitcafe@grafitcafe.com o llámanos al 944 102 772.'
+        'message' => 'El servicio de envío web está pendiente de los parámetros definitivos de correo en el alojamiento. Por favor, escríbenos directamente a grafitcafe@gmail.com o llámanos al 944 102 772.'
     ], JSON_UNESCAPED_UNICODE);
     exit;
 }

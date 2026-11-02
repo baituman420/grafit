@@ -27,7 +27,7 @@ const FORMATOS: FormatoEvento[] = [
     title: 'Comidas y Cenas de Cuadrilla',
     subtitle: 'Mesas largas, picoteo y ambiente distendido',
     description:
-      'El salón multiusos permite reunir a grupos grandes en mesas corridas sin las limitaciones de un comedor tradicional. Disfruta de nuestras hamburguesas 100% buey, sándwiches calientes, raciones y cañas bien tiradas con total comodidad.',
+      'El salón multiusos permite reunir a grupos grandes en mesas corridas sin las limitaciones de un comedor tradicional. Disfruta de nuestras hamburguesas de autor 100% vaca, sándwiches calientes, raciones y cañas bien tiradas con total comodidad.',
     photo: './assets/grafit/interior/grafit-salon-mesas-11.jpg',
     photoCaption: 'Mesas preparadas frente al mural de concierto en el salón',
     highlights: [

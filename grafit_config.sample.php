@@ -45,7 +45,7 @@ return [
     'mail_from_name' => 'Web Grafit Café (Solicitudes de Eventos)',
     
     // Buzón destinatario que recibirá las notificaciones de los clientes
-    'mail_to' => 'grafitcafe@grafitcafe.com',
+    'mail_to' => 'grafitcafe@gmail.com',
     'mail_to_name' => 'Gerencia Grafit Café',
 
     // --------------------------------------------------------------------------

@@ -165,7 +165,7 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
               <p><strong>• Finalidad:</strong> Tramitar y responder a tu solicitud de reserva, disponibilidad y presupuesto de evento.</p>
               <p><strong>• Base jurídica:</strong> Aplicación de medidas precontractuales solicitadas por el interesado (Art. 6.1.b RGPD).</p>
               <p><strong>• Destinatarios:</strong> Servidor de hosting MásBytes (España/UE). Cero cesiones a terceros.</p>
-              <p><strong>• Derechos:</strong> Acceso, rectificación, supresión y demás derechos en <a href="mailto:grafitcafe@grafitcafe.com" className="text-[#b91c1c] underline">grafitcafe@grafitcafe.com</a>.</p>
+              <p><strong>• Derechos:</strong> Acceso, rectificación, supresión y demás derechos en <a href="mailto:grafitcafe@gmail.com" className="text-[#b91c1c] underline">grafitcafe@gmail.com</a>.</p>
             </div>
           </div>
 

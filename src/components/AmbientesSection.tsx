@@ -90,8 +90,8 @@ export const AmbientesSection: React.FC<AmbientesSectionProps> = ({ onNavigate }
             {/* LARGE FORMAT PHOTOGRAPHIC CANVAS */}
             <div className="relative h-72 sm:h-88 md:h-96 overflow-hidden bg-black border-b-2 border-[#2b2724]">
               <img
-                src="./assets/grafit/instagram/621137527_18159238840410802_2351787220592329803_n.jpg"
-                alt="Cuadrillas y celebraciones reales en el salón de Grafit Café"
+                src="./assets/grafit/interior/grafit-salon-mesas-27.jpg"
+                alt="El gran salón multiusos y mesas para grupos en Grafit Café"
                 className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/30 pointer-events-none" />

@@ -426,7 +426,7 @@ export const HeroVolkswagenV3: React.FC<HeroVolkswagenV3Props> = ({
                 ★ SALÓN MULTIUSOS DECORADO
               </span>
               <span className="text-[#ded8cb] hover:text-white transition-colors">
-                ★ HAMBURGUESAS 100% BUEY & PICOTEO
+                ★ HAMBURGUESAS DE AUTOR & PICOTEO
               </span>
               <span className="text-[#b91c1c] font-bold">
                 ★ ESPÍRITU ATHLETIC CLUB

@@ -16,6 +16,25 @@ export interface MenuItem {
   isPendingValidation?: boolean;
 }
 
+export interface CartaItem {
+  id: string;
+  name: string;
+  description: string;
+  badge?: string;
+  image?: string;
+  isSpecial?: boolean;
+  bread?: string;
+}
+
+export interface CartaGroup {
+  id: string;
+  title: string;
+  subtitle: string;
+  note?: string;
+  badge?: string;
+  items: CartaItem[];
+}
+
 export interface ExperienceType {
   id: string;
   title: string;
@@ -61,18 +80,18 @@ export const GRAFIT_DATA = {
     neighborhood: 'Indautxu',
     city: '48010 Bilbao, Bizkaia',
     phone: '944 102 772',
-    email: 'grafitcafe@grafitcafe.com',
+    email: 'grafitcafe@gmail.com',
     hours: [
-      { days: 'Lunes a Jueves', time: '08:00 – 23:00' },
-      { days: 'Viernes', time: '08:00 – 02:00' },
-      { days: 'Sábados', time: '09:00 – 02:30' },
-      { days: 'Domingos', time: '10:00 – 23:00' },
+      { days: 'De lunes a jueves', time: '8:30 a 00:00' },
+      { days: 'Viernes', time: '8:30 a 2:00' },
+      { days: 'Sábado', time: '10:30 a 2:00' },
+      { days: 'Domingo', time: '12:00 a 00:00' },
     ],
     kitchenHours: 'Gastronomía y carta de barra y salón',
     socials: {
       facebook: 'https://www.facebook.com/grafitrockcafe',
       x: 'https://x.com/grafitcafe',
-      email: 'mailto:grafitcafe@grafitcafe.com',
+      email: 'mailto:grafitcafe@gmail.com',
       linkedin: 'https://www.linkedin.com/in/grafitcafe',
       youtube: 'https://www.youtube.com/channel/UCBv2dtRS_xFM6jYE_xOxFNQ',
       instagram: 'https://www.instagram.com/grafitcafe',
@@ -105,8 +124,8 @@ export const GRAFIT_DATA = {
       },
       {
         id: 'hero-food',
-        src: './assets/grafit/instagram/burguer.webp',
-        caption: 'Burger Grafit 100% Buey',
+        src: './assets/grafit/burgers/burger-trufa.jpg',
+        caption: 'Burger de Pollo Trufada • Receta de Autor',
         rotation: '3deg'
       },
       {
@@ -170,7 +189,7 @@ export const GRAFIT_DATA = {
         subtitle: 'El salón a tu disposición para proyectos especiales',
         description: 'Presentaciones informales, quedadas temáticas o encuentros culturales que requieran amplitud y personalidad visual.',
         idealFor: 'Iniciativas creativas, peñas y asociaciones.',
-        image: './assets/grafit/instagram/pintxos_eventos.webp',
+        image: './assets/grafit/catering/catering-bandejas-03.jpg',
         badge: 'FORMATO FLEXIBLE'
       }
     ] as ExperienceType[]
@@ -262,10 +281,10 @@ export const GRAFIT_DATA = {
     dishes: [
       {
         id: 'b1',
-        name: 'Burger Grafit 100% Buey',
-        description: 'Carne seleccionada 100% buey, queso cheddar ahumado, bacon crujiente, cebolla pochada y salsa casera Rock en pan brioche artesano.',
+        name: 'Burger Grafit de Autor',
+        description: 'Carne seleccionada 100% vaca, queso cheddar ahumado, bacon crujiente, cebolla pochada y salsa casera Rock en pan brioche artesano.',
         badge: 'PLATO INSIGNIA',
-        image: './assets/grafit/instagram/burguer.webp',
+        image: './assets/grafit/burgers/burger-rulo-cabra.jpg',
         category: 'burger'
       },
       {
@@ -289,11 +308,442 @@ export const GRAFIT_DATA = {
         name: 'Bandejas de Catering para Grupos',
         description: 'Surtido de bocaditos variados, raciones calientes y tablas pensadas para compartir en celebraciones en el salón.',
         badge: 'GRUPOS & EVENTOS',
-        image: './assets/grafit/instagram/pintxos_eventos.webp',
+        image: './assets/grafit/catering/catering-bandejas-03.jpg',
         category: 'plato'
       }
     ] as MenuItem[],
-    gruposNota: 'Para grupos y eventos diseñamos propuestas gastronómicas a medida (picoteo de pie, menús de mesa compartida o meriendas-cena). Consulta las opciones disponibles para tu fecha.'
+    gruposNota: 'Para grupos y eventos diseñamos propuestas gastronómicas a medida (picoteo de pie, menús de mesa compartida o meriendas-cena). Consulta las opciones disponibles para tu fecha.',
+    carta: {
+      glutenFreeNotice: 'Disponemos de pan de hamburguesa sin gluten para todas nuestras opciones.',
+      hamburguesas: {
+        title: 'HAMBURGUESAS',
+        subtitle: 'Especialidades de la casa y clásicas con pan artesano',
+        notice: 'Disponemos de pan de hamburguesa sin gluten.',
+        especiales: [
+          {
+            id: 'h-esp-vaca-cheddar',
+            name: 'Hamburguesa de Vaca 100% Especial',
+            description: 'Carne 100% vaca seleccionada, cebolla caramelizada, salsa cheddar cremosa, huevo a la plancha y toque de alegría.',
+            bread: 'Pan Cristal Artesano',
+            badge: 'ESPECIAL DE LA CASA',
+            image: './assets/grafit/instagram/burguer.webp',
+            isSpecial: true,
+          },
+          {
+            id: 'h-esp-rulo-cabra',
+            name: 'Hamburguesa de Vaca 100% con Rulo de Cabra',
+            description: 'Carne 100% vaca, rulo de cabra a la plancha caramelizado, cebolla crujiente, chutney de tomate y pimiento, y mezclum de lechugas frescas.',
+            bread: 'Pan Brioche Artesano',
+            image: './assets/grafit/burgers/burger-rulo-cabra.jpg',
+            badge: 'TOP GOURMET',
+            isSpecial: true,
+          },
+          {
+            id: 'h-esp-pollo-trufa',
+            name: 'Hamburguesa de Pollo Trufada',
+            description: 'Pechuga de pollo seleccionada, queso emmental fundente, bacon crujiente, bouquet de brotes tiernos y mahonesa de trufa.',
+            bread: 'Pan Brioche Artesano',
+            image: './assets/grafit/burgers/burger-trufa.jpg',
+            badge: 'RECOMENDACIÓN',
+            isSpecial: true,
+          },
+          {
+            id: 'h-esp-vegetariana',
+            name: 'Hamburguesa Vegetariana de Autor',
+            description: 'Compuesta artesanalmente de calabaza, zanahoria y queso, acompañada de cebolla pochada, champiñón laminado, tomate fresco y salsa guacamole.',
+            bread: 'Pan Cristal Artesano',
+            image: './assets/grafit/burgers/burger-vegana.jpg',
+            badge: 'VEGGIE GOURMET',
+            isSpecial: true,
+          },
+        ] as CartaItem[],
+        clasicas: [
+          {
+            id: 'h-clas-holandesa',
+            name: 'Holandesa',
+            description: 'Lechuga, tomate fresco, cebolla pochada, queso fundido y mahonesa.',
+          },
+          {
+            id: 'h-clas-caballo',
+            name: 'A Caballo',
+            description: 'Lechuga, tomate, cebolla, queso fundido, huevo frito y mahonesa.',
+            badge: 'CLÁSICA',
+          },
+          {
+            id: 'h-clas-grafit',
+            name: 'Grafit',
+            description: 'Lechuga, tomate, pepinillo, queso, bacon crujiente y salsa rosa.',
+            badge: 'RECETA ROCK',
+          },
+          {
+            id: 'h-clas-doble',
+            name: 'Doble de Carne',
+            description: 'Doble porción de carne, lechuga, tomate, cebolla, queso, tortilla francesa, bacon y mahonesa.',
+            badge: 'EXTRA CONTUNDENTE',
+          },
+          {
+            id: 'h-clas-vegana',
+            name: 'Vegana',
+            description: 'Hamburguesa vegana, lechuga, tomate, cebolla pochada y tomate frito.',
+            badge: '100% VEGAN',
+          },
+          {
+            id: 'h-clas-crunchi',
+            name: 'Pollo Crunchi',
+            description: 'Pollo crujiente, lechuga, cebolla cruda, queso cheddar y ali-oli.',
+            badge: 'CRUNCHY',
+          },
+        ] as CartaItem[],
+      },
+      sandwiches: [
+        {
+          id: 's-marinero',
+          name: 'Marinero',
+          description: 'Lechuga, tomate, huevo cocido, txaka, bonito, anchoas y salsa rosa.',
+        },
+        {
+          id: 's-tropical',
+          name: 'Tropical',
+          description: 'Lechuga, huevo cocido, txaka, pepinillo, jamón york y mahonesa.',
+        },
+        {
+          id: 's-vegetal',
+          name: 'Vegetal',
+          description: 'Lechuga, tomate, huevo cocido, espárrago, queso, jamón york, bonito y mahonesa.',
+          badge: 'FAVORITO',
+        },
+        {
+          id: 's-primavera',
+          name: 'Primavera',
+          description: 'Lechuga, tomate, queso, jamón york, huevo frito y mahonesa.',
+        },
+        {
+          id: 's-grafit',
+          name: 'Grafit',
+          description: 'Tomate, pepinillo, huevo cocido, queso, lomo adobado y salsa rosa.',
+          badge: 'ESPECIALIDAD',
+        },
+        {
+          id: 's-mananero',
+          name: 'Mañanero',
+          description: 'Bacon crujiente, queso fundido y huevo frito.',
+        },
+        {
+          id: 's-veg-pechuga',
+          name: 'Vegetal de Pechuga',
+          description: 'Lechuga, tomate, queso, huevo cocido y pechuga de pollo a la plancha.',
+        },
+        {
+          id: 's-mixto-iberico',
+          name: 'Mixto Ibérico',
+          description: 'Paletilla ibérica y queso fundido a la plancha.',
+        },
+      ] as CartaItem[],
+      bocatas: {
+        frios: [
+          {
+            id: 'b-frio-jamon',
+            name: 'Jamón Ibérico',
+            description: 'Paleta ibérica seleccionada sobre pan crujiente.',
+            badge: 'IBÉRICO',
+          },
+          {
+            id: 'b-frio-tumaka',
+            name: 'Tumaka',
+            description: 'Paletilla ibérica, tomate natural triturado y aceite de oliva virgen extra.',
+          },
+          {
+            id: 'b-frio-veg-york',
+            name: 'Vegetal de York',
+            description: 'Lechuga, tomate, huevo cocido, jamón york, bonito y mahonesa.',
+          },
+        ] as CartaItem[],
+        calientes: [
+          {
+            id: 'b-cal-camembert',
+            name: 'Camembert',
+            description: 'Fundido de queso Camembert y paletilla ibérica.',
+            badge: 'FUNDIDO',
+          },
+          {
+            id: 'b-cal-emmental',
+            name: 'Emmental',
+            description: 'Fundido de queso Emmental y paletilla ibérica.',
+          },
+          {
+            id: 'b-cal-pollito',
+            name: 'Pollito',
+            description: 'Pechuga de pollo a la plancha y queso a las finas hierbas.',
+          },
+          {
+            id: 'b-cal-vegano',
+            name: 'Vegano',
+            description: 'Tomate, cebolla pochada, pimiento rojo y verde, calabacín y champiñón.',
+            badge: 'VEGANO',
+          },
+          {
+            id: 'b-cal-tortilla',
+            name: 'Tortilla Francesa al Gusto',
+            description: 'Tortilla francesa recién hecha: de chistorra, queso, jamón york, paletilla ibérica o bonito.',
+          },
+          {
+            id: 'b-cal-serranito',
+            name: 'Serranito',
+            description: 'Ternera a la plancha, paletilla ibérica y pimientos rojos asados.',
+            badge: 'CLÁSICO',
+          },
+          {
+            id: 'b-cal-pechuga-alioli',
+            name: 'Pechuga Ali-Oli',
+            description: 'Lechuga, tomate, pechuga de pollo y suave ali-oli.',
+          },
+          {
+            id: 'b-cal-pechuga-kebab',
+            name: 'Pechuga Kebab',
+            description: 'Lechuga, tomate, cebolla, pechuga de pollo y salsa kebab.',
+          },
+          {
+            id: 'b-cal-grafit',
+            name: 'Grafit',
+            description: 'Ternera, bacon crujiente y queso fundente.',
+            badge: 'GRAFIT',
+          },
+          {
+            id: 'b-cal-superlomo',
+            name: 'Superlomo',
+            description: 'Lomo a la plancha, tortilla francesa y bacon crujiente.',
+          },
+          {
+            id: 'b-cal-esparramao',
+            name: 'Esparramao',
+            description: 'Lechuga, tomate, lomo, queso fundido, huevo frito y mahonesa.',
+            badge: 'CONTUNDENTE',
+          },
+          {
+            id: 'b-cal-gordo',
+            name: 'Gordo',
+            description: 'Ternera sabrosa, queso fundido y paletilla ibérica.',
+          },
+          {
+            id: 'b-cal-picasuelos',
+            name: 'Picasuelos',
+            description: 'Pechuga de pollo, paletilla ibérica y salsa secreta de la casa.',
+          },
+          {
+            id: 'b-cal-uno-nuestros',
+            name: 'Uno de los Nuestros',
+            description: 'Pechuga de pollo, paleta ibérica, tomate natural y queso finas hierbas.',
+            badge: 'ESPECIALIDAD',
+          },
+        ] as CartaItem[],
+      },
+      pizzas: [
+        {
+          id: 'pz-americana',
+          name: 'Americana',
+          description: 'Mozzarella fundente, orégano, bacon crujiente y ternera.',
+        },
+        {
+          id: 'pz-serrana',
+          name: 'Serrana',
+          description: 'Mozzarella, orégano, bacon, paletilla ibérica, champiñones y pimiento rojo.',
+          badge: 'IBÉRICA',
+        },
+        {
+          id: 'pz-grafit',
+          name: 'Grafit',
+          description: 'Mozzarella, orégano, jamón york, bacon, champiñones, pimiento rojo y verde.',
+          badge: 'DE LA CASA',
+        },
+        {
+          id: 'pz-pollo-alioli',
+          name: 'Pollo Ali-Oli',
+          description: 'Mozzarella, orégano, pollo braseado, champiñones, paletilla ibérica y ali-oli.',
+        },
+        {
+          id: 'pz-baserri',
+          name: 'Baserri',
+          description: 'Mozzarella, orégano, chistorra artesana y bacon.',
+          badge: 'TRADICIÓN',
+        },
+        {
+          id: 'pz-mexicana',
+          name: 'Mexicana',
+          description: 'Mozzarella, orégano, pollo, bacon, champiñones, pimiento rojo y salsa picante.',
+        },
+        {
+          id: 'pz-vegetariana',
+          name: 'Vegetariana (32 cm)',
+          description: 'Mozzarella, orégano, cebolla pochada, tomate natural, champiñones y pimientos variados.',
+          badge: 'VEGGIE',
+        },
+        {
+          id: 'pz-bonito',
+          name: 'Bonito (32 cm)',
+          description: 'Mozzarella, orégano, bonito del norte, champiñón y cebolla pochada.',
+        },
+        {
+          id: 'pz-americana-huevo',
+          name: 'Americana con Huevo (32 cm)',
+          description: 'Mozzarella, orégano, tomate natural, ternera y huevo frito en el centro.',
+        },
+        {
+          id: 'pz-burrata',
+          name: 'Burrata (32 cm)',
+          description: 'Mozzarella, rúcula fresca, paletilla ibérica, tomates cherry confitados y burrata cremosa.',
+          badge: 'GOURMET',
+        },
+      ] as CartaItem[],
+      ensaladas: [
+        {
+          id: 'ens-mar-huerta',
+          name: 'Mar y Huerta',
+          description: 'Bouquet de lechugas variadas, tomate cherry, anchoas, huevo cocido, salmón ahumado y bonito.',
+          badge: 'MARINERA',
+        },
+        {
+          id: 'ens-rulo-cabra',
+          name: 'Rulo de Cabra',
+          description: 'Bouquet de lechugas variadas, cebolla caramelizada, tomates secos, pimientos del piquillo, nueces, rulo de cabra a la plancha y picatostes.',
+          badge: 'TEMPLADA',
+        },
+        {
+          id: 'ens-euskaldun',
+          name: 'Euskaldun',
+          description: 'Bouquet de lechugas variadas, tomate cherry, maíz, zanahoria rallada, cebolla, huevo cocido, espárrago y patata.',
+        },
+        {
+          id: 'ens-tropical',
+          name: 'Tropical',
+          description: 'Bouquet de lechugas variadas, tomate cherry, jamón york, queso, piña, nueces y picatostes.',
+        },
+        {
+          id: 'ens-italiana',
+          name: 'Italiana',
+          description: 'Pasta tricolor, txaka, jamón york, pollo, maíz, picatostes y salsa rosa casera.',
+        },
+        {
+          id: 'ens-mixta',
+          name: 'Mixta Clásica',
+          description: 'Bouquet de lechugas variadas, tomate cherry, bonito, cebolla fresca, huevo cocido y espárrago.',
+        },
+        {
+          id: 'ens-grafit',
+          name: 'Grafit',
+          description: 'Bouquet de lechugas variadas, tomate cherry, queso, maíz, zanahoria rallada, virutas de paleta ibérica y picatostes.',
+          badge: 'ESPECIAL',
+        },
+        {
+          id: 'ens-tomate-burrata',
+          name: 'Tomate y Burrata',
+          description: 'Tomate en rodajas, mezclum de lechugas, cebolla crujiente, aceitunas verdes, paleta ibérica y burrata cremosa.',
+          badge: 'GOURMET',
+        },
+      ] as CartaItem[],
+      picoteo: [
+        {
+          id: 'pic-sarteneko-gulas',
+          name: 'Sarteneko de Gulas con Gambas al Ajillo',
+          description: 'Cazuela caliente de gulas del norte salteadas con gambas jugosas al ajillo y guindilla.',
+          badge: 'ESPECIALIDAD',
+        },
+        {
+          id: 'pic-patatas-6-salsas',
+          name: 'Patatas Crujientes 6 Salsas',
+          description: 'Patatas fritas doradas acompañadas de una degustación de 6 salsas de la casa.',
+          badge: 'FAVORITO',
+        },
+        {
+          id: 'pic-patatas-fritas',
+          name: 'Patatas Fritas (Solas o con Ali-Oli)',
+          description: 'Ración de patatas fritas al punto crujiente, con opción de salsa ali-oli casera.',
+        },
+        {
+          id: 'pic-croquetas-jamon',
+          name: 'Croquetas de Jamón Ibérico (8 unid.)',
+          description: '8 croquetas cremosas con bechamel suave y jamón ibérico curado.',
+          badge: 'CASERAS',
+        },
+        {
+          id: 'pic-croquetas-variadas',
+          name: 'Croquetas Variadas (8 unid. o Media)',
+          description: 'Surtido de 8 croquetas gourmet: gambón, chuleta a la brasa, boletus y bacalao. Disponible también en media ración.',
+          badge: 'SURTIDO GOURMET',
+        },
+        {
+          id: 'pic-natxos',
+          name: 'Natxos Gratinados con Queso (Solos o con Bacon)',
+          description: 'Totopos de maíz crujientes gratinados al horno con abundante queso fundido y opción de bacon.',
+        },
+        {
+          id: 'pic-nuggets',
+          name: 'Nuggets de Pollo Crujientes',
+          description: 'Bocados crujientes de pollo dorados con dip de salsa.',
+        },
+        {
+          id: 'pic-mozzarella',
+          name: 'Palitos de Mozzarella (8 unid.)',
+          description: '8 palitos crujientes de queso mozzarella fundente.',
+        },
+        {
+          id: 'pic-combo',
+          name: 'Combo Nuggets + Palitos Mozzarella',
+          description: 'Combinado para compartir con nuggets de pollo crujientes y palitos de mozzarella.',
+          badge: 'PARA COMPARTIR',
+        },
+        {
+          id: 'pic-tempura',
+          name: 'Tempura de Verduras Variadas',
+          description: 'Fritura ligera y crujiente de verduras frescas de temporada.',
+        },
+        {
+          id: 'pic-tabla-iberica',
+          name: 'Tabla de Paleta Ibérica',
+          description: 'Paleta ibérica curada servida con pan crujiente y aceite de oliva virgen extra.',
+          badge: 'CHARCUTERÍA',
+        },
+      ] as CartaItem[],
+      platosCombinados: [
+        {
+          id: 'pc-1',
+          name: 'Plato Nº 1',
+          description: 'Pechuga de pollo, croquetas artesanas, bacon crujiente, patatas fritas y ensalada fresca.',
+        },
+        {
+          id: 'pc-2',
+          name: 'Plato Nº 2',
+          description: 'Lomo a la plancha, pimientos rojos, dos huevos fritos y patatas fritas.',
+        },
+        {
+          id: 'pc-3',
+          name: 'Plato Nº 3',
+          description: 'Pechugas de pollo empanadas, ensaladilla rusa casera, huevo frito, pimientos y patatas fritas.',
+          badge: 'COMPLETO',
+        },
+        {
+          id: 'pc-4',
+          name: 'Plato Nº 4',
+          description: 'Filete de ternera, pimientos rojos asados, huevo frito, croquetas y patatas fritas.',
+        },
+        {
+          id: 'pc-5',
+          name: 'Plato Nº 5',
+          description: 'Hamburguesa de la casa, huevo frito, bacon crujiente, croquetas y patatas fritas.',
+          badge: 'HAMBURGUESA',
+        },
+        {
+          id: 'pc-6',
+          name: 'Plato Nº 6',
+          description: 'Filete de ternera con queso y paletilla ibérica, pimientos rojos, huevo y patatas fritas.',
+          badge: 'ESPECIAL',
+        },
+        {
+          id: 'pc-8',
+          name: 'Plato Nº 8',
+          description: 'Ensalada, espárragos, tortilla francesa al gusto y paletilla ibérica.',
+        },
+      ] as CartaItem[],
+    },
   },
 
   // Eje 4: Progresión Narrativa de Historia (Inspiración The Rolling Stones)
@@ -372,10 +822,10 @@ export const GRAFIT_DATA = {
     {
       id: 'mag-01',
       num: '01',
-      title: 'LA BURGER 100% BUEY',
+      title: 'LA BURGER DE AUTOR',
       subtitle: 'Producto estrella de autor',
       tag: 'CULINARY ROCK',
-      src: './assets/grafit/instagram/burguer.webp',
+      src: './assets/grafit/burgers/burger-rulo-cabra.jpg',
       caption: '200g de carne seleccionada, queso fundente y pan crujiente.',
       orientation: 'portrait',
       quote: 'El bocado contundente que identifica la cocina de Grafit.'

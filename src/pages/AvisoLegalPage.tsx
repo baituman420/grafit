@@ -53,7 +53,7 @@ export const AvisoLegalPage: React.FC<AvisoLegalPageProps> = ({ onNavigate }) =>
             <p><strong className="text-black">Número de Identificación Fiscal (NIF/CIF):</strong> B95435269</p>
             <p><strong className="text-black">Nombre comercial:</strong> Grafit Café / Grafit Rock Café</p>
             <p><strong className="text-black">Domicilio social y establecimiento:</strong> Calle Urrutia 1, bajo, 48010 Bilbao (Bizkaia), España</p>
-            <p><strong className="text-black">Correo electrónico de contacto:</strong> <a href="mailto:grafitcafe@grafitcafe.com" className="text-[#b91c1c] underline">grafitcafe@grafitcafe.com</a></p>
+            <p><strong className="text-black">Correo electrónico de contacto:</strong> <a href="mailto:grafitcafe@gmail.com" className="text-[#b91c1c] underline">grafitcafe@gmail.com</a></p>
             <p><strong className="text-black">Teléfono de atención:</strong> 944 102 772</p>
             <p className="text-neutral-600 pt-1 border-t border-neutral-200">
               <strong className="text-neutral-700">Datos registrales:</strong> [Datos de inscripción en el Registro Mercantil de Bizkaia: Pendiente de confirmación por la titularidad].

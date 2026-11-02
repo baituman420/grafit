@@ -63,7 +63,7 @@ export const ComerBeberSection: React.FC<ComerBeberSectionProps> = ({ onNavigate
               <div className="mt-3 flex items-center justify-between font-typewriter text-xs font-bold text-neutral-900">
                 <span>Cartel Oficial del Local</span>
                 <span className="rubber-stamp text-[10px] py-0.5 px-1.5 bg-[#e2c044] text-black border-none">
-                  100% BUEY & PICOTEO
+                  DE AUTOR & PICOTEO
                 </span>
               </div>
             </div>

@@ -52,7 +52,7 @@ return [
     'smtp_password'  => 'AQUI_LA_CONTRASENA_REAL_DEL_BUZON',
     'mail_from'      => 'grafitcafe@grafitcafe.com',
     'mail_from_name' => 'Web Grafit Café (Solicitudes de Eventos)',
-    'mail_to'        => 'grafitcafe@grafitcafe.com',
+    'mail_to'        => 'grafitcafe@gmail.com',
     'mail_to_name'   => 'Gerencia Grafit Café',
 
     // -------------------------------------------------------------------------
@@ -105,7 +105,7 @@ Ningún motor de búsqueda indexará la versión beta.
 2. Comprueba las páginas de la Carta, Espacio, Eventos, Historia y Textos Legales.
 3. Comprueba el formulario de contacto:
    - Mientras la contraseña real no esté guardada en `grafit_config.php`, el formulario responderá con un error controlado informando de la vía telefónica alternativa (`944 102 772`), **sin confirmar jamás una recepción falsa ni usar mail() nativo**.
-   - Tras introducir la contraseña en `grafit_config.php`, realiza un envío de prueba para validar la entrega en `grafitcafe@grafitcafe.com`.
+   - Tras introducir la contraseña en `grafit_config.php`, realiza un envío de prueba para validar la entrega en `grafitcafe@gmail.com`.
 
 ---
 

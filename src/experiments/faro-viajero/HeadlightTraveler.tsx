@@ -72,7 +72,7 @@ export const HeadlightTraveler: React.FC<HeadlightTravelerProps> = ({
           zIndex: 5,
         }}
       >
-        {/* IMAGE 1: BURGER 100% BUEY */}
+        {/* IMAGE 1: BURGER DE AUTOR */}
         <div
           ref={imgBurgerRef}
           className="absolute inset-0 w-full h-full"
@@ -82,8 +82,8 @@ export const HeadlightTraveler: React.FC<HeadlightTravelerProps> = ({
           }}
         >
           <img
-            src="./assets/grafit/instagram/burguer.webp"
-            alt="Burger Grafit 100% Buey"
+            src="./assets/grafit/instagram/burguer-foco.webp"
+            alt="Burger Grafit de Autor"
             className="w-full h-full object-cover"
             style={{ transform: 'scale(1.08)' }}
             loading="eager"
