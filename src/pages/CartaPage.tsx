@@ -939,15 +939,15 @@ export const CartaPage: React.FC<CartaPageProps> = ({ onNavigate }) => {
                     className="relative h-48 sm:h-52 lg:h-full min-h-[190px] w-full bg-black overflow-hidden cursor-pointer"
                     onClick={() =>
                       setInspectModal({
-                        src: './assets/grafit/instagram/ensalda-gambas.webp',
-                        title: 'Ensaladas Frescas y Templadas',
-                        desc: 'Referencia visual del tipo de plato: bouquet variado de brotes frescos con pescados, mariscos y aliños de la casa.',
+                        src: './assets/grafit/instagram/ensalada-euskaldun.jpeg',
+                        title: 'Ensalada Euskaldun',
+                        desc: 'Referencia visual del tipo de plato: Ensalada Euskaldun preparada con bouquet de lechugas, tomate cherry, maíz, zanahoria, huevo cocido y espárrago.',
                       })
                     }
                   >
                     <img
-                      src="./assets/grafit/instagram/ensalda-gambas.webp"
-                      alt="Referencia de ensaladas en Grafit"
+                      src="./assets/grafit/instagram/ensalada-euskaldun.jpeg"
+                      alt="Ensalada Euskaldun en Grafit Café"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 will-change-transform"
                       loading="lazy"
                     />
@@ -961,7 +961,7 @@ export const CartaPage: React.FC<CartaPageProps> = ({ onNavigate }) => {
                   </div>
                   <div className="p-3 bg-[#181615] text-white border-t-2 border-neutral-800">
                     <p className="font-sans text-[11px] text-neutral-300 leading-snug">
-                      ★ <strong>Referencia visual:</strong> Ensalada templada con producto fresco de huerta y mar.
+                      ★ <strong>Referencia visual:</strong> Ensalada Euskaldun con producto fresco de huerta.
                     </p>
                   </div>
                 </div>
