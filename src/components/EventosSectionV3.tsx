@@ -295,7 +295,7 @@ export const EventosSectionV3: React.FC<EventosSectionV3Props> = ({ onNavigate }
             </span>
           </div>
 
-          <h2 className="font-anton text-4xl sm:text-6xl lg:text-7xl uppercase tracking-wider text-[#f5efe1] leading-[0.94] drop-shadow-[0_3px_8px_rgba(0,0,0,0.9)]">
+          <h2 className="font-anton text-2xl sm:text-4xl md:text-5xl lg:text-7xl uppercase tracking-wider text-[#f5efe1] leading-[0.94] drop-shadow-[0_3px_8px_rgba(0,0,0,0.9)] break-words">
             EL ESPACIO INDEPENDIENTE
             <span className="block text-[#e2c044]">PARA TUS REUNIONES Y CELEBRACIONES</span>
           </h2>
@@ -317,7 +317,7 @@ export const EventosSectionV3: React.FC<EventosSectionV3Props> = ({ onNavigate }
                 <button
                   key={f.id}
                   onClick={() => setSelectedId(f.id)}
-                  className={`p-3.5 sm:p-4 text-left border-2 transition-all cursor-pointer relative ${
+                  className={`p-3 sm:p-4 text-left border-2 transition-all cursor-pointer relative ${
                     isActive
                       ? 'bg-black/90 text-white border-[#e2c044] shadow-[4px_4px_0_#b91c1c] -translate-y-1'
                       : 'bg-black/60 text-[#ded8cb] border-neutral-700 hover:border-neutral-400 hover:bg-black/80 shadow-[3px_3px_0_#000]'
@@ -332,7 +332,7 @@ export const EventosSectionV3: React.FC<EventosSectionV3Props> = ({ onNavigate }
                   >
                     {f.badge}
                   </span>
-                  <h3 className="font-anton text-base sm:text-lg uppercase leading-tight text-white">
+                  <h3 className="font-anton text-sm sm:text-lg uppercase leading-tight text-white break-words">
                     {f.title}
                   </h3>
                   <span className="font-mono text-[10px] block mt-1 text-[#e2c044]">
@@ -349,13 +349,13 @@ export const EventosSectionV3: React.FC<EventosSectionV3Props> = ({ onNavigate }
         {/* ================================================================= */}
         <div
           ref={band2Ref}
-          className="will-change-transform p-5 sm:p-8 bg-black/75 border-3 border-neutral-700 shadow-[8px_8px_0_#000] relative backdrop-blur-sm"
+          className="will-change-transform p-4 sm:p-8 bg-black/75 border-3 border-neutral-700 shadow-[4px_4px_0_#000] sm:shadow-[8px_8px_0_#000] relative backdrop-blur-sm"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
             
             {/* PHOTO PLATE WITH POLAROID BORDER & BADGES */}
             <div className="lg:col-span-6 space-y-2.5">
-              <div className="relative aspect-[4/3] bg-black border-3 border-black overflow-hidden shadow-[6px_6px_0_#000]">
+              <div className="relative aspect-[4/3] bg-black border-3 border-black overflow-hidden shadow-[4px_4px_0_#000] sm:shadow-[6px_6px_0_#000]">
                 <img
                   src={activeFormat.photo}
                   alt={activeFormat.photoCaption}
@@ -379,7 +379,7 @@ export const EventosSectionV3: React.FC<EventosSectionV3Props> = ({ onNavigate }
                 <span className="inline-block bg-[#b91c1c] text-white font-mono text-xs font-bold px-2.5 py-0.5 border border-black uppercase shadow-[2px_2px_0_#000] mb-2">
                   {activeFormat.badge}
                 </span>
-                <h4 className="font-anton text-3xl sm:text-4xl text-white uppercase tracking-wide leading-tight drop-shadow-sm">
+                <h4 className="font-anton text-2xl sm:text-3xl md:text-4xl text-white uppercase tracking-wide leading-tight drop-shadow-sm break-words">
                   {activeFormat.title}
                 </h4>
                 <p className="font-mono text-xs text-[#e2c044] font-bold uppercase mt-1">
@@ -413,15 +413,15 @@ export const EventosSectionV3: React.FC<EventosSectionV3Props> = ({ onNavigate }
           <div className="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
             <button
               onClick={() => onNavigate(`/contacto?tipo=${activeFormat.tipoParam}`)}
-              className="w-full sm:w-auto px-7 py-4 bg-[#b91c1c] hover:bg-red-700 text-white font-anton text-base uppercase tracking-wider border-2 border-black shadow-[5px_5px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
+              className="w-full sm:w-auto px-5 sm:px-7 py-3.5 sm:py-4 bg-[#b91c1c] hover:bg-red-700 text-white font-anton text-sm sm:text-base uppercase tracking-wider border-2 border-black shadow-[4px_4px_0_#000] sm:shadow-[5px_5px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5 text-center"
             >
-              <Calendar className="w-4 h-4 text-amber-300" />
+              <Calendar className="w-4 h-4 text-amber-300 shrink-0" />
               <span>★ CONSULTAR DISPONIBILIDAD ★</span>
             </button>
 
             <button
               onClick={() => onNavigate('/espacio')}
-              className="w-full sm:w-auto px-6 py-4 bg-[#f5efe1] hover:bg-white text-black font-anton text-base uppercase tracking-wider border-2 border-black shadow-[5px_5px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
+              className="w-full sm:w-auto px-5 sm:px-6 py-3.5 sm:py-4 bg-[#f5efe1] hover:bg-white text-black font-anton text-sm sm:text-base uppercase tracking-wider border-2 border-black shadow-[4px_4px_0_#000] sm:shadow-[5px_5px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5 text-center"
             >
               <span>CONOCER EL SALÓN Y LA VOLKSWAGEN</span>
               <ArrowRight className="w-4 h-4" />

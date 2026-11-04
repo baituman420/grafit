@@ -264,27 +264,9 @@ export const CartaPage: React.FC<CartaPageProps> = ({ onNavigate }) => {
   };
 
   return (
-    <div ref={pageContainerRef} className="max-w-6xl mx-auto px-4 py-8 md:py-12 space-y-10 sm:space-y-12">
-      {/* NAVEGACIÓN SUPERIOR */}
-      <div className="flex items-center justify-between">
-        <button
-          onClick={() => onNavigate('/')}
-          className="px-4 py-2 bg-black text-white font-mono-code text-xs font-bold border-2 border-black shadow-[3px_3px_0px_#b91c1c] hover:bg-[#b91c1c] transition-all hover:-translate-y-0.5 inline-flex items-center gap-2 cursor-pointer"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span>VOLVER A LA PORTADA</span>
-        </button>
-
-        <div className="bg-white px-3 py-1.5 border-2 border-black shadow-[3px_3px_0px_rgba(0,0,0,1)] hidden sm:flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#16a34a] inline-block animate-pulse" />
-          <span className="font-mono-code text-xs font-bold uppercase tracking-wider text-black">
-            Urrutia Kalea 1 • Indautxu • Bilbao
-          </span>
-        </div>
-      </div>
-
+    <div ref={pageContainerRef} className="max-w-6xl mx-auto px-4 py-6 sm:py-8 md:py-12 space-y-8 sm:space-y-10 md:space-y-12">
       {/* CABECERA ROCK FANZINE */}
-      <div className="p-6 sm:p-10 bg-[#f4eedd] border-4 border-black shadow-[8px_8px_0px_rgba(0,0,0,1)] relative tape-top space-y-4">
+      <div className="p-4 sm:p-8 lg:p-10 bg-[#f4eedd] border-4 border-black shadow-[4px_4px_0_#000] sm:shadow-[8px_8px_0_#000] relative tape-top space-y-4">
         <div className="flex flex-wrap items-center gap-2">
           <span className="inline-block bg-[#b91c1c] text-white font-mono-code font-bold text-xs px-3 py-1 border-2 border-black rot-neg-1 shadow-[2px_2px_0px_rgba(0,0,0,1)]">
             GASTRONOMÍA ROCK // BILBAO
@@ -298,7 +280,7 @@ export const CartaPage: React.FC<CartaPageProps> = ({ onNavigate }) => {
           </span>
         </div>
 
-        <h1 className="font-anton text-4xl sm:text-6xl lg:text-7xl text-black uppercase tracking-wider leading-[0.95]">
+        <h1 className="font-anton text-3xl sm:text-5xl lg:text-7xl text-black uppercase tracking-wider leading-[0.95] break-words">
           LA CARTA DEL GRAFIT
         </h1>
         <p className="font-sans text-neutral-950 font-medium text-base sm:text-lg max-w-3xl leading-relaxed">
@@ -333,7 +315,7 @@ export const CartaPage: React.FC<CartaPageProps> = ({ onNavigate }) => {
             )}
           </div>
 
-          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
             <span className="font-mono text-[10px] font-bold text-neutral-700 uppercase flex items-center gap-1 shrink-0">
               <Filter className="w-3 h-3" />
               Filtro:
@@ -369,8 +351,8 @@ export const CartaPage: React.FC<CartaPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* SELECTOR DE CATEGORÍAS STICKY */}
-      <div className="sticky top-20 z-30 bg-[#0c0b0a]/95 backdrop-blur-md p-3 sm:p-4 border-4 border-black shadow-[6px_6px_0px_#b91c1c]">
-        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-thin">
+      <div className="sticky top-20 z-30 bg-[#0c0b0a]/95 backdrop-blur-md p-2.5 sm:p-4 border-4 border-black shadow-[3px_3px_0_#b91c1c] sm:shadow-[6px_6px_0_#b91c1c]">
+        <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
           {categories.map((cat) => {
             const isSelected = activeCategory === cat.key;
             return (
@@ -432,7 +414,7 @@ export const CartaPage: React.FC<CartaPageProps> = ({ onNavigate }) => {
           (filteredHambEspeciales.length > 0 || filteredHambClasicas.length > 0) && (
             <section id="sec-hamburguesas" className="space-y-8">
               {/* HEADER HAMBURGUESAS */}
-              <div className="carta-section-banner p-6 sm:p-8 bg-[#0c0b0a] text-white border-4 border-black shadow-[8px_8px_0px_#e2c044] relative overflow-hidden">
+              <div className="carta-section-banner p-4 sm:p-8 bg-[#0c0b0a] text-white border-4 border-black shadow-[4px_4px_0_#e2c044] sm:shadow-[8px_8px_0_#e2c044] relative overflow-hidden">
                 <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-[#b91c1c]/20 to-transparent pointer-events-none" />
                 <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
                   <div className="space-y-2">
@@ -440,7 +422,7 @@ export const CartaPage: React.FC<CartaPageProps> = ({ onNavigate }) => {
                       <Flame className="w-3.5 h-3.5" />
                       <span>PLATO ESTRELLA DE LA CASA</span>
                     </div>
-                    <h2 className="font-anton text-4xl sm:text-6xl uppercase tracking-wider text-white">
+                    <h2 className="font-anton text-3xl sm:text-5xl lg:text-6xl uppercase tracking-wider text-white break-words">
                       HAMBURGUESAS
                     </h2>
                     <p className="font-sans text-neutral-100 text-sm sm:text-base max-w-2xl leading-relaxed">
@@ -458,12 +440,12 @@ export const CartaPage: React.FC<CartaPageProps> = ({ onNavigate }) => {
               {/* HAMBURGUESAS ESPECIALES (CARDS GRANDES CON FOTOS REALES) */}
               {filteredHambEspeciales.length > 0 && (
                 <div className="space-y-4">
-                  <div className="bg-[#f4eedd] border-3 border-black p-4 shadow-[4px_4px_0px_#000] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                    <h3 className="font-anton text-2xl sm:text-3xl uppercase tracking-wider text-black flex items-center gap-2">
-                      <Sparkles className="w-6 h-6 text-[#b91c1c]" />
+                  <div className="bg-[#f4eedd] border-3 border-black p-3.5 sm:p-4 shadow-[3px_3px_0_#000] sm:shadow-[4px_4px_0_#000] flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <h3 className="font-anton text-xl sm:text-2xl lg:text-3xl uppercase tracking-wider text-black flex items-center gap-2 break-words">
+                      <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-[#b91c1c] shrink-0" />
                       <span>HAMBURGUESAS ESPECIALES DE AUTOR</span>
                     </h3>
-                    <span className="bg-black text-[#e2c044] font-mono text-xs font-bold px-2.5 py-1 uppercase border border-black shadow inline-block">
+                    <span className="bg-black text-[#e2c044] font-mono text-xs font-bold px-2.5 py-1 uppercase border border-black shadow inline-block self-start sm:self-auto">
                       ★ Fotografías reales de la cocina de Grafit
                     </span>
                   </div>
@@ -472,7 +454,7 @@ export const CartaPage: React.FC<CartaPageProps> = ({ onNavigate }) => {
                     {filteredHambEspeciales.map((burger) => (
                       <div
                         key={burger.id}
-                        className="dish-menu-card bg-[#fbf8f1] border-4 border-black shadow-[8px_8px_0px_#000] hover:shadow-[8px_8px_0px_#b91c1c] hover:border-[#b91c1c] transition-all hover:-translate-y-1 flex flex-col overflow-hidden group will-change-transform"
+                        className="dish-menu-card bg-[#fbf8f1] border-4 border-black shadow-[4px_4px_0_#000] sm:shadow-[8px_8px_0_#000] hover:shadow-[8px_8px_0_#b91c1c] hover:border-[#b91c1c] transition-all hover:-translate-y-1 flex flex-col overflow-hidden group will-change-transform"
                       >
                         {burger.image && (
                           <div
@@ -506,9 +488,9 @@ export const CartaPage: React.FC<CartaPageProps> = ({ onNavigate }) => {
                           </div>
                         )}
 
-                        <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div className="p-4 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
                           <div className="space-y-2">
-                            <h4 className="font-anton text-2xl sm:text-3xl uppercase tracking-wider text-black group-hover:text-[#b91c1c] transition-colors leading-tight">
+                            <h4 className="font-anton text-xl sm:text-2xl lg:text-3xl uppercase tracking-wider text-black group-hover:text-[#b91c1c] transition-colors leading-tight break-words">
                               {burger.name}
                             </h4>
                             <p className="font-sans text-sm sm:text-base text-neutral-950 font-normal leading-relaxed">
@@ -525,11 +507,11 @@ export const CartaPage: React.FC<CartaPageProps> = ({ onNavigate }) => {
               {/* HAMBURGUESAS CLÁSICAS */}
               {filteredHambClasicas.length > 0 && (
                 <div className="space-y-4 pt-4">
-                  <div className="bg-[#f4eedd] border-3 border-black p-4 shadow-[4px_4px_0px_#000] flex items-center justify-between">
-                    <h3 className="font-anton text-2xl uppercase tracking-wider text-black">
+                  <div className="bg-[#f4eedd] border-3 border-black p-3.5 sm:p-4 shadow-[3px_3px_0_#000] sm:shadow-[4px_4px_0_#000] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <h3 className="font-anton text-xl sm:text-2xl uppercase tracking-wider text-black break-words">
                       HAMBURGUESAS CLÁSICAS DE LA CARTA
                     </h3>
-                    <span className="bg-black text-white font-mono text-xs font-bold px-2.5 py-1 uppercase">
+                    <span className="bg-black text-white font-mono text-xs font-bold px-2.5 py-1 uppercase self-start sm:self-auto">
                       6 variedades de siempre
                     </span>
                   </div>
@@ -571,14 +553,14 @@ export const CartaPage: React.FC<CartaPageProps> = ({ onNavigate }) => {
         {/* ========================================================================= */}
         {(activeCategory === 'todos' || activeCategory === 'sandwiches') && filteredSandwiches.length > 0 && (
           <section id="sec-sandwiches" className="space-y-6 pt-4">
-            <div className="carta-section-banner bg-[#141210] text-white border-4 border-black shadow-[6px_6px_0px_#b91c1c] overflow-hidden">
+            <div className="carta-section-banner bg-[#141210] text-white border-4 border-black shadow-[4px_4px_0_#b91c1c] sm:shadow-[6px_6px_0_#b91c1c] overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
-                <div className="lg:col-span-8 p-6 sm:p-8 flex flex-col justify-between space-y-4">
+                <div className="lg:col-span-8 p-4 sm:p-8 flex flex-col justify-between space-y-4">
                   <div className="space-y-2">
                     <div className="inline-flex items-center gap-2 bg-[#b91c1c] text-white font-mono-code text-xs px-3 py-1 font-bold rot-neg-1 border border-black shadow">
                       // TOSTADOS A LA PLANCHA
                     </div>
-                    <h2 className="font-anton text-3xl sm:text-5xl uppercase tracking-wider text-white">
+                    <h2 className="font-anton text-2xl sm:text-4xl lg:text-5xl uppercase tracking-wider text-white break-words">
                       SÁNDWICHES
                     </h2>
                     <p className="font-sans text-sm sm:text-base text-neutral-100 max-w-xl leading-relaxed">
@@ -666,14 +648,14 @@ export const CartaPage: React.FC<CartaPageProps> = ({ onNavigate }) => {
         {(activeCategory === 'todos' || activeCategory === 'bocatas') &&
           (filteredBocatasFrios.length > 0 || filteredBocatasCalientes.length > 0) && (
             <section id="sec-bocatas" className="space-y-6 pt-4">
-              <div className="carta-section-banner bg-[#f4eedd] border-4 border-black shadow-[6px_6px_0px_rgba(0,0,0,1)] overflow-hidden">
+              <div className="carta-section-banner bg-[#f4eedd] border-4 border-black shadow-[4px_4px_0_#000] sm:shadow-[6px_6px_0_#000] overflow-hidden">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
-                  <div className="lg:col-span-8 p-6 sm:p-8 flex flex-col justify-between space-y-4">
+                  <div className="lg:col-span-8 p-4 sm:p-8 flex flex-col justify-between space-y-4">
                     <div className="space-y-2">
                       <span className="inline-block bg-[#b91c1c] text-white font-mono text-xs font-bold px-3 py-1 uppercase rot-neg-1 border border-black shadow">
                         ¡¡ TAMBIÉN TUS MENÚS PARA LLEVAR !!
                       </span>
-                      <h2 className="font-anton text-3xl sm:text-5xl uppercase tracking-wider text-black">
+                      <h2 className="font-anton text-2xl sm:text-4xl lg:text-5xl uppercase tracking-wider text-black break-words">
                         BOCATAS
                       </h2>
                       <p className="font-sans text-sm sm:text-base text-neutral-950 font-medium max-w-xl leading-relaxed">
@@ -727,12 +709,12 @@ export const CartaPage: React.FC<CartaPageProps> = ({ onNavigate }) => {
               {/* BOCATAS FRÍOS */}
               {filteredBocatasFrios.length > 0 && (
                 <div className="space-y-3">
-                  <div className="bg-[#f4eedd] border-3 border-black px-4 py-2.5 shadow-[3px_3px_0px_#000] flex items-center justify-between">
-                    <h3 className="font-anton text-xl uppercase tracking-wider text-black flex items-center gap-2">
-                      <span className="w-3 h-3 bg-[#b91c1c] inline-block border border-black" />
+                  <div className="bg-[#f4eedd] border-3 border-black p-3 sm:px-4 sm:py-2.5 shadow-[3px_3px_0px_#000] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
+                    <h3 className="font-anton text-lg sm:text-xl uppercase tracking-wider text-black flex items-center gap-2 break-words">
+                      <span className="w-3 h-3 bg-[#b91c1c] inline-block border border-black shrink-0" />
                       <span>BOCATAS FRÍOS</span>
                     </h3>
-                    <span className="font-mono text-xs font-bold text-neutral-900 uppercase">
+                    <span className="font-mono text-xs font-bold text-neutral-900 uppercase self-start sm:self-auto">
                       Embutidos ibéricos al corte
                     </span>
                   </div>
@@ -770,12 +752,12 @@ export const CartaPage: React.FC<CartaPageProps> = ({ onNavigate }) => {
               {/* BOCATAS CALIENTES */}
               {filteredBocatasCalientes.length > 0 && (
                 <div className="space-y-3 pt-2">
-                  <div className="bg-[#f4eedd] border-3 border-black px-4 py-2.5 shadow-[3px_3px_0px_#000] flex items-center justify-between">
-                    <h3 className="font-anton text-xl uppercase tracking-wider text-black flex items-center gap-2">
-                      <span className="w-3 h-3 bg-[#e2c044] inline-block border border-black" />
+                  <div className="bg-[#f4eedd] border-3 border-black p-3 sm:px-4 sm:py-2.5 shadow-[3px_3px_0px_#000] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1.5">
+                    <h3 className="font-anton text-lg sm:text-xl uppercase tracking-wider text-black flex items-center gap-2 break-words">
+                      <span className="w-3 h-3 bg-[#e2c044] inline-block border border-black shrink-0" />
                       <span>BOCATAS CALIENTES DE PLANCHA</span>
                     </h3>
-                    <span className="font-mono text-xs font-bold text-neutral-900 uppercase">
+                    <span className="font-mono text-xs font-bold text-neutral-900 uppercase self-start sm:self-auto">
                       Plancha al momento
                     </span>
                   </div>
@@ -817,14 +799,14 @@ export const CartaPage: React.FC<CartaPageProps> = ({ onNavigate }) => {
         {/* ========================================================================= */}
         {(activeCategory === 'todos' || activeCategory === 'pizzas') && filteredPizzas.length > 0 && (
           <section id="sec-pizzas" className="space-y-6 pt-4">
-            <div className="carta-section-banner bg-[#141210] text-white border-4 border-black shadow-[6px_6px_0px_#b91c1c] overflow-hidden">
+            <div className="carta-section-banner bg-[#141210] text-white border-4 border-black shadow-[4px_4px_0_#b91c1c] sm:shadow-[6px_6px_0_#b91c1c] overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
-                <div className="lg:col-span-8 p-6 sm:p-8 flex flex-col justify-between space-y-4">
+                <div className="lg:col-span-8 p-4 sm:p-8 flex flex-col justify-between space-y-4">
                   <div className="space-y-2">
                     <div className="inline-block bg-[#e2c044] text-black font-mono-code text-xs px-3 py-1 font-bold rot-neg-1 border border-black shadow">
                       // MASA HORNEADA AL MOMENTO
                     </div>
-                    <h2 className="font-anton text-3xl sm:text-5xl uppercase tracking-wider text-white">
+                    <h2 className="font-anton text-2xl sm:text-4xl lg:text-5xl uppercase tracking-wider text-white break-words">
                       PIZZAS
                     </h2>
                     <p className="font-sans text-sm sm:text-base text-neutral-100 max-w-xl leading-relaxed">
@@ -910,14 +892,14 @@ export const CartaPage: React.FC<CartaPageProps> = ({ onNavigate }) => {
         {/* ========================================================================= */}
         {(activeCategory === 'todos' || activeCategory === 'ensaladas') && filteredEnsaladas.length > 0 && (
           <section id="sec-ensaladas" className="space-y-6 pt-4">
-            <div className="carta-section-banner bg-[#f4eedd] border-4 border-black shadow-[6px_6px_0px_rgba(0,0,0,1)] overflow-hidden">
+            <div className="carta-section-banner bg-[#f4eedd] border-4 border-black shadow-[4px_4px_0_#000] sm:shadow-[6px_6px_0_#000] overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
-                <div className="lg:col-span-8 p-6 sm:p-8 flex flex-col justify-between space-y-4">
+                <div className="lg:col-span-8 p-4 sm:p-8 flex flex-col justify-between space-y-4">
                   <div className="space-y-2">
                     <span className="inline-block bg-[#16a34a] text-white font-mono text-xs font-bold px-3 py-1 uppercase rot-neg-1 border border-black shadow">
                       // FRESCURA & HUERTA
                     </span>
-                    <h2 className="font-anton text-3xl sm:text-5xl uppercase tracking-wider text-black">
+                    <h2 className="font-anton text-2xl sm:text-4xl lg:text-5xl uppercase tracking-wider text-black break-words">
                       ENSALADAS
                     </h2>
                     <p className="font-sans text-sm sm:text-base text-neutral-950 font-medium max-w-xl leading-relaxed">
@@ -1003,14 +985,14 @@ export const CartaPage: React.FC<CartaPageProps> = ({ onNavigate }) => {
         {/* ========================================================================= */}
         {(activeCategory === 'todos' || activeCategory === 'picoteo') && filteredPicoteo.length > 0 && (
           <section id="sec-picoteo" className="space-y-6 pt-4">
-            <div className="carta-section-banner bg-[#141210] text-white border-4 border-black shadow-[6px_6px_0px_#b91c1c] overflow-hidden">
+            <div className="carta-section-banner bg-[#141210] text-white border-4 border-black shadow-[4px_4px_0_#b91c1c] sm:shadow-[6px_6px_0_#b91c1c] overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
-                <div className="lg:col-span-8 p-6 sm:p-8 flex flex-col justify-between space-y-4">
+                <div className="lg:col-span-8 p-4 sm:p-8 flex flex-col justify-between space-y-4">
                   <div className="space-y-2">
-                    <div className="inline-block bg-[#b91c1c] text-white font-mono text-xs font-bold px-3 py-1 uppercase rot-neg-1 border border-black shadow">
+                    <div className="inline-flex items-center gap-2 bg-[#b91c1c] text-white font-mono text-xs font-bold px-3 py-1 uppercase rot-neg-1 border border-black shadow">
                       // PARA COMPARTIR AL CENTRO
                     </div>
-                    <h2 className="font-anton text-3xl sm:text-5xl uppercase tracking-wider text-white">
+                    <h2 className="font-anton text-2xl sm:text-4xl lg:text-5xl uppercase tracking-wider text-white break-words">
                       PICOTEO & RACIONES
                     </h2>
                     <p className="font-sans text-sm sm:text-base text-neutral-100 max-w-xl leading-relaxed">
@@ -1096,14 +1078,14 @@ export const CartaPage: React.FC<CartaPageProps> = ({ onNavigate }) => {
         {/* ========================================================================= */}
         {(activeCategory === 'todos' || activeCategory === 'platosCombinados') && filteredCombinados.length > 0 && (
           <section id="sec-combinados" className="space-y-6 pt-4">
-            <div className="carta-section-banner bg-[#f4eedd] border-4 border-black shadow-[6px_6px_0px_rgba(0,0,0,1)] overflow-hidden">
+            <div className="carta-section-banner bg-[#f4eedd] border-4 border-black shadow-[4px_4px_0_#000] sm:shadow-[6px_6px_0_#000] overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 items-stretch">
-                <div className="lg:col-span-8 p-6 sm:p-8 flex flex-col justify-between space-y-4">
+                <div className="lg:col-span-8 p-4 sm:p-8 flex flex-col justify-between space-y-4">
                   <div className="space-y-2">
                     <span className="inline-block bg-[#b91c1c] text-white font-mono text-xs font-bold px-3 py-1 uppercase rot-neg-1 border border-black shadow">
                       // COMPLETOS & CONTUNDENTES
                     </span>
-                    <h2 className="font-anton text-3xl sm:text-5xl uppercase tracking-wider text-black">
+                    <h2 className="font-anton text-2xl sm:text-4xl lg:text-5xl uppercase tracking-wider text-black break-words">
                       PLATOS COMBINADOS
                     </h2>
                     <p className="font-sans text-sm sm:text-base text-neutral-950 font-medium max-w-xl leading-relaxed">
@@ -1212,12 +1194,12 @@ export const CartaPage: React.FC<CartaPageProps> = ({ onNavigate }) => {
 
       {/* CATERING & PROPUESTAS PARA GRUPOS EN EL SALÓN MULTIUSOS */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch pt-6">
-        <div className="lg:col-span-7 p-6 sm:p-8 bg-black text-white border-4 border-black shadow-[8px_8px_0px_#b91c1c] space-y-5 flex flex-col justify-between">
+        <div className="lg:col-span-7 p-4 sm:p-8 bg-black text-white border-4 border-black shadow-[4px_4px_0_#b91c1c] sm:shadow-[8px_8px_0_#b91c1c] space-y-5 flex flex-col justify-between">
           <div className="space-y-4">
             <div className="inline-block bg-[#b91c1c] text-white font-mono-code text-xs px-3 py-1 font-bold rot-neg-1">
               CATERING & GRUPOS // SALÓN MULTIUSOS
             </div>
-            <h3 className="font-anton text-3xl sm:text-5xl uppercase tracking-wider text-white">
+            <h3 className="font-anton text-2xl sm:text-4xl lg:text-5xl uppercase tracking-wider text-white break-words">
               BANDEJAS Y MENÚS A MEDIDA PARA CELEBRACIONES
             </h3>
             <p className="font-sans text-sm sm:text-base text-neutral-100 leading-relaxed font-normal">
@@ -1242,7 +1224,7 @@ export const CartaPage: React.FC<CartaPageProps> = ({ onNavigate }) => {
         </div>
 
         {/* FOTOGRAFÍA REAL DE CATERING EN EL SALÓN */}
-        <div className="lg:col-span-5 bg-[#181615] border-4 border-black shadow-[8px_8px_0px_rgba(0,0,0,1)] overflow-hidden flex flex-col justify-between group">
+        <div className="lg:col-span-5 bg-[#181615] border-4 border-black shadow-[4px_4px_0_#000] sm:shadow-[8px_8px_0_#000] overflow-hidden flex flex-col justify-between group">
           <div
             className="relative aspect-[4/3] bg-black overflow-hidden cursor-pointer"
             onClick={() =>
@@ -1280,27 +1262,27 @@ export const CartaPage: React.FC<CartaPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* CIERRE Y CONTACTO */}
-      <div className="p-8 sm:p-12 bg-[#fbf8f1] border-4 border-black shadow-[10px_10px_0px_rgba(0,0,0,1)] text-center space-y-6">
+      <div className="p-5 sm:p-8 md:p-12 bg-[#fbf8f1] border-4 border-black shadow-[4px_4px_0_#000] sm:shadow-[8px_8px_0_#000] md:shadow-[10px_10px_0_#000] text-center space-y-6">
         <div className="inline-block bg-black text-white font-mono-code text-xs px-3 py-1 font-bold uppercase">
           RESERVAS DE GRUPO & PERSONALIZACIÓN
         </div>
-        <h2 className="font-anton text-3xl sm:text-5xl uppercase tracking-wider text-black max-w-3xl mx-auto">
+        <h2 className="font-anton text-2xl sm:text-4xl md:text-5xl uppercase tracking-wider text-black max-w-3xl mx-auto break-words">
           ¿TIENES UNA FECHA EN MENTE PARA TU CELEBRACIÓN?
         </h2>
         <p className="font-sans text-sm sm:text-base text-neutral-950 font-medium max-w-2xl mx-auto leading-relaxed">
           Cuéntanos el número aproximado de asistentes y el estilo de comida que prefieres (hamburguesas, raciones para compartir o catering de barra). Te preparamos una propuesta sin compromiso.
         </p>
-        <div className="pt-2 flex flex-wrap justify-center gap-4">
+        <div className="pt-2 flex flex-col sm:flex-row justify-center items-center gap-4">
           <button
             onClick={() => onNavigate('/contacto?tipo=comida-grupo')}
-            className="px-8 py-4 bg-black text-white hover:bg-[#b91c1c] border-2 border-black font-anton text-lg uppercase tracking-wider flex items-center gap-3 shadow-[4px_4px_0px_rgba(0,0,0,1)] transition-colors cursor-pointer"
+            className="w-full sm:w-auto px-5 sm:px-8 py-3.5 sm:py-4 bg-black text-white hover:bg-[#b91c1c] border-2 border-black font-anton text-base sm:text-lg uppercase tracking-wider flex items-center justify-center gap-3 shadow-[4px_4px_0px_rgba(0,0,0,1)] transition-colors cursor-pointer"
           >
             <span>SOLICITAR PROPUESTA DE GRUPO</span>
             <ArrowRight className="w-5 h-5 text-amber-300" />
           </button>
           <button
             onClick={() => onNavigate('/espacio')}
-            className="px-8 py-4 bg-white text-black hover:bg-neutral-100 border-2 border-black font-anton text-lg uppercase tracking-wider flex items-center gap-3 shadow-[4px_4px_0px_rgba(0,0,0,1)] transition-colors cursor-pointer"
+            className="w-full sm:w-auto px-5 sm:px-8 py-3.5 sm:py-4 bg-white text-black hover:bg-neutral-100 border-2 border-black font-anton text-base sm:text-lg uppercase tracking-wider flex items-center justify-center gap-3 shadow-[4px_4px_0px_rgba(0,0,0,1)] transition-colors cursor-pointer"
           >
             <span>VER EL SALÓN MULTIUSOS</span>
           </button>

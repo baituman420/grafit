@@ -296,7 +296,7 @@ export const EditorialMagazineGallery: React.FC = () => {
               </span>
             </div>
 
-            <h2 className="font-['Anton'] text-3xl sm:text-5xl lg:text-6xl text-white uppercase tracking-wider leading-none drop-shadow-md">
+            <h2 className="font-['Anton'] text-2xl sm:text-4xl lg:text-6xl text-white uppercase tracking-wider leading-none drop-shadow-md break-words">
               MEMORIA EDITORIAL & VIDA EN GRAFIT
             </h2>
             <p className="font-['Space_Grotesk'] text-[#b8b0a2] text-sm sm:text-base max-w-2xl leading-relaxed drop-shadow-sm">
@@ -327,7 +327,7 @@ export const EditorialMagazineGallery: React.FC = () => {
         </div>
 
         {/* PILL SELECTOR FOR DIRECT NAVIGATION */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-thin">
+        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
           {EDITORIAL_CARDS.map((card, idx) => (
             <button
               key={card.id}

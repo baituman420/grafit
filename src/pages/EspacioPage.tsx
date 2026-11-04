@@ -29,24 +29,24 @@ export const EspacioPage: React.FC<EspacioPageProps> = ({ onNavigate }) => {
         <div className="inline-block bg-[#b91c1c] text-white px-3 py-1 font-mono text-xs uppercase tracking-widest shadow-[3px_3px_0_#000]">
           // ARQUITECTURA, SALÓN & MEMORIA ROCK
         </div>
-        <h1 className="font-['Anton'] text-4xl sm:text-6xl uppercase tracking-wider text-[#f5efe1] leading-tight">
+        <h1 className="font-['Anton'] text-2xl sm:text-4xl lg:text-6xl uppercase tracking-wider text-[#f5efe1] leading-tight break-words">
           Descubre el Espacio de Grafit
         </h1>
-        <p className="font-['Space_Grotesk'] text-base sm:text-lg text-[#ded8cb] max-w-3xl leading-relaxed">
+        <p className="font-['Space_Grotesk'] text-sm sm:text-lg text-[#ded8cb] max-w-3xl leading-relaxed">
           Un establecimiento singular en Indautxu donde conviven el dinamismo de la barra tradicional con la versatilidad de un amplio salón multiusos decorado con historia musical y la icónica media furgoneta Volkswagen.
         </p>
 
-        <div className="pt-2 flex flex-wrap gap-4">
+        <div className="pt-2 flex flex-col sm:flex-row gap-3 sm:gap-4">
           <button
             onClick={() => onNavigate('/contacto?tipo=evento')}
-            className="px-6 py-3.5 bg-[#b91c1c] hover:bg-red-700 text-white font-['Anton'] text-sm sm:text-base uppercase tracking-wider border-2 border-black shadow-[4px_4px_0_#000] flex items-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
+            className="w-full sm:w-auto px-5 sm:px-6 py-3.5 bg-[#b91c1c] hover:bg-red-700 text-white font-['Anton'] text-sm sm:text-base uppercase tracking-wider border-2 border-black shadow-[4px_4px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5 text-center"
           >
             <span>RESERVAR ZONA PARA MI GRUPO</span>
             <ArrowRight className="w-4 h-4" />
           </button>
           <button
             onClick={() => onNavigate('/eventos')}
-            className="px-6 py-3.5 bg-[#181615] hover:bg-[#222] text-[#e2c044] font-mono text-xs font-bold uppercase border border-[#e2c044] shadow-[4px_4px_0_#000] flex items-center gap-2 cursor-pointer transition-colors"
+            className="w-full sm:w-auto px-5 sm:px-6 py-3.5 bg-[#181615] hover:bg-[#222] text-[#e2c044] font-mono text-xs font-bold uppercase border border-[#e2c044] shadow-[4px_4px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-colors text-center"
           >
             <span>VER FORMATOS DE CELEBRACIONES</span>
           </button>
@@ -59,7 +59,7 @@ export const EspacioPage: React.FC<EspacioPageProps> = ({ onNavigate }) => {
           <div className="font-mono text-xs font-bold text-[#b91c1c] uppercase tracking-widest">
             // INSTALACIONES REALES DEL LOCAL
           </div>
-          <h2 className="font-['Anton'] text-3xl sm:text-5xl uppercase tracking-wider text-[#f5efe1]">
+          <h2 className="font-['Anton'] text-2xl sm:text-4xl lg:text-5xl uppercase tracking-wider text-[#f5efe1] break-words">
             Amplitud, Salón y Esencia de Barra en Indautxu
           </h2>
           <p className="font-['Space_Grotesk'] text-sm sm:text-base text-[#ded8cb] mt-1 max-w-3xl leading-relaxed">
@@ -155,13 +155,13 @@ export const EspacioPage: React.FC<EspacioPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* 2B. ARTISTIC COMPLEMENTS: LA MEDIA VOLKSWAGEN & MURALES */}
-      <div className="bg-[#141210] border-3 border-[#33302c] p-6 sm:p-10 shadow-[8px_8px_0_#000]">
+      <div className="bg-[#141210] border-3 border-[#33302c] p-4 sm:p-8 md:p-10 shadow-[4px_4px_0_#000] sm:shadow-[8px_8px_0_#000]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-7 space-y-4">
             <div className="inline-block bg-black text-[#e2c044] px-3 py-1 font-mono text-xs uppercase tracking-wider border border-[#e2c044]">
               // COMPLEMENTO ARTÍSTICO DEL SALÓN
             </div>
-            <h2 className="font-['Anton'] text-2xl sm:text-4xl uppercase tracking-wider text-[#f5efe1]">
+            <h2 className="font-['Anton'] text-xl sm:text-3xl md:text-4xl uppercase tracking-wider text-[#f5efe1] break-words">
               Frontal Volkswagen y Murales de Sala
             </h2>
             <p className="font-['Space_Grotesk'] text-sm sm:text-base text-[#ded8cb] leading-relaxed">
@@ -174,7 +174,7 @@ export const EspacioPage: React.FC<EspacioPageProps> = ({ onNavigate }) => {
           </div>
 
           <div className="lg:col-span-5">
-            <div className="relative border-3 border-[#33302c] bg-black shadow-[6px_6px_0_#000] overflow-hidden aspect-[4/3] group">
+            <div className="relative border-3 border-[#33302c] bg-black shadow-[4px_4px_0_#000] sm:shadow-[6px_6px_0_#000] overflow-hidden aspect-[4/3] group">
               <img
                 src="./assets/grafit/instagram/599139401_17934885522129317_243501184606504542_n.jpg"
                 alt="Frontal Volkswagen integrado en el salón de Grafit"
@@ -194,7 +194,7 @@ export const EspacioPage: React.FC<EspacioPageProps> = ({ onNavigate }) => {
           <div className="font-mono text-xs font-bold text-[#e2c044] uppercase tracking-widest">
             // GALERÍA INTERACTIVA
           </div>
-          <h2 className="font-['Anton'] text-3xl sm:text-4xl uppercase tracking-wider text-[#f5efe1]">
+          <h2 className="font-['Anton'] text-2xl sm:text-4xl uppercase tracking-wider text-[#f5efe1] break-words">
             Explora Cada Rincón de Grafit
           </h2>
           <p className="font-['Space_Grotesk'] text-sm text-[#b8b0a2] mt-1">
@@ -206,7 +206,7 @@ export const EspacioPage: React.FC<EspacioPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* 4. HISTORIA INTEGRADA (EVOLUCIÓN ROCK INTERGENERACIONAL) */}
-      <div className="p-8 sm:p-10 bg-[#141312] border-3 border-[#33302c] shadow-[8px_8px_0_#000] space-y-6">
+      <div className="p-4 sm:p-8 md:p-10 bg-[#141312] border-3 border-[#33302c] shadow-[4px_4px_0_#000] sm:shadow-[8px_8px_0_#000] space-y-6">
         <div className="flex items-center gap-2 text-[#b91c1c] font-mono text-xs uppercase tracking-widest">
           <Music2 className="w-4 h-4" />
           <span>// EVOLUCIÓN HISTÓRICA & CULTURA ROCK</span>
@@ -214,7 +214,7 @@ export const EspacioPage: React.FC<EspacioPageProps> = ({ onNavigate }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-8 space-y-4">
-            <h2 className="font-['Anton'] text-3xl sm:text-4xl uppercase tracking-wider text-[#f5efe1]">
+            <h2 className="font-['Anton'] text-2xl sm:text-3xl md:text-4xl uppercase tracking-wider text-[#f5efe1] break-words">
               Una Identidad que se Adapta sin Perder su Raíz
             </h2>
             <p className="font-['Space_Grotesk'] text-sm sm:text-base text-[#ded8cb] leading-relaxed">
@@ -235,21 +235,21 @@ export const EspacioPage: React.FC<EspacioPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* 5. CIERRE COMERCIAL & VISITAS */}
-      <div className="p-8 sm:p-10 bg-[#181615] border-4 border-[#b91c1c] shadow-[10px_10px_0_#000] text-center space-y-4">
-        <h2 className="font-['Anton'] text-3xl sm:text-4xl uppercase tracking-wider text-[#f5efe1]">
+      <div className="p-5 sm:p-8 md:p-10 bg-[#181615] border-4 border-[#b91c1c] shadow-[4px_4px_0_#000] sm:shadow-[8px_8px_0_#000] md:shadow-[10px_10px_0_#000] text-center space-y-4">
+        <h2 className="font-['Anton'] text-2xl sm:text-3xl md:text-4xl uppercase tracking-wider text-[#f5efe1] break-words">
           ¿Quieres Conocer el Salón en Persona o Consultar Disponibilidad?
         </h2>
         <p className="font-['Space_Grotesk'] text-sm sm:text-base text-[#ded8cb] max-w-2xl mx-auto leading-relaxed">
           Pásate por Urrutia Kalea 1 (a 3 minutos de la boca de metro de Indautxu) o envíanos una solicitud a través del formulario indicando fecha y número de asistentes.
         </p>
 
-        <div className="pt-3 flex flex-wrap justify-center gap-4">
+        <div className="pt-3 flex justify-center">
           <button
             onClick={() => onNavigate('/contacto?tipo=evento')}
-            className="px-8 py-3.5 bg-[#b91c1c] hover:bg-red-700 text-white font-['Anton'] text-base uppercase tracking-wider border-2 border-black shadow-[4px_4px_0_#000] flex items-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
+            className="w-full sm:w-auto px-5 sm:px-8 py-3.5 bg-[#b91c1c] hover:bg-red-700 text-white font-['Anton'] text-sm sm:text-base uppercase tracking-wider border-2 border-black shadow-[4px_4px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5 text-center break-words"
           >
             <span>SOLICITAR DISPONIBILIDAD DEL SALÓN</span>
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-5 h-5 shrink-0" />
           </button>
         </div>
       </div>

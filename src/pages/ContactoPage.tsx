@@ -134,14 +134,14 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 md:py-12 space-y-10">
       {/* HEADER PAGE */}
-      <div className="p-6 sm:p-8 bg-[#f4eedd] border-4 border-black shadow-[8px_8px_0px_rgba(0,0,0,1)] relative tape-top space-y-3">
+      <div className="p-4 sm:p-8 bg-[#f4eedd] border-4 border-black shadow-[4px_4px_0_#000] sm:shadow-[8px_8px_0_#000] relative tape-top space-y-3">
         <div className="inline-block bg-black text-white px-3 py-1 font-mono-code text-xs uppercase tracking-widest rot-neg-1">
           // CANAL DE COMUNICACIÓN OFICIAL & SOLICITUD DE EVENTOS
         </div>
-        <h1 className="font-anton text-4xl sm:text-6xl uppercase tracking-wider text-black">
+        <h1 className="font-anton text-2xl sm:text-4xl lg:text-5xl uppercase tracking-wider text-black break-words">
           CONTACTO & RESERVA DE EVENTOS
         </h1>
-        <p className="font-sans text-neutral-800 text-base sm:text-lg max-w-3xl leading-relaxed">
+        <p className="font-sans text-neutral-800 text-sm sm:text-lg max-w-3xl leading-relaxed">
           ¿Planeas una comida de cuadrilla, una celebración de cumpleaños o un encuentro de empresa en Indautxu?
           Indícanos los detalles de tu propuesta. Atendemos cada consulta de forma personalizada según el formato y la fecha.
         </p>
@@ -149,7 +149,7 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* FORMULARIO (7 COLS) */}
-        <div className="lg:col-span-7 bg-[#fbf8f1] border-4 border-black p-6 sm:p-8 shadow-[8px_8px_0px_rgba(0,0,0,1)] relative">
+        <div className="lg:col-span-7 bg-[#fbf8f1] border-4 border-black p-4 sm:p-8 shadow-[4px_4px_0_#000] sm:shadow-[8px_8px_0_#000] relative">
           <div className="absolute -top-3 right-4 bg-[#b91c1c] text-white font-mono-code text-xs px-3 py-0.5 border-2 border-black rot-pos-1 font-bold">
             FORMULARIO OFICIAL
           </div>
@@ -430,7 +430,7 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
             <button
               type="submit"
               disabled={submitting}
-              className="w-full py-4 bg-black text-white hover:bg-[#b91c1c] border-2 border-black font-anton text-xl uppercase tracking-wider flex items-center justify-center gap-2 shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all"
+              className="w-full py-3.5 sm:py-4 bg-black text-white hover:bg-[#b91c1c] border-2 border-black font-anton text-lg sm:text-xl uppercase tracking-wider flex items-center justify-center gap-2 shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all"
             >
               <Send className="w-5 h-5" />
               <span>{submitting ? 'VALIDANDO DATOS...' : 'ENVIAR SOLICITUD DE EVENTO'}</span>
@@ -441,11 +441,11 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
         {/* SIDEBAR DE INFORMACIÓN Y CANALES (5 COLS) */}
         <div className="lg:col-span-5 space-y-6">
           {/* TARJETA DE ATENCIÓN DIRECTA */}
-          <div className="bg-[#f4eedd] border-4 border-black p-6 shadow-[6px_6px_0px_rgba(0,0,0,1)] space-y-4">
+          <div className="bg-[#f4eedd] border-4 border-black p-4 sm:p-6 shadow-[4px_4px_0_#000] sm:shadow-[6px_6px_0_#000] space-y-4">
             <div className="inline-block bg-[#b91c1c] text-white font-mono-code text-xs px-2.5 py-0.5 border border-black uppercase font-bold rot-neg-1">
               CANAL DIRECTO & TRANSPARENTE
             </div>
-            <h2 className="font-anton text-2xl uppercase tracking-wider text-black">
+            <h2 className="font-anton text-xl sm:text-2xl uppercase tracking-wider text-black break-words">
               ¿CÓMO GESTIONAMOS TU SOLICITUD?
             </h2>
             <p className="font-sans text-sm text-neutral-800 leading-relaxed">
@@ -487,7 +487,7 @@ export const ContactoPage: React.FC<ContactoPageProps> = ({ onNavigate, initialM
           </div>
 
           {/* UBICACIÓN Y HORARIOS */}
-          <div className="bg-[#f4eedd] border-4 border-black p-6 shadow-[6px_6px_0px_rgba(0,0,0,1)] space-y-4">
+          <div className="bg-[#f4eedd] border-4 border-black p-4 sm:p-6 shadow-[4px_4px_0_#000] sm:shadow-[6px_6px_0_#000] space-y-4">
             <div className="font-anton text-lg uppercase tracking-wider text-black flex items-center gap-2">
               <MapPin className="w-5 h-5 text-[#b91c1c]" />
               DÓNDE ESTAMOS

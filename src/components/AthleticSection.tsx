@@ -58,7 +58,7 @@ export const AthleticSection: React.FC<AthleticSectionProps> = ({ onNavigate }) 
 
         {/* MONUMENTAL TITULAR */}
         <div className="space-y-3 max-w-4xl">
-          <h2 className="font-anton text-4xl sm:text-6xl lg:text-7xl xl:text-8xl text-white uppercase tracking-wider leading-[0.92] drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
+          <h2 className="font-anton text-2xl sm:text-5xl lg:text-7xl xl:text-8xl text-white uppercase tracking-wider leading-[0.92] drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)] break-words">
             EL ATHLETIC SE VIVE EN GRAFIT
           </h2>
 
@@ -73,7 +73,7 @@ export const AthleticSection: React.FC<AthleticSectionProps> = ({ onNavigate }) 
         </p>
 
         {/* CALL TO ACTION BUTTON */}
-        <div className="pt-2 flex flex-wrap items-center gap-4">
+        <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
           <button
             onClick={() => {
               const el = document.getElementById('ambientes-section');
@@ -83,18 +83,18 @@ export const AthleticSection: React.FC<AthleticSectionProps> = ({ onNavigate }) 
                 onNavigate('/espacio');
               }
             }}
-            className="px-8 py-4 bg-[#b91c1c] hover:bg-red-700 text-white font-anton text-base sm:text-lg uppercase tracking-wider border-3 border-black shadow-[6px_6px_0_#000] flex items-center justify-center gap-2.5 cursor-pointer transition-transform hover:-translate-y-0.5 active:translate-y-0"
+            className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-[#b91c1c] hover:bg-red-700 text-white font-anton text-base sm:text-lg uppercase tracking-wider border-3 border-black shadow-[4px_4px_0_#000] sm:shadow-[6px_6px_0_#000] flex items-center justify-center gap-2.5 cursor-pointer transition-transform hover:-translate-y-0.5 active:translate-y-0 text-center"
           >
-            <Sparkles className="w-5 h-5 text-amber-300" />
+            <Sparkles className="w-5 h-5 text-amber-300 shrink-0" />
             <span>DESCUBRE EL AMBIENTE</span>
           </button>
 
           <button
             onClick={() => onNavigate('/carta')}
-            className="px-6 py-4 bg-[#181615]/90 hover:bg-black text-[#f5efe1] font-mono text-xs sm:text-sm font-bold uppercase border-2 border-neutral-700 shadow-[4px_4px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-colors"
+            className="w-full sm:w-auto px-5 sm:px-6 py-3.5 sm:py-4 bg-[#181615]/90 hover:bg-black text-[#f5efe1] font-mono text-xs sm:text-sm font-bold uppercase border-2 border-neutral-700 shadow-[4px_4px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-colors text-center"
           >
             <span>VER CARTA DE PICOTEO</span>
-            <ArrowRight className="w-4 h-4 text-[#e2c044]" />
+            <ArrowRight className="w-4 h-4 text-[#e2c044] shrink-0" />
           </button>
         </div>
 

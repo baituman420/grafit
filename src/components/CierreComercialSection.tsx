@@ -50,7 +50,7 @@ export const CierreComercialSection: React.FC<CierreComercialSectionProps> = ({ 
           // PLANIFICA TU CELEBRACIÓN EN INDAUTXU
         </div>
 
-        <h2 className="font-anton text-4xl sm:text-6xl uppercase tracking-wider text-white leading-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)]">
+        <h2 className="font-anton text-2xl sm:text-4xl md:text-5xl uppercase tracking-wider text-white leading-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] break-words">
           ¿PREPARANDO UNA COMIDA DE CUADRILLA O CELEBRACIÓN?
         </h2>
 
@@ -62,16 +62,16 @@ export const CierreComercialSection: React.FC<CierreComercialSectionProps> = ({ 
         <div className="pt-4 flex flex-col sm:flex-row justify-center items-center gap-4">
           <button
             onClick={() => onNavigate('/contacto?tipo=evento')}
-            className="w-full sm:w-auto px-8 py-4 bg-[#b91c1c] hover:bg-red-700 text-white font-anton text-base uppercase tracking-wider border-2 border-black shadow-[5px_5px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
+            className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-[#b91c1c] hover:bg-red-700 text-white font-anton text-sm sm:text-base uppercase tracking-wider border-2 border-black shadow-[4px_4px_0_#000] sm:shadow-[5px_5px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5 text-center"
           >
-            <Calendar className="w-5 h-5 text-amber-300" />
+            <Calendar className="w-5 h-5 text-amber-300 shrink-0" />
             <span>★ SOLICITAR DISPONIBILIDAD ★</span>
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-5 h-5 shrink-0" />
           </button>
 
           <button
             onClick={() => onNavigate('/eventos')}
-            className="w-full sm:w-auto px-7 py-4 bg-[#f5efe1] hover:bg-white text-black font-anton text-base uppercase tracking-wider border-2 border-black shadow-[5px_5px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
+            className="w-full sm:w-auto px-6 sm:px-7 py-3.5 sm:py-4 bg-[#f5efe1] hover:bg-white text-black font-anton text-sm sm:text-base uppercase tracking-wider border-2 border-black shadow-[4px_4px_0_#000] sm:shadow-[5px_5px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5 text-center"
           >
             <span>VER GUÍA DE EVENTOS</span>
           </button>

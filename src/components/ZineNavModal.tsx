@@ -63,13 +63,13 @@ export const ZineNavModal: React.FC<ZineNavModalProps> = ({
                   onNavigate(link.path);
                   onClose();
                 }}
-                className={`w-full text-left p-4 border-3 border-black font-anton text-2xl uppercase tracking-wider flex items-center justify-between transition-transform ${rotationClass} ${
+                className={`w-full text-left p-3.5 sm:p-4 border-3 border-black font-anton text-xl sm:text-2xl uppercase tracking-wider flex items-center justify-between transition-transform break-words ${
                   isActive
-                    ? 'bg-black text-white shadow-[5px_5px_0px_#b91c1c]'
-                    : 'bg-[#f4eedd] text-black shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:bg-black hover:text-white'
+                    ? 'bg-black text-white shadow-[4px_4px_0_#b91c1c] sm:shadow-[5px_5px_0px_#b91c1c]'
+                    : 'bg-[#f4eedd] text-black shadow-[3px_3px_0_#000] sm:shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:bg-black hover:text-white'
                 }`}
               >
-                <span>{link.label}</span>
+                <span className="break-words">{link.label}</span>
                 {link.badge && (
                   <span className="bg-[#b91c1c] text-white text-xs font-mono-code px-2 py-0.5 border border-black">
                     {link.badge}

@@ -26,10 +26,10 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 URRUTIA KALEA 1 • INDAUTXU
               </span>
             </div>
-            <h2 className="font-ransom text-7xl sm:text-9xl lg:text-[11vw] text-white tracking-tighter leading-none">
+            <h2 className="font-ransom text-6xl sm:text-8xl lg:text-[11vw] text-white tracking-tighter leading-none break-words">
               GRAFIT
             </h2>
-            <p className="font-mono-code text-sm sm:text-base text-[#e2c044] tracking-widest uppercase font-bold mt-2">
+            <p className="font-mono-code text-xs sm:text-base text-[#e2c044] tracking-wider sm:tracking-widest uppercase font-bold mt-2 break-words">
               ROCK CAFÉ • SALÓN MULTIUSOS • GRUPOS & EVENTOS
             </p>
           </div>

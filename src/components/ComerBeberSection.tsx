@@ -23,17 +23,17 @@ export const ComerBeberSection: React.FC<ComerBeberSectionProps> = ({ onNavigate
                 ★ {info.kitchenHours}
               </span>
             </div>
-            <h2 className="font-ransom text-5xl sm:text-7xl text-black uppercase tracking-tight">
+            <h2 className="font-ransom text-3xl sm:text-5xl lg:text-7xl text-black uppercase tracking-tight break-words">
               {gastronomia.headline}
             </h2>
           </div>
 
           <button
             onClick={() => onNavigate('/carta')}
-            className="self-start md:self-auto px-6 py-3.5 bg-[#b91c1c] text-white font-ransom text-2xl uppercase tracking-wider border-4 border-black shadow-[5px_5px_0px_#000000] hover:bg-black transition-all flex items-center gap-2"
+            className="self-start md:self-auto w-full sm:w-auto px-5 sm:px-6 py-3.5 bg-[#b91c1c] text-white font-ransom text-xl sm:text-2xl uppercase tracking-wider border-4 border-black shadow-[4px_4px_0_#000] sm:shadow-[5px_5px_0px_#000000] hover:bg-black transition-all flex items-center justify-center gap-2 text-center"
           >
             <span>VER CARTA COMPLETA</span>
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-5 h-5 shrink-0" />
           </button>
         </div>
 

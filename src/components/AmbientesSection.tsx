@@ -25,7 +25,7 @@ export const AmbientesSection: React.FC<AmbientesSectionProps> = ({ onNavigate }
           <div className="inline-block bg-[#b91c1c] text-white px-3 py-1 font-mono text-xs uppercase tracking-widest mb-3 shadow-[3px_3px_0_#000]">
             // DOS ESPACIOS CONECTADOS
           </div>
-          <h2 className="font-['Anton'] text-3xl sm:text-5xl uppercase tracking-wider text-[#f5efe1] leading-tight">
+          <h2 className="font-['Anton'] text-2xl sm:text-4xl lg:text-5xl uppercase tracking-wider text-[#f5efe1] leading-tight break-words">
             Dos Ambientes, Una Misma Esencia
           </h2>
           <p className="font-['Space_Grotesk'] text-sm sm:text-base text-[#b8b0a2] mt-2 leading-relaxed">
@@ -37,7 +37,7 @@ export const AmbientesSection: React.FC<AmbientesSectionProps> = ({ onNavigate }
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-stretch">
           
           {/* LADO A: LA BARRA DE INDAUTXU */}
-          <div className="relative bg-[#181615] border-3 border-[#33302c] hover:border-[#e2c044] transition-colors shadow-[8px_8px_0_#000] flex flex-col justify-between overflow-hidden group">
+          <div className="relative bg-[#181615] border-3 border-[#33302c] hover:border-[#e2c044] transition-colors shadow-[4px_4px_0_#000] sm:shadow-[8px_8px_0_#000] flex flex-col justify-between overflow-hidden group">
             {/* LARGE FORMAT PHOTOGRAPHIC CANVAS */}
             <div className="relative h-72 sm:h-88 md:h-96 overflow-hidden bg-black border-b-2 border-[#2b2724]">
               <img
@@ -55,14 +55,14 @@ export const AmbientesSection: React.FC<AmbientesSectionProps> = ({ onNavigate }
                 <p className="font-mono text-xs text-[#e2c044] font-bold tracking-wider uppercase drop-shadow">
                   URRUTIA KALEA 1 • INDAUTXU
                 </p>
-                <p className="font-['Anton'] text-xl sm:text-2xl uppercase tracking-wide drop-shadow-md">
+                <p className="font-['Anton'] text-xl sm:text-2xl uppercase tracking-wide drop-shadow-md break-words">
                   El Pulso Cotidiano & Encuentro
                 </p>
               </div>
             </div>
 
             {/* EDITORIAL DETAILS */}
-            <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-5">
+            <div className="p-4 sm:p-8 flex-1 flex flex-col justify-between space-y-5">
               <div className="space-y-3">
                 <div className="flex items-center gap-2 text-[#e2c044]">
                   <Coffee className="w-5 h-5 shrink-0" />
@@ -70,7 +70,7 @@ export const AmbientesSection: React.FC<AmbientesSectionProps> = ({ onNavigate }
                     CAFÉ, PINTXOS & PREVIAS DEL ATHLETIC
                   </span>
                 </div>
-                <h3 className="font-['Anton'] text-2xl sm:text-3xl uppercase tracking-wide text-[#f5efe1]">
+                <h3 className="font-['Anton'] text-2xl sm:text-3xl uppercase tracking-wide text-[#f5efe1] break-words">
                   La Barra de Siempre
                 </h3>
                 <p className="font-['Space_Grotesk'] text-sm sm:text-base text-[#b8b0a2] leading-relaxed">
@@ -86,7 +86,7 @@ export const AmbientesSection: React.FC<AmbientesSectionProps> = ({ onNavigate }
           </div>
 
           {/* LADO B: EL SALÓN MULTIUSOS */}
-          <div className="relative bg-[#181615] border-3 border-[#33302c] hover:border-[#b91c1c] transition-colors shadow-[8px_8px_0_#000] flex flex-col justify-between overflow-hidden group">
+          <div className="relative bg-[#181615] border-3 border-[#33302c] hover:border-[#b91c1c] transition-colors shadow-[4px_4px_0_#000] sm:shadow-[8px_8px_0_#000] flex flex-col justify-between overflow-hidden group">
             {/* LARGE FORMAT PHOTOGRAPHIC CANVAS */}
             <div className="relative h-72 sm:h-88 md:h-96 overflow-hidden bg-black border-b-2 border-[#2b2724]">
               <img

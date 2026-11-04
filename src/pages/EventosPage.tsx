@@ -28,39 +28,39 @@ export const EventosPage: React.FC<EventosPageProps> = ({ onNavigate }) => {
         <div className="inline-block bg-[#b91c1c] text-white px-3 py-1 font-mono text-xs uppercase tracking-widest shadow-[3px_3px_0_#000]">
           // EL ESPACIO PARA TUS CELEBRACIONES
         </div>
-        <h1 className="font-['Anton'] text-4xl sm:text-6xl uppercase tracking-wider text-[#f5efe1] leading-tight">
+        <h1 className="font-['Anton'] text-2xl sm:text-4xl lg:text-5xl uppercase tracking-wider text-[#f5efe1] leading-tight break-words">
           Eventos y Comidas de Grupo con Identidad en Indautxu
         </h1>
-        <p className="font-['Space_Grotesk'] text-base sm:text-lg text-[#ded8cb] max-w-3xl leading-relaxed">
+        <p className="font-['Space_Grotesk'] text-sm sm:text-lg text-[#ded8cb] max-w-3xl leading-relaxed">
           Reúne a tu cuadrilla, celebra un cumpleaños o planifica un encuentro de empresa en un salón diáfano y versátil con barra propia y opciones de picoteo y menús adaptados para grupos.
         </p>
 
         {/* CTA RAPIDO HEADER */}
-        <div className="pt-2 flex flex-wrap gap-4">
+        <div className="pt-2 flex flex-col sm:flex-row gap-3 sm:gap-4">
           <button
             onClick={() => onNavigate('/contacto?tipo=evento')}
-            className="px-6 py-3.5 bg-[#b91c1c] hover:bg-red-700 text-white font-['Anton'] text-sm sm:text-base uppercase tracking-wider border-2 border-black shadow-[4px_4px_0_#000] flex items-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
+            className="w-full sm:w-auto px-5 sm:px-6 py-3.5 bg-[#b91c1c] hover:bg-red-700 text-white font-['Anton'] text-sm sm:text-base uppercase tracking-wider border-2 border-black shadow-[4px_4px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5 text-center"
           >
-            <Calendar className="w-4 h-4" />
+            <Calendar className="w-4 h-4 shrink-0" />
             <span>SOLICITAR DISPONIBILIDAD DE FECHA</span>
           </button>
           <button
             onClick={() => onNavigate('/espacio')}
-            className="px-6 py-3.5 bg-[#181615] hover:bg-[#222] text-[#e2c044] font-mono text-xs font-bold uppercase border border-[#e2c044] shadow-[4px_4px_0_#000] flex items-center gap-2 cursor-pointer transition-colors"
+            className="w-full sm:w-auto px-5 sm:px-6 py-3.5 bg-[#181615] hover:bg-[#222] text-[#e2c044] font-mono text-xs font-bold uppercase border border-[#e2c044] shadow-[4px_4px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-colors text-center"
           >
             <span>CONOCE EL SALÓN Y LA VOLKSWAGEN</span>
-            <ArrowRight className="w-4 h-4" />
+            <ArrowRight className="w-4 h-4 shrink-0" />
           </button>
         </div>
       </div>
 
       {/* 2. VALUE PROPOSITIONS */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="p-6 bg-[#181615] border-2 border-[#33302c] shadow-[6px_6px_0_#000] relative space-y-3">
+        <div className="p-4 sm:p-6 bg-[#181615] border-2 border-[#33302c] shadow-[4px_4px_0_#000] sm:shadow-[6px_6px_0_#000] relative space-y-3">
           <span className="font-mono text-xs font-bold text-[#e2c044] bg-black/80 px-2 py-0.5 border border-[#33302c]">
             01 • VERSATILIDAD
           </span>
-          <h3 className="font-['Anton'] text-xl uppercase tracking-wider text-[#f5efe1]">
+          <h3 className="font-['Anton'] text-lg sm:text-xl uppercase tracking-wider text-[#f5efe1] break-words">
             Distribución Sin Rigideces
           </h3>
           <p className="font-['Space_Grotesk'] text-xs sm:text-sm text-[#b8b0a2] leading-relaxed">
@@ -68,11 +68,11 @@ export const EventosPage: React.FC<EventosPageProps> = ({ onNavigate }) => {
           </p>
         </div>
 
-        <div className="p-6 bg-[#181615] border-2 border-[#33302c] shadow-[6px_6px_0_#000] relative space-y-3">
+        <div className="p-4 sm:p-6 bg-[#181615] border-2 border-[#33302c] shadow-[4px_4px_0_#000] sm:shadow-[6px_6px_0_#000] relative space-y-3">
           <span className="font-mono text-xs font-bold text-[#b91c1c] bg-black/80 px-2 py-0.5 border border-[#33302c]">
             02 • PROPUESTAS A MEDIDA
           </span>
-          <h3 className="font-['Anton'] text-xl uppercase tracking-wider text-[#f5efe1]">
+          <h3 className="font-['Anton'] text-lg sm:text-xl uppercase tracking-wider text-[#f5efe1] break-words">
             Gastronomía y Picoteo
           </h3>
           <p className="font-['Space_Grotesk'] text-xs sm:text-sm text-[#b8b0a2] leading-relaxed">
@@ -80,11 +80,11 @@ export const EventosPage: React.FC<EventosPageProps> = ({ onNavigate }) => {
           </p>
         </div>
 
-        <div className="p-6 bg-[#181615] border-2 border-[#33302c] shadow-[6px_6px_0_#000] relative space-y-3">
+        <div className="p-4 sm:p-6 bg-[#181615] border-2 border-[#33302c] shadow-[4px_4px_0_#000] sm:shadow-[6px_6px_0_#000] relative space-y-3">
           <span className="font-mono text-xs font-bold text-[#16a34a] bg-black/80 px-2 py-0.5 border border-[#33302c]">
             03 • UBICACIÓN
           </span>
-          <h3 className="font-['Anton'] text-xl uppercase tracking-wider text-[#f5efe1]">
+          <h3 className="font-['Anton'] text-lg sm:text-xl uppercase tracking-wider text-[#f5efe1] break-words">
             El Centro de Indautxu
           </h3>
           <p className="font-['Space_Grotesk'] text-xs sm:text-sm text-[#b8b0a2] leading-relaxed">
@@ -99,7 +99,7 @@ export const EventosPage: React.FC<EventosPageProps> = ({ onNavigate }) => {
           <div className="font-mono text-xs font-bold text-[#e2c044] uppercase tracking-widest">
             // FORMATOS HABITUALES
           </div>
-          <h2 className="font-['Anton'] text-3xl sm:text-4xl uppercase tracking-wider text-[#f5efe1]">
+          <h2 className="font-['Anton'] text-2xl sm:text-3xl md:text-4xl uppercase tracking-wider text-[#f5efe1] break-words">
             ¿Qué Tipo de Encuentro Estás Organizando?
           </h2>
         </div>
@@ -108,9 +108,9 @@ export const EventosPage: React.FC<EventosPageProps> = ({ onNavigate }) => {
           {eventos.tipologias.map((tipo) => (
             <div
               key={tipo.id}
-              className="bg-[#181615] border-3 border-[#33302c] shadow-[8px_8px_0_#000] flex flex-col justify-between overflow-hidden"
+              className="bg-[#181615] border-3 border-[#33302c] shadow-[4px_4px_0_#000] sm:shadow-[8px_8px_0_#000] flex flex-col justify-between overflow-hidden"
             >
-              <div className="relative h-60 overflow-hidden bg-black border-b border-[#2b2724]">
+              <div className="relative h-52 sm:h-60 overflow-hidden bg-black border-b border-[#2b2724]">
                 <img
                   src={tipo.image}
                   alt={tipo.title}
@@ -121,9 +121,9 @@ export const EventosPage: React.FC<EventosPageProps> = ({ onNavigate }) => {
                 </div>
               </div>
 
-              <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div className="p-4 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
                 <div className="space-y-2">
-                  <h3 className="font-['Anton'] text-2xl uppercase tracking-wider text-[#f5efe1]">
+                  <h3 className="font-['Anton'] text-xl sm:text-2xl uppercase tracking-wider text-[#f5efe1] break-words">
                     {tipo.title}
                   </h3>
                   <p className="font-mono text-xs font-bold text-[#e2c044] uppercase">
@@ -155,19 +155,19 @@ export const EventosPage: React.FC<EventosPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* 4. GASTRONOMÍA ASOCIADA A EVENTOS */}
-      <div className="bg-[#141312] border-3 border-[#e2c044] p-6 sm:p-10 shadow-[8px_8px_0_#000] space-y-6">
+      <div className="bg-[#141312] border-3 border-[#e2c044] p-4 sm:p-8 md:p-10 shadow-[4px_4px_0_#000] sm:shadow-[8px_8px_0_#000] space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-[#2b2724] pb-4">
           <div>
             <div className="font-mono text-xs font-bold text-[#b91c1c] uppercase tracking-wider">
               // GASTRONOMÍA & FORMATOS COMPARTIDOS
             </div>
-            <h2 className="font-['Anton'] text-2xl sm:text-3xl uppercase tracking-wider text-[#f5efe1]">
+            <h2 className="font-['Anton'] text-xl sm:text-3xl uppercase tracking-wider text-[#f5efe1] break-words">
               Una Propuesta Gastronómica Real
             </h2>
           </div>
           <button
             onClick={() => onNavigate('/carta')}
-            className="px-5 py-2.5 bg-[#b91c1c] hover:bg-red-700 text-white font-['Anton'] text-xs sm:text-sm uppercase tracking-wider border border-black shadow-[3px_3px_0_#000] transition-colors cursor-pointer self-start md:self-auto"
+            className="w-full sm:w-auto px-5 py-2.5 bg-[#b91c1c] hover:bg-red-700 text-white font-['Anton'] text-xs sm:text-sm uppercase tracking-wider border border-black shadow-[3px_3px_0_#000] transition-colors cursor-pointer text-center"
           >
             VER CARTA COMPLETA
           </button>
@@ -200,7 +200,7 @@ export const EventosPage: React.FC<EventosPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* 5. AVISO DE TRANSPARENCIA */}
-      <div className="p-5 bg-[#181615] border-2 border-amber-600/70 text-amber-200 font-mono text-xs flex items-start gap-3 shadow-[4px_4px_0_#000]">
+      <div className="p-4 sm:p-5 bg-[#181615] border-2 border-amber-600/70 text-amber-200 font-mono text-xs flex items-start gap-3 shadow-[4px_4px_0_#000]">
         <Info className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
         <div>
           <strong className="text-white block uppercase mb-1">Compromiso de Honestidad y Reserva:</strong>
@@ -209,8 +209,8 @@ export const EventosPage: React.FC<EventosPageProps> = ({ onNavigate }) => {
       </div>
 
       {/* 6. CIERRE COMERCIAL DIRECTO */}
-      <div className="p-8 sm:p-10 bg-[#181615] border-4 border-[#b91c1c] shadow-[10px_10px_0_#000] text-center space-y-4">
-        <h2 className="font-['Anton'] text-3xl sm:text-4xl uppercase tracking-wider text-[#f5efe1]">
+      <div className="p-5 sm:p-8 md:p-10 bg-[#181615] border-4 border-[#b91c1c] shadow-[4px_4px_0_#000] sm:shadow-[8px_8px_0_#000] md:shadow-[10px_10px_0_#000] text-center space-y-4">
+        <h2 className="font-['Anton'] text-2xl sm:text-3xl md:text-4xl uppercase tracking-wider text-[#f5efe1] break-words">
           ¿Hablamos de Fechas para tu Grupo?
         </h2>
         <p className="font-['Space_Grotesk'] text-sm sm:text-base text-[#ded8cb] max-w-2xl mx-auto leading-relaxed">
@@ -220,11 +220,11 @@ export const EventosPage: React.FC<EventosPageProps> = ({ onNavigate }) => {
         <div className="pt-3 flex justify-center">
           <button
             onClick={() => onNavigate('/contacto?tipo=evento')}
-            className="px-8 py-4 bg-[#b91c1c] hover:bg-red-700 text-white font-['Anton'] text-base uppercase tracking-wider border-2 border-black shadow-[5px_5px_0_#000] flex items-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5"
+            className="w-full sm:w-auto px-5 sm:px-8 py-3.5 sm:py-4 bg-[#b91c1c] hover:bg-red-700 text-white font-['Anton'] text-sm sm:text-base uppercase tracking-wider border-2 border-black shadow-[4px_4px_0_#000] sm:shadow-[5px_5px_0_#000] flex items-center justify-center gap-2 cursor-pointer transition-transform hover:-translate-y-0.5 text-center break-words"
           >
-            <Calendar className="w-5 h-5" />
+            <Calendar className="w-5 h-5 shrink-0" />
             <span>SOLICITAR DISPONIBILIDAD SIN COMPROMISO</span>
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-5 h-5 shrink-0" />
           </button>
         </div>
       </div>
