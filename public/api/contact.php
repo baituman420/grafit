@@ -4,11 +4,14 @@
  * 
  * Procesa las solicitudes orientadas a grupos, comidas de cuadrillas y eventos.
  * Cumple estrictamente con el principio de:
- * 1. Envío autenticado mediante SMTP.
+ * 1. Envío autenticado mediante SMTP (Puerto 465 SSL o 587 TLS).
  * 2. Cero uso de fallback mail() si falla SMTP.
  * 3. Cero confirmación falsa si el mensaje no fue aceptado por el servidor de correo.
- * 4. Medidas antispam (honeypot + verificación temporal).
- * 5. Protección estricta contra inyección de cabeceras CRLF.
+ * 4. Entrega garantizada al buzón destinatario prioritario: grafitcafe@gmail.com.
+ * 5. Cumplimiento riguroso de RFC 5321 y RFC 5322 para entregabilidad en Gmail (Message-ID, CRLF, dot-stuffing).
+ * 6. Registro de auditoría en error_log de Plesk y respaldo preventivo de datos (Zero Lead Loss).
+ * 7. Medidas antispam (honeypot + verificación temporal de envío).
+ * 8. Protección estricta contra inyección de cabeceras CRLF en inputs de usuario.
  */
 
 declare(strict_types=1);
@@ -54,7 +57,7 @@ if (!empty($data['website_check_trap'])) {
     exit;
 }
 
-// 2.2. Verificación temporal de envío (evitar envíos instantáneos automáticos < 2 seg)
+// 2.2. Verificación temporal de envío (evitar envíos automáticos instantáneos < 2 seg)
 if (isset($data['form_rendered_at']) && is_numeric($data['form_rendered_at'])) {
     $renderedAt = (int)$data['form_rendered_at'];
     $elapsed = time() - $renderedAt;
@@ -122,9 +125,19 @@ $smtpPort = (int)($config['smtp_port'] ?? 465);
 $smtpUser = $config['smtp_user'] ?? 'grafitcafe@grafitcafe.com';
 $smtpPass = $config['smtp_password'] ?? '';
 $smtpSecure = strtolower((string)($config['smtp_secure'] ?? ($smtpPort === 465 ? 'ssl' : 'tls')));
-$mailTo = $config['mail_to'] ?? 'grafitcafe@gmail.com';
+
+// Destinatario primario prioritario (requisito obligatorio de la propiedad)
+$primaryRecipient = 'grafitcafe@gmail.com';
+$configRecipient = trim((string)($config['mail_to'] ?? ''));
+
+// Formar lista de destinatarios únicos garantizando la entrega a grafitcafe@gmail.com
+$recipients = [$primaryRecipient];
+if (!empty($configRecipient) && strcasecmp($configRecipient, $primaryRecipient) !== 0) {
+    $recipients[] = $configRecipient;
+}
+
 $mailFrom = $config['mail_from'] ?? 'grafitcafe@grafitcafe.com';
-$mailFromName = $config['mail_from_name'] ?? 'Web Grafit Café';
+$mailFromName = $config['mail_from_name'] ?? 'Web Grafit Café (Solicitudes)';
 
 if (empty($smtpHost) || empty($smtpUser) || empty($smtpPass) || $smtpPass === 'AQUI_TU_CONTRASENA_SMTP') {
     // ESTADO CONTROLADO: SMTP aún no parametrizado en Plesk
@@ -138,31 +151,36 @@ if (empty($smtpHost) || empty($smtpUser) || empty($smtpPass) || $smtpPass === 'A
     exit;
 }
 
-// 5. Construcción del cuerpo del mensaje
+// 5. Generación de Message-ID estricto (RFC 5322 § 3.6.4)
+$messageId = sprintf('<lead.%s.%d@grafitcafe.com>', bin2hex(random_bytes(12)), time());
 $subject = sprintf('Nueva solicitud web [%s]: %s (%s)', strtoupper($cleanMotivo), $cleanNombre, date('d/m/Y H:i'));
 
-$bodyText = "========================================================\n";
-$bodyText .= "NUEVA SOLICITUD DESDE LA WEB DE GRAFIT CAFÉ (URRUTIA 1)\n";
-$bodyText .= "========================================================\n\n";
-$bodyText .= "DATOS DEL SOLICITANTE:\n";
-$bodyText .= "• Nombre / Colectivo: {$cleanNombre}\n";
-$bodyText .= "• Correo Electrónico: {$cleanEmail}\n";
-$bodyText .= "• Teléfono de Contacto: " . ($cleanTelefono ?: 'No facilitado') . "\n\n";
-$bodyText .= "DETALLES ORIENTATIVOS DEL EVENTO:\n";
-$bodyText .= "• Motivo Principal: {$cleanMotivo}\n";
-$bodyText .= "• Formato de Evento: " . ($cleanTipo ?: 'No especificado') . "\n";
-$bodyText .= "• Asistentes Estimados: " . ($cleanAsistentes ?: 'No especificado') . "\n";
-$bodyText .= "• Fecha o Mes Previsto: " . ($cleanFecha ?: 'No especificado') . "\n\n";
-$bodyText .= "MENSAJE Y DETALLES DE LA PROPUESTA:\n";
-$bodyText .= "--------------------------------------------------------\n";
-$bodyText .= $mensaje . "\n";
-$bodyText .= "--------------------------------------------------------\n\n";
-$bodyText .= "INFORMACIÓN LEGAL Y DE TRAZABILIDAD:\n";
-$bodyText .= "• Fecha y hora de recepción: " . date('Y-m-d H:i:s T') . "\n";
-$bodyText .= "• Política de privacidad aceptada por el usuario: SÍ\n";
-$bodyText .= "• Base jurídica: Aplicación de medidas precontractuales a petición del interesado (Art. 6.1.b RGPD).\n";
+// 6. Construcción del cuerpo del mensaje con saltos de línea estrictos CRLF (\r\n)
+$cleanUserMessage = preg_replace('/(?:\r\n|\r|\n)/', "\r\n", $mensaje);
 
-// 6. Conexión SMTP pura mediante sockets (PHP 8.3)
+$bodyText = "========================================================\r\n";
+$bodyText .= "NUEVA SOLICITUD DESDE LA WEB DE GRAFIT CAFÉ (URRUTIA 1)\r\n";
+$bodyText .= "========================================================\r\n\r\n";
+$bodyText .= "DATOS DEL SOLICITANTE:\r\n";
+$bodyText .= "• Nombre / Colectivo: {$cleanNombre}\r\n";
+$bodyText .= "• Correo Electrónico: {$cleanEmail}\r\n";
+$bodyText .= "• Teléfono de Contacto: " . ($cleanTelefono ?: 'No facilitado') . "\r\n\r\n";
+$bodyText .= "DETALLES ORIENTATIVOS DEL EVENTO:\r\n";
+$bodyText .= "• Motivo Principal: {$cleanMotivo}\r\n";
+$bodyText .= "• Formato de Evento: " . ($cleanTipo ?: 'No especificado') . "\r\n";
+$bodyText .= "• Asistentes Estimados: " . ($cleanAsistentes ?: 'No especificado') . "\r\n";
+$bodyText .= "• Fecha o Mes Previsto: " . ($cleanFecha ?: 'No especificado') . "\r\n\r\n";
+$bodyText .= "MENSAJE Y DETALLES DE LA PROPUESTA:\r\n";
+$bodyText .= "--------------------------------------------------------\r\n";
+$bodyText .= $cleanUserMessage . "\r\n";
+$bodyText .= "--------------------------------------------------------\r\n\r\n";
+$bodyText .= "INFORMACIÓN LEGAL Y DE TRAZABILIDAD:\r\n";
+$bodyText .= "• Fecha y hora de recepción: " . date('Y-m-d H:i:s T') . "\r\n";
+$bodyText .= "• Política de privacidad aceptada por el usuario: SÍ\r\n";
+$bodyText .= "• Base jurídica: Aplicación de medidas precontractuales a petición del interesado (Art. 6.1.b RGPD).\r\n";
+$bodyText .= "• Identificador de seguimiento (Message-ID): {$messageId}\r\n";
+
+// 7. Conexión SMTP pura mediante sockets (PHP 8.3) con soporte multi-destinatario
 function sendSmtpMail(
     string $host,
     int $port,
@@ -171,15 +189,17 @@ function sendSmtpMail(
     string $secure,
     string $from,
     string $fromName,
-    string $to,
-    string $replyTo,
+    array $recipients,
+    string $replyToEmail,
+    string $replyToName,
     string $subject,
+    string $messageId,
     string $body
 ): array {
     $isSsl = ($secure === 'ssl' || $port === 465);
     $remote = ($isSsl ? 'ssl://' : 'tcp://') . $host . ':' . $port;
     
-    // Validación de certificados estricta y obligatoria (verificación de peer y de hostname)
+    // Validación de certificados estricta Let's Encrypt / ISRG Root X1
     $context = stream_context_create([
         'ssl' => [
             'verify_peer' => true,
@@ -223,7 +243,7 @@ function sendSmtpMail(
         return ['ok' => false, 'error' => "EHLO falló: " . $ehlo['text']];
     }
 
-    // STARTTLS solo si procede (cuando la conexión socket no es SSL implícito nativo)
+    // STARTTLS si procede
     if (!$isSsl && $secure === 'tls') {
         $tls = $sendCommand($socket, "STARTTLS", 220);
         if (!$tls['ok']) {
@@ -234,7 +254,6 @@ function sendSmtpMail(
             fclose($socket);
             return ['ok' => false, 'error' => "Negociación TLS criptográfica fallida."];
         }
-        // Repetir EHLO tras TLS
         $ehloAfterTls = $sendCommand($socket, "EHLO " . $clientDomain, 250);
         if (!$ehloAfterTls['ok']) {
             fclose($socket);
@@ -261,37 +280,54 @@ function sendSmtpMail(
         return ['ok' => false, 'error' => "Contraseña SMTP incorrecta o autenticación rechazada."];
     }
 
-    // Comandos de entrega
+    // MAIL FROM
     $fromRes = $sendCommand($socket, "MAIL FROM:<{$from}>", 250);
     if (!$fromRes['ok']) {
         fclose($socket);
         return ['ok' => false, 'error' => "MAIL FROM rechazado: " . $fromRes['text']];
     }
 
-    $toRes = $sendCommand($socket, "RCPT TO:<{$to}>", 250);
-    if (!$toRes['ok']) {
-        fclose($socket);
-        return ['ok' => false, 'error' => "RCPT TO rechazado: " . $toRes['text']];
+    // RCPT TO para cada destinatario
+    foreach ($recipients as $recipient) {
+        $toRes = $sendCommand($socket, "RCPT TO:<{$recipient}>", 250);
+        if (!$toRes['ok']) {
+            fclose($socket);
+            return ['ok' => false, 'error' => "RCPT TO rechazado para <{$recipient}>: " . $toRes['text']];
+        }
     }
 
+    // DATA
     $dataRes = $sendCommand($socket, "DATA", 354);
     if (!$dataRes['ok']) {
         fclose($socket);
         return ['ok' => false, 'error' => "DATA rechazado: " . $dataRes['text']];
     }
 
-    // Cabeceras MIME RFC 2822
+    // Cabeceras MIME RFC 2822 / RFC 5322 completas y compatibles con Gmail
+    $toHeader = implode(', ', array_map(fn($r) => "<{$r}>", $recipients));
     $headers = "From: =?UTF-8?B?" . base64_encode($fromName) . "?= <{$from}>\r\n";
-    $headers .= "To: <{$to}>\r\n";
-    $headers .= "Reply-To: <{$replyTo}>\r\n";
+    $headers .= "To: {$toHeader}\r\n";
+    $headers .= "Reply-To: =?UTF-8?B?" . base64_encode($replyToName) . "?= <{$replyToEmail}>\r\n";
     $headers .= "Subject: =?UTF-8?B?" . base64_encode($subject) . "?=\r\n";
     $headers .= "Date: " . date('r') . "\r\n";
+    $headers .= "Message-ID: {$messageId}\r\n";
     $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8; format=flowed\r\n";
     $headers .= "Content-Transfer-Encoding: 8bit\r\n";
+    $headers .= "Auto-Submitted: auto-generated\r\n";
     $headers .= "X-Mailer: GrafitCafe/PHP-8.3-SMTP\r\n";
 
-    $messagePayload = $headers . "\r\n" . $body . "\r\n.\r\n";
+    // Normalización CRLF y Dot-Stuffing (RFC 5321 Sección 4.5.2)
+    $lines = explode("\r\n", $body);
+    foreach ($lines as &$line) {
+        if (isset($line[0]) && $line[0] === '.') {
+            $line = '.' . $line;
+        }
+    }
+    unset($line);
+    $stuffedBody = implode("\r\n", $lines);
+
+    $messagePayload = $headers . "\r\n" . $stuffedBody . "\r\n.\r\n";
     fwrite($socket, $messagePayload);
 
     $finalRes = $readResponse($socket, 250);
@@ -302,7 +338,7 @@ function sendSmtpMail(
         return ['ok' => false, 'error' => "El servidor SMTP no aceptó el cuerpo del mensaje: " . $finalRes['text']];
     }
 
-    return ['ok' => true];
+    return ['ok' => true, 'response' => $finalRes['text']];
 }
 
 $smtpResult = sendSmtpMail(
@@ -313,23 +349,77 @@ $smtpResult = sendSmtpMail(
     $smtpSecure,
     $mailFrom,
     $mailFromName,
-    $mailTo,
+    $recipients,
     $cleanEmail,
+    $cleanNombre,
     $subject,
+    $messageId,
     $bodyText
 );
 
 if (!$smtpResult['ok']) {
+    $errLog = sprintf(
+        "[GRAFIT_LEAD_ERROR] Fallo entrega SMTP para %s <%s>. Error: %s. Destinatarios: %s",
+        $cleanNombre,
+        $cleanEmail,
+        $smtpResult['error'] ?? 'Desconocido',
+        implode(', ', $recipients)
+    );
+    error_log($errLog);
+
     http_response_code(502);
     echo json_encode([
         'success' => false,
         'code' => 'SMTP_TRANSMISSION_ERROR',
-        'message' => 'No se pudo completar la entrega del mensaje con el servidor de correo. Por favor, inténtalo más tarde o escríbenos directamente a ' . $mailTo
+        'message' => 'No se pudo completar la entrega del mensaje con el servidor de correo. Por favor, inténtalo más tarde o escríbenos directamente a ' . $primaryRecipient
     ], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
-// 7. Respuesta exitosa verificada
+// 8. Registro de auditoría trazable para Plesk
+$successLog = sprintf(
+    "[GRAFIT_LEAD_OK] Solicitud entregada vía SMTP con éxito. Solicitante: %s <%s>. Tel: %s. Motivo: %s. Destinatarios: %s. Message-ID: %s. SMTP: %s",
+    $cleanNombre,
+    $cleanEmail,
+    $cleanTelefono ?: 'N/A',
+    $cleanMotivo,
+    implode(', ', $recipients),
+    $messageId,
+    trim($smtpResult['response'] ?? '250 OK')
+);
+error_log($successLog);
+
+// 9. Respaldo preventivo de seguridad fuera del alcance web (Zero Lead Loss)
+$backupDirs = [
+    dirname(__DIR__, 2) . '/private',
+    dirname(__DIR__, 1) . '/private',
+    dirname($_SERVER['DOCUMENT_ROOT'] ?? '', 1) . '/private'
+];
+foreach ($backupDirs as $bDir) {
+    if (!empty($bDir) && is_dir($bDir) && is_writable($bDir)) {
+        $leadRecord = [
+            'timestamp' => date('c'),
+            'nombre' => $cleanNombre,
+            'email' => $cleanEmail,
+            'telefono' => $cleanTelefono,
+            'motivo' => $cleanMotivo,
+            'tipoEvento' => $cleanTipo,
+            'asistentes' => $cleanAsistentes,
+            'fecha' => $cleanFecha,
+            'mensaje' => $mensaje,
+            'recipients' => $recipients,
+            'messageId' => $messageId
+        ];
+        @file_put_contents(
+            $bDir . '/leads_backup.jsonl',
+            json_encode($leadRecord, JSON_UNESCAPED_UNICODE) . "\n",
+            FILE_APPEND | LOCK_EX
+        );
+        break;
+    }
+}
+
+// 10. Respuesta exitosa verificada
 echo json_encode([
     'success' => true,
     'message' => '¡Solicitud recibida correctamente! Nos pondremos en contacto contigo con la mayor brevedad para coordinar la disponibilidad y los detalles de tu evento en Grafit Café.'

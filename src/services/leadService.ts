@@ -84,7 +84,13 @@ export const submitLead = async (
       form_rendered_at: renderedAt,
     };
 
-    const response = await fetch('./api/contact.php', {
+    // Determinar endpoint absoluto e inmune a subrutas SPA o barras finales
+    const endpoint =
+      typeof window !== 'undefined' && window.location?.origin
+        ? `${window.location.origin}/api/contact.php`
+        : '/api/contact.php';
+
+    const response = await fetch(endpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -43,9 +43,10 @@
   # Excluye archivos físicos existentes y el directorio de endpoints /api/
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
-  RewriteRule ^ - [L]
+  # Captura defensiva de endpoints API solicitados con prefijo de subruta (ej: /contacto/api/contact.php)
+  RewriteRule ^.*?api/(.*)$ api/$1 [L]
 
-  RewriteCond %{REQUEST_URI} !^/api/
+  RewriteCond %{REQUEST_URI} !/api/
   RewriteRule ^ index.html [L]
 </IfModule>
 
